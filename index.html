@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Flipping flip</title>
+    <style>
+        body {
+            font-family: arial, helvetica, sans-serif;
+        }
+
+        /* Font Awesome Free 5.15.4 by @fontawesome - https: //fontawesome.com
+        * License - https: //fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) */
+        @font-face {
+            font-family: "FontAwesome";
+            font-display: block;
+            src: url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.eot);
+            src: url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.eot?#iefix) format("embedded-opentype"), url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.woff2) format("woff2"), url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.woff) format("woff"), url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.ttf) format("truetype"), url(https://ka-f.fontawesome.com/releases/v5.15.4/webfonts/free-fa-solid-900.svg#fontawesome) format("svg")
+        }
+
+        div {
+            width: 1000pt;
+        }
+
+        table {
+            border: 2pt solid black;
+            padding: 5pt;
+            width: 1000pt;
+            border-radius: 8pt;
+        }
+
+        img {
+            border: 4pt solid rgb(74, 74, 74);
+            background-color: rgb(74, 74, 74);
+            border-radius: 4pt;
+            margin: 5pt;
+        }
+        #path {
+            border: 1pt solid rgb(90, 51, 0);
+            background-color: rgb(90, 51, 0);
+            color: rgb(255, 255, 255);
+            border-radius: 4pt;
+        }
+        #Advanced {
+            border: 4pt solid rgb(255, 145, 0);
+            border-radius: 4pt;
+            width: 600pt;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>Small introduction, nerd stuff - optional</h2>
+        <table>
+            <td>
+                <h3>Terminology:</h3>
+                <ul>
+                    <li><b>Vertical Synchronization (V-Sync)</b> - technology that keeps display's scanout and refresh
+                        in phase
+                        to eliminate screen tearing, at the cost of higher display latency. (Latency lowers
+                        along with refresh rate)</li>
+                    <li><b>G-Sync/ Freesync</b> - Variable Refresh Rate (VRR) technologies developed by NVIDIA and AMD
+                        respectively. Somewhat an extension (but also not) to V-Sync, allows monitor to adapt its
+                        refresh rate
+                        to the
+                        framerate, which allows for stutter reduction and tear-free display of mismatched<sup>[1]</sup>
+                        framerates with lower
+                        input latency.</li>
+                    <li><b>Flip Model</b> - presentation model first added in Windows 7 with
+                        D3D9ex and later perfected in Windows 8<br> and 10,
+                        allows fullscreen-level of
+                        performance, latency and VRR in windowed modes. Since DXGI 1.5 it also support disabling V-Sync
+                        in
+                        windowed
+                        mode and HDR.
+                        <br>DXGI one is supported only in D3D10 and upwards<sup>[2]</sup>, enforced only in D3D12.
+                        D3D9Ex doesn't use DXGI, so its Flip Model is not feature matched.
+                        <br>More information <a href="https://devblogs.microsoft.com/directx/dxgi-flip-model/">here</a>.
+                    </li>
+                    <li><b>BitBlt Model</b> - older presentation model used by applications that don't use Flip Model.
+                        Lacks all
+                        of its advantages, and when used in Windowed mode, has potential performance problems and
+                        always-on
+                        V-Sync on top of already additional latency.
+                        <br>
+                        The only presentation model for windowed D3D9 (and lower).
+                        <p>
+                            Vulkan and OpenGL<sup>[3]</sup> don't use BitBlt nor Flip (Vulkan's swapchain is very
+                            similar to Flip Model though) so they miss all their features
+                            and gain their flaws when Windowed. VRR and tearing work only in FSO/FSE. HDR works only for
+                            Vulkan titles that use NVIDIA's D3D11 interop.
+                        </p>
+                    </li>
+                    <li><b>Display modes:</b></li>
+                    <ul>
+                        <li><b>Fullscreen Exclusive (FSE)</b> - legacy method of displaying content where application
+                            takes
+                            complete ownership of the screen. Causes slow alt-tab, can be problematic if games are badly
+                            coded
+                            and switch to odd resolutions or refresh rates by default. Causes problems with color
+                            profiles.
+                            Supports VRR, downscaling and upscaling.<br>
+                            Since W10 1803, the only application that should be using this mode is Display Window
+                            Manager (DWM)
+                            itself.
+                            <br>Supported by every graphics API other than D3D12.
+                        </li>
+                        <li><b>Fullscreen with Fullscreen Optimizations (FSO)</b> - an update to FSE added in Windows 10
+                            1803.
+                            Makes applications run in borderless mode (with Flip Model) for faster alt-tab, adds support
+                            for windowed
+                            overlays and better color
+                            profile handling, while retaining all benefits of FSE despite having DWM as the screen
+                            owner.
+                            <br>Enabled by default for every application.
+                            <br>More information <a
+                                href="https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/">here</a>.
+                        </li>
+                        <li>
+                            <b>Windowed/ Windowed Borderless</b> - method of displaying content in a window, managed by
+                            DWM. Due
+                            to being a window, alt-tab is fast, and color profiles usually don't have any problems. If
+                            not using
+                            Flip Model, it's worse in performance compared to FSO/FSE, lacks VRR support and uses
+                            always-on
+                            V-Sync.
+                        </li>
+                    </ul>
+                </ul>
+                Annotations:
+                <ol>
+                    <li>
+                        I'm saying "mismatched", because tear-free, no-latency experience is possible with stable
+                        framerates on normal displays by
+                        manually
+                        managing frame scanout (Special K Latent Sync, FPS Monitor Cyber Sync, RTSS Scanline Sync).
+                        <br>
+                        It requires some thinkering to work though, and is not guaranteed to work on every display at
+                        default timings. (Mentioned programs are in order by their ease of use)
+                    </li>
+                    <li>
+                        D3D10 and D3D11 supporting Flip Model, doesn't mean that game uses it (Unity and UE4 implemented
+                        Flip Model support around 2019).
+                        <br>
+                        Flip Model can be enabled in those games using Special K (D3D11 only) or Windows 11's (22H1)
+                        Optimizations for Windowed Games (both D3D10 and D3D11).
+                    </li>
+                    <li>
+                        OpenGL can be converted to D3D11 using Special K, which enables Flip Model and all its benefits
+                        along with HDR.
+                        <br>
+                        Some OpenGL games also get converted to D3D11 by drivers when using Intel GPU as display output
+                        while NVIDIA GPU renders the game (Not checked on AMD systems).
+                        <br>
+                        Games converted this way don't use Flip Model, so Special K or W11 22H1 is needed. (SK's HDR
+                        doesn't work this way. Windows' AutoHDR should)
+                    </li>
+                </ol>
+
+            </td>
+        </table>
+    </div>
+
+    <div>
+        <h1 style="color:orange;">TL:DR, what does it mean for FNV?</h1>
+        <table>
+            <td>
+                <h2>Fullscreen/ Fullscreen Exclusive:</h2>
+                <h3>Advantages:</h3>
+                <ul>
+                    <li>Good latency and performance</li>
+                    <li>Working G-Sync and Freesync</li>
+                </ul>
+                <h3>Disadvantages:</h3>
+                <ul>
+                    <li>Slow alt-tab, especially with FSO disabled.</li>
+                    <li>Alt-tab doesn't work at all if NVTF's bModifyDirectXBehaviour is enabled.</li>
+                    <li>Color profiles may disengage, especially if with FSO disabled.</li>
+                </ul>
+                <h2>Windowed/ Fullscreen Windowed:</h2>
+                <h3>Advantages:</h3>
+                <ul>
+                    <li>Fast alt-tab</li>
+                    <li>Better support for color profiles</li>
+                </ul>
+                <h3>Disadvantages:</h3>
+                <ul>
+                    <li>Lack of Flip Model in D3D9 leads to:</li>
+                    <ul>
+                        <li>Higher input lag and worse performance compared to FSO/FSE</li>
+                        <li>V-Sync is always on</li>
+                        <li>G-Sync and Freesync don't work</li>
+                    </ul>
+                    <li>In-Game brightness settings don't work</li>
+                </ul>
+            </td>
+        </table>
+    </div>
+    <div>
+        <h2>Recommended display settings</h2>
+        <table>
+            <td>
+
+                <h3>Windowed</h3>
+                <ul>
+                    <li>FPS cap</li>
+                </ul>
+                <h3>Fullscreen</h3>
+                If <b>not</b> using VRR:
+                <ul>
+                    <li>Driver V-Sync on or off, your preference. </li>
+                    <li>FPS cap at your refresh rate or lower.</li>
+                </ul>
+                If using VRR:
+                <ul>
+                    <li>Driver V-Sync enabled</li>
+                    <li>FPS capped at (max refresh rate - 5) or lower</li>
+                </ul>
+                Recommended framerate limiters and their configurations:
+                <ul>
+                    <li>Special K</li>
+                    <ol>
+                        <li>From <b id="path">"Documents\My Mods\SpecialK"</b> copy <b>SpecialK32.dll</b>, paste it in your
+                            Fallout New Vegas root folder and rename to <b>d3d9.dll</b></li>
+                        <li>Launch Fallout New Vegas and press <b>Ctrl+Shift+Backspace</b> to enter Special K control
+                            panel</li>
+                        <li>Right click on <b>Framerate Limit</b> bar and select one of proposed values based on your
+                            refresh rate, or <b>Ctrl-Click</b> on the bar to type custom value
+                            <ul>
+                                <li>
+                                    If you use <b>fullscreen mode and have VRR</b>, in right click menu select <b>VRR
+                                        Bias</b> and select one of proposed values.
+                                    <br>
+                                    Click on <b>Advanced</b> and enable <b>Low Latency Mode</b>
+                                </li>
+                                <li id="Advanced">
+                                    <b>(Advanced)</b> If you use <b>fullscreen mode without V-Sync</b> and <b>have
+                                        stable
+                                        framerate</b>, in right click menu select <b>Latent Sync</b>
+                                    <ul>
+                                        <li>
+                                            <b>It's best to do this in-game!</b>
+                                            <br>
+                                            In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use
+                                            <b>Sync
+                                                offset</b> slider so the tearing is not visible.
+                                            <br>
+                                            Disable <b>Visualize Tearlines</b> when you decide you are satisfied with
+                                            results.
+                                            <p>
+                                                Some monitors have too small vertical blanking, so it can be possible to
+                                                not
+                                                fully hide the tearing.
+                                                <br>If you wish to pursue this topic, use <b>Custom Resolution
+                                                    Utility</b>
+                                                to
+                                                increase <b>Vertical Blanking</b>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p>
+                        Your configuration should look similar to this.
+                        <br>
+                        <img src="SK.png" height="500pt">
+                        <br>
+                    </p>
+                    <li>RivaTuner Statistics Server</li>
+                    <ol>
+                        <li>
+                            Open RTSS, press green <b>Add</b> button and select FalloutNV.exe
+                        </li>
+                        <li>
+                            Set <b>Application Detection Level</b> to <b>Low</b>
+                        </li>
+                        <li>
+                            Set <b>Framerate Limit</b>
+                            <ul>
+                                <li>If you use <b>fullscreen mode and have VRR</b>, set your cap at <b>(refresh rate - 5)</b> or lower</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Enter settings using Setup button and:
+                            <ul>
+                                <li>
+                                    Enable <b>Passive Waiting</b>
+                                </li>
+                                <li>
+                                    Set framerate limiter to <b>Front Edge Sync</b>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Enable <b>Start with Windows</b> or launch RTSS everytime before you play.
+                        </li>
+                    </ol>
+                    <p>
+                        Your configuration should look similar to this.
+                        <br>
+                        <img src="RTSS.png" height="500pt">
+                        <br>
+                        <u>RTSS with this configuration is on par with Special K</u>
+                    </p>
+                    <li>NVIDIA/ AMD driver</li>
+                    <ul>
+                        <li>NVIDIA</li>
+                        <ol>
+                            <li>
+                                Open <b>NVIDIA Control Panel</b>, go to <b>Program Settings</b>
+                            </li>
+                            <li>
+                                Select <b>FalloutNV.exe</b>. If it's not present, add it manually.
+                            </li>
+                            <li>
+                                In settings, set <b>Max Frame Rate</b> to your desired value
+                                <ul>
+                                    <li>If you use <b>fullscreen mode and have VRR</b>, set your cap at <b>(refresh rate - 5)</b> or lower</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Click <b>Apply</b>
+                            </li>
+                        </ol>
+                        <p>
+                            Your configuration should look similar to this.
+                            <br>
+                            <img src="Nvidia.png" height="500pt">
+                            <br>
+                        </p>
+                        <li>AMD... Who?</li>
+                    </ul>
+                </ul>
+            </td>
+        </table>
+    </div>
+
+</body>
+
+</html>
