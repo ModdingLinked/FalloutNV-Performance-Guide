@@ -1,0 +1,234 @@
+* {
+    box-sizing: border-box;
+    line-height: 1.35rem;
+}
+
+body {
+    margin: 0px;
+}
+
+img {
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin: 5pt;
+    max-height: 700px;
+    height: auto;
+}
+
+a {
+    color: rgb(101, 206, 253);
+}
+
+.sidebar {
+    float: left;
+    width: 15%;
+    text-align: center;
+}
+
+.sidebar a {
+    display: block;
+    color: rgb(255, 255, 255);
+    background-color: rgb(32, 32, 32);
+    border: 4pt solid rgb(32, 32, 32);
+    border-radius: 4px;
+    height: 36px;
+    width: 100%;
+    text-align: left;
+    text-decoration: none;
+    padding: 4px 8px;
+    margin: 0px 0px 5px 0px;
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar a.active {
+    background-color: rgb(45, 45, 45);
+    border: 4pt solid rgb(45, 45, 45);
+    color: white;
+}
+
+.sidebar a.active:hover {
+    background-color: rgb(41, 41, 41);
+    border: 4pt solid rgb(41, 41, 41);
+    box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar a:hover:not(.active) {
+    background-color: rgb(45, 45, 45);
+    border: 4pt solid rgb(45, 45, 45);
+    box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar a:hover span {
+    animation: rotate 0.4s ease-in-out;
+    display: inline-block;
+}
+
+.path {
+    border: 1pt solid rgb(90, 51, 0);
+    background-color: rgb(90, 51, 0);
+    color: rgb(255, 255, 255);
+    border-radius: 4px;
+}
+
+.advanced {
+    border: 1px solid rgb(25, 25, 25);
+    background-color: rgb(67, 53, 27);
+    color: white;
+    border-radius: 8px;
+    max-width: 800px;
+    padding: 0px 15px 0px 15px;
+    margin: 15px 0px 15px 0px;
+}
+
+.warning {
+    border: 1px solid rgb(25, 25, 25);
+    background-color: rgb(68, 39, 38);
+    color: white;
+    border-radius: 8px;
+    max-width: 800px;
+    padding: 0px 15px 0px 15px;
+    margin: 15px 0px 15px 0px;
+}
+
+.code {
+    font-family: monospace;
+    font-size: 1rem;
+    border: 1px solid rgb(25, 25, 25);
+    background-color: rgb(35, 35, 35);
+    color: white;
+    border-radius: 8px;
+    max-width: 800px;
+    padding: 0px 15px 0px 15px;
+    margin: 15px 0px 0px 0px;
+}
+
+.annotations {
+    font-size: small;
+}
+
+.content {
+    float: left;
+    width: 80%;
+    padding: 0 20px;
+}
+
+.card {
+    border: 2pt solid rgb(29, 29, 29);
+    border-radius: 8px;
+    background: rgb(43, 43, 43);
+    padding: 0px 15px 0px 15px;
+    max-width: 1400px;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.2);
+}
+
+.header {
+    background: rgb(43, 43, 43);
+    padding: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.theme {
+    background: #202020;
+    color: white;
+    font-family: arial, helvetica, sans-serif;
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-5px) rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .theme {
+        background: rgb(243, 243, 243);
+        color: black;
+    }
+
+    img {
+        box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .header {
+        background-color: rgb(251, 251, 251);
+        box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    .card {
+        border: 2pt solid rgb(236, 236, 236);
+        background-color: rgb(251, 251, 251);
+        box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.05);
+    }
+
+    a {
+        color: rgb(13, 96, 182)
+    }
+
+    .advanced {
+        border: 1px solid rgb(235, 235, 235);
+        background-color: rgb(255, 244, 207);
+        color: black;
+    }
+
+    .warning {
+        border: 1px solid rgb(235, 235, 235);
+        background-color: rgb(253, 231, 233);
+        color: rgb(0, 0, 0);
+    }
+
+    .code {
+        border: 1px solid rgb(235, 235, 235);
+        background-color: rgb(248, 248, 248);
+        color: rgb(0, 0, 0);
+    }
+
+    .sidebar a {
+        color: rgb(0, 0, 0);
+        border-color: rgb(243, 243, 243);
+        background-color: rgb(243, 243, 243);
+    }
+
+    .sidebar a.active {
+        background-color: rgb(234, 234, 234);
+        border-color: rgb(234, 234, 234);
+        color: rgb(0, 0, 0);
+    }
+
+    .sidebar a:hover:not(.active) {
+        background-color: rgb(234, 234, 234);
+        border-color: rgb(234, 234, 234);
+        color: rgb(0, 0, 0);
+        box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar a.active:hover {
+        background-color: rgb(237, 237, 237);
+        border-color: rgb(237, 237, 237);
+        box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media only screen and (max-width: 900px) {
+
+    .sidebar,
+    .content {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    img {
+        width: 100%;
+    }
+}

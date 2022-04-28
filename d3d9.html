@@ -11,13 +11,13 @@
 
 <body class="theme dark-scheme">
     <div class="header">
-        <h1>Why does this guide exist and who is it for</h1>
+        <h1>Welcome to D3D9 hell</h1>
     </div>
 
     <div style="overflow:auto">
         <div class="sidebar">
-            <a href="index.html" class="active" title="🙂 Introduction"><span>🙂</span> Introduction</a>
-            <a href="d3d9.html" title="🙃 Vanilla - D3D9"><span>🙃</span> Vanilla - D3D9</a>
+            <a href="index.html" title="🙃 Introduction"><span>🙃</span> Introduction</a>
+            <a href="d3d9.html" title="🙂 Vanilla - D3D9" class="active"><span>🙂</span> Vanilla - D3D9</a>
             <a href="dxvk.html" title="🙃 Vulkan - DXVK"><span>🙃</span> Vulkan - DXVK</a>
         </div>
 
@@ -39,7 +39,7 @@
                             to the
                             framerate, which allows for stutter reduction and when combined with V-Sync, tear-free
                             display
-                            of mismatched<sup><a href="#ad1">[1]</a></sup>
+                            of mismatched<sup>[1]</sup>
                             framerates with lower
                             input latency.</li>
                         <li><b>Flip Model</b> - presentation model first added in Windows 7 with
@@ -51,12 +51,12 @@
                             in
                             Windowed
                             mode and HDR.
-                            <br>DXGI one is supported only in D3D10 and upwards<sup><a href="#ad2">[2]</a></sup>, enforced only in D3D12,
+                            <br>DXGI one is supported only in D3D10 and upwards<sup>[2]</sup>, enforced only in D3D12,
                             and
                             exists only on Windows 8 and upwards.
                             D3D9Ex doesn't use DXGI, so its Flip Model is not feature matched.
                             <br>More information <a
-                                href="https://devblogs.microsoft.com/directx/dxgi-flip-model/" target="_blank">here</a>.
+                                href="https://devblogs.microsoft.com/directx/dxgi-flip-model/">here</a>.
                         </li>
                         <li><b>BitBlt Model</b> - older presentation model used by applications that don't use Flip
                             Model.
@@ -67,7 +67,7 @@
                             <br>
                             The only presentation model for Windowed D3D9 (and lower).
                             <p>
-                                Vulkan and OpenGL<sup><a href="#ad3">[3]</a></sup> don't use BitBlt nor Flip (although Vulkan's IMMEDIATE
+                                Vulkan and OpenGL<sup>[3]</sup> don't use BitBlt nor Flip (although Vulkan's IMMEDIATE
                                 presentation is very
                                 similar to Flip Model) so they miss all their features
                                 and gain their flaws when Windowed. VRR and tearing work only in FSE. HDR works only for
@@ -103,7 +103,7 @@
                                 profile handling, rendering FSE inferior in every way for DirectX games
                                 <br>Enabled by default for every application.
                                 <br>More information <a
-                                    href="https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/" target="_blank">here</a>.
+                                    href="https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/">here</a>.
                             </li>
                             <li>
                                 <b>Windowed/ Windowed Borderless</b> - method of displaying content in a window, managed
@@ -118,46 +118,39 @@
                             </li>
                         </ul>
                     </ul>
-                    <span class="annotations">
-                        <ol>
-                            <li id="ad1">
-                                I'm saying "mismatched", because tear-free, no-latency experience is possible with
-                                stable
-                                framerates on normal displays by
-                                manually
-                                managing frame scanout (Special K Latent Sync, FPS Monitor Cyber Sync, RTSS Scanline
-                                Sync).
-                                <br>
-                                It requires some tinkering to work though, and is not guaranteed to work on every
-                                display at
-                                default timings. (Mentioned programs are in order by their ease of use)
-                            </li>
-                            <li id="ad2">
-                                D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and
-                                UE4
-                                implemented
-                                Flip Model support around 2019).
-                                <br>
-                                Flip Model in Windowed mode can be enabled in those games using Special K (D3D11 only)
-                                or
-                                Windows 11's (22H1)
-                                Optimizations for Windowed Games (both D3D10 and D3D11).
-                            </li>
-                            <li id="ad3">
-                                OpenGL can be converted to D3D11 using Special K, which enables Flip Model and all its
-                                benefits
-                                along with HDR.
-                                <br>
-                                Some OpenGL games also get converted to D3D11 by drivers when using Intel GPU as display
-                                output
-                                while NVIDIA GPU renders the game (Not checked on AMD systems).
-                                <br>
-                                Games converted this way don't use Flip Model, so Special K or W11 22H1 is needed. (SK's
-                                HDR
-                                doesn't work this way. Windows' AutoHDR should)
-                            </li>
-                        </ol>
-                    </span>
+                    Annotations:
+                    <ol>
+                        <li>
+                            I'm saying "mismatched", because tear-free, no-latency experience is possible with stable
+                            framerates on normal displays by
+                            manually
+                            managing frame scanout (Special K Latent Sync, FPS Monitor Cyber Sync, RTSS Scanline Sync).
+                            <br>
+                            It requires some tinkering to work though, and is not guaranteed to work on every display at
+                            default timings. (Mentioned programs are in order by their ease of use)
+                        </li>
+                        <li>
+                            D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and UE4
+                            implemented
+                            Flip Model support around 2019).
+                            <br>
+                            Flip Model in Windowed mode can be enabled in those games using Special K (D3D11 only) or
+                            Windows 11's (22H1)
+                            Optimizations for Windowed Games (both D3D10 and D3D11).
+                        </li>
+                        <li>
+                            OpenGL can be converted to D3D11 using Special K, which enables Flip Model and all its
+                            benefits
+                            along with HDR.
+                            <br>
+                            Some OpenGL games also get converted to D3D11 by drivers when using Intel GPU as display
+                            output
+                            while NVIDIA GPU renders the game (Not checked on AMD systems).
+                            <br>
+                            Games converted this way don't use Flip Model, so Special K or W11 22H1 is needed. (SK's HDR
+                            doesn't work this way. Windows' AutoHDR should)
+                        </li>
+                    </ol>
                 </div>
             </div>
 
@@ -215,7 +208,7 @@
                     </ul>
                     Recommended framerate limiters and their configurations:
                     <ul>
-                        <li><a href="https://sk-data.special-k.info/repository/SpecialK_22.4.20.exe" target="_blank">Special K</a>
+                        <li><a href="https://sk-data.special-k.info/repository/SpecialK_22.4.20.exe">Special K</a>
                             <b>(Windows 8+ only)</b>
                         </li>
                         <ol>
@@ -236,36 +229,34 @@
                                             Bias</b> and select one of proposed values.
                                         <br>
                                         Click on <b>Advanced</b> and enable <b>Low Latency Mode</b>
-                                        <div class="advanced">
-                                            <p>
-                                                <b>(Advanced)</b> If you use <b>fullscreen mode without V-Sync</b> and
-                                                <b>have
-                                                    stable
-                                                    framerate</b>, in right click menu select <b>Latent Sync</b>
-                                            <p>
-                                            <p>
-                                            <h3>It's best to do this in-game!</h3>
-                                            </p>
-                                            In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use
-                                            <b>Sync
-                                                offset</b> slider so the tearing is not visible.
-                                            <br>
-                                            Disable <b>Visualize Tearlines</b> when you decide you are satisfied
-                                            with
-                                            results.
-                                            <p>
-                                                Some monitors have too small vertical blanking, so it can be
-                                                possible to
-                                                not
-                                                fully hide the tearing.
-                                                <br>If you wish to pursue this topic, use <b>Custom Resolution
-                                                    Utility</b>
-                                                to
-                                                increase <b>Vertical Blanking</b>
-                                            </p>
-                                            </p>
-                                            </p>
-                                        </div>
+                                    </li>
+                                    <li class="Advanced">
+                                        <b>(Advanced)</b> If you use <b>fullscreen mode without V-Sync</b> and <b>have
+                                            stable
+                                            framerate</b>, in right click menu select <b>Latent Sync</b>
+                                        <ul>
+                                            <li>
+                                                <b>It's best to do this in-game!</b>
+                                                <br>
+                                                In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use
+                                                <b>Sync
+                                                    offset</b> slider so the tearing is not visible.
+                                                <br>
+                                                Disable <b>Visualize Tearlines</b> when you decide you are satisfied
+                                                with
+                                                results.
+                                                <p>
+                                                    Some monitors have too small vertical blanking, so it can be
+                                                    possible to
+                                                    not
+                                                    fully hide the tearing.
+                                                    <br>If you wish to pursue this topic, use <b>Custom Resolution
+                                                        Utility</b>
+                                                    to
+                                                    increase <b>Vertical Blanking</b>
+                                                </p>
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                             </li>
@@ -273,11 +264,11 @@
                         <p>
                             Your configuration should look similar to this.
                             <br>
-                            <img src="SK.png">
+                            <img src="SK.png" height="500pt">
                             <br>
                         </p>
                         <li><a
-                                href="https://www.guru3d.com/files-get/rtss-rivatuner-statistics-server-download,17.html" target="_blank">RivaTuner
+                                href="https://www.guru3d.com/files-get/rtss-rivatuner-statistics-server-download,17.html">RivaTuner
                                 Statistics Server</a></li>
                         <ol>
                             <li>
@@ -290,7 +281,8 @@
                                 Set <b>Framerate Limit</b>
                                 <ul>
                                     <li>If you use <b>fullscreen mode and have VRR</b>, set your cap at <b>(refresh rate
-                                            - 5)</b> or lower</li>
+                                            -
+                                            5)</b> or lower</li>
                                 </ul>
                             </li>
                             <li>
@@ -311,10 +303,9 @@
                         <p>
                             Your configuration should look similar to this.
                             <br>
-                            <img src="RTSS.png">
+                            <img src="RTSS.png" height="500pt">
                             <br>
-                        <h4><u>RTSS with this configuration is on par with Special K in terms of frametime stability and
-                                latency</u></h4>
+                            <u>RTSS with this configuration is on par with Special K</u>
                         </p>
                         <li>NVIDIA/ AMD driver</li>
                         <ul>
@@ -341,7 +332,7 @@
                             <p>
                                 Your configuration should look similar to this.
                                 <br>
-                                <img src="Nvidia.png">
+                                <img src="Nvidia.png" height="500pt">
                                 <br>
                             </p>
                             <li>AMD... Who?</li>
@@ -351,7 +342,8 @@
             </div>
         </div>
     </div>
-    <div style="background-color:#000000;text-align:center;padding:10px;margin-top:7px;">I'm a footer 🙂</div>
+
+    <div style="background-color:#e5e5e5;text-align:center;padding:10px;margin-top:7px;">I'm a footer :)</div>
 </body>
 
 </html>
