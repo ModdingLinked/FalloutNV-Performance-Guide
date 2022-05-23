@@ -1,4 +1,5 @@
 window.addEventListener('resize', sizeChanged);
+
 function sizeChanged() {
     if (document.documentElement.clientWidth > 760) {
         document.getElementById("header").style.marginLeft = "";

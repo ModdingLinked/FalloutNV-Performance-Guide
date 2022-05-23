@@ -86,6 +86,17 @@ input:active {
     background-color: rgb(114, 114, 114);
 }
 
+.comparison-table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.comparison-table .card-red,
+.comparison-table .card-green {
+    vertical-align: top;
+}
+
+
 .expander-top {
     border-radius: 8px;
     padding: 0px 15px 0px 15px;
@@ -292,6 +303,11 @@ input:active {
     font-family: arial, helvetica, sans-serif;
 }
 
+#karutpls {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
@@ -439,9 +455,35 @@ input:active {
     }
 }
 
+@media only screen and (max-width: 700px) {
+    #karutpls {
+        margin-left: auto;
+        margin-right: auto;
+        font-size: x-small;
+        padding: 0px 5px 0px 5px;
+    }
+
+    .comparison-table .card-red,
+    .comparison-table .card-green {
+        padding: 0px;
+    }
+
+    .comparison-table ul {
+        padding-left: 1rem;
+    }
+
+    .comparison-table ul ul {
+        padding-left: 0.5rem;
+    }
+}
+
 @media only screen and (min-width: 901px) {
 
     .header {
         margin-left: -100px;
+    }
+
+    #karutpls {
+        margin-left: 5em;
     }
 }

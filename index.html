@@ -252,75 +252,85 @@
                     <p>
                     <h3>Presentation problems</h3>
                     Since both D3D9 and Vulkan don't use Flip Model presentation, they have some trade offs in each display mode. Here is a short comparison between them:
-                    <table class="center" style="border-spacing: 4px;">
-                        <tr>
-                            <th>
-                                <h2>Fullscreen</h2>
-                            </th>
-                            <th>
-                                <h2>Windowed</h2>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td class="card-green" style="padding-left: 0px; vertical-align: top;">
-                                <ul>
-                                    <li>Best latency and performance, especially with FSO</li>
-                                    <li>Variable Refresh Rate works without any problems</li>
-                                </ul>
-                            </td>
-                            <td class="card-green" style="padding-left: 0px; vertical-align: top;">
-                                <ul>
-                                    <li>
-                                        Fast Alt-Tab
-                                    </li>
-                                    <li>
-                                        Better support for color profiles
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="card-red" style="padding-left: 0px; vertical-align: top;">
-                                <ul>
-                                    <li>
-                                        Slower Alt-Tab, especially without FSO
-                                    </li>
+                    <div class="comparison">
+                        <table style="border-spacing: 4px;" class="comparison-table">
+                            <tr>
+                                <th>
+                                    <h2>Fullscreen</h2>
+                                </th>
+                                <th>
+                                    <h2>Windowed</h2>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>Best latency and performance, especially with FSO</li>
+                                        <li>Variable Refresh Rate works without any problems</li>
+                                    </ul>
+                                </td>
+                                <td class="card-green">
                                     <ul>
                                         <li>
-                                            <b>Alt-Tab doesn't work at all if NVTF's bModifyDirectXBehaviour is enabled, unless you use <a href="dxvk.html" title="🙃 Vulkan - DXVK">DXVK</a></b>
+                                            Fast Alt-Tab
+                                        </li>
+                                        <li>
+                                            Better support for color profiles
                                         </li>
                                     </ul>
-                                    <li>
-                                        Color profiles may disengage, especially without FSO
-                                    </li>
-                                </ul>
-                            </td>
-                            <td class="card-red" style="padding-left: 0px; vertical-align: top;">
-                                <ul>
-                                    <li>
-                                        High input lag and worse performance, especially when not using any FPS limiter
-                                    </li>
-                                    <li>
-                                        V-Sync is always on<sup><a href="#ad4">[4]</a></sup>
-                                    </li>
-                                    <li>
-                                        Variable Refresh Rate doesn't work natively
-                                    </li>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="card-red">
                                     <ul>
                                         <li>
-                                            AMD supports Freesync in non-flip Fullscreen Windowed, but latency and performance penalities remain
+                                            Slower Alt-Tab, especially without FSO
                                         </li>
+                                        <ul>
+                                            <li>
+                                                <b>Alt-Tab doesn't work at all if NVTF's</b>
+                                            </li>
+                                        </ul>
+                                    </ul>
+                                    <div class="card-basic" id="karutpls">bModifyDirectXBehaviour</div>
+                                    <ul> 
+                                        <ul>    
+                                            <li style="list-style: none;">
+                                                <b>is enabled, unless you use <a href="dxvk.html" title="🙃 Vulkan - DXVK">DXVK</a></b>
+                                            </li>
+                                        </ul>
                                         <li>
-                                            Nvidia's support for non-flip Windowed VRR is broken<sup><a href="#ad5">[5]</a></sup>
+                                            Color profiles may disengage, especially without FSO
                                         </li>
                                     </ul>
-                                    <li>
-                                        In-Game brightness settings don't work
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </table>
+                                </td>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            High input lag and worse performance, especially when not using any FPS limiter
+                                        </li>
+                                        <li>
+                                            V-Sync is always on<sup><a href="#ad4">[4]</a></sup>
+                                        </li>
+                                        <li>
+                                            Variable Refresh Rate doesn't work natively
+                                        </li>
+                                        <ul>
+                                            <li>
+                                                AMD supports Freesync in non-flip Fullscreen Windowed, but latency and performance penalities remain
+                                            </li>
+                                            <li>
+                                                Nvidia's support for non-flip Windowed VRR is broken<sup><a href="#ad5">[5]</a></sup>
+                                            </li>
+                                        </ul>
+                                        <li>
+                                            In-Game brightness settings don't work
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                     <span class="annotations">
                         <ol start="4">
                             <li id="ad4">
@@ -331,8 +341,9 @@
                                 <br>
                                 Refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
                                 <br>
-                                If you want to try how well it works for you, use <a href="https://github.com/FoulPlay/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile.
-                                <br> 
+                                If you want to try how well it works for you, use <a href="https://github.com/FoulPlay/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to
+                                "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile.
+                                <br>
                                 <b>Never enable Windowed G-Sync globally!</b>
                             </li>
                         </ol>
@@ -373,6 +384,11 @@
                     <p>
                     <table class="center" style="width: 100%; height: 96px;">
                         <tr>
+                            <th colspan="3">
+                                <h3 class="center">Select your graphics API</h3>
+                            </th>
+                        </tr>
+                        <tr>
                             <th>
                                 <label class="toggler" id="buttonD3D9">
                                     <input type="radio" name="apiSelection" class="apiSelection" onclick="expandLimiterTutorials(this, expanderD3D9, expanderVulkan)">
@@ -380,7 +396,7 @@
                                 </label>
                             </th>
                             <th>
-                                <h3 class="center">Select your graphics API</h3>
+
                             </th>
                             <th>
                                 <label class="toggler" id="buttonVulkan">
