@@ -154,6 +154,7 @@ input:active {
     border-radius: 4px;
     user-select: none;
     background: #2b2b2b;
+    outline: 1px solid rgba(0, 0, 0, 10%);
     transition: all 333ms Cubic-Bezier(0, 0, 0, 1);
 }
 
@@ -393,7 +394,8 @@ input:active {
     }
 
     .sidebar {
-        background: rgba(252, 252, 252, 85%);
+        background: rgb(251, 251, 251);
+        outline: 1px solid rgba(0, 0, 0, 5.78%);
     }
 
     .sidebar a {
@@ -428,8 +430,6 @@ input:active {
         margin-left: 0px;
         border-top-right-radius: 0px;
         overflow: auto;
-        background: rgb(43, 43, 43);
-        outline: 1px solid rgba(0, 0, 0, 10%);
     }
 
     .header {
