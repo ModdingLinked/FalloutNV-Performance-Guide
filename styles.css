@@ -393,7 +393,8 @@ input:active {
     }
 
     .sidebar {
-        background: rgba(252, 252, 252, 85%), url(NoiseAsset_256.png);
+        background: rgba(252, 252, 252, 85%);
+
     }
 
     .sidebar a {
