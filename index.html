@@ -2,356 +2,621 @@
 <html lang="en">
 
 <head>
+    <title>Flipping flip</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flipping flip</title>
     <script src="https://kit.fontawesome.com/baff4f2fd4.js" crossorigin="anonymous"></script>
+    <script src="javascript.js"></script>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="theme dark-scheme">
-    <div class="header">
-        <h1>Why does this guide exist and who is it for</h1>
-    </div>
-
     <div style="overflow:auto">
-        <div class="sidebar">
-            <a href="index.html" class="active" title="🙂 Introduction"><span>🙂</span> Introduction</a>
-            <a href="d3d9.html" title="🙃 Vanilla - D3D9"><span>🙃</span> Vanilla - D3D9</a>
-            <a href="dxvk.html" title="🙃 Vulkan - DXVK"><span>🙃</span> Vulkan - DXVK</a>
+        <div class="header" id="header" onclick="toggleNav()">
+            <span class="flippy" id="flippyHeader">🙃</span>
         </div>
-
+        <div class="sidebar" id="sidebar">
+            <p>
+                <a href="#Introduction" title="🙃 Introduction"><span>🙃</span> Introduction</a>
+                <a href="#Terminology" title="🙃 Terminology"><span>🙃</span> Terminology</a>
+                <a href="#DXVK" title="🙃 DXVK"><span>🙃</span> DXVK</a>
+                <a href="#DisplayModeComparison" title="🙃 Display modes"><span>🙃</span> Display modes</a>
+                <a href="#RecommendedLimiters" title="🙃 FPS Limiters"><span>🙃</span> FPS Limiters</a>
+            </p>
+        </div>
         <div class="content">
+            <!-- Introduction -->
             <div>
-                <h2>Small introduction, nerd stuff - optional</h2>
+                <label id="Introduction" onclick="location.href='#Introduction'">
+                    <h2>Introduction</h2>
+                </label>
                 <div class="card">
-                    <h3>Terminology:</h3>
+                    <p>
+                    <h3>Welcome!</h3>
+                    This guide will try to help you optimizing your Fallout: New Vegas for better, smoother experience.
+                    <br>
+                    While the guide is focused on this particular game, most stuff shown here is applicable to other games.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Terminology -->
+            <div>
+                <label id="Terminology" onclick="location.href='#Terminology'">
+                    <h2>Terminology</h2>
+                </label>
+                <div class="card">
+                    <p>
+                    <h3>Things that are good to know</h3>
                     <ul>
-                        <li><b>Vertical Synchronization (V-Sync)</b> - technology that keeps display's scanout and
-                            refresh
-                            in phase
-                            to eliminate screen tearing, at the cost of higher display latency. (Latency lowers
-                            along with refresh rate)</li>
-                        <li><b>G-Sync/ Freesync</b> - Variable Refresh Rate (VRR) technologies developed by NVIDIA and
-                            AMD
-                            respectively. Allows the monitor to adapt its
-                            refresh rate
-                            to the
-                            framerate, which allows for stutter reduction and when combined with V-Sync, tear-free
-                            display
-                            of mismatched<sup><a href="#ad1">[1]</a></sup>
-                            framerates with lower
-                            input latency.</li>
-                        <li><b>Flip Model</b> - presentation model first added in Windows 7 with
-                            D3D9ex and later perfected in Windows 8, 8.1 and 10.
-                            Allows "fullscreen-level" of
-                            performance, latency and VRR in Windowed modes. Since DXGI 1.5 it also supports tearing
-                            (V-Sync
-                            off)
-                            in
-                            Windowed
-                            mode and HDR.
-                            <br>DXGI one is supported only in D3D10 and upwards<sup><a href="#ad2">[2]</a></sup>, enforced only in D3D12,
-                            and
-                            exists only on Windows 8 and upwards.
-                            D3D9Ex doesn't use DXGI, so its Flip Model is not feature matched.
-                            <br>More information <a
-                                href="https://devblogs.microsoft.com/directx/dxgi-flip-model/" target="_blank">here</a>.
-                        </li>
-                        <li><b>BitBlt Model</b> - older presentation model used by applications that don't use Flip
-                            Model.
-                            Lacks all
-                            of its advantages, and when used in Windowed mode, has worse performance and
-                            always-on
-                            V-Sync on top of already additional latency.
+                        <li>
+                            <b>Vertical Synchronization (V-Sync)</b> - technology allowing to keep display's scanout and refresh in phase to eliminate screen tearing,
+                            at the cost of higher latency
                             <br>
-                            The only presentation model for Windowed D3D9 (and lower).
-                            <p>
-                                Vulkan and OpenGL<sup><a href="#ad3">[3]</a></sup> don't use BitBlt nor Flip (although Vulkan's IMMEDIATE
-                                presentation is very
-                                similar to Flip Model) so they miss all their features
-                                and gain their flaws when Windowed. VRR and tearing work only in FSE. HDR works only for
-                                Vulkan titles that use NVIDIA's D3D11 interop.
-                            </p>
+                            (Latency lowers along with refresh rate)
                         </li>
-                        <li><b>Display modes:</b></li>
+                        <li>
+                            <b>G-Sync | Freesync</b> - Variable Refresh Rate (VRR) technologies developed by NVIDIA and AMD respectively.
+                            Allows display to adapt its refresh rate to framerate,
+                            which in turn allows for stutter reduction and tear-free display of mismatched frames<sup><a href="#ad1">[1]</a></sup>,
+                            additionally lowering latency compared to V-Sync
+                        </li>
+                        <li><b>Presentation modes:</b></li>
                         <ul>
-                            <li><b>Fullscreen Exclusive (FSE)</b> - legacy method of displaying content where
-                                application
-                                takes
-                                complete ownership of the screen. Causes slow alt-tab, can be problematic if games are
-                                badly
-                                coded
-                                and switch to odd resolutions or refresh rates by default. Causes problems with color
-                                profiles.
-                                Supports VRR, downscaling and upscaling.<br>
-                                Since W10 1803, the only application that should be using this mode is Display Window
-                                Manager (DWM)
-                                itself.
-                                <br>Supported by every graphics API other than D3D12. If any D3D12 game tells you in
-                                options
-                                it has FSE, it literally lies to you.
-                            </li>
-                            <li><b>Fullscreen with Fullscreen Optimizations (FSO)</b> - an update to FSE for DirectX
-                                added
-                                in Windows 10
-                                1803.
-                                Makes DirectX applications run in borderless mode (with Flip Model) for faster alt-tab,
-                                lower latency than FSE, adds support
-                                for Windowed
-                                overlays and better color
-                                profile handling, rendering FSE inferior in every way for DirectX games
-                                <br>Enabled by default for every application.
-                                <br>More information <a
-                                    href="https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/" target="_blank">here</a>.
+                            <li>
+                                <b>Flip Model</b> - swap effect first added in Windows 7 with D3D9ex and later perfected in Windows 8, 8.1 and 10.
+                                <br>
+                                Allows "fullscreen-level" of performance, latency and VRR in Windowed modes. Since DXGI 1.5 it also supports tearing (V-Sync off) in Windowed mode and HDR.
+                                <br>
+                                DXGI one is supported only in D3D10 and upwards<sup><a href="#ad2">[2]</a></sup>, enforced only in D3D12, and exists only on Windows 8 and upwards.
+                                <br>
+                                D3D9Ex Flip Model is not feature matched and lacks any DXGI improvements.
+                                <br>
+                                More information <a href="https://devblogs.microsoft.com/directx/dxgi-flip-model/" target="_blank">here</a>
                             </li>
                             <li>
-                                <b>Windowed/ Windowed Borderless</b> - method of displaying content in a window, managed
-                                by
-                                DWM. Due
-                                to being a window, alt-tab is fast, and color profiles usually don't have any problems.
-                                If
-                                not using
-                                Flip Model, it's worse in performance compared to FSO/FSE, lacks VRR support and uses
-                                always-on
-                                V-Sync.
+                                <b>BitBlt Model</b> - older swap effect used by applications that don't use Flip Model.
+                                Lacks all of its advantages, and when used in Windowed mode, has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations.
+                                <br>
+                                The only presentation model for Windowed D3D9 (and lower), but still very common in D3D10 and D3D11
+                            </li>
+                        </ul>
+                        <p>
+                            Vulkan and OpenGL<sup><a href="#ad3">[3]</a></sup> don't use aforementioned Windows models but end up being presented similarly to the BitBlt model
+                        </p>
+                        <li>
+                            <b>Display modes:</b>
+                        </li>
+                        <ul>
+                            <li>
+                                <b>Fullscreen Exclusive (FSE)</b> - legacy method of displaying content where application takes complete ownership of the screen.
+                                Causes slow Alt-Tab, can be problematic if games are badly coded and switch to odd resolutions or refresh rates by default.
+                                Has problems with color profiles.
+                                Supports VRR, downscaling and upscaling.
+                                <br>
+                                Supported by every graphics API other than D3D12
+                            </li>
+                            <li>
+                                <b>Fullscreen with Fullscreen Optimizations (FSO)</b> - an update to FSE for DirectX added in Windows 10 1803.
+                                Makes DirectX applications run in pseudo borderless mode with Flip Model for faster Alt-Tab,
+                                lower latency than FSE, better color profile handling, and also adds support for windowed overlays. This renders FSE inferior in every way for DirectX games.
+                                <br>
+                                Enabled by default for every application.
+                                <br>
+                                More information <a href="https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/" target="_blank">here</a>
+                            </li>
+                            <li>
+                                <b>Windowed</b> - method of displaying content in a window, always managed by DWM. Due to being a window, Alt-Tab is fast, and color profiles usually don't have any problems.
+                                If not using Flip Model, it's worse performance compared to FSO | FSE, lacks native VRR support, has increased input latency and uses always-on V-Sync
                             </li>
                         </ul>
                     </ul>
                     <span class="annotations">
                         <ol>
                             <li id="ad1">
-                                I'm saying "mismatched", because tear-free, no-latency experience is possible with
-                                stable
-                                framerates on normal displays by
-                                manually
-                                managing frame scanout (Special K Latent Sync, FPS Monitor Cyber Sync, RTSS Scanline
-                                Sync).
+                                I'm saying "mismatched", because tear-free, no-latency experience is possible with stable framerates on fixed refresh rate displays by hiding the tearline in VBlank (see RTSS Scanline Sync, Special K Latent Sync, FPS Monitor
+                                Cyber Sync).
                                 <br>
-                                It requires some tinkering to work though, and is not guaranteed to work on every
-                                display at
-                                default timings. (Mentioned programs are in order by their ease of use)
+                                It requires some tinkering to work though, and is not guaranteed to work on every display at default timings
                             </li>
                             <li id="ad2">
-                                D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and
-                                UE4
-                                implemented
-                                Flip Model support around 2019).
+                                D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and UE4 implemented Flip Model support around 2019).
                                 <br>
-                                Flip Model in Windowed mode can be enabled in those games using Special K (D3D11 only)
-                                or
-                                Windows 11's (22H1)
-                                Optimizations for Windowed Games (both D3D10 and D3D11).
+                                Flip Model in Windowed mode can be enabled in those games using Special K (D3D11 only) or Windows 11's (22H2) Optimizations for Windowed Games (both D3D10 and D3D11)
                             </li>
                             <li id="ad3">
-                                OpenGL can be converted to D3D11 using Special K, which enables Flip Model and all its
-                                benefits
-                                along with HDR.
+                                OpenGL can be displayed using D3D11 thanks to Special K, which enables Flip Model and all its benefits along with HDR.
                                 <br>
-                                Some OpenGL games also get converted to D3D11 by drivers when using Intel GPU as display
-                                output
-                                while NVIDIA GPU renders the game (Not checked on AMD systems).
-                                <br>
-                                Games converted this way don't use Flip Model, so Special K or W11 22H1 is needed. (SK's
-                                HDR
-                                doesn't work this way. Windows' AutoHDR should)
+                                Most OpenGL games also get displayed as D3D11 by Nvidia drivers when using Nvidia GPU as a render device, but not as a display output. This happens mostly on laptops, but works on desktops too.
+                                Games converted this way don't use Flip Model, so Special K or W11 22H2 is needed
                             </li>
                         </ol>
                     </span>
+                    </p>
                 </div>
             </div>
 
+            <!-- DXVK -->
             <div>
-                <h1 style="color:orange;">TL:DR, what does it mean for FNV?</h1>
+                <label id="DXVK" onclick="location.href='#DXVK'">
+                    <h2>DXVK</h2>
+                </label>
                 <div class="card">
-                    <h2>Fullscreen/ Fullscreen Exclusive:</h2>
-                    <h3>Advantages:</h3>
-                    <ul>
-                        <li>Good latency and performance (even better latency with FSO)</li>
-                        <li>Working G-Sync and Freesync</li>
-                    </ul>
-                    <h3>Disadvantages:</h3>
-                    <ul>
-                        <li>Slower alt-tab, especially with FSO disabled.</li>
-                        <li>Alt-tab doesn't work at all if NVTF's bModifyDirectXBehaviour is enabled.</li>
-                        <li>Color profiles may disengage, especially if FSO is disabled.</li>
-                    </ul>
-                    <h2>Windowed/ Fullscreen Windowed:</h2>
-                    <h3>Advantages:</h3>
-                    <ul>
-                        <li>Fast alt-tab</li>
-                        <li>Better support for color profiles</li>
-                    </ul>
-                    <h3>Disadvantages:</h3>
-                    <ul>
-                        <li>Lack of Flip Model in D3D9 leads to:</li>
+                    <p>
+                    <h3>Translation magic</h3>
+                    DXVK is a Direct3D 9-11 to Vulkan translation layer created mainly for Linux, but works <u>unoffically</u> on Windows.
+                    <br>
+                    In short, it makes possible to run Fallout using Vulkan API which has benefits of much lower drawcall overhead than D3D9,
+                    which is one of the main performance limiting factors in this game.
+                    <br>
+                    <div class="card-red">
+                        <p>
+                        <h3>Things about DXVK you must acknowledge:</h3>
                         <ul>
-                            <li>Higher input lag and worse performance compared to FSO/FSE</li>
-                            <li>V-Sync is always on</li>
-                            <li>G-Sync and Freesync don't work</li>
-                        </ul>
-                        <li>In-Game brightness settings don't work</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div>
-                <h2>Recommended display settings</h2>
-                <div class="card">
-                    <h3>Windowed</h3>
-                    <ul>
-                        <li>FPS cap</li>
-                    </ul>
-                    <h3>Fullscreen</h3>
-                    If <b>not</b> using VRR:
-                    <ul>
-                        <li>Driver V-Sync on or off, your preference. </li>
-                        <li>FPS cap at your refresh rate or lower.</li>
-                    </ul>
-                    If using VRR:
-                    <ul>
-                        <li>Driver V-Sync enabled</li>
-                        <li>FPS capped at (max refresh rate - 5) or lower</li>
-                    </ul>
-                    Recommended framerate limiters and their configurations:
-                    <ul>
-                        <li><a href="https://sk-data.special-k.info/repository/SpecialK_22.4.20.exe" target="_blank">Special K</a>
-                            <b>(Windows 8+ only)</b>
-                        </li>
-                        <ol>
-                            <li>From <b class="path">"Documents\My Mods\SpecialK"</b> copy <b>SpecialK32.dll</b>, paste
-                                it in
-                                your
-                                Fallout New Vegas root folder and rename to <b>d3d9.dll</b></li>
-                            <li>Launch Fallout New Vegas and press <b>Ctrl+Shift+Backspace</b> to enter Special K
-                                control
-                                panel</li>
-                            <li>Right click on <b>Framerate Limit</b> bar and select one of proposed values based on
-                                your
-                                refresh rate, or <b>Ctrl-Click</b> on the bar to type custom value
+                            <li>
+                                <p>
+                                    DXVK improves performance in mainly drawcall (CPU) bound scenarios (e.g draw distance), and usually doesn't help much in GPU bound ones (e.g resolution)
+                                </p>
                                 <ul>
                                     <li>
-                                        If you use <b>fullscreen mode and have VRR</b>, in right click menu select
-                                        <b>VRR
-                                            Bias</b> and select one of proposed values.
-                                        <br>
-                                        Click on <b>Advanced</b> and enable <b>Low Latency Mode</b>
-                                        <div class="advanced">
-                                            <p>
-                                                <b>(Advanced)</b> If you use <b>fullscreen mode without V-Sync</b> and
-                                                <b>have
-                                                    stable
-                                                    framerate</b>, in right click menu select <b>Latent Sync</b>
-                                            <p>
-                                            <p>
-                                            <h3>It's best to do this in-game!</h3>
-                                            </p>
-                                            In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use
-                                            <b>Sync
-                                                offset</b> slider so the tearing is not visible.
+                                        <p>
+                                            It is possible that DXVK won't change anything for you, or even make things worse
+                                        </p>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p>
+                                    DXVK's GPU compatibility varies between manufacturers
+                                <ul>
+                                    <li>
+                                        <p>
+                                            Nvidia GPU laptops with integrated graphics fail to run DXVK properly on Windows, resulting in worse than native performance.
                                             <br>
-                                            Disable <b>Visualize Tearlines</b> when you decide you are satisfied
-                                            with
-                                            results.
+                                            Unless you can use Nvidia GPU as the display output (e.g. MUX switch), it's recommended to stay away from DXVK on those devices until this issue is fixed
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            AMD GPUs are very prone to shader issues
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p>
+                                            9.5th Gen and newer Intel GPUs most often work provided you have <a href="https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html" target="_blank">newest drivers</a>
+                                            installed
+                                        </p>
+                                    </li>
+                                </ul>
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    In Fallout: New Vegas known shader issues are:
+                                <ul>
+                                    <li>Broken Transparency Multisampling (makes grass and transparent objects not anti-aliased)</li>
+                                    <li>Broken water reflections</li>
+                                    <li>Broken lights and artifacting</li>
+                                </ul>
+                                </p>
+                            </li>
+                        </ul>
+                        <div class="card-yellow">
+                            <p>
+                                Due to DXVK's nature it relies on shader cache, which is compiled during the first use of that shader.
+                                <br>
+                                Because of that you can experience increased short stutter at the beginning of your playthrough.
+                                <br>
+                                This is completely normal, and will not reoccur after compilation has finished.
+                                <br>
+                                <a href="https://github.com/Sporif/dxvk-async/releases/latest" target="_blank">DXVK-Async</a> alleviates this problem thanks to making the compilation asynchronous
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                    <h3>Installation</h3>
+                    <ol>
+                        <li>
+                            <p>
+                                Open <a href="https://github.com/Sporif/dxvk-async/releases/latest" target="_blank">DXVK-Async Github page</a>
+                                and click on <b>dxvk-async-1.10.1.tar.gz</b> to download it
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Extract <b>d3d9.dll</b> from <b>x32 folder</b> inside downloaded archive to your <b>Fallout: New Vegas root folder</b>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Create <b>dxvk.conf</b> text file and write:
+                            <div class="card-basic">
+                                dxvk.enableAsync = true
+                            </div>
+                            <p>
+                                <span class="annotations">This enables async patch in DXVK.</span>
+                            </p>
+                            </p>
+                        </li>
+                    </ol>
+                    </p>
+                </div>
+            </div>
+
+            <!-- DisplayModeComparison -->
+            <div>
+                <label id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
+                    <h2>Display mode differences</h2>
+                </label>
+                <div class="card">
+                    <p>
+                    <h3>Presentation problems</h3>
+                    Since both D3D9 and Vulkan don't use Flip Model presentation, they have some trade offs in each display mode. Here is a short comparison between them:
+                    <table class="center" style="border-spacing: 4px;">
+                        <tr>
+                            <th>
+                                <h2>Fullscreen</h2>
+                            </th>
+                            <th>
+                                <h2>Windowed</h2>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td class="card-green" style="padding-left: 0px; vertical-align: top;">
+                                <ul>
+                                    <li>Best latency and performance, especially with FSO</li>
+                                    <li>Variable Refresh Rate works without any problems</li>
+                                </ul>
+                            </td>
+                            <td class="card-green" style="padding-left: 0px; vertical-align: top;">
+                                <ul>
+                                    <li>
+                                        Fast Alt-Tab
+                                    </li>
+                                    <li>
+                                        Better support for color profiles
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="card-red" style="padding-left: 0px; vertical-align: top;">
+                                <ul>
+                                    <li>
+                                        Slower Alt-Tab, especially without FSO
+                                    </li>
+                                    <ul>
+                                        <li>
+                                            <b>Alt-Tab doesn't work at all if NVTF's bModifyDirectXBehaviour is enabled, unless you use <a href="dxvk.html" title="🙃 Vulkan - DXVK">DXVK</a></b>
+                                        </li>
+                                    </ul>
+                                    <li>
+                                        Color profiles may disengage, especially without FSO
+                                    </li>
+                                </ul>
+                            </td>
+                            <td class="card-red" style="padding-left: 0px; vertical-align: top;">
+                                <ul>
+                                    <li>
+                                        High input lag and worse performance, especially when not using any FPS limiter
+                                    </li>
+                                    <li>
+                                        V-Sync is always on<sup><a href="#ad4">[4]</a></sup>
+                                    </li>
+                                    <li>
+                                        Variable Refresh Rate doesn't work natively
+                                    </li>
+                                    <ul>
+                                        <li>
+                                            AMD supports Freesync in non-flip Fullscreen Windowed, but latency and performance penalities remain
+                                        </li>
+                                        <li>
+                                            Nvidia's support for non-flip Windowed VRR is broken<sup><a href="#ad5">[5]</a></sup>
+                                        </li>
+                                    </ul>
+                                    <li>
+                                        In-Game brightness settings don't work
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    <span class="annotations">
+                        <ol start="4">
+                            <li id="ad4">
+                                Despite disabling V-Sync unlocks framerate, window itself is V-Synced, so you don't get any benefits.
+                            </li>
+                            <li id="ad5">
+                                While it's possible to enable G-Sync (or "G-Sync Compatible" modes 🙄) for non-flip Windowed Mode, Nvidia's implementation is hacky and very unstable.
+                                <br>
+                                Refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
+                                <br>
+                                If you want to try how well it works for you, use <a href="https://github.com/FoulPlay/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile.
+                                <br> 
+                                <b>Never enable Windowed G-Sync globally!</b>
+                            </li>
+                        </ol>
+                    </span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- RecommendedLimiters -->
+            <div>
+                <label id="RecommendedLimiters" onclick="location.href='#RecommendedLimiters'">
+                    <h2>Recommended framerate limiters and their configurations</h2>
+                </label>
+                <div class="expander-top">
+                    <p>
+                    <h3>(Not) Pushing the limits</h3>
+                    Limiting framerate is very important for overall stability. A good limiter will most importantly improve framepacing, reducing microstutter. Other benefits are reduced latency and power consumption.
+                    <div class="card-red">
+                        <p>
+                            Always limit your framerate to an amount you can actually achieve, otherwise you won't get any benefits!
+                            <br>
+                            Letting your GPU overwork itself has a big latency impact, so try to cap your framerate at such value, where your GPU doesn't sit at constant 100% usage
+                        </p>
+                    </div>
+                    <div class="card-yellow">
+                        <p>
+                            If you don't use, or have VRR, it's best to limit your framerate in full intervals. (30 at 60hz, 72 at 144hz, etc.)
+                        </p>
+                    </div>
+                    <p>
+                        Enter your refresh rate here for automatic calculation of suggested FPS limits below. You can find your exact refresh rate in <b>Windows Settings\System\Display\Advanced Display</b>.
+                    <div>
+                        <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" value="60">
+                        <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Calculate</button>
+                    </div>
+                    </p>
+                    </p>
+                    <p>
+                    <table class="center" style="width: 100%; height: 96px;">
+                        <tr>
+                            <th>
+                                <label class="toggler" id="buttonD3D9">
+                                    <input type="radio" name="apiSelection" class="apiSelection" onclick="expandLimiterTutorials(this, expanderD3D9, expanderVulkan)">
+                                    D3D9
+                                </label>
+                            </th>
+                            <th>
+                                <h3 class="center">Select your graphics API</h3>
+                            </th>
+                            <th>
+                                <label class="toggler" id="buttonVulkan">
+                                    <input type="radio" name="apiSelection" class="apiSelection" onclick="expandLimiterTutorials(this, expanderVulkan, expanderD3D9)">
+                                    Vulkan
+                                </label>
+                            </th>
+                        </tr>
+                    </table>
+                    </p>
+                </div>
+                <div class="expander-bottom" id="expanderD3D9" style="display: none;">
+                    <p>
+                    <h3>
+                        NVIDIA | AMD driver
+                    </h3>
+                    <ul>
+                        <li>
+                            <h4>
+                                NVIDIA
+                            </h4>
+                        </li>
+                        <ol>
+                            <li>
+                                Open <b>NVIDIA Control Panel</b>, go to <b>Program Settings</b>
+                            </li>
+                            <li>
+                                Select <b>FalloutNV.exe</b>. If it's not present, add it manually
+                            </li>
+                            <li>
+                                In settings, set <b>Max Frame Rate</b> to:
+                                <ul>
+                                    <li>
+                                        No V-Sync
+                                        <div class="card-basic">
                                             <p>
-                                                Some monitors have too small vertical blanking, so it can be
-                                                possible to
-                                                not
-                                                fully hide the tearing.
-                                                <br>If you wish to pursue this topic, use <b>Custom Resolution
-                                                    Utility</b>
-                                                to
-                                                increase <b>Vertical Blanking</b>
+                                                <span class="iFpsFixed">(RefreshRate)</span>
                                             </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                <span class="iFpsVSync">(RefreshRate - 1)</span>
                                             </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        VRR
+                                        <div class="card-basic">
+                                            <p>
+                                                <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
                                             </p>
                                         </div>
                                     </li>
                                 </ul>
                             </li>
-                        </ol>
-                        <p>
-                            Your configuration should look similar to this.
-                            <br>
-                            <img src="SK.png">
-                            <br>
-                        </p>
-                        <li><a
-                                href="https://www.guru3d.com/files-get/rtss-rivatuner-statistics-server-download,17.html" target="_blank">RivaTuner
-                                Statistics Server</a></li>
-                        <ol>
                             <li>
-                                Open RTSS, press green <b>Add</b> button and select FalloutNV.exe
-                            </li>
-                            <li>
-                                Set <b>Application Detection Level</b> to <b>Low</b>
-                            </li>
-                            <li>
-                                Set <b>Framerate Limit</b>
-                                <ul>
-                                    <li>If you use <b>fullscreen mode and have VRR</b>, set your cap at <b>(refresh rate
-                                            - 5)</b> or lower</li>
-                                </ul>
-                            </li>
-                            <li>
-                                Enter settings using Setup button and:
-                                <ul>
-                                    <li>
-                                        Enable <b>Passive Waiting</b>
-                                    </li>
-                                    <li>
-                                        Set framerate limiter to <b>Front Edge Sync</b>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                Enable <b>Start with Windows</b> or launch RTSS everytime before you play.
+                                Click <b>Apply</b>
                             </li>
                         </ol>
                         <p>
-                            Your configuration should look similar to this.
+                            Your configuration should look similar to this
                             <br>
-                            <img src="RTSS.png">
+                            <img src="Nvidia.png">
                             <br>
-                        <h4><u>RTSS with this configuration is on par with Special K in terms of frametime stability and
-                                latency</u></h4>
                         </p>
-                        <li>NVIDIA/ AMD driver</li>
-                        <ul>
-                            <li>NVIDIA</li>
-                            <ol>
-                                <li>
-                                    Open <b>NVIDIA Control Panel</b>, go to <b>Program Settings</b>
-                                </li>
-                                <li>
-                                    Select <b>FalloutNV.exe</b>. If it's not present, add it manually.
-                                </li>
-                                <li>
-                                    In settings, set <b>Max Frame Rate</b> to your desired value
-                                    <ul>
-                                        <li>If you use <b>fullscreen mode and have VRR</b>, set your cap at <b>(refresh
-                                                rate
-                                                - 5)</b> or lower</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Click <b>Apply</b>
-                                </li>
-                            </ol>
-                            <p>
-                                Your configuration should look similar to this.
-                                <br>
-                                <img src="Nvidia.png">
-                                <br>
-                            </p>
-                            <li>AMD... Who?</li>
-                        </ul>
+                        <li>
+                            <h4>
+                                AMD
+                            </h4>
+                        </li>
                     </ul>
+                    <h3>
+                        <a href="https://sk-data.special-k.info/repository/SpecialK_22.5.15.exe" target="_blank">Special K</a> <sup>(Windows 8+ only)</sup>
+                    </h3>
+                    <ol>
+                        <li>
+                            From <b class="card-basic">Documents\My Mods\SpecialK</b> copy <b>SpecialK32.dll</b>,
+                            paste it in your Fallout New Vegas root folder and rename to <b>d3d9.dll</b>
+                        </li>
+                        <li>
+                            Launch Fallout New Vegas and press <b>Ctrl + Shift + Backspace</b> to enter Special K Control Panel
+                        </li>
+                        <li>
+                            Right click on <b>Framerate Limit</b> bar and select one of proposed values based on your refresh rate,
+                            or <b>Ctrl-Click</b> on the bar to enter a custom value
+                            <ul>
+                                <li>
+                                    If you use <b>VRR</b>, in right click menu select <b>VRR Bias</b> and select one of proposed values.
+                                    <br>
+                                    Click on <b>Advanced</b> and enable <b>Low Latency Mode</b>
+                                </li>
+                            </ul>
+                            <div class="card-yellow">
+                                <h3>Advanced</h3>
+                                If you use <b>fullscreen mode without V-Sync</b> and <b>have stable framerate</b>, in right click menu select <b>Latent Sync</b>
+                                <h4>It's best to do this in-game!</h4>
+                                In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use <b>Sync offset</b> slider so the tearing is not visible.
+                                <br>
+                                Disable <b>Visualize Tearlines</b> when you decide you are satisfied with result
+                                Some monitors have too small vertical blanking, so it can be possible to not fully hide the tearing
+                                <br>
+                                If you wish to pursue this topic, create a custom resolution with increased <b>Vertical Blanking</b> in your driver or with
+                                <b><a href="https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU">Custom Resolution Utility</a></b>
+                                <br>
+                                <h3>It's best to first test the resolution in driver, otherwise you may lock out your display</h3>
+                            </div>
+                        </li>
+                    </ol>
+                    <p>
+                        Your configuration should look similar to this
+                        <br>
+                        <img src="SK.png">
+                        <br>
+                    </p>
+                    <h3>
+                        <a href="https://www.guru3d.com/files-get/rtss-rivatuner-statistics-server-download,17.html" target="_blank">RivaTuner Statistics Server</a>
+                    </h3>
+                    <ol>
+                        <li>
+                            Open RTSS, press green <b>Add</b> button and select FalloutNV.exe
+                        </li>
+                        <li>
+                            Set <b>Application Detection Level</b> to <b>Low</b>
+                        </li>
+                        <li>
+                            Set <b>Framerate Limit</b> to:
+                            <ul>
+                                <li>
+                                    No V-Sync
+                                    <div class="card-basic">
+                                        <p>
+                                            <span class="fpsFixed">(RefreshRate)</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    V-Sync
+                                    <div class="card-basic">
+                                        <p>
+                                            <span class="fpsVSync">(RefreshRate - 1)</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    VRR
+                                    <div class="card-basic">
+                                        <p>
+                                            <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                            ...or lower
+                        </li>
+                        <li>
+                            Enter settings using Setup button and:
+                            <ul>
+                                <li>
+                                    Enable <b>Passive Waiting</b>
+                                </li>
+                                <li>
+                                    Set framerate limiter to <b>Front Edge Sync</b>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Enable <b>Start with Windows</b> or launch RTSS everytime before you play
+                        </li>
+                    </ol>
+                    <p>
+                        Your configuration should look similar to this
+                        <br>
+                        <img src="RTSS.png">
+                        <br>
+                    <h4>
+                        <u>RTSS with this configuration is on par with Special K in terms of frametime stability</u>
+                    </h4>
+                    </p>
+                    </p>
+                </div>
+                <div class="expander-bottom" id="expanderVulkan" style="display: none;">
+                    <p>
+                    <h3>
+                        DXVK
+                    </h3>
+                    <div class="card-yellow">
+                        <p>
+                            Limiters mentioned in D3D9 section work, but perform worse than the DXVK's one, so I don't recommend them
+                        </p>
+                    </div>
+                    <ol>
+                        <li>
+                            Open <b>dxvk.conf</b> text file in your root folder of Fallout: New Vegas and write:
+                            <ul>
+                                <li>
+                                    No V-Sync
+                                    <div class="card-basic">
+                                        <p>
+                                            d3d9.maxFrameRate = <span class="iFpsFixed">(RefreshRate)</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    V-Sync
+                                    <div class="card-basic">
+                                        <p>
+                                            d3d9.maxFrameRate = <span class="iFpsVSync">(RefreshRate - 1)</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    VRR
+                                    <div class="card-basic">
+                                        <p>
+                                            d3d9.maxFrameRate = <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
+                                        <div class="card-red">
+                                            <p>
+                                                DXVK accepts only integer values!
+                                            </p>
+                                        </div>
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                            ...or lower
+                        </li>
+                    </ol>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-    <div style="background-color:#000000;text-align:center;padding:10px;margin-top:7px;">I'm a footer 🙂</div>
+    <div class="footer">I'm a footer 🦶<span class="flippy">🙃</span>🦶</div>
 </body>
 
 </html>

@@ -1,17 +1,43 @@
 * {
     box-sizing: border-box;
-    line-height: 1.35rem;
+    scroll-behavior: smooth;
+    transition: all 187ms Cubic-Bezier(0, 0, 0, 1);
+}
+
+div {
+    display: block;
 }
 
 body {
     margin: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 52px;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 36px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
 }
 
 img {
-    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 13%);
     border-radius: 4px;
-    margin: 5pt;
-    max-height: 700px;
+    margin: 10px 0px 10px 0px;
+    max-width: 80%;
     height: auto;
 }
 
@@ -19,119 +45,248 @@ a {
     color: rgb(101, 206, 253);
 }
 
-.sidebar {
-    float: left;
-    width: 15%;
+li {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input,
+button {
+    color: white;
+    background-color: rgba(255, 255, 255, 6.05%);
+    border: 1px solid rgba(255, 255, 255, 9.3%);
+    border-radius: 3px;
     text-align: center;
+    min-height: 30px;
+    font-size: 14px;
+    transition: all 187ms Cubic-Bezier(0, 0, 0, 1);
+}
+
+input:hover,
+button:hover,
+.toggler:hover {
+    background-color: rgba(255, 255, 255, 8.37%);
+}
+
+input:active,
+button:active,
+.toggler:active {
+    background-color: rgba(255, 255, 255, 3.26%);
+    border-color: rgba(255, 255, 255, 6.98%);
+    color: rgba(255, 255, 255, 78.6%);
+}
+
+input:active {
+    border-bottom: 1px solid rgb(101, 206, 253);
+}
+
+.vertical-separator {
+    border-left: 5px solid #2b2b2b;
+    border-right: 5px solid #2b2b2b;
+    background-color: rgb(114, 114, 114);
+}
+
+.expander-top {
+    border-radius: 8px;
+    padding: 0px 15px 0px 15px;
+    border: 1px solid transparent;
+    outline: 1px solid rgba(0, 0, 0, 10%);
+    background-color: rgba(255, 255, 255, 5.12%);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 13%);
+}
+
+.expander-top.active {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.expander-bottom {
+    border-radius: 8px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    padding: 0px 15px 0px 15px;
+    border: 1px solid transparent;
+    outline: 1px solid rgba(0, 0, 0, 10%);
+    background-color: rgba(255, 255, 255, 5.12%);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 13%);
+    display: none;
+    animation: slide-down 2s;
+    z-index: -1;
+    position: relative;
+    overflow-y: hidden;
+}
+
+
+.toggler {
+    background-color: rgba(255, 255, 255, 6.05%);
+    border: 1px solid rgba(255, 255, 255, 9.3%);
+    border-radius: 3px;
+    text-align: center;
+    padding: 10px;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    min-width: 120px;
+    min-height: 36px;
+    width: auto;
+    transition: all 187ms Cubic-Bezier(0, 0, 0, 1);
+}
+
+.apiSelection {
+    position: absolute;
+    opacity: 0;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sidebar {
+    top: 0px;
+    float: left;
+    width: 200px;
+    text-align: center;
+    position: fixed;
+    z-index: 2;
+    margin-top: 40px;
+    margin-left: 10px;
+    border-radius: 4px;
+    user-select: none;
+    background: #2b2b2b;
+    transition: all 333ms Cubic-Bezier(0, 0, 0, 1);
+}
+
+.sidebar p {
+    margin: 10px 0px;
 }
 
 .sidebar a {
     display: block;
     color: rgb(255, 255, 255);
-    background-color: rgb(32, 32, 32);
-    border: 4pt solid rgb(32, 32, 32);
+    border: 1px solid transparent;
+    background-color: transparent;
     border-radius: 4px;
     height: 36px;
     width: 100%;
     text-align: left;
     text-decoration: none;
-    padding: 4px 8px;
-    margin: 0px 0px 5px 0px;
-    transition: all 0.2s ease-in-out;
+    padding: 7px 8px;
+    margin: 1.5px 0px;
+    transition: all 187ms Cubic-Bezier(0, 0, 0, 1);
 }
 
-.sidebar a.active {
-    background-color: rgb(45, 45, 45);
-    border: 4pt solid rgb(45, 45, 45);
-    color: white;
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.0605);
+    border: 1px solid rgba(255, 255, 255, 0.0605);
 }
 
-.sidebar a.active:hover {
-    background-color: rgb(41, 41, 41);
-    border: 4pt solid rgb(41, 41, 41);
-    box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.2);
+.sidebar a:active {
+    background: rgba(255, 255, 255, 0.0419);
+    border: 1px solid rgba(255, 255, 255, 0.0419);
+    color: rgba(255, 255, 255, 0.786);
 }
 
-.sidebar a:hover:not(.active) {
-    background-color: rgb(45, 45, 45);
-    border: 4pt solid rgb(45, 45, 45);
-    box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.2);
-}
-
-.sidebar a:hover span {
+.sidebar a:hover span,
+.flippy:hover {
+    cursor: pointer;
     animation: rotate 0.4s ease-in-out;
     display: inline-block;
+    user-select: none;
 }
 
-.path {
-    border: 1pt solid rgb(90, 51, 0);
-    background-color: rgb(90, 51, 0);
-    color: rgb(255, 255, 255);
-    border-radius: 4px;
-}
-
-.advanced {
-    border: 1px solid rgb(25, 25, 25);
-    background-color: rgb(67, 53, 27);
-    color: white;
+.card {
     border-radius: 8px;
-    max-width: 800px;
     padding: 0px 15px 0px 15px;
-    margin: 15px 0px 15px 0px;
+    border: 1px solid transparent;
+    outline: 1px solid rgba(0, 0, 0, 10%);
+    background-color: rgba(255, 255, 255, 5.12%);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 13%);
 }
 
-.warning {
-    border: 1px solid rgb(25, 25, 25);
-    background-color: rgb(68, 39, 38);
-    color: white;
-    border-radius: 8px;
-    max-width: 800px;
-    padding: 0px 15px 0px 15px;
-    margin: 15px 0px 15px 0px;
-}
-
-.code {
+.card-basic {
     font-family: monospace;
-    font-size: 1rem;
-    border: 1px solid rgb(25, 25, 25);
-    background-color: rgb(35, 35, 35);
-    color: white;
+    font-size: 15px;
+    outline: 1px solid rgba(0, 0, 0, 10%);
+    border: 1px solid transparent;
+    background-color: rgba(255, 255, 255, 3.26%);
     border-radius: 8px;
-    max-width: 800px;
     padding: 0px 15px 0px 15px;
-    margin: 15px 0px 0px 0px;
+    margin: 15px 0px 15px 0px;
+    width: fit-content;
+}
+
+.card-yellow {
+    outline: 1px solid rgba(0, 0, 0, 10%);
+    border: 1px solid transparent;
+    background-color: rgb(67, 53, 25);
+    border-radius: 8px;
+    padding: 0px 15px 0px 15px;
+    margin: 15px 0px 15px 0px;
+    text-align: left;
+    width: fit-content;
+}
+
+.card-red {
+    outline: 1px solid rgba(0, 0, 0, 10%);
+    border: 1px solid transparent;
+    background-color: rgb(68, 39, 38);
+    border-radius: 8px;
+    padding: 0px 15px 0px 15px;
+    margin: 15px 0px 15px 0px;
+    text-align: left;
+    width: fit-content;
+}
+
+.card-green {
+    outline: 1px solid rgba(0, 0, 0, 10%);
+    border: 1px solid transparent;
+    background-color: rgb(57, 61, 27);
+    border-radius: 8px;
+    padding: 0px 15px 0px 15px;
+    margin: 15px 0px 15px 0px;
+    text-align: left;
+    width: fit-content;
 }
 
 .annotations {
     font-size: small;
 }
 
+.header {
+    font-size: 32px;
+    padding: 20px 12px 22px 10px;
+    margin-left: -100px;
+    margin-bottom: 10px;
+    background: rgb(43, 43, 43);
+    outline: 1px solid rgba(0, 0, 0, 10%);
+    position: fixed;
+    border-bottom-right-radius: 10px;
+    z-index: 2;
+    cursor: pointer;
+    user-select: none;
+    transition: all 333ms Cubic-Bezier(0, 0, 0, 1);
+}
+
 .content {
     float: left;
+    margin-left: 200px;
     width: 80%;
     padding: 0 20px;
+    z-index: 0;
 }
 
-.card {
-    border: 2pt solid rgb(29, 29, 29);
-    border-radius: 8px;
-    background: rgb(43, 43, 43);
-    padding: 0px 15px 0px 15px;
-    max-width: 1400px;
-    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.2);
-}
-
-.header {
-    background: rgb(43, 43, 43);
-    padding: 5px;
+.footer {
     text-align: center;
-    margin-bottom: 10px;
-    box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.5);
-    z-index: 100;
+    padding: 5px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    outline: 1px solid rgba(0, 0, 0, 10%);
+    background-color: rgba(255, 255, 255, 5.12%);
 }
 
 .theme {
-    background: #202020;
+    background: rgb(32, 32, 32);
     color: white;
     font-family: arial, helvetica, sans-serif;
 }
@@ -142,7 +297,7 @@ a {
     }
 
     50% {
-        transform: translateY(-5px) rotate(180deg);
+        transform: translateY(-12px) rotate(180deg);
     }
 
     100% {
@@ -150,85 +305,143 @@ a {
     }
 }
 
+@keyframes slide-down {
+    from {
+        max-height: 0px;
+        margin-top: -0.12px;
+    }
+
+    to {
+        max-height: 5000px;
+    }
+}
+
 @media (prefers-color-scheme: light) {
     .theme {
         background: rgb(243, 243, 243);
-        color: black;
+        color: rgb(0, 0, 0);
     }
 
     img {
-        box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 4%);
     }
 
-    .header {
-        background-color: rgb(251, 251, 251);
-        box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.2);
+    input,
+    button,
+    .toggler {
+        background-color: rgba(255, 255, 255, 70%);
+        border-color: rgba(0, 0, 0, 16.22%);
+        color: rgba(0, 0, 0, 89.56%);
     }
 
-    .card {
-        border: 2pt solid rgb(236, 236, 236);
-        background-color: rgb(251, 251, 251);
-        box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.05);
+    input:hover,
+    button:hover,
+    .toggler:hover {
+        background-color: rgba(249, 249, 249, 50%);
+    }
+
+    input:active,
+    button:active,
+    .toggler:active {
+        background-color: rgba(249, 249, 249, 30%);
+        border-color: rgba(0, 0, 0, 5.78%);
+        color: rgba(0, 0, 0, 60.63%);
     }
 
     a {
         color: rgb(13, 96, 182)
     }
 
-    .advanced {
-        border: 1px solid rgb(235, 235, 235);
-        background-color: rgb(255, 244, 207);
-        color: black;
+    .header {
+        outline: 1px solid rgba(0, 0, 0, 5.78%);
+        background: rgb(251, 251, 251);
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 4%);
     }
 
-    .warning {
-        border: 1px solid rgb(235, 235, 235);
+    .card,
+    .expander-top,
+    .expander-bottom {
+        outline: 1px solid rgba(0, 0, 0, 5.78%);
+        background-color: rgba(255, 255, 255, 70%);
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 4%);
+        color: rgba(0, 0, 0, 89.56%);
+    }
+
+    .card-basic {
+        outline: 1px solid rgba(0, 0, 0, 5.78%);
+        background-color: rgba(249, 249, 249, 50%);
+        color: rgba(0, 0, 0, 89.56%);
+    }
+
+    .card-green {
+        outline: 1px solid rgba(0, 0, 0, 5.78%);
+        background-color: rgb(223, 246, 221);
+        color: rgba(0, 0, 0, 89.56%);
+        border-radius: 8px;
+    }
+
+    .card-yellow {
+        outline: 1px solid rgba(0, 0, 0, 5.78%);
+        background-color: rgb(255, 244, 206);
+        color: rgba(0, 0, 0, 89.56%);
+    }
+
+    .card-red {
+        outline: 1px solid rgba(0, 0, 0, 5.78%);
         background-color: rgb(253, 231, 233);
-        color: rgb(0, 0, 0);
+        color: rgba(0, 0, 0, 89.56%);
     }
 
-    .code {
-        border: 1px solid rgb(235, 235, 235);
-        background-color: rgb(248, 248, 248);
-        color: rgb(0, 0, 0);
+    .sidebar {
+        background: rgba(252, 252, 252, 85%), url(NoiseAsset_256.png);
     }
 
     .sidebar a {
-        color: rgb(0, 0, 0);
-        border-color: rgb(243, 243, 243);
-        background-color: rgb(243, 243, 243);
+        color: rgba(0, 0, 0, 0.8956);
     }
 
-    .sidebar a.active {
-        background-color: rgb(234, 234, 234);
-        border-color: rgb(234, 234, 234);
-        color: rgb(0, 0, 0);
+    .sidebar a:active {
+        background: rgba(0, 0, 0, 0.0241);
+        border: 1px solid rgba(0, 0, 0, 0.0241);
+        color: rgba(0, 0, 0, 0.6063);
     }
 
-    .sidebar a:hover:not(.active) {
-        background-color: rgb(234, 234, 234);
-        border-color: rgb(234, 234, 234);
-        color: rgb(0, 0, 0);
-        box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.1);
-    }
-
-    .sidebar a.active:hover {
-        background-color: rgb(237, 237, 237);
-        border-color: rgb(237, 237, 237);
-        box-shadow: 0px 1px 5px 3px rgba(0, 0, 0, 0.1);
+    .sidebar a:hover {
+        background: rgba(0, 0, 0, 0.0373);
+        border: 1px solid rgba(0, 0, 0, 0.0373);
+        color: rgba(0, 0, 0, 0.8956);
     }
 }
 
 @media only screen and (max-width: 900px) {
 
-    .sidebar,
     .content {
         width: 100%;
+        margin-left: 0px;
+        margin-top: 50px;
+    }
+
+    .sidebar {
+        height: auto;
+        width: 0;
+        margin-top: 0px;
+        margin-left: 0px;
+        border-top-right-radius: 0px;
+        overflow: auto;
+        background: rgb(43, 43, 43);
+        outline: 1px solid rgba(0, 0, 0, 10%);
+    }
+
+    .header {
+        margin-left: 0px;
+        height: fit-content;
+        width: fit-content;
     }
 }
 
-@media only screen and (max-width: 1500px) {
-    img {
-        width: 100%;
+@media only screen and (min-width: 901px) {
+
+    .header {
+        margin-left: -100px;
     }
 }
