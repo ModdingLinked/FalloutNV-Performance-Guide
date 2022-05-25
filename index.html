@@ -590,6 +590,27 @@
                             Limiters mentioned in D3D9 section work, but perform worse than the DXVK's one, so I don't recommend them
                         </p>
                     </div>
+                    <div class="card-red">
+                        <p>
+                            DXVK accepts only integer values!
+                        </p>
+                        <p>
+                            DXVK's limiter doesn't work with its V-Sync enabled!
+                            <ul>
+                                <li>
+                                    Disable V-Sync in DXVK
+                                    <div class="card-basic">
+                                        <p>
+                                            d3d9.presentInterval = 0
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    Enable V-Sync in your GPU driver
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
                     <ol>
                         <li>
                             Open <b>dxvk.conf</b> text file in your root folder of Fallout: New Vegas and write:
@@ -615,11 +636,6 @@
                                     <div class="card-basic">
                                         <p>
                                             d3d9.maxFrameRate = <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
-                                        <div class="card-red">
-                                            <p>
-                                                DXVK accepts only integer values!
-                                            </p>
-                                        </div>
                                         </p>
                                     </div>
                                 </li>
