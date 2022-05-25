@@ -64,7 +64,7 @@
                         <li><b>Presentation modes:</b></li>
                         <ul>
                             <li>
-                                <b>Flip Model</b> - swap effect first added in Windows 7 with D3D9ex and later perfected in Windows 8, 8.1 and 10.
+                                <b>Flip Model</b> - presentation mode first added in Windows 7 with D3D9ex and later perfected in Windows 8, 8.1 and 10.
                                 <br>
                                 Allows "fullscreen-level" of performance, latency and VRR in Windowed modes. Since DXGI 1.5 it also supports tearing (V-Sync off) in Windowed mode and HDR.
                                 <br>
@@ -75,7 +75,7 @@
                                 More information <a href="https://devblogs.microsoft.com/directx/dxgi-flip-model/" target="_blank">here</a>
                             </li>
                             <li>
-                                <b>BitBlt Model</b> - older swap effect used by applications that don't use Flip Model.
+                                <b>BitBlt Model</b> - older presentation mode used by applications that don't use Flip Model.
                                 Lacks all of its advantages, and when used in Windowed mode, has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations.
                                 <br>
                                 The only presentation model for Windowed D3D9 (and lower), but still very common in D3D10 and D3D11
