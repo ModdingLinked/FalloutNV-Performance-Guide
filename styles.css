@@ -228,6 +228,10 @@ input:active {
     width: fit-content;
 }
 
+b.card-basic {
+    padding: 5px 10px 5px 10px;
+}
+
 .card-yellow {
     outline: 1px solid rgba(0, 0, 0, 10%);
     border: 1px solid transparent;
@@ -304,8 +308,7 @@ input:active {
 }
 
 #karutpls {
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 
 @keyframes rotate {
