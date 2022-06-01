@@ -461,6 +461,7 @@
                                             </div>
                                         </li>
                                     </ul>
+                                    ...or lower
                                 </li>
                                 <li>
                                     Click <b>Apply</b>
@@ -479,40 +480,78 @@
                             </li>
                         </ul>
                         <h3>
-                            <a href="https://sk-data.special-k.info/repository/SpecialK_22.5.15.exe" target="_blank">Special K</a> <sup>(Windows 8+ only)</sup>
+                            <a href="https://special-k.info" target="_blank">Special K</a> <sup>(Windows 8+ only)</sup>
                         </h3>
                         <ol>
+                            <div class="card-yellow">
+                                <p>
+                                    I'm not providing calculated values here, because Special K already does that automatically, and with higher precision
+                                </p>
+                            </div>
                             <li>
-                                From <b class="card-basic">Documents\My Mods\SpecialK</b> copy <b>SpecialK32.dll</b>,
-                                paste it in your Fallout New Vegas root folder and rename to <b>d3d9.dll</b>
+                                Download the <b>Archive</b> from the <b>Stable</b> section, then extract <b>SpecialK32.dll</b>
+                                to your Fallout New Vegas <b>root folder</b> and rename it to <b>d3d9.dll</b>
                             </li>
                             <li>
                                 Launch Fallout New Vegas and press <b>Ctrl + Shift + Backspace</b> to enter Special K Control Panel
                             </li>
                             <li>
-                                Right click on <b>Framerate Limit</b> bar and select one of proposed values based on your refresh rate,
-                                or <b>Ctrl-Click</b> on the bar to enter a custom value
+                                Enable the <b>Framerate Limit</b> by ticking the checkbox, then right click on the bar (not graph) next to it:
                                 <ul>
                                     <li>
-                                        If you use <b>VRR</b>, in right click menu select <b>VRR Bias</b> and select one of proposed values.
-                                        <br>
-                                        Click on <b>Advanced</b> and enable <b>Low Latency Mode</b>
+                                        No V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                In right click menu select your refresh rate
+                                            </p>
+                                        </div>
+                                        <div class="card-yellow">
+                                            <p>
+                                            <h3>Disabled V-Sync with no tearing</h3>
+                                            <h4>It's best to do this in-game!</h4>
+                                            If you use <b>fullscreen mode without V-Sync</b> and <b>have stable framerate</b>, in limiter's right click menu select <b>Latent Sync</b>
+                                            <p>
+                                                In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use <b>Sync offset</b> slider so the tearing is not visible.
+                                                <br>
+                                                Disable <b>Visualize Tearlines</b> when you decide you are satisfied with result.
+                                                <br>
+                                                It is possible that you won't see tearing out of the box.
+                                            </p>
+                                            <div class="card-red">
+                                                <p>
+                                                    Some monitors have too small vertical blanking, so it's possible to not fully hide the tearing without timing modifications -
+                                                    if you wish to pursue this topic, create a custom resolution with increased <b>Vertical Blanking</b> in your driver or with
+                                                    <b><a href="https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU">Custom Resolution Utility</a></b>
+                                                    <h4>It's best to first test the resolution in driver, otherwise you may lock out your display</h4>
+                                                </p>
+                                            </div>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 1
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        VRR
+                                        <div class="card-basic">
+                                            <p>
+                                                In right click menu select <b>VRR Bias</b> and select the highest value. 
+                                                <ul>
+                                                    <li>
+                                                        The bias option is not needed for any lower values.
+                                                    </li>
+                                                </ul>
+                                                Click on <b>Advanced</b> and enable <b>Low Latency Mode</b>
+                                            </p>
+                                        </div>
                                     </li>
                                 </ul>
-                                <div class="card-yellow">
-                                    <h3>Advanced</h3>
-                                    If you use <b>fullscreen mode without V-Sync</b> and <b>have stable framerate</b>, in right click menu select <b>Latent Sync</b>
-                                    <h4>It's best to do this in-game!</h4>
-                                    In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use <b>Sync offset</b> slider so the tearing is not visible.
-                                    <br>
-                                    Disable <b>Visualize Tearlines</b> when you decide you are satisfied with result
-                                    Some monitors have too small vertical blanking, so it can be possible to not fully hide the tearing
-                                    <br>
-                                    If you wish to pursue this topic, create a custom resolution with increased <b>Vertical Blanking</b> in your driver or with
-                                    <b><a href="https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU">Custom Resolution Utility</a></b>
-                                    <br>
-                                    <h3>It's best to first test the resolution in driver, otherwise you may lock out your display</h3>
-                                </div>
+                                ...if you want to enter a custom value, <b>Ctrl-Click</b> on the bar. You can also drag your mouse on it.
                             </li>
                         </ol>
                         <p>
@@ -526,7 +565,7 @@
                         </h3>
                         <ol>
                             <li>
-                                Open RTSS, press green <b>Add</b> button and select FalloutNV.exe
+                                Install and open RTSS, press green <b>Add</b> button and select FalloutNV.exe
                             </li>
                             <li>
                                 Set <b>Application Detection Level</b> to <b>Low</b>
