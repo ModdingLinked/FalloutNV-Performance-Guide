@@ -137,6 +137,198 @@
                     </div>
                 </div>
 
+            <!-- GraphicsSettings -->
+            <div>
+                <label class="sectionHeader" id="GraphicsSettings" onclick="location.href='#GraphicsSettings'">
+                    <h2>Graphics Settings</h2>
+                </label>
+                <div class="card">
+                    <p>
+                    <h3>Let's see...</h3>
+                    Worse BethINI goes here 🙃🏗️
+                        <h2>Max has no image so it goes to 1</h2>
+                    <div class="slideshow-container">
+                        <div class="card-image">
+                            <button onclick="currentSlide(1)" class="topNavButton">Low<div class="selector"></div></button>
+                            <button onclick="currentSlide(2)" class="topNavButton">Medium<div class="selector"></div></button>
+                            <button onclick="currentSlide(3)" class="topNavButton">High<div class="selector"></div></button>
+                            <button onclick="currentSlide(4)" class="topNavButton">Ultra<div class="selector"></div></button>
+                            <button onclick="currentSlide(5)" class="topNavButton">Max<div class="selector"></div></button>
+                        </div>
+                        <div class="mySlides">
+                            <img src="DisplayComparisons/Low.png" class="comparison-image" />
+                        </div>
+
+                        <div class="mySlides">
+                            <img src="DisplayComparisons/Medium.png" class="comparison-image" />
+                        </div>
+
+                        <div class="mySlides">
+                            <img src="DisplayComparisons/High.png" class="comparison-image" />
+                        </div>
+
+                        <div class="mySlides">
+                            <img src="DisplayComparisons/Ultra.png" class="comparison-image" />
+                        </div>
+                        
+
+                    </div>
+                    <br>
+                    
+                    <script>
+                        let slideIndex = 1;
+                        showSlides(slideIndex);
+
+                        function currentSlide(n) {
+                            showSlides(slideIndex = n);
+                        }
+
+                        function showSlides(n) {
+                            let i;
+                            let slides = document.getElementsByClassName("mySlides");
+                            let topNavButtons = document.getElementsByClassName("topNavButton");
+                            if (n > slides.length) { slideIndex = 1 }
+                            if (n < 1) { slideIndex = slides.length }
+                            for (i = 0; i < slides.length; i++) {
+                                slides[i].style.display = "none";
+                            }
+                            for (i = 0; i < topNavButtons.length; i++) {
+                                topNavButtons[i].className = topNavButtons[i].className.replace(" active", "");
+                            }
+                            slides[slideIndex - 1].style.display = "block";
+                            topNavButtons[slideIndex - 1].className += " active";
+                        }
+                    </script>
+                    <h1 style="color: yellow">TEMPLATE - SETTINGS USED BY PRESETS</h1>
+                    <h3>Display</h3>
+                    <div class="card-basic">
+                        <p>
+                            <br>
+                            [Display]
+                            <br>
+                            iMultiSample=4
+                            <br>
+                            iWaterMultisamples=4
+                            <br>
+                            bTransparencyMultisampling=1
+                            <br>
+                            iMaxDecalsPerFrame=10
+                            <br>
+                            iMaxAnisotropy=15
+                            <br>
+                            iTexMipMapSkip=0
+                            <br>
+                            iTexMipMapMinimum=4
+                            <br>
+                            fDecalLOD1=500.0000
+                            <br>
+                            fDecalLOD2=1000.0000
+                            <br>
+                            iActorShadowCountInt=6
+                            <br>
+                            iActorShadowCountExt=6
+                            <br>
+                            fSpecularLODStartFade=2000.0000
+                            <br>
+                            fShadowLODStartFade=1000.0000
+                            <br>
+                            fLightLODStartFade=3500.0000
+                            <br>
+                            bDrawShadows=1
+                            <br>
+                            iShadowFilter=2
+                            <br>
+                            iShadowMapResolution=1024
+                        </p>
+                    </div>
+                    <h3>LOD</h3>
+                    <div class="card-basic">
+                        <p>
+                            [LOD]
+                            <br>
+                            fLODFadeOutMultActors=15.0000
+                            <br>
+                            fLODFadeOutMultObjects=15.0000
+                            <br>
+                            fLODFadeOutMultItems=15.0000
+                        </p>
+                    </div>
+                    <h3>TerrainManager</h3>
+                    <div class="card-basic">
+                        <p>
+                            [TerrainManager]
+                            <br>
+                            fTreeLoadDistance=40000.0000
+                            <br>
+                            fBlockLoadDistanceLow=50000.0000
+                            <br>
+                            fBlockLoadDistance=125000.0000
+                            <br>
+                            fSplitDistanceMult=1.5000
+                            <br>
+                            fHighBlockLoadDistanceLow=20000.0000
+                        </p>
+                    </div>
+                    <h3>Grass</h3>
+                    <div class="card-basic">
+                        <p>
+                            [Grass]
+                            <br>
+                            b30GrassVS=1
+                            <br>
+                            fGrassStartFadeDistance=7000.0000
+                        </p>
+                    </div>
+                    <h3>Imagespace</h3>
+                    <div class="card-basic">
+                        <p>
+                            [Imagespace]
+                            <br>
+                            bDoDepthOfField=1
+                            <br>
+                            iRadialBlurLevel=2
+                        </p>
+                    </div>
+                    <h3>Water</h3>
+                    <div class="card-basic">
+                        <p>
+                            [Water]
+                            <br>
+                            bUseWaterRefractions=1
+                            <br>
+                            bUseWaterReflections=1
+                            <br>
+                            bUseWaterReflectionBlur=1
+                            <br>
+                            bUseWaterDisplacements=1
+                            <br>
+                            bUseWaterDepth=1
+                            <br>
+                            iWaterReflectWidth=1024
+                            <br>
+                            iWaterReflectHeight=1024
+                            <br>
+                            bReflectExplosions=1
+                            <br>
+                            iWaterBlurAmount=4
+                            <br>
+                            bAutoWaterSilhouetteReflections=0
+                            <br>
+                            bForceHighDetailReflections=1
+                        </p>
+                    </div>
+                    <h3>BlurShaderHDR</h3>
+                    <div class="card-basic">
+                        <p>
+                            [BlurShaderHDR]
+                            <br>
+                            bDoHighDynamicRange=1
+                        </p>
+                    </div>
+                    </p>
+                </div>
+            </div>
+
                 <!-- DXVK -->
                 <div>
                     <label id="DXVK" onclick="location.href='#DXVK'">

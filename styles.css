@@ -490,3 +490,87 @@ b.card-basic {
         margin-left: 5em;
     }
 }
+
+
+/* Naming not finished */
+
+@keyframes slide-down {
+    from {
+        max-height: 0px;
+        margin-top: -0.12px;
+    }
+
+    to {
+        max-height: 5000px;
+    }
+}
+
+.card-image {
+    position: absolute;
+    outline: 1px solid rgba(117, 117, 117, 0.4);
+    background: url(NoiseAsset_256.png), rgba(44, 44, 44, 0.726);
+    background-blend-mode: normal, luminosity;
+    mix-blend-mode: normal;
+    backdrop-filter: blur(60px);
+    border-radius: 7px;
+    padding: 1px 2px 1px 2px;
+    width: fit-content;
+    height: 42px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 15px;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 32px 64px rgba(0, 0, 0, 0.1), 0px 2px 21px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    user-select: none;
+}
+
+.topNavButton {
+    margin: 0px 2px 0px 2px;
+    height: 40px;
+    width: 80px;
+    background-color: transparent;
+    border: 0px solid transparent;
+    cursor: pointer;
+    padding-top: 5px;
+}
+
+.topNavButton:hover {
+    color: rgba(255, 255, 255, 0.786);
+}
+
+.selector {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 8px;
+    width:0px;
+    height: 3;
+    border-radius: 20px;
+    background:#60cdff;
+}
+
+.active .selector {
+    width:16px;
+    height:3px;
+}
+
+.topNavButton:active .selector {
+    background:rgba(96, 205, 255, 0.8);
+}
+
+.comparison-image {
+    max-width: 100%;
+    z-index: 0;
+    vertical-align: middle;
+}
+
+.mySlides {
+    display: none
+}
+
+.slideshow-container {
+    position: relative;
+    margin: auto;
+}
