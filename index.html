@@ -64,7 +64,7 @@
                             <li><b>Presentation modes:</b></li>
                             <ul>
                                 <li>
-                                    <b>Flip Model</b> - presentation mode first added in Windows 7 with D3D9ex and later perfected in Windows 8, 8.1 and 10.
+                                    <b>Flip Model</b> - presentation mode first added in Windows 7 with D3D9Ex and later perfected in Windows 8, 8.1 and 10.
                                     <br>
                                     Allows "fullscreen-level" of performance, latency and VRR in Windowed modes. Since DXGI 1.5 it also supports tearing (V-Sync off) in Windowed mode and HDR.
                                     <br>
@@ -78,11 +78,11 @@
                                     <b>BitBlt Model</b> - older presentation mode used by applications that don't use Flip Model.
                                     Lacks all of its advantages, and when used in Windowed mode, has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations.
                                     <br>
-                                    The only presentation model for Windowed D3D9 (and lower), but still very common in D3D10 and D3D11
+                                    The only presentation model for Windowed D3D9 (and lower), but still very common in D3D10 and D3D11 games.
                                 </li>
                             </ul>
                             <p>
-                                Vulkan and OpenGL<sup><a href="#ad3">[3]</a></sup> don't use aforementioned Windows models but end up being presented similarly to the BitBlt model
+                                While Vulkan and OpenGL<sup><a href="#ad3">[3]</a></sup> don't use aforementioned Presentation Modes in FSE, their windows are GDI-based, so they use BitBlt.
                             </p>
                             <li>
                                 <b>Display modes:</b>
@@ -129,7 +129,7 @@
                                     OpenGL can be displayed using D3D11 thanks to Special K, which enables Flip Model and all its benefits along with HDR.
                                     <br>
                                     Most OpenGL games also get displayed as D3D11 by Nvidia drivers when using Nvidia GPU as a render device, but not as a display output. This happens mostly on laptops, but works on desktops too.
-                                    Games converted this way don't use Flip Model, so Special K or W11 22H2 is needed
+                                    Games converted this way don't use Flip Model, so Special K or Windows 11 (22H2) is needed
                                 </li>
                             </ol>
                         </span>
