@@ -64,11 +64,11 @@
                             <li><b>Presentation modes:</b></li>
                             <ul>
                                 <li>
-                                    <b>Flip Model</b> - presentation mode first added in Windows 7 with D3D9Ex and later perfected in Windows 8, 8.1 and 10.
+                                    <b>Flip Model</b> - presentation mode first added in Windows 7 with D3D9Ex and upgraded in DXGI in Windows 8-10.
                                     <br>
-                                    Allows "fullscreen-level" of performance, latency and VRR in Windowed modes. Since DXGI 1.5 it also supports tearing (V-Sync off) in Windowed mode and HDR.
+                                    Allows "fullscreen-level" of performance and latency. Has native VRR support in Windowed mode. Additionally, DXGI version supports tearing (V-Sync off) in Windowed mode, HDR and has Multiplane Overlay (MPO) support.
                                     <br>
-                                    DXGI one is supported only in D3D10 and upwards<sup><a href="#ad2">[2]</a></sup>, enforced only in D3D12, and exists only on Windows 8 and upwards.
+                                    DXGI variant is supported only in D3D10 and upwards<sup><a href="#ad2">[2]</a></sup>, enforced only in D3D12, and exists only on Windows 8 and upwards.
                                     <br>
                                     D3D9Ex Flip Model is not feature matched and lacks any DXGI improvements.
                                     <br>
@@ -98,8 +98,8 @@
                                 <li>
                                     <b>Fullscreen with Fullscreen Optimizations (FSO)</b> - an update to FSE for DirectX added in Windows 10 1803.
                                     Makes DirectX applications run in pseudo borderless mode with BitBlt -> Flip Model conversion for faster Alt-Tab,
-                                    lower latency than FSE, better color profile handling, and support for windowed overlays.
-                                    Because of being a windowed mode under the hood, it can break brightness control in some old games that modify system gamma instead of window's.
+                                    lower latency than FSE, better color profile handling, and support for Windowed overlays (Xbox Game Bar, volume and brightness sliders etc.).
+                                    Because of being a Windowed mode under the hood, it can break brightness control in some old games that modify system gamma instead of window's.
                                     <br>
                                     Enabled by default for every application.
                                     <br>
@@ -522,7 +522,7 @@
                                                     Some monitors have too small vertical blanking, so it's possible to not fully hide the tearing without timing modifications -
                                                     if you wish to pursue this topic, create a custom resolution with increased <b>Vertical Blanking</b> in your driver or with
                                                     <b><a href="https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU">Custom Resolution Utility</a></b>
-                                                    <h4>It's best to first test the resolution in driver, otherwise you may lock out your display</h4>
+                                                <h4>It's best to first test the resolution in driver, otherwise you may lock out your display</h4>
                                                 </p>
                                             </div>
                                             </p>
@@ -540,13 +540,13 @@
                                         VRR
                                         <div class="card-basic">
                                             <p>
-                                                In right click menu select <b>VRR Bias</b> and select the highest value. 
-                                                <ul>
-                                                    <li>
-                                                        The bias option is not needed for any lower values.
-                                                    </li>
-                                                </ul>
-                                                Click on <b>Advanced</b> and enable <b>Low Latency Mode</b>
+                                                In right click menu select <b>VRR Bias</b> and select the highest value.
+                                            <ul>
+                                                <li>
+                                                    The bias option is not needed for any lower values.
+                                                </li>
+                                            </ul>
+                                            Click on <b>Advanced</b> and enable <b>Low Latency Mode</b>
                                             </p>
                                         </div>
                                     </li>
