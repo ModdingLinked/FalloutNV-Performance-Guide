@@ -90,15 +90,16 @@
                             <ul>
                                 <li>
                                     <b>Fullscreen Exclusive (FSE)</b> - legacy method of displaying content where application takes complete ownership of the screen.
-                                    Causes slow Alt-Tab, can be problematic if games are badly coded and switch to odd resolutions or refresh rates by default. Alsho has problems with color profiles.
+                                    Has slow Alt-Tab due to display ownership transfer, can be problematic if games are badly coded and switch to odd resolutions or refresh rates by default. Can lose color profiles.
                                     Despite that, it offers the best feature compatibility and perfomance for games that don't use Flip Model. Deprecated by FSO for DirectX games.
                                     <br>
                                     Supported by every graphics API other than D3D12
                                 </li>
                                 <li>
                                     <b>Fullscreen with Fullscreen Optimizations (FSO)</b> - an update to FSE for DirectX added in Windows 10 1803.
-                                    Makes DirectX applications run in pseudo borderless mode with Flip Model for faster Alt-Tab,
-                                    lower latency than FSE, better color profile handling, and also adds support for windowed overlays. This renders FSE inferior in every way for DirectX games.
+                                    Makes DirectX applications run in pseudo borderless mode with BitBlt -> Flip Model conversion for faster Alt-Tab,
+                                    lower latency than FSE, better color profile handling, and support for windowed overlays.
+                                    Because of being a windowed mode under the hood, it can break brightness control in some old games that modify system gamma instead of window's.
                                     <br>
                                     Enabled by default for every application.
                                     <br>
@@ -106,7 +107,7 @@
                                 </li>
                                 <li>
                                     <b>Windowed</b> - method of displaying content in a window, always managed by DWM. Due to being a window, Alt-Tab is fast, and color profiles usually don't have any problems.
-                                    If not using Flip Model, it's worse performance compared to FSO | FSE, lacks native VRR support, has increased input latency and uses always-on V-Sync
+                                    If not using Flip Model, it has worse performance compared to FSO | FSE, lacks native VRR support, has increased input latency and uses always-on V-Sync
                                 </li>
                             </ul>
                         </ul>
@@ -120,7 +121,7 @@
                                     It requires some tinkering to work though, and is not guaranteed to work on every display at default timings
                                 </li>
                                 <li id="ad2">
-                                    D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and UE4 implemented Flip Model support around 2019).
+                                    D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and UE4 implemented Flip Model support around 2019 - 7 years after its release!).
                                     <br>
                                     Flip Model in Windowed mode can be enabled in those games using Special K (D3D11 only) or Windows 11's (22H2) Optimizations for Windowed Games (both D3D10 and D3D11)
                                 </li>
