@@ -2,8 +2,8 @@
 <html lang="en">
 
     <head>
-        <title>Flipping flip</title>
         <meta charset="UTF-8">
+        <title>Flipping flip</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/baff4f2fd4.js" crossorigin="anonymous"></script>
         <script src="javascript.js"></script>
@@ -378,13 +378,15 @@
                         </div>
                         <div class="card-yellow">
                             <p>
-                                If you don't use, or have VRR, it's best to limit your framerate in full intervals. (30 at 60hz, 72 at 144hz, etc.)
+                                Remember that V-Sync needs to be enabled for proper VRR functionality. You can enable it in game or through driver.
                             </p>
                         </div>
                         <p>
                             Enter your refresh rate here for automatic calculation of suggested FPS limits below. You can find your exact refresh rate in <b>Windows Settings\System\Display\Advanced Display</b>.
+                            <br>
+                            If you don't use, or have VRR, it's best to limit your framerate in full intervals. (30 at 60hz, 72 at 144hz, etc.)
                         <div>
-                            <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" value="60">
+                            <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()">
                             <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Calculate</button>
                         </div>
                         </p>
@@ -453,7 +455,7 @@
                                             </div>
                                         </li>
                                         <li>
-                                            VRR
+                                            VRR + V-Sync
                                             <div class="card-basic">
                                                 <p>
                                                     <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
@@ -488,9 +490,17 @@
                                     I'm not providing calculated values here, because Special K already does that automatically, and with higher precision
                                 </p>
                             </div>
+                            <div class="card-red">
+                                <p>
+                                    Make sure you have Fullscreen Optimizations <b>ENABLED</b> (FalloutNV.exe -> Properties -> Compatibility)
+                                </p>
+                            </div>
                             <li>
                                 Download the <b>Archive</b> from the <b>Stable</b> section, then extract <b>SpecialK32.dll</b>
                                 to your Fallout New Vegas <b>root folder</b> and rename it to <b>d3d9.dll</b>
+                                <p>
+                                    If you want to use <b>Special K</b> with <b>DXVK</b>, rename it to <b>dinput8.dll</b> instead!
+                                </p>
                             </li>
                             <li>
                                 Launch Fallout New Vegas and press <b>Ctrl + Shift + Backspace</b> to enter Special K Control Panel
@@ -537,7 +547,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        VRR
+                                        VRR + V-Sync
                                         <div class="card-basic">
                                             <p>
                                                 In right click menu select <b>VRR Bias</b> and select the highest value.
@@ -590,7 +600,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        VRR
+                                        VRR + V-Sync
                                         <div class="card-basic">
                                             <p>
                                                 <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
@@ -620,9 +630,6 @@
                             <br>
                             <img src="RTSS.png">
                             <br>
-                        <h4>
-                            <u>RTSS with this configuration is similar to Special K in terms of frametime stability</u>
-                        </h4>
                         </p>
                         </p>
                     <!-- </div>
@@ -687,7 +694,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        VRR
+                                        VRR + V-Sync
                                         <div class="card-basic">
                                             <p>
                                                 d3d9.maxFrameRate = <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
