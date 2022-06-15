@@ -19,6 +19,7 @@
                 <p>
                     <a href="#Introduction" title="🙃 Introduction"><span>🙃</span> Introduction</a>
                     <a href="#Terminology" title="🙃 Terminology"><span>🙃</span> Terminology</a>
+                    <a href="#NVTF" title="🙃 New Vegas Tick Fix"><span>🙃</span> New Vegas Tick Fix</a>
                     <a href="#DXVK" title="🙃 DXVK"><span>🙃</span> DXVK</a>
                     <a href="#DisplayModeComparison" title="🙃 Display modes"><span>🙃</span> Display modes</a>
                     <a href="#RecommendedLimiters" title="🙃 FPS Limiters"><span>🙃</span> FPS Limiters</a>
@@ -133,6 +134,69 @@
                                 </li>
                             </ol>
                         </span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- NVTF -->
+                <div>
+                    <label id="NVTF" onclick="location.href='#NVTF'">
+                        <h2>New Vegas Tick Fix</h2>
+                    </label>
+                    <div class="card">
+                        <p>
+                        <h3>Stutter remover</h3>
+                        New Vegas Tick Fix is a mod by <a href="https://www.nexusmods.com/newvegas/users/31254295">karut</a> that fixes and improves game's internal clocks and memory management, which dramatically reduces stutter. It also allows for
+                        playing above 60fps without breaking physics.
+                        <br>
+                        Additionally, it has some DirectX changes, which help with performance and greatly reduce memory usage.
+                        <h3>Installation</h3>
+                        <ol>
+                            <li>
+                                <p>
+                                    Download <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank">NVTF</a> from Nexus and install with your mod manager.
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    Open <b>NVTF.ini</b> in <b class="card-basic">NVSE\Plugins</b> as a text file and edit:
+                                <ul>
+                                    <li>
+                                        <div class="card-basic">
+                                            <p>
+                                                bToggleTripleBuffering=1
+                                            </p>
+                                        </div>
+                                        Enables triple buffer V-Sync, which gets rid of problematic framerate halving on FPS drops/ instability caused by double buffer V-Sync.
+                                        <br>
+                                        <div class="card-yellow">
+                                            <p>
+                                                <b>This change has no effect if you don't use V-Sync</b>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="card-basic">
+                                            <p>
+                                                bModifyDirectXBehavior=1
+                                            </p>
+                                        </div>
+                                        Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures.
+                                        <br>
+                                        <div class="card-red">
+                                            <p>
+                                                <b>This change breaks alt-tab functionality in Fullscreen mode.</b>
+                                                <br>
+                                                To mitigate that either use windowed mode, or DXVK.
+                                                <br>
+                                                Or just don't alt-tab
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                </p>
+                            </li>
+                        </ol>
                         </p>
                     </div>
                 </div>
@@ -364,8 +428,8 @@
                     <label id="RecommendedLimiters" onclick="location.href='#RecommendedLimiters'">
                         <h2>Recommended framerate limiters and their configurations</h2>
                     </label>
-                    <div class="card">
-                    <!-- <div class="expander-top"> -->
+                    <!--<div class="card"> -->
+                    <div class="expander-top">
                         <p>
                         <h3>(Not) Pushing the limits</h3>
                         Limiting framerate is very important for overall stability. A good limiter will most importantly improve framepacing, reducing microstutter. Other benefits are reduced latency and power consumption.
@@ -391,7 +455,7 @@
                         </div>
                         </p>
                         </p>
-                        <!-- <p>
+                        <p>
                         <table class="center" style="width: 100%; height: 96px;">
                             <tr>
                                 <th colspan="3">
@@ -417,7 +481,8 @@
                             </tr>
                         </table>
                         </p>
-                        <div class="expander-bottom" id="expanderD3D9" style="display: none;"> -->
+                    </div>
+                    <div class="expander-bottom" id="expanderD3D9" style="display: none;">
                         <p>
                         <h3>
                             NVIDIA | AMD driver
@@ -492,7 +557,9 @@
                             </div>
                             <div class="card-red">
                                 <p>
-                                    Make sure you have Fullscreen Optimizations <b>ENABLED</b> (FalloutNV.exe -> Properties -> Compatibility)
+                                    Make sure you do <u><b>NOT</b></u> have Fullscreen Optimizations disabled (FalloutNV.exe -> Properties -> Compatibility)
+                                    <br>
+                                    Special K will <u><b>NOT</b></u> run without them!
                                 </p>
                             </div>
                             <li>
@@ -632,8 +699,8 @@
                             <br>
                         </p>
                         </p>
-                    <!-- </div>
-                    <div class="expander-bottom" id="expanderVulkan" style="display: none;"> -->
+                    </div>
+                    <div class="expander-bottom" id="expanderVulkan" style="display: none;">
                         <p>
                         <h3>
                             DXVK
@@ -642,12 +709,19 @@
                             <p>
                                 Limiters mentioned in D3D9 section work, but perform worse than the DXVK's one, so I don't recommend them
                             </p>
-                        </div> How the turntables --> 
+                        </div> How the turntables -->
                         <div class="card-red">
                             <h3>Warning!</h3>
                             <p>
-                                DXVK's limiter has some problems that can cause it to halve framerates in interiors. Until this issue is resolved, I don't recommend using it.
-                            <!-- <ul>
+                                Some people reported that DXVK's limiter halves framerates in interiors. If this happens to you, use limiters from D3D9 section.
+                                <br>
+                                I'm keeping DXVK's limiter instructions, because it's still the best one for it.
+                            </p>
+                        </div>
+                        <div class="card-yellow">
+                            <h3>Before you start...</h3>
+                            <p>
+                            <ul>
                                 <li>
                                     Lines that have <b class="card-basic">#</b> are commented out, so make sure to remove it when enabling settings!
                                 </li>
@@ -655,8 +729,8 @@
                                     DXVK accepts only integer values!
                                 </li>
                                 <li>
-                                    DXVK's limiter doesn't work with its (or game's) V-Sync enabled!
-                                    <ul>
+                                    DXVK's limiter doesn't work when its (or game's) V-Sync enabled!
+                                    <ol>
                                         <li>
                                             Disable V-Sync in DXVK (will override game's setting)
                                             <div class="card-basic">
@@ -668,12 +742,12 @@
                                         <li>
                                             Enable V-Sync in your GPU driver
                                         </li>
-                                    </ul>
+                                    </ol>
                                 </li>
-                            </ul> -->
+                            </ul>
                             </p>
                         </div>
-                        <!-- <ol>
+                        <ol>
                             <li>
                                 Open (or create) <b>dxvk.conf</b> text file inside your <b>root folder</b> of Fallout: New Vegas with any text editor and write:
                                 <ul>
@@ -704,7 +778,7 @@
                                 </ul>
                                 ...or lower
                             </li>
-                        </ol> -->
+                        </ol>
                         </p>
                     </div>
                 </div>
