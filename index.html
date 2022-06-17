@@ -57,7 +57,7 @@
                                 (Latency lowers along with refresh rate)
                             </li>
                             <li>
-                                <b>G-Sync | Freesync</b> - Variable Refresh Rate (VRR) technologies developed by NVIDIA and AMD respectively.
+                                <b>G-Sync | Freesync</b> - <b>Variable Refresh Rate (VRR)</b> technologies developed by NVIDIA and AMD respectively.
                                 Allows display to adapt its refresh rate to framerate,
                                 which in turn allows for stutter reduction and tear-free display of mismatched frames<sup><a href="#ad1">[1]</a></sup>,
                                 additionally lowering latency compared to V-Sync
@@ -98,9 +98,11 @@
                                 </li>
                                 <li>
                                     <b>Fullscreen with Fullscreen Optimizations (FSO)</b> - an update to FSE for DirectX added in Windows 10 1803.
-                                    Makes DirectX applications run in pseudo borderless mode with BitBlt -> Flip Model conversion for faster Alt-Tab,
-                                    lower latency than FSE, better color profile handling, and support for Windowed overlays (Xbox Game Bar, volume and brightness sliders etc.).
-                                    Because of being a Windowed mode under the hood, it can break brightness control in some old games that modify system gamma instead of window's.
+                                    <br>
+                                    Converts DirectX applications running in FSE mode into a pseudo borderless mode with Flip Model for faster Alt-Tab,
+                                    lower latency, better color profile handling, and support for Windowed overlays (Xbox Game Bar, volume and brightness sliders etc.).
+                                    <br>
+                                    Because of being a Windowed mode under the hood, it can break e.g. brightness control in old games that modify system gamma instead of window's.
                                     <br>
                                     Enabled by default for every application.
                                     <br>
@@ -220,7 +222,7 @@
                             <ul>
                                 <li>
                                     <p>
-                                        DXVK improves performance in mainly drawcall (CPU) bound scenarios (e.g draw distance), and usually doesn't help much in GPU bound ones (e.g resolution)
+                                        DXVK improves performance in mainly drawcall (CPU) bound scenarios (e.g. draw distance), and usually doesn't help much in GPU bound ones (e.g. resolution)
                                     </p>
                                     <ul>
                                         <li>
@@ -568,7 +570,7 @@
                                 to your Fallout New Vegas <b>root folder</b> and rename it to <b>dinput8.dll</b>
                             </li>
                             <li>
-                                Launch Fallout New Vegas and press <b>Ctrl + Shift + Backspace</b> to enter Special K Control Panel
+                                Launch Fallout New Vegas and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel
                             </li>
                             <li>
                                 Enable the <b>Framerate Limit</b> by ticking the checkbox, then right click on the bar (not graph) next to it:
@@ -593,6 +595,11 @@
                                                 It is possible that you won't see tearing out of the box.
                                             </p>
                                             <div class="card-red">
+                                                <p>
+                                                    Latpops with dedicated GPUs that do not have MUX switches for direct dGPU<->Display connection will have problems with hiding the tearline.
+                                                    <br>
+                                                    While it may be impossible to hide it completely, latency benefits are still applicable.
+                                                </p>
                                                 <p>
                                                     Some monitors have too small vertical blanking, so it's possible to not fully hide the tearing without timing modifications -
                                                     if you wish to pursue this topic, create a custom resolution with increased <b>Vertical Blanking</b> in your driver or with
