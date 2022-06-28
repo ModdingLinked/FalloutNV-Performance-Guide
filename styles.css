@@ -464,13 +464,14 @@ b.card-basic {
     #karutpls {
         margin-left: auto;
         margin-right: auto;
-        font-size: x-small;
+        font-size: 0.7em;
         padding: 0px 5px 0px 5px;
     }
 
     .comparison-table .card-red,
     .comparison-table .card-green {
         padding: 0px;
+        font-size: x-small;
     }
 
     .comparison-table ul {

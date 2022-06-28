@@ -166,6 +166,17 @@
                                     <li>
                                         <div class="card-basic">
                                             <p>
+                                                bModifyDirectXBehavior=1
+                                            </p>
+                                        </div>
+                                        Enables NVTF's DirectX changes. 
+                                        <br>
+                                        <b>Required for following settings to work:</b>
+                                    </li>
+                                    <ul>
+                                    <li>
+                                        <div class="card-basic">
+                                            <p>
                                                 bToggleTripleBuffering=1
                                             </p>
                                         </div>
@@ -180,10 +191,12 @@
                                     <li>
                                         <div class="card-basic">
                                             <p>
-                                                bModifyDirectXBehavior=1
+                                                bUseDefaultPoolForTextures=1
                                             </p>
                                         </div>
-                                        Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures.
+                                        Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures. 
+                                        <br>
+                                        If you don't plan on using any texture mods, it's not needed.
                                         <br>
                                         <div class="card-red">
                                             <p>
@@ -191,10 +204,11 @@
                                                 <br>
                                                 To mitigate that either use windowed mode, or DXVK.
                                                 <br>
-                                                Or just don't alt-tab
+                                                Or just don't alt-tab.
                                             </p>
                                         </div>
                                     </li>
+                                </ul>
                                 </ul>
                                 </p>
                             </li>
@@ -367,7 +381,7 @@
                                         </ul>
                                         <div class="card-basic" id="karutpls">
                                             <p>
-                                                bModifyDirectXBehavior
+                                                bUseDefaultPoolForTextures
                                             </p>
                                         </div>
                                         <ul>
