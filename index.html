@@ -169,46 +169,46 @@
                                                 bModifyDirectXBehavior=1
                                             </p>
                                         </div>
-                                        Enables NVTF's DirectX changes. 
+                                        Enables NVTF's DirectX changes.
                                         <br>
                                         <b>Required for following settings to work:</b>
                                     </li>
                                     <ul>
-                                    <li>
-                                        <div class="card-basic">
-                                            <p>
-                                                bToggleTripleBuffering=1
-                                            </p>
-                                        </div>
-                                        Enables triple buffer V-Sync, which gets rid of problematic framerate halving on FPS drops/ instability caused by double buffer V-Sync.
-                                        <br>
-                                        <div class="card-yellow">
-                                            <p>
-                                                <b>This change has no effect if you don't use V-Sync</b>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="card-basic">
-                                            <p>
-                                                bUseDefaultPoolForTextures=1
-                                            </p>
-                                        </div>
-                                        Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures. 
-                                        <br>
-                                        If you don't plan on using any texture mods, it's not needed.
-                                        <br>
-                                        <div class="card-red">
-                                            <p>
-                                                <b>This change breaks alt-tab functionality in Fullscreen mode.</b>
-                                                <br>
-                                                To mitigate that either use windowed mode, or DXVK.
-                                                <br>
-                                                Or just don't alt-tab.
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
+                                        <li>
+                                            <div class="card-basic">
+                                                <p>
+                                                    bToggleTripleBuffering=1
+                                                </p>
+                                            </div>
+                                            Enables triple buffer V-Sync, which gets rid of problematic framerate halving on FPS drops/ instability caused by double buffer V-Sync.
+                                            <br>
+                                            <div class="card-yellow">
+                                                <p>
+                                                    <b>This change has no effect if you don't use V-Sync</b>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="card-basic">
+                                                <p>
+                                                    bUseDefaultPoolForTextures=1
+                                                </p>
+                                            </div>
+                                            Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures.
+                                            <br>
+                                            If you don't plan on using any texture mods, it's not needed.
+                                            <br>
+                                            <div class="card-red">
+                                                <p>
+                                                    <b>This change breaks alt-tab functionality in Fullscreen mode.</b>
+                                                    <br>
+                                                    To mitigate that either use windowed mode, or DXVK.
+                                                    <br>
+                                                    Or just don't alt-tab.
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </ul>
                                 </p>
                             </li>
@@ -487,6 +487,8 @@
                                     <label class="toggler" id="buttonD3D9">
                                         <input type="radio" name="apiSelection" class="apiSelection" onclick="expandLimiterTutorials(this, expanderD3D9, expanderVulkan)">
                                         D3D9
+                                        <br>
+                                        (Default)
                                     </label>
                                 </th>
                                 <th>
@@ -496,6 +498,8 @@
                                     <label class="toggler" id="buttonVulkan">
                                         <input type="radio" name="apiSelection" class="apiSelection" onclick="expandLimiterTutorials(this, expanderVulkan, expanderD3D9)">
                                         Vulkan
+                                        <br>
+                                        (DXVK)
                                     </label>
                                 </th>
                             </tr>
@@ -567,19 +571,24 @@
                             </li>
                         </ul>
                         <h3>
-                            <a href="https://github.com/SpecialKO/SpecialK/releases/latest" target="_blank">Special K</a> <sup>(Windows 8+ only)</sup>
+                            <a href="https://github.com/SpecialKO/SpecialK/releases/latest" target="_blank">Special K</a>
                         </h3>
                         <ol>
+                            <div class="card-red">
+                                <h3>Warning!</h3>
+                                <p>
+                                    Due to Special K's complexity, it may <b>not work with DXVK</b>. It's recommended to skip it.
+                                    <br>
+                                    Special K works only on <b>Windows 8 and higher</b>.
+                                    <br>
+                                    Special K requires Fullscreen Optimizations to <u><b>NOT</b></u> disabled (FalloutNV.exe -> Properties -> Compatibility)
+                                    <br>
+                                    Special K may conflict with Riva Tuner. If the game crashes, make sure Riva Tuner is <b>not running</b>, or try <b>increasing injection delay</b>
+                                </p>
+                            </div>
                             <div class="card-yellow">
                                 <p>
                                     I'm not providing calculated values here, because Special K already does that automatically, and with higher precision
-                                </p>
-                            </div>
-                            <div class="card-red">
-                                <p>
-                                    Make sure you do <u><b>NOT</b></u> have Fullscreen Optimizations disabled (FalloutNV.exe -> Properties -> Compatibility)
-                                    <br>
-                                    Special K will <u><b>NOT</b></u> run without them!
                                 </p>
                             </div>
                             <li>
@@ -614,8 +623,8 @@
                                             <div class="card-red">
                                                 <p>
                                                     Latpops with dedicated GPUs that do not have MUX switches for direct dGPU<->Display connection will have problems with hiding the tearline.
-                                                    <br>
-                                                    While it may be impossible to hide it completely, latency benefits are still applicable.
+                                                        <br>
+                                                        While it may be impossible to hide it completely, latency benefits are still applicable.
                                                 </p>
                                                 <p>
                                                     Some monitors have too small vertical blanking, so it's possible to not fully hide the tearing without timing modifications -
