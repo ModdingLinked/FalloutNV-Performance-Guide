@@ -452,6 +452,12 @@ b.card-basic {
     animation: slide-down 2s;
 }
 
+#pepestare {
+    width: 24px;
+    margin: 0px;
+    box-shadow: none;
+}
+
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
