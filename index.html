@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="UTF-8">
-        <title>Flipping flip</title>
+        <title>Flipping Flip</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/baff4f2fd4.js" crossorigin="anonymous"></script>
         <script src="javascript.js"></script>
@@ -62,12 +62,12 @@
                                 which in turn allows for stutter reduction and tear-free display of unstable framerate<sup><a href="#ad1">[1]</a></sup>,
                                 and with a proper FPS cap - lower latency compared to V-Sync
                             </li>
-                            <li><b>Presentation modes:</b></li>
+                            <li><b>Presentation models:</b></li>
                             <ul>
                                 <li>
-                                    <b>Flip Model</b> - presentation mode first added in Windows 7 with D3D9Ex and upgraded in DXGI in Windows 8-10.
+                                    <b>Flip Model</b> - presentation model first added in Windows 7 with D3D9Ex and upgraded in DXGI in Windows 8-10.
                                     <br>
-                                    Allows "fullscreen-level" of performance and latency. Has native VRR support in Windowed mode. Additionally, DXGI version supports tearing (V-Sync off) in Windowed mode, HDR and has Multiplane Overlay (MPO) support.
+                                    Allows "fullscreen-level" of performance and latency. Has native VRR support in Windowed Mode. Additionally, DXGI version supports tearing (V-Sync off) in Windowed Mode, HDR and has Multiplane Overlay (MPO) support.
                                     <br>
                                     DXGI variant is supported only in D3D10 and upwards<sup><a href="#ad2">[2]</a></sup>, enforced only in D3D12, and exists only on Windows 8 and upwards.
                                     <br>
@@ -76,15 +76,15 @@
                                     More information <a href="https://devblogs.microsoft.com/directx/dxgi-flip-model/" target="_blank">here</a>
                                 </li>
                                 <li>
-                                    <b>BitBlt Model</b> - older presentation mode used by applications that don't use Flip Model.
-                                    Lacks all of its advantages, and when used in Windowed mode, has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations.
+                                    <b>BitBlt Model</b> - older presentation model used by most applications.
+                                    While performing similarly to Flip Model in Fullscreen, in Windowed Mode it has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations.
                                     <br>
                                     The only presentation model for Windowed D3D9 (and lower), but still very common in D3D10 and D3D11 games.
+                                    <p>
+                                        Vulkan and OpenGL<sup><a href="#ad3">[3]</a></sup> use BitBlt in Windowed Mode.
+                                    </p>
                                 </li>
                             </ul>
-                            <p>
-                                While Vulkan and OpenGL<sup><a href="#ad3">[3]</a></sup> don't use aforementioned Presentation Modes in FSE, their windows are GDI-based, so they use BitBlt.
-                            </p>
                             <li>
                                 <b>Display modes:</b>
                             </li>
@@ -102,7 +102,7 @@
                                     Converts DirectX applications running in FSE mode into a pseudo borderless mode with Flip Model for faster Alt-Tab,
                                     lower latency, better color profile handling, and support for Windowed overlays (Xbox Game Bar, volume and brightness sliders etc.).
                                     <br>
-                                    Because of being a Windowed mode under the hood, it can break e.g. brightness control in old games that modify system gamma instead of window's.
+                                    Because of being a Windowed Mode under the hood, it can break e.g. brightness control in old games that modify system gamma instead of window's.
                                     <br>
                                     Enabled by default for every application.
                                     <br>
@@ -126,7 +126,7 @@
                                 <li id="ad2">
                                     D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and UE4 implemented Flip Model support around 2019 - 7 years after its release!).
                                     <br>
-                                    Flip Model in Windowed mode can be enabled in those games using Special K (D3D11 only) or Windows 11's (22H2) Optimizations for Windowed Games (both D3D10 and D3D11)
+                                    Flip Model in Windowed Mode can be enabled in those games using Special K (D3D11 only) or Windows 11's (22H2) Optimizations for Windowed Games (both D3D10 and D3D11)
                                 </li>
                                 <li id="ad3">
                                     OpenGL can be displayed using D3D11 thanks to Special K, which enables Flip Model and all its benefits along with HDR.
@@ -169,7 +169,7 @@
                                                 bModifyDirectXBehavior=1
                                             </p>
                                         </div>
-                                        Enables NVTF's DirectX changes.
+                                        Enables NVTF's DirectX changes. Enabled by default.
                                         <br>
                                         <b>Required for following settings to work:</b>
                                     </li>
@@ -200,9 +200,9 @@
                                             <br>
                                             <div class="card-red">
                                                 <p>
-                                                    <b>This change breaks alt-tab functionality in Fullscreen mode.</b>
+                                                    <b>This change breaks alt-tab functionality in Fullscreen Mode.</b>
                                                     <br>
-                                                    To mitigate that either use windowed mode, or DXVK.
+                                                    To mitigate that either use Windowed Mode, or DXVK.
                                                     <br>
                                                     Or just don't alt-tab.
                                                 </p>
@@ -408,10 +408,10 @@
                                             </li>
                                             <ul>
                                                 <li>
-                                                    AMD supports Freesync in non-flip Fullscreen Windowed, but latency and performance penalties remain
+                                                    AMD supports Freesync in non-Flip Fullscreen windows, but latency and performance penalties remain
                                                 </li>
                                                 <li>
-                                                    Nvidia's support for non-flip Windowed VRR is broken<sup><a href="#ad5">[5]</a></sup>
+                                                    Nvidia's G-Sync support for non-Flip windows is broken<sup><a href="#ad5">[5]</a></sup>
                                                 </li>
                                             </ul>
                                             <li>
@@ -428,14 +428,18 @@
                                     Despite disabling V-Sync unlocks framerate, window itself is V-Synced, so you don't get any benefits.
                                 </li>
                                 <li id="ad5">
-                                    While it's possible to enable G-Sync (or "G-Sync Compatible" modes 🙄) for non-flip Windowed Mode, Nvidia's implementation is hacky and very unstable.
+                                    While AMD enables Freesync for Fullscreen Windowed non-Flip surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
                                     <br>
-                                    Refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
+                                    This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
                                     <br>
-                                    If you want to try how well it works for you, use <a href="https://github.com/FoulPlay/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to
-                                    "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile.
+                                    Enabling it globally is a bad idea, because it disrupts normal desktop usage (e.g. screen can sync to sleeping windows).
                                     <br>
-                                    <b>Never enable Windowed G-Sync globally!</b>
+                                    It's recommended to use <a href="https://github.com/FoulPlay/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to
+                                    "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile. This makes Windowed G-Sync run only when Fallout New Vegas is running.
+                                    <br>
+                                    <b>Keep in mind that even with this method, this G-Sync implementation is still buggy - if you get any of the forementioned issues, disable it.</b>
+                                    <br>
+                                    <h4>Never enable Windowed G-Sync globally!</h4>
                                 </li>
                             </ol>
                         </span>
@@ -449,7 +453,7 @@
                         <h2>Recommended framerate limiters and their configurations</h2>
                     </label>
                     <!--<div class="card"> -->
-                    <div class="expander-top">
+                    <div class="expander-top" id="api-expander">
                         <p>
                         <h3>(Not) Pushing the limits</h3>
                         Limiting framerate is very important for overall stability. A good limiter will most importantly improve framepacing, reducing microstutter. Other benefits are reduced latency and power consumption.
@@ -484,29 +488,31 @@
                             </tr>
                             <tr>
                                 <th>
-                                    <label class="toggler" id="buttonD3D9">
-                                        <input type="radio" name="apiSelection" class="apiSelection" onclick="expandLimiterTutorials(this, expanderD3D9, expanderVulkan)">
-                                        D3D9
-                                        <br>
-                                        (Default)
-                                    </label>
+                                    <button class="api-selection" onclick="expandLimiterTutorials(this, expanderD3D9, expanderVulkan)">
+                                        <b>
+                                            D3D9
+                                            <br>
+                                            (Default)
+                                        </b>
+                                    </button>
                                 </th>
                                 <th>
 
                                 </th>
                                 <th>
-                                    <label class="toggler" id="buttonVulkan">
-                                        <input type="radio" name="apiSelection" class="apiSelection" onclick="expandLimiterTutorials(this, expanderVulkan, expanderD3D9)">
-                                        Vulkan
-                                        <br>
-                                        (DXVK)
-                                    </label>
+                                    <button class="api-selection" onclick="expandLimiterTutorials(this, expanderVulkan, expanderD3D9)">
+                                        <b>
+                                            Vulkan
+                                            <br>
+                                            (DXVK)
+                                        </b>
+                                    </button>
                                 </th>
                             </tr>
                         </table>
                         </p>
                     </div>
-                    <div class="expander-bottom" id="expanderD3D9" style="display: none;">
+                    <div class="expander-bottom" id="expanderD3D9">
                         <p>
                         <h3>
                             NVIDIA | AMD driver
@@ -608,11 +614,16 @@
                                                 In right click menu select your refresh rate
                                             </p>
                                         </div>
-                                        <div class="card-yellow">
+                                        <div class="expander-top clickable" style="max-width: 70%;" onclick="expandCard(this, latentSync)">
                                             <p>
-                                            <h3>Disabled V-Sync with no tearing</h3>
+                                                Optional - Disabled V-Sync with no tearing
+                                                <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
+                                            </p>
+                                        </div>
+                                        
+                                        <div class="expander-bottom" style="max-width: 70%;" id="latentSync">
                                             <h4>It's best to do this in-game!</h4>
-                                            If you use <b>fullscreen mode without V-Sync</b> and <b>have stable framerate</b>, in limiter's right click menu select <b>Latent Sync</b>
+                                            If you use <b>Fullscreen Mode without V-Sync</b> and <b>have stable framerate</b>, in limiter's right click menu select <b>Latent Sync</b>
                                             <p>
                                                 In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use <b>Sync offset</b> slider so the tearing is not visible.
                                                 <br>
@@ -731,7 +742,7 @@
                         </p>
                         </p>
                     </div>
-                    <div class="expander-bottom" id="expanderVulkan" style="display: none;">
+                    <div class="expander-bottom" id="expanderVulkan">
                         <p>
                         <h3>
                             DXVK
@@ -744,9 +755,7 @@
                         <div class="card-red">
                             <h3>Warning!</h3>
                             <p>
-                                Some people reported that DXVK's limiter halves framerates in interiors. If this happens to you, use limiters from D3D9 section.
-                                <br>
-                                I'm keeping DXVK's limiter instructions, because it's still the best one for it.
+                            <h3>DXVK's limiter is <u><b>BROKEN</b></u> above 60Hz. If you use a high refresh rate display, use limiters from D3D9 section.</h3>
                             </p>
                         </div>
                         <div class="card-yellow">
@@ -815,7 +824,7 @@
                 </div>
             </div>
         </div>
-        <div class="footer">I'm a footer 🦶<span class="flippy">🙃</span>🦶</div>
+        <div class="footer">I'm a footer 🦶<span class="Flippy">🙃</span>🦶</div>
     </body>
 
 </html>

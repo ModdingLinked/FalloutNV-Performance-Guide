@@ -25,6 +25,7 @@ h2 {
     font-size: 28px;
     font-weight: 600;
     line-height: 36px;
+    cursor: pointer;
 }
 
 h3 {
@@ -64,13 +65,13 @@ button {
 
 input:hover,
 button:hover,
-.toggler:hover {
+.api-selection:hover {
     background-color: rgba(255, 255, 255, 8.37%);
 }
 
 input:active,
 button:active,
-.toggler:active {
+.api-selection:active {
     background-color: rgba(255, 255, 255, 3.26%);
     border-color: rgba(255, 255, 255, 6.98%);
     color: rgba(255, 255, 255, 78.6%);
@@ -99,6 +100,8 @@ input:active {
 
 .expander-top {
     border-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     padding: 0px 15px 0px 15px;
     border: 1px solid transparent;
     outline: 1px solid rgba(0, 0, 0, 10%);
@@ -109,6 +112,20 @@ input:active {
 .expander-top.active {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+    background-color: rgba(255, 255, 255, 6.12%);
+}
+
+.expander-top.clickable {
+    cursor: pointer;
+}
+
+.expander-top.clickable:hover {
+    outline: 1px solid rgba(255, 255, 255, 7%);
+    background-color: rgba(255, 255, 255, 8.12%);
+}
+
+.expander-top.clickable:active {
+    background-color: rgba(255, 255, 255, 3%);
 }
 
 .expander-bottom {
@@ -121,14 +138,13 @@ input:active {
     background-color: rgba(255, 255, 255, 5.12%);
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 13%);
     display: none;
-    animation: slide-down 2s;
+    animation: slide-up 0.4s;
     z-index: 0;
     position: relative;
     overflow-y: hidden;
 }
 
-
-.toggler {
+.api-selection {
     background-color: rgba(255, 255, 255, 6.05%);
     border: 1px solid rgba(255, 255, 255, 9.3%);
     border-radius: 3px;
@@ -143,14 +159,17 @@ input:active {
     transition: all 187ms Cubic-Bezier(0, 0, 0, 1);
 }
 
-.apiSelection {
-    position: absolute;
-    opacity: 0;
-}
-
 .center {
     margin-left: auto;
     margin-right: auto;
+}
+
+img.chevron{
+    height: 16px;
+    width: 16px;
+    box-shadow: none;
+    margin-top: 3px;
+    transition: transform 0.1s;
 }
 
 .sidebar {
@@ -312,6 +331,127 @@ b.card-basic {
     margin: auto;
 }
 
+
+#card-buttons {
+    position: absolute;
+    outline: 1px solid rgba(117, 117, 117, 0.4);
+    background: url(NoiseAsset_256.png), rgba(44, 44, 44, 0.442);
+    background-blend-mode: normal, luminosity;
+    mix-blend-mode: normal;
+    backdrop-filter: blur(10px);
+    border-radius: 7px;
+    padding: 1px 2px 1px 2px;
+    width: fit-content;
+    height: 42px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 15px;
+    left: 0;
+    right: 0;
+    box-shadow: 0px 32px 64px rgba(0, 0, 0, 0.1), 0px 2px 21px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    user-select: none;
+}
+
+#card-fonfig {
+    position: absolute;
+    outline: 1px solid rgba(117, 117, 117, 0.4);
+    background: rgba(44, 44, 44, 0.442);
+    background-blend-mode: normal, luminosity;
+    mix-blend-mode: normal;
+    backdrop-filter: blur(10px);
+    border-radius: 7px;
+    margin-right: 10px;
+    padding: 10px 15px 10px 15px;
+    bottom: 20px;
+    right: 0;
+    z-index: 1;
+    user-select: none;
+    cursor: pointer;
+    transition: background-color 0.25s ease-in-out;
+    text-align: right;
+    font-size: 1.1em;
+}
+
+#card-fonfig.active,
+.api-selection.active {
+    background-color: rgb(91, 206, 255);
+    color: black;
+}
+
+#card-fonfig.active:hover,
+.api-selection.active:hover {
+    background-color: rgba(96, 205, 255, 0.8);
+}
+
+.api-selection.active:active {
+    background-color: rgb(82, 174, 215);
+    color: rgba(0, 0, 0, 50%);
+}
+
+#card-buttons button {
+    margin: 0px 2px 0px 2px;
+    height: 40px;
+    min-width: 80px;
+    background-color: transparent;
+    border: 0px solid transparent;
+    cursor: pointer;
+    padding-top: 6px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+#card-buttons button:hover,
+#card-fonfig:hover {
+    color: rgba(255, 255, 255, 0.786);
+    background-color: rgba(255, 255, 255, 8.37%);
+}
+
+
+.selector {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: 9px;
+    width: 0px;
+    height: 3px;
+    border-radius: 20px;
+    background: #60cdff;
+}
+
+.active .selector {
+    width: 16px;
+    height: 3px;
+}
+
+#card-buttons button:active .selector {
+    background: rgba(96, 205, 255, 0.8);
+}
+
+
+.image-container {
+    position: relative;
+    margin: auto;
+}
+
+.image-container img {
+    max-width: 100%;
+    z-index: 1;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.image-container:hover #card-fonfig {
+    opacity: 100%;
+}
+
+.section {
+    margin-top: 50px;
+}
+
+.expander-opened {
+    animation: slide-down 2s;
+}
+
 @keyframes rotate {
     0% {
         transform: rotate(0deg);
@@ -337,6 +477,17 @@ b.card-basic {
     }
 }
 
+@keyframes slide-up {
+    from {
+        max-height: 1000px;
+    }
+
+    to {
+        max-height: 0px;
+        margin-top: -0.12px;
+    }
+}
+
 @media (prefers-color-scheme: light) {
     .theme {
         background: rgb(243, 243, 243);
@@ -349,7 +500,7 @@ b.card-basic {
 
     input,
     button,
-    .toggler {
+    .api-selection {
         background-color: rgba(255, 255, 255, 70%);
         border-color: rgba(0, 0, 0, 16.22%);
         color: rgba(0, 0, 0, 89.56%);
@@ -357,13 +508,13 @@ b.card-basic {
 
     input:hover,
     button:hover,
-    .toggler:hover {
+    .api-selection:hover {
         background-color: rgba(249, 249, 249, 50%);
     }
 
     input:active,
     button:active,
-    .toggler:active {
+    .api-selection:active {
         background-color: rgba(249, 249, 249, 30%);
         border-color: rgba(0, 0, 0, 5.78%);
         color: rgba(0, 0, 0, 60.63%);
@@ -388,6 +539,35 @@ b.card-basic {
         color: rgba(0, 0, 0, 89.56%);
     }
 
+    .expander-top.clickable:hover {
+        outline: 1px solid rgba(0, 0, 0, 5.78%);
+        background-color: rgba(255, 255, 255, 25%);
+    }
+    
+    .expander-top.clickable:active {
+        background-color: rgba(255, 255, 255, 20%);
+    }
+
+    .expander-top.active {
+        background-color: rgba(255, 255, 255, 70%);
+    }
+
+    #card-fonfig.active,
+    .api-selection.active {
+        background-color: rgb(0, 97, 185);
+        color: white;
+    }
+
+    #card-fonfig.active:hover,
+    .api-selection.active:hover {
+        background-color: rgb(25, 112, 191);
+    }
+    .api-selection.active:active {
+        background-color: rgb(49, 126, 198);
+        border-color: rgb(49, 126, 198);
+        color: rgba(255, 255, 255, 70%);
+    }
+    
     .card-basic {
         outline: 1px solid rgba(0, 0, 0, 5.78%);
         background-color: rgba(249, 249, 249, 50%);
@@ -480,6 +660,19 @@ b.card-basic {
 
     .comparison-table ul ul {
         padding-left: 0.5rem;
+    }
+
+    #card-buttons {
+        transform: scale(0.65);
+    }
+
+    #card-fonfig {
+        transform: scale(0.65);
+        margin-right: -2.5%;
+    }
+
+    #card-buttons button {
+        width: fit-content;
     }
 }
 
