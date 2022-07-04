@@ -19,6 +19,7 @@
                 <p>
                     <a href="#Introduction" title="🙃 Introduction"><span>🙃</span> Introduction</a>
                     <a href="#Terminology" title="🙃 Terminology"><span>🙃</span> Terminology</a>
+                    <a href="#StewieTweaks" title="🙃 lStewieAl's Tweaks and Engine Fixes"><span>🙃</span> lStewieAl's Tweaks</a>
                     <a href="#NVTF" title="🙃 New Vegas Tick Fix"><span>🙃</span> New Vegas Tick Fix</a>
                     <a href="#DXVK" title="🙃 DXVK"><span>🙃</span> DXVK</a>
                     <a href="#DisplayModeComparison" title="🙃 Display modes"><span>🙃</span> Display modes</a>
@@ -29,9 +30,9 @@
             <div class="content">
                 <!-- Introduction -->
                 <div>
-                    <label id="Introduction" onclick="location.href='#Introduction'">
+                    <span id="Introduction" onclick="location.href='#Introduction'">
                         <h2>Introduction</h2>
-                    </label>
+                    </span>
                     <div class="card">
                         <p>
                         <h3>Welcome!</h3>
@@ -39,14 +40,21 @@
                         <br>
                         While the guide is focused on this particular game, most stuff shown here is applicable to other games.
                         </p>
+                        <p>
+                            The guide is mostly written with an assumption that you've completed either Wasteland Survival Guide's
+                            <a href="https://wastelandsurvivalguide.com/utilities.html" target="_blank">Utilities</a>,
+                            or Viva New Vegas'
+                            <a href="https://vivanewvegas.github.io/bugfix.html" target="_blank">Bugfix</a>
+                            sections, but it'll still cover mods contained within those two guides.
+                        </p>
                     </div>
                 </div>
 
                 <!-- Terminology -->
                 <div>
-                    <label id="Terminology" onclick="location.href='#Terminology'">
+                    <span id="Terminology" onclick="location.href='#Terminology'">
                         <h2>Terminology</h2>
-                    </label>
+                    </span>
                     <div class="card">
                         <p>
                         <h3>Things that are good to know</h3>
@@ -141,11 +149,57 @@
                     </div>
                 </div>
 
+                <!-- Tweaks -->
+                <div>
+                    <span id="StewieTweaks" onclick="location.href='#StewieTweaks'">
+                        <h2>lStewieAl's Tweaks and Engine Fixes</h2>
+                    </span>
+                    <div class="card">
+                        <p>
+                        <h3>All-in-one</h3>
+                        <div class="card-yellow">
+                            <p>
+                                If you've installed <a href="https://www.nexusmods.com/newvegas/mods/76522" target="_blank">Stewie Tweaks Essentials INI</a> from
+                                <span title="Viva New Vegas">VNV</span>
+                                or
+                                <span title="Wasteland Survival Guide">WSG</span>
+                                guides, you may skip this step since it's already included there
+                            </p>
+                        </div>
+                        lStewieAl's Tweaks and Engine Fixes is a mod by... <a href="https://www.nexusmods.com/newvegas/users/2232669">lStewieAl</a>, that does what it says - it adds tweaks and fixes the engine. The scope of this mod can't be overstated.
+                        <h3>Installation</h3>
+                        <ol>
+                            <li>
+                                <p>
+                                    If they are not already installed, download <a href="https://www.nexusmods.com/newvegas/mods/66347" target="_blank" title="lStewieAl's Tweaks and Engine Fixes">lStewieAl's Tweaks and Engine Fixes</a> <b>and</b> Stewie
+                                    Tweaks INI (Optional Files section) from Nexus
+                                    and install them with your mod manager.
+                                </p>
+                            </li>
+                            <li>
+                                Launch your game to populate the INI file, then exit
+                            </li>
+                            <li>
+                                <p>
+                                    Open <b>nvse_stewie_tweaks.ini</b> in <b class="card-basic">NVSE\Plugins</b> as a text file and edit:
+                                <div class="card-basic">
+                                    <p>
+                                        bInlineVanillaFunctions=1
+                                    </p>
+                                </div>
+                                This enables some optimizations to vanilla functions, which leads to decreased loading times and improved general performance.
+                                </p>
+                            </li>
+                        </ol>
+                        </p>
+                    </div>
+                </div>
+
                 <!-- NVTF -->
                 <div>
-                    <label id="NVTF" onclick="location.href='#NVTF'">
+                    <span id="NVTF" onclick="location.href='#NVTF'">
                         <h2>New Vegas Tick Fix</h2>
-                    </label>
+                    </span>
                     <div class="card">
                         <p>
                         <h3>Stutter remover</h3>
@@ -157,59 +211,57 @@
                         <ol>
                             <li>
                                 <p>
-                                    Download <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank">NVTF</a> from Nexus and install with your mod manager.
+                                    If it's not already installed, download <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank" title="New Vegas Tick Fix">NVTF</a> from Nexus and install with your mod manager.
                                 </p>
                             </li>
                             <li>
                                 <p>
                                     Open <b>NVTF.ini</b> in <b class="card-basic">NVSE\Plugins</b> as a text file and edit:
+                                <div class="card-basic">
+                                    <p>
+                                        bModifyDirectXBehavior=1
+                                    </p>
+                                </div>
+                                Enables NVTF's DirectX changes.
+                                <br>
+                                <b>Required for following settings to work:</b>
                                 <ul>
                                     <li>
                                         <div class="card-basic">
                                             <p>
-                                                bModifyDirectXBehavior=1
+                                                bToggleTripleBuffering=1
                                             </p>
                                         </div>
-                                        Enables NVTF's DirectX changes. Enabled by default.
+                                        Enables triple buffer V-Sync, which gets rid of problematic framerate halving on FPS drops/ instability caused by double buffer V-Sync.
                                         <br>
-                                        <b>Required for following settings to work:</b>
+                                        <div class="card-yellow">
+                                            <p>
+                                                <b>This change has no effect if you don't use V-Sync</b>
+                                                <br>
+                                                The potential latency increase is eliminated by properly capping FPS, which is done later in the guide
+                                            </p>
+                                        </div>
                                     </li>
-                                    <ul>
-                                        <li>
-                                            <div class="card-basic">
-                                                <p>
-                                                    bToggleTripleBuffering=1
-                                                </p>
-                                            </div>
-                                            Enables triple buffer V-Sync, which gets rid of problematic framerate halving on FPS drops/ instability caused by double buffer V-Sync.
-                                            <br>
-                                            <div class="card-yellow">
-                                                <p>
-                                                    <b>This change has no effect if you don't use V-Sync</b>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="card-basic">
-                                                <p>
-                                                    bUseDefaultPoolForTextures=1
-                                                </p>
-                                            </div>
-                                            Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures.
-                                            <br>
-                                            If you don't plan on using any texture mods, it's not needed.
-                                            <br>
-                                            <div class="card-red">
-                                                <p>
-                                                    <b>This change breaks alt-tab functionality in Fullscreen Mode.</b>
-                                                    <br>
-                                                    To mitigate that either use Windowed Mode, or DXVK.
-                                                    <br>
-                                                    Or just don't alt-tab.
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <li>
+                                        <div class="card-basic">
+                                            <p>
+                                                bUseDefaultPoolForTextures=1
+                                            </p>
+                                        </div>
+                                        Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures.
+                                        <br>
+                                        If you don't plan on using any texture mods, it's not needed.
+                                        <br>
+                                        <div class="card-red">
+                                            <p>
+                                                <b>This change breaks alt-tab functionality in Fullscreen Mode.</b>
+                                                <br>
+                                                To mitigate that either use Windowed Mode, or DXVK.
+                                                <br>
+                                                Or just don't alt-tab.
+                                            </p>
+                                        </div>
+                                    </li>
                                 </ul>
                                 </p>
                             </li>
@@ -220,9 +272,9 @@
 
                 <!-- DXVK -->
                 <div>
-                    <label id="DXVK" onclick="location.href='#DXVK'">
+                    <span id="DXVK" onclick="location.href='#DXVK'">
                         <h2>DXVK</h2>
-                    </label>
+                    </span>
                     <div class="card">
                         <p>
                         <h3>Translation magic</h3>
@@ -333,9 +385,9 @@
 
                 <!-- DisplayModeComparison -->
                 <div>
-                    <label id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
+                    <span id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
                         <h2>Display mode differences</h2>
-                    </label>
+                    </span>
                     <div class="card">
                         <p>
                         <h3>Presentation problems</h3>
@@ -353,7 +405,7 @@
                                 <tr>
                                     <td class="card-green">
                                         <ul>
-                                            <li>Best latency and performance, especially with FSO</li>
+                                            <li>Best latency and performance, especially with <span title="Fullscreen optimizations">FSO</span></li>
                                             <li>Variable Refresh Rate works without any problems</li>
                                         </ul>
                                     </td>
@@ -372,11 +424,11 @@
                                     <td class="card-red">
                                         <ul>
                                             <li>
-                                                Slower Alt-Tab, especially without FSO
+                                                Slower Alt-Tab, especially without <span title="Fullscreen optimizations">FSO</span>
                                             </li>
                                             <ul>
                                                 <li>
-                                                    <b>Alt-Tab doesn't work at all if NVTF's</b>
+                                                    <b>Alt-Tab doesn't work at all if <span title="New Vegas Tick Fix">NVTF</span>'s</b>
                                                 </li>
                                             </ul>
                                         </ul>
@@ -392,7 +444,7 @@
                                                 </li>
                                             </ul>
                                             <li>
-                                                Color profiles may disengage, especially without FSO
+                                                Color profiles may disengage, especially without <span title="Fullscreen optimizations">FSO</span>
                                             </li>
                                         </ul>
                                     </td>
@@ -450,14 +502,14 @@
 
                 <!-- RecommendedLimiters -->
                 <div>
-                    <label id="RecommendedLimiters" onclick="location.href='#RecommendedLimiters'">
+                    <span id="RecommendedLimiters" onclick="location.href='#RecommendedLimiters'">
                         <h2>Recommended framerate limiters and their configurations</h2>
-                    </label>
+                    </span>
                     <!--<div class="card"> -->
                     <div class="expander-top" id="api-expander">
                         <p>
                         <h3>(Not) Pushing the limits</h3>
-                        Limiting framerate is very important for overall stability. A good limiter will most importantly improve framepacing, reducing microstutter. Other benefits are reduced latency and power consumption.
+                        Limiting framerate is very important for overall stability. A good limiter will most importantly improve framepacing, reducing microstutter. Other benefits could be reduced latency and power consumption.
                         <div class="card-red">
                             <p>
                                 Always limit your framerate to an amount you can actually achieve, otherwise you won't get any benefits!
@@ -467,7 +519,7 @@
                         </div>
                         <div class="card-yellow">
                             <p>
-                                Remember that V-Sync needs to be enabled for proper VRR functionality. You can enable it in game or through driver.
+                                Remember that V-Sync needs to be enabled for proper VRR functionality. You can enable it in game or in your GPU driver.
                             </p>
                         </div>
                         <p>
@@ -514,90 +566,33 @@
                         </p>
                     </div>
                     <div class="expander-bottom" id="expanderD3D9">
+                        <!-- SK -->
                         <p>
-                        <h3>
-                            NVIDIA | AMD driver
-                        </h3>
-                        <ul>
-                            <li>
-                                <h4>
-                                    NVIDIA
-                                </h4>
-                            </li>
-                            <ol>
-                                <li>
-                                    Open <b>NVIDIA Control Panel</b>, go to <b>Program Settings</b>
-                                </li>
-                                <li>
-                                    Select <b>FalloutNV.exe</b>. If it's not present, add it manually
-                                </li>
-                                <li>
-                                    In settings, set <b>Max Frame Rate</b> to:
-                                    <ul>
-                                        <li>
-                                            No V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    <span class="iFpsFixed">(RefreshRate)</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    <span class="iFpsVSync">(RefreshRate - 1)</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            VRR + V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    ...or lower
-                                </li>
-                                <li>
-                                    Click <b>Apply</b>
-                                </li>
-                            </ol>
-                            <p>
-                                Your configuration should look similar to this
-                                <br>
-                                <img src="Nvidia.png">
-                                <br>
-                            </p>
-                            <li>
-                                <h4>
-                                    AMD
-                                </h4>
-                            </li>
-                        </ul>
                         <h3>
                             <a href="https://github.com/SpecialKO/SpecialK/releases/latest" target="_blank">Special K</a>
                         </h3>
+                        <div class="card-red">
+                            <h3>Warning!</h3>
+                            <p>
+                                Special K <i><b>may not work</b></i> with <b>DXVK</b>.
+                                <br>
+                                Special K works only on <b>Windows 8 and higher</b>.
+                                <br>
+                                Special K requires Fullscreen Optimizations to <u><b>NOT</b></u> disabled (FalloutNV.exe -> Properties -> Compatibility)
+                                <br>
+                                Special K may conflict with Riva Tuner. If the game crashes or < SK doesn't show up in game, make sure Riva Tuner is <b>not running</b>, or try <b>increasing injection delay</b>
+                            </p>
+                        </div>
+                        <div class="card-yellow">
+                            <p>
+                                I'm not providing calculated values here, because Special K already does that automatically, and with higher precision
+                            </p>
+                        </div>
+                        Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR (not applicable to this game, sadly). The overall list of features is too
+                        long to write here, but the most important one used here is its
+                        best-in-class framerate limiter.
+                        <h4>Installation</h4>
                         <ol>
-                            <div class="card-red">
-                                <h3>Warning!</h3>
-                                <p>
-                                    Special K <i><b>may not work</b></i> with <b>DXVK</b>.
-                                    <br>
-                                    Special K works only on <b>Windows 8 and higher</b>.
-                                    <br>
-                                    Special K requires Fullscreen Optimizations to <u><b>NOT</b></u> disabled (FalloutNV.exe -> Properties -> Compatibility)
-                                    <br>
-                                    Special K may conflict with Riva Tuner. If the game crashes or SK doesn't show up in game, make sure Riva Tuner is <b>not running</b>, or try <b>increasing injection delay</b>
-                                </p>
-                            </div>
-                            <div class="card-yellow">
-                                <p>
-                                    I'm not providing calculated values here, because Special K already does that automatically, and with higher precision
-                                </p>
-                            </div>
                             <li>
                                 Download the <b>SpecialK.7z</b> from the <b>Assets</b> section, then extract <b>SpecialK32.dll</b>
                                 to your Fallout New Vegas <b>root folder</b> and rename it to <b>dinput8.dll</b>
@@ -662,7 +657,7 @@
                                                 In right click menu select <b>VRR Bias</b> and select the highest value.
                                             <ul>
                                                 <li>
-                                                    The bias option is not needed for any lower values.
+                                                    The bias option is not needed for lower values.
                                                 </li>
                                             </ul>
                                             Click on <b>Advanced</b> and enable <b>Low Latency Mode</b>
@@ -672,16 +667,22 @@
                                 </ul>
                                 ...if you want to enter a custom value, <b>Ctrl-Click</b> on the bar. You can also drag your mouse on it.
                             </li>
+                            <p>
+                                Your configuration should look similar to this
+                                <br>
+                                <img src="SK.png">
+                                <br>
+                            </p>
                         </ol>
-                        <p>
-                            Your configuration should look similar to this
-                            <br>
-                            <img src="SK.png">
-                            <br>
                         </p>
+
+                        <!-- RTSS -->
+                        <p>
                         <h3>
                             <a href="https://www.guru3d.com/files-get/rtss-rivatuner-statistics-server-download,17.html" target="_blank">RivaTuner Statistics Server</a>
                         </h3>
+                        Riva Tuner Statistic Server by Unwinder is probably the most famous FPS Limiter and OSD software, thanks to its compatibility, reliability and ease of use.
+                        <h4>Installation</h4>
                         <ol>
                             <li>
                                 Install and open RTSS, press green <b>Add</b> button and select FalloutNV.exe
@@ -733,15 +734,86 @@
                             <li>
                                 Enable <b>Start with Windows</b> or launch RTSS everytime before you play
                             </li>
+                            <p>
+                                Your configuration should look similar to this
+                                <br>
+                                <img src="RTSS.png">
+                                <br>
+                            </p>
                         </ol>
-                        <p>
-                            Your configuration should look similar to this
-                            <br>
-                            <img src="RTSS.png">
-                            <br>
                         </p>
+
+                        <!-- Drivers -->
+                        <p>
+                        <h3>
+                            NVIDIA | AMD driver
+                        </h3>
+                        The most basic limiters from this list, but definitely the easiest and fastest to set up!
+                        <ul>
+                            <li>
+                                <h4>
+                                    NVIDIA
+                                </h4>
+                            </li>
+                            <ol>
+                                <li>
+                                    Open <b>NVIDIA Control Panel</b>, go to <b>Program Settings</b>
+                                </li>
+                                <li>
+                                    Select <b>FalloutNV.exe</b>. If it's not present, add it manually
+                                </li>
+                                <li>
+                                    In settings, set <b>Max Frame Rate</b> to:
+                                    <ul>
+                                        <li>
+                                            No V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    <span class="iFpsFixed">(RefreshRate)</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    <span class="iFpsVSync">(RefreshRate - 1)</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            VRR + V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    ...or lower
+                                </li>
+                                <li>
+                                    Click <b>Apply</b>
+                                </li>
+                            </ol>
+                            <p>
+                                Your configuration should look similar to this
+                                <br>
+                                <img src="Nvidia.png">
+                                <br>
+                            </p>
+                            <li>
+                                <h4>
+                                    AMD
+                                </h4>
+                                I don't have an AMD GPU to cover it properly
+                                <br>
+                                If you have one, and are willing to take some screenshots and check some settings for me, contact me on Discord - Wall_SoGB#2421
+                            </li>
+                        </ul>
                         </p>
                     </div>
+
                     <div class="expander-bottom" id="expanderVulkan">
                         <p>
                         <h3>
@@ -822,72 +894,67 @@
                         </p>
                     </div>
                 </div>
+
                 <!-- Finish -->
                 <div>
-                    <label id="Finish" onclick="location.href='#Finish'">
+                    <span id="Finish" onclick="location.href='#Finish'">
                         <h2>Finish</h2>
-                    </label>
+                    </span>
                     <div class="card">
                         <p>
-                            <h3>The End?</h3>
-                            Congratulations! You've made it through! I hope this guide helped you making Fallout New Vegas a smoother experience.
-                            <br>
-                            If you have any issues, questions, critiques or recommendations hit me up on Discord - Wall_SoGB#2421. 
-                            <br>
-                            You can also find me on <a href="https://discord.gg/EebN93s" target="_blank">xNVSE</a> and <a href="https://discord.gg/taleoftwowastelands" target="_blank">Tale of Two Wastelands</a> servers.
-                            <p>
-                                I recommend checking this guide from time to time - I'm not done yet.
-                            </p>
+                        <h3>The End?</h3>
+                        Congratulations! You've made it through! I hope this guide helped you making Fallout New Vegas a smoother experience.
+                        <br>
+                        If you have any issues, questions, critiques or recommendations hit me up on Discord - Wall_SoGB#2421.
+                        <br>
+                        You can also find me on <a href="https://discord.gg/EebN93s" target="_blank">xNVSE</a> and <a href="https://discord.gg/taleoftwowastelands" target="_blank">Tale of Two Wastelands</a> servers.
+                        <p>
+                            I recommend checking this guide from time to time - I'm not done yet.
+                        </p>
                         </p>
                         <p>
-                            <h3>Things worth reading</h3>
-                            Here are some links to stuff that I recommend checking out:
-                            <ul>
-                                <li>
-                                    <a href="https://wastelandsurvivalguide.com/index.html" target="_blank">Wasteland Survival Guide</a> - Really nice, curated modding guide for Tale of Two Wastelands by Audixas and The Many.
-                                </li>
-                                <li>
-                                    <a href="https://vivanewvegas.github.io/" target="_blank">Viva New Vegas</a> - Slightly dead, but still the best beginner guide to Fallout New Vegas modding by Qolore7.
-                                </li>
-                                <li>
-                                    <a href="https://salamand3r.fail/texture-guide" target="_blank">Salamand3r's Texture Guide</a> - nice and easy to follow texture guide by Salamand3r that actually doesn't break your game for a nice change of pace.
-                                </li>
-                                <li>
-                                    <a href="https://www.pcgamingwiki.com/wiki/Home" target="_blank">PCGamingWiki</a> - Great website, contains really helpful info about games, patches, fixes and other PC gaming related stuff. 
-                                </li>
-                                <li>
-                                    <a href="https://blurbusters.com/" target="_blank">BlurBusters</a> - Amazing website by Mark Rejhon focused on displays, latency and image quality. Really worth checking it out if you are a geek for these things.
-                                </li>
-                            </ul>
+                        <h3>Things worth reading</h3>
+                        Here are some links to stuff that I recommend checking out:
+                        <ul>
+                            <li>
+                                <a href="https://salamand3r.fail/texture-guide" target="_blank">Salamand3r's Texture Guide</a> - nice and easy to follow texture guide by Salamand3r that actually doesn't break your game for a nice change of pace.
+                            </li>
+                            <li>
+                                <a href="https://www.pcgamingwiki.com/wiki/Home" target="_blank">PCGamingWiki</a> - Great website, contains really helpful info about games, patches, fixes and other PC gaming related stuff.
+                            </li>
+                            <li>
+                                <a href="https://blurbusters.com/" target="_blank">BlurBusters</a> - Amazing website by Mark Rejhon focused on displays, latency and image quality. Really worth checking it out if you are a geek for these things.
+                            </li>
+                        </ul>
                         </p>
                         <p>
-                            <h3>Credits</h3>
-                            This is the part where I'd like to thank people who have helped me in whatever way making this guide possible.
-                            <ul>
-                                <li>
-                                    Whole xNVSE server for being a great community. Especially:
-                                    <ul>
-                                        <li>
-                                            VishVadeva50 - for testing and helping with benchmarks
-                                        </li>
-                                        <li>
-                                            c6 - fixing the some engine functions so my testing could be easier
-                                        </li>
-                                        <li>
-                                            woomzy - woomzy
-                                        </li>
-                                        <li>
-                                            nice try karut, but you are not getting credited
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    Whole Special K server for also being a superb community with a lot of knowledgeable people. This guide would literally not exist without them.
-                                </li>
-                                <li>
-                                    You <img src="UI/pepestare.webp" id="pepestare">
-                                </li>
-                            </ul>
+                        <h3>Credits</h3>
+                        This is the part where I'd like to thank people who have helped me in whatever way making this guide possible.
+                        <ul>
+                            <li>
+                                Whole xNVSE server for being a great community. Especially:
+                                <ul>
+                                    <li>
+                                        VishVadeva50 - for testing and helping with benchmarks
+                                    </li>
+                                    <li>
+                                        <a href="">c6</a> - fixing the some engine functions so my testing could be easier
+                                    </li>
+                                    <li>
+                                        woomzy - woomzy
+                                    </li>
+                                    <li>
+                                        nice try karut, but you are not getting credited
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Whole Special K server for also being a superb community with a lot of knowledgeable people. This guide would literally not exist without them.
+                            </li>
+                            <li>
+                                You <img src="UI/pepestare.webp" id="pepestare">
+                            </li>
+                        </ul>
                         </p>
                     </div>
                 </div>
