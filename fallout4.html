@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Flipping Flip</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A guide to making Fallout 4 run smoother. Hopefully.">
+        <meta property="og:title" content="Fallout 4 Performance Guide">
+        <meta property="og:type" content="article">
+        <meta property="og:url" content="https://wallsogb.github.io/FalloutNV-Performance-Guide">
+        <!-- <meta property="og:image" content="https://wallsogb.github.io/FalloutNV-Performance-Guide/UI/logo.png"> -->
+        <meta property="og:description" content="A guide to making Fallout 4 run smoother. Hopefully.">
+        <script src="https://kit.fontawesome.com/baff4f2fd4.js" crossorigin="anonymous"></script>
+        <script src="javascript.js"></script>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body class="theme dark-scheme">
+        <div style="overflow:auto">
+            <div class="header" id="header" onclick="toggleNav()">
+                <span class="flippy" id="flippyHeader">🙃</span>
+            </div>
+            <div class="sidebar" id="sidebar">
+                <p>
+                    <a href="#Introduction" title="🙃 Introduction"><span>🙃</span> Introduction</a>
+                    <a href="#RecommendedLimiters" title="🙃 FPS Limiters"><span>🙃</span> FPS Limiters</a>
+                    <a href="#Finish" title="🙃 Finish"><span>🙃</span> Finish</a>
+                </p>
+            </div>
+            <div class="content">
+                <!-- Introduction -->
+                <div>
+                    <span id="Introduction" onclick="location.href='#Introduction'">
+                        <h2>Introduction</h2>
+                    </span>
+                    <div class="card">
+                        <p>
+                        <h3>Welcome!</h3>
+                        This is a little spin-off for Fallout 4 made in collaboration with <a href="https://themidnightride.github.io/">The Midnight Ride</a> guide.
+                        <br>
+                        If you want to see the full guide dedicated to Fallout New Vegas, go <a href="https://wallsogb.github.io/FalloutNV-Performance-Guide/">here</a>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- RecommendedLimiters -->
+                <div>
+                    <span id="RecommendedLimiters" onclick="location.href='#RecommendedLimiters'">
+                        <h2>Recommended framerate limiters and their configurations</h2>
+                    </span>
+                    <!--<div class="card"> -->
+                    <div class="expander-top" id="api-expander">
+                        <p>
+                        <h3>(Not) Pushing the limits</h3>
+                        Limiting framerate is very important for overall stability. A good limiter will most importantly improve framepacing, reducing microstutter. Other benefits could be reduced latency and power consumption.
+                        <div class="card-red">
+                            <p>
+                                Always limit your framerate to an amount you can actually achieve, otherwise you won't get any benefits!
+                                <br>
+                                Letting your GPU overwork itself has a big latency impact, so try to cap your framerate at such value, where your GPU doesn't sit at constant 100% usage
+                            </p>
+                        </div>
+                        <div class="card-yellow">
+                            <p>
+                                Remember that V-Sync needs to be enabled for proper VRR functionality. You can enable it in game or in your GPU driver.
+                            </p>
+                        </div>
+                        <p>
+                            Enter your refresh rate here for automatic calculation of suggested FPS limits below. You can find your exact refresh rate in <b>Windows Settings\System\Display\Advanced Display</b>.
+                            <br>
+                            If you don't use, or have VRR, it's best to limit your framerate in full intervals. (30 at 60hz, 72 at 144hz, etc.)
+                        <div>
+                            <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()">
+                            <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Calculate</button>
+                        </div>
+                        </p>
+                        </p>
+                        <p>
+                        </p>
+                        <!-- SK -->
+                        <p>
+                        <h3>
+                            Special K
+                        </h3>
+                        <div class="card-red">
+                            <h3>Warning!</h3>
+                            <p>
+                                Special K works only on <b>Windows 8 and higher</b>.
+                                <br>
+                                Special K may conflict with Riva Tuner. If the game crashes or SK doesn't show up in game, make sure Riva Tuner is <b>not running</b>, or try <b>increasing injection delay</b>
+                                <br>
+                                Special K is not compatible with ENB.
+                            </p>
+                        </div>
+                        <div class="card-yellow">
+                            <p>
+                                I'm not providing calculated values here, because Special K already does that automatically, and with higher precision
+                            </p>
+                        </div>
+                        Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR. The overall list of features is too
+                        long to write here, but the most important one used here is its best-in-class framerate limiter, alongside with Texture Cache, which provides better VRAM management, and faster texture loading.
+                        <h4>Installation</h4>
+                        <ol>
+                            <li>
+                                Download the <a href="https://github.com/SpecialKO/SpecialK/releases/latest" target="_blank"><b>SpecialK.7z</b></a> from the <b>Assets</b> section, then extract <b>SpecialK64.dll</b>
+                                to your Fallout 4 <b>root folder</b> and rename it to <b>dxgi.dll</b>
+                            </li>
+                            <li>
+                                Launch Fallout 4 and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel
+                            </li>
+                            <li>
+                                Enable the <b>Framerate Limit</b> by ticking the checkbox, then right click on the bar (not graph) next to it:
+                                <ul>
+                                    <li>
+                                        No V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                In right click menu select your refresh rate
+                                            </p>
+                                        </div>
+                                        <div class="expander-top clickable" style="max-width: 70%;" onclick="expandCard(this, latentSync)">
+                                            <p>
+                                                Optional - Disabled V-Sync with no tearing
+                                                <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
+                                            </p>
+                                        </div>
+
+                                        <div class="expander-bottom" style="max-width: 70%;" id="latentSync">
+                                            <h4>It's best to do this in-game!</h4>
+                                            If you have <b>have stable framerate</b>, in limiter's right click menu select <b>Latent Sync</b>
+                                            <p>
+                                                In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use <b>Sync offset</b> slider so the tearing is not visible.
+                                                <br>
+                                                Disable <b>Visualize Tearlines</b> when you decide you are satisfied with result.
+                                                <br>
+                                                It is possible that you won't see tearing out of the box.
+                                            </p>
+                                            <div class="card-red">
+                                                <p>
+                                                    Latpops with dedicated GPUs that do not have MUX switches for direct dGPU<->Display connection will have problems with hiding the tearline.
+                                                        <br>
+                                                        While it may be impossible to hide it completely, latency benefits are still applicable.
+                                                </p>
+                                                <p>
+                                                    Some monitors have too small vertical blanking, so it's possible to not fully hide the tearing without timing modifications -
+                                                    if you wish to pursue this topic, create a custom resolution with increased <b>Vertical Blanking</b> in your driver or with
+                                                    <b><a href="https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU">Custom Resolution Utility</a></b>
+                                                <h4>It's best to first test the resolution in driver, otherwise you may lock out your display</h4>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 1
+                                            </p>
+                                            <p>
+                                                In Direct3D 11 Settings, under SwapChain Management:
+                                            <ul>
+                                                <li>
+                                                    Enable <b>Waitable SwapChain</b>
+                                                </li>
+                                                <li>
+                                                    Set <b>BackBuffer Count</b> to <b>3</b>
+                                                </li>
+                                                <li>
+                                                    Set <b>Maximum Device Latency</b> to <b>4</b>
+                                                </li>
+                                            </ul>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        VRR + V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                In right click menu select <b>VRR Bias</b> and select the highest value.
+                                            <ul>
+                                                <li>
+                                                    The bias option is not needed for lower values.
+                                                </li>
+                                            </ul>
+                                            Click on <b>Advanced</b> and enable <b>Low Latency Mode</b> (Not Reflex!)
+                                            </p>
+                                            <p>
+                                                In Direct3D 11 Settings, under SwapChain Management:
+                                            <ul>
+                                                <li>
+                                                    Set <b>BackBuffer Count</b> to <b>3</b>
+                                                </li>
+                                                <li>
+                                                    Set <b>Maximum Device Latency</b> to <b>4</b>
+                                                </li>
+                                            </ul>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    If you want to enter a custom value, <b>Ctrl-Click</b> on the bar. You can also drag your mouse on it.
+                                </ul>
+                                <div class="card-yellow">
+                                    <p>
+                                        Nvidia GPUs Exclusive - in <b>Advanced</b> options of <b>Framerate Limiter</b> you can toggle Nvidia Reflex for latency reductions.
+                                        <br>
+                                        <b>This setting is <u>not</u> the same as the Low Latency Mode in Nvidia Control Panel or Special K's!</b>
+                                    <ul>
+                                        <li>
+                                            Nothing But Boost - Forces the GPU to run at highest clocks to reduce microstutter and latency caused by downlocking - recommended setting
+                                        </li>
+                                        <li>
+                                            Low Latency - Enables Nvidia's Low Latency Reflex mode - can introduce stuttering when using G-Sync
+                                        </li>
+                                        <li>
+                                            Low Latency + Boost - Enables both settings
+                                        </li>
+                                    </ul>
+                                    </p>
+                                </div>
+                            </li>
+                            <p>
+                                Your configuration should look similar to this
+                                <br>
+                                <img src="FO4/SK.png" class="limiters-img">
+                                <br>
+                            </p>
+                        </ol>
+                        </p>
+
+                        <!-- RTSS -->
+                        <p>
+                        <h3>
+                            RivaTuner Statistics Server
+                        </h3>
+                        Riva Tuner Statistic Server by Unwinder is probably the most famous FPS Limiter and OSD software, thanks to its compatibility, reliability and ease of use.
+                        <h4>Installation</h4>
+                        <ol>
+                            <li>
+                                Install and open <a href="https://www.guru3d.com/files-get/rtss-rivatuner-statistics-server-download,17.html" target="_blank">RTSS</a>, press green <b>Add</b> button and select FalloutNV.exe
+                            </li>
+                            <li>
+                                Set <b>Application Detection Level</b> to <b>Low</b>
+                            </li>
+                            <li>
+                                Set <b>Framerate Limit</b> to:
+                                <ul>
+                                    <li>
+                                        No V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                <span class="fpsFixed">(RefreshRate)</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                <span class="fpsVSync">(RefreshRate - 1)</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        VRR + V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                ...or lower
+                            </li>
+                            <li>
+                                Enter settings using Setup button and:
+                                <ul>
+                                    <li>
+                                        Enable <b>Passive Waiting</b>
+                                    </li>
+                                    <li>
+                                        Set framerate limiter to <b>Front Edge Sync</b>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Enable <b>Start with Windows</b> or launch RTSS everytime before you play
+                            </li>
+                            <p>
+                                Your configuration should look similar to this
+                                <br>
+                                <img src="FO4/RTSS.png" class="limiters-img">
+                                <br>
+                            </p>
+                        </ol>
+                        </p>
+
+                        <!-- Drivers -->
+                        <p>
+                        <h3>
+                            NVIDIA | AMD driver
+                        </h3>
+                        The most basic limiters from this list, but definitely the easiest and fastest to set up!
+                        <ul>
+                            <li>
+                                <h4>
+                                    NVIDIA
+                                </h4>
+                            </li>
+                            <ol>
+                                <li>
+                                    Open <b>NVIDIA Control Panel</b>, go to <b>Program Settings</b>
+                                </li>
+                                <li>
+                                    Select <b>FalloutNV.exe</b>. If it's not present, add it manually
+                                </li>
+                                <li>
+                                    In settings, set <b>Max Frame Rate</b> to:
+                                    <ul>
+                                        <li>
+                                            No V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    <span class="iFpsFixed">(RefreshRate)</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    <span class="iFpsVSync">(RefreshRate - 1)</span>
+                                                </p>
+                                                <p>
+                                                    Set <b>Low Latency Mode</b> to On
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            VRR + V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
+                                                </p>
+                                                <p>
+                                                    Set <b>Low Latency Mode</b> to Ultra
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    ...or lower
+                                </li>
+                                <li>
+                                    Click <b>Apply</b>
+                                </li>
+                            </ol>
+                            <p>
+                                Your configuration should look similar to this
+                                <br>
+                                <img src="FO4/Nvidia.png" class="limiters-img">
+                                <br>
+                            </p>
+                            <li>
+                                <h4>
+                                    AMD
+                                </h4>
+                                I don't have an AMD GPU to cover it properly
+                                <br>
+                                If you have one, and are willing to take some screenshots and check some settings for me, contact me on Discord - Wall_SoGB#2421
+                            </li>
+                        </ul>
+                        </p>
+                    </div>
+                </div>
+                <!-- Finish -->
+                <div>
+                    <span id="Finish" onclick="location.href='#Finish'">
+                        <h2>Finish</h2>
+                    </span>
+                    <div class="card">
+                        <p>
+                        <h3>Finish Line</h3>
+                        Congratulations! You've made it through! I hope this guide helped you making Fallout 4 a smoother experience.
+                        <br>
+                        If you have any issues, questions, critiques or recommendations hit me up on Discord - Wall_SoGB#2421.
+                        <br>
+                        You can also find me on <a href="https://discord.gg/DhX5S27" target="_blank">Viva New Vegas</a>, <a href="https://discord.gg/EebN93s" target="_blank">xNVSE</a>, <a href="https://discord.gg/taleoftwowastelands" target="_blank">Tale of Two Wastelands</a> servers.
+                        <p onclick="location.href='themidnightride.github.io/bugfix.html'" >
+                            <h2 class="card-green">Click here to go back to The Midnight Ride Guide</h2>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">I'm a footer 🦶<span class="Flippy">🙃</span>🦶</div>
+    </body>
+
+</html>
