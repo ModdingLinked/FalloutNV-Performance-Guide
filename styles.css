@@ -34,7 +34,13 @@ h3 {
     line-height: 28px;
 }
 
-img {
+#logo {
+    float:right;
+    position: relative;
+    width: 256px;
+}
+
+.limiters-img {
     box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 13%);
     border-radius: 4px;
     margin: 10px 0px 10px 0px;
@@ -500,7 +506,7 @@ b.card-basic {
         color: rgb(0, 0, 0);
     }
 
-    img {
+    .limiters-img {
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 4%);
     }
 
