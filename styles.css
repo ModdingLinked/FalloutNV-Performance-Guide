@@ -35,9 +35,15 @@ h3 {
 }
 
 #logo {
-    float:right;
-    position: relative;
     width: 256px;
+    padding: 10px;
+    border-radius: 36px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.flex {
+    display: flex;
 }
 
 .limiters-img {
@@ -170,7 +176,7 @@ input:active {
     margin-right: auto;
 }
 
-img.chevron{
+img.chevron {
     height: 16px;
     width: 16px;
     box-shadow: none;
@@ -555,7 +561,7 @@ b.card-basic {
         outline: 1px solid rgba(0, 0, 0, 5.78%);
         background-color: rgba(255, 255, 255, 25%);
     }
-    
+
     .expander-top.clickable:active {
         background-color: rgba(255, 255, 255, 20%);
     }
@@ -574,12 +580,13 @@ b.card-basic {
     .api-selection.active:hover {
         background-color: rgb(25, 112, 191);
     }
+
     .api-selection.active:active {
         background-color: rgb(49, 126, 198);
         border-color: rgb(49, 126, 198);
         color: rgba(255, 255, 255, 70%);
     }
-    
+
     .card-basic {
         outline: 1px solid rgba(0, 0, 0, 5.78%);
         background-color: rgba(249, 249, 249, 50%);
@@ -642,7 +649,7 @@ b.card-basic {
         margin-bottom: 20%;
         margin-left: 0px;
         border-top-right-radius: 0px;
-        overflow:scroll;
+        overflow: scroll;
     }
 
     .header {
@@ -685,6 +692,12 @@ b.card-basic {
 
     #card-buttons button {
         width: fit-content;
+    }
+
+    #logo{
+        margin-left: 0px;
+        margin-right: 0px;
+        width: 128px;
     }
 }
 
