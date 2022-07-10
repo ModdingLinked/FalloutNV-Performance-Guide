@@ -231,13 +231,27 @@ img.chevron {
     color: rgba(255, 255, 255, 0.786);
 }
 
-.sidebar a:hover span,
+.flippy {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar a:hover .flippy,
 .header:hover span,
 .flippy:hover {
     cursor: pointer;
     animation: rotate 0.4s ease-in-out;
-    display: inline-block;
     user-select: none;
+}
+
+.subIcon {
+    position: relative;
+    left: 15px;
+    top: -5px;
+    margin-left: -12px;
+    font-size: large;
+    z-index: 0;
 }
 
 .card {
@@ -311,6 +325,7 @@ b.card-basic {
     outline: 1px solid rgba(0, 0, 0, 10%);
     position: fixed;
     border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
     z-index: 2;
     cursor: pointer;
     user-select: none;
@@ -477,7 +492,7 @@ b.card-basic {
     }
 
     50% {
-        transform: translateY(-12px) rotate(180deg);
+        transform: translateY(-6px) rotate(180deg);
     }
 
     100% {
