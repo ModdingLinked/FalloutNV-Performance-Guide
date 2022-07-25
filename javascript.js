@@ -68,11 +68,11 @@ function refreshRateCalculations() {
 
 function rotate(element, rotation = 180) {
     element.style.transform = 'rotatex(' + rotation + 'deg)';
-  }
-  
+}
+
 
 function expandCard(thisObj, $open) {
-    const chevron =thisObj.getElementsByClassName("chevron")[0]
+    const chevron = thisObj.getElementsByClassName("chevron")[0]
     if ($open.classList.contains('expander-opened')) {
         rotate(chevron, 0)
         $open.classList.remove('expander-opened');

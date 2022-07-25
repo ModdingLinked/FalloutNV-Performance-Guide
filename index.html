@@ -627,7 +627,7 @@
                     <div class="expander-bottom" id="expanderD3D9">
                         <!-- SK -->
                         <p>
-                        <div class="expander-top clickable" style="max-width: 90%;" onclick="expandCard(this, specialk)">
+                        <div class="expander-top clickable center width-limited" onclick="expandCard(this, specialk)">
                             <p>
                             <h3>
                                 Special K
@@ -639,7 +639,7 @@
                             <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
                             </p>
                         </div>
-                        <div class="expander-bottom" style="max-width: 90%;" id="specialk">
+                        <div class="expander-bottom center width-limited" id="specialk">
                             <div class="card-red">
                                 <h3>Warning!</h3>
                                 <p>
@@ -752,7 +752,7 @@
 
                         <!-- RTSS -->
                         <p>
-                        <div class="expander-top clickable" style="max-width: 90%;" onclick="expandCard(this, rtss)">
+                        <div class="expander-top clickable center width-limited" onclick="expandCard(this, rtss)">
                             <p>
                             <h3>
                                 RivaTuner Statistics Server
@@ -761,7 +761,7 @@
                             <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
                             </p>
                         </div>
-                        <div class="expander-bottom" style="max-width: 90%;" id="rtss">
+                        <div class="expander-bottom center width-limited" id="rtss">
                             <h4>Installation</h4>
                             <ol>
                                 <li>
@@ -826,13 +826,13 @@
 
                         <!-- Drivers -->
                         <p>
-                        <div class="card" style="max-width: 90%;">
+                        <div class="card center width-limited">
                             <h3>
                                 NVIDIA | AMD driver
                             </h3>
                             The most basic limiters from this list, but definitely the easiest and fastest to set up!
                             <p>
-                            <div class="expander-top clickable" style="max-width: 100%;" onclick="expandCard(this, nvidia)">
+                            <div class="expander-top clickable width-full" onclick="expandCard(this, nvidia)">
                                 <p>
                                 <h4>
                                     NVIDIA
@@ -840,7 +840,7 @@
                                 </h4>
                                 </p>
                             </div>
-                            <div class="expander-bottom" style="max-width: 100%;" id="nvidia">
+                            <div class="expander-bottom width-full" id="nvidia">
                                 <h4>Configuration</h4>
                                 <ol>
                                     <li>
@@ -894,7 +894,7 @@
                             </p>
                             <p>
 
-                            <div class="expander-top clickable" style="max-width: 100%;" onclick="expandCard(this, amd)">
+                            <div class="expander-top clickable width-full" onclick="expandCard(this, amd)">
                                 <p>
                                 <h4>
                                     AMD
@@ -902,7 +902,7 @@
                                 </h4>
                                 </p>
                             </div>
-                            <div class="expander-bottom" style="max-width: 100%;" id="amd">
+                            <div class="expander-bottom width-full" id="amd">
                                 <h4>Configuration</h4>
                                 <ol>
                                     <li>
@@ -956,81 +956,84 @@
 
                     <div class="expander-bottom" id="expanderVulkan">
                         <p>
-                        <h3>
-                            DXVK
-                        </h3>
-                        <!-- <div class="card-yellow">
+                        <div class="card center width-limited">
+
+                            <h3>
+                                DXVK
+                            </h3>
+                            <!-- <div class="card-yellow">
                             <p>
                                 Limiters mentioned in D3D9 section work, but perform worse than the DXVK's one, so I don't recommend them
                             </p>
                         </div> How the turntables -->
-                        <div class="card-red">
-                            <h3>Warning!</h3>
-                            <p>
-                            <h3>DXVK's limiter is <u><b>BROKEN</b></u> above 60Hz. If you use a high refresh rate display, use limiters from D3D9 section.</h3>
-                            </p>
-                        </div>
-                        <div class="card-yellow">
-                            <h3>Before you start...</h3>
-                            <p>
-                            <ul>
+                            <div class="card-red">
+                                <h3>Warning!</h3>
+                                <p>
+                                <h3>DXVK's limiter is <u><b>BROKEN</b></u> above 60Hz. If you use a high refresh rate display, use limiters from D3D9 section.</h3>
+                                </p>
+                            </div>
+                            <div class="card-yellow">
+                                <h3>Before you start...</h3>
+                                <p>
+                                <ul>
+                                    <li>
+                                        Lines that have <b class="card-basic">#</b> are commented out, so make sure to remove it when enabling settings!
+                                    </li>
+                                    <li>
+                                        DXVK accepts only integer values!
+                                    </li>
+                                    <li>
+                                        DXVK's limiter doesn't work when its (or game's) V-Sync is enabled!
+                                        <ol>
+                                            <li>
+                                                Disable V-Sync in DXVK (will override game's setting)
+                                                <div class="card-basic">
+                                                    <p>
+                                                        d3d9.presentInterval = 0
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Enable V-Sync in your GPU driver
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                                </p>
+                            </div>
+                            <ol>
                                 <li>
-                                    Lines that have <b class="card-basic">#</b> are commented out, so make sure to remove it when enabling settings!
-                                </li>
-                                <li>
-                                    DXVK accepts only integer values!
-                                </li>
-                                <li>
-                                    DXVK's limiter doesn't work when its (or game's) V-Sync is enabled!
-                                    <ol>
+                                    Open (or create) <b>dxvk.conf</b> text file inside your <b>root folder</b> of Fallout: New Vegas with any text editor and write:
+                                    <ul>
                                         <li>
-                                            Disable V-Sync in DXVK (will override game's setting)
+                                            No V-Sync
                                             <div class="card-basic">
                                                 <p>
-                                                    d3d9.presentInterval = 0
+                                                    d3d9.maxFrameRate = <span class="iFpsFixed">(RefreshRate)</span>
                                                 </p>
                                             </div>
                                         </li>
                                         <li>
-                                            Enable V-Sync in your GPU driver
+                                            V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    d3d9.maxFrameRate = <span class="iFpsVSync">(RefreshRate - 1)</span>
+                                                </p>
+                                            </div>
                                         </li>
-                                    </ol>
+                                        <li>
+                                            VRR + V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    d3d9.maxFrameRate = <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    ...or lower
                                 </li>
-                            </ul>
-                            </p>
+                            </ol>
                         </div>
-                        <ol>
-                            <li>
-                                Open (or create) <b>dxvk.conf</b> text file inside your <b>root folder</b> of Fallout: New Vegas with any text editor and write:
-                                <ul>
-                                    <li>
-                                        No V-Sync
-                                        <div class="card-basic">
-                                            <p>
-                                                d3d9.maxFrameRate = <span class="iFpsFixed">(RefreshRate)</span>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        V-Sync
-                                        <div class="card-basic">
-                                            <p>
-                                                d3d9.maxFrameRate = <span class="iFpsVSync">(RefreshRate - 1)</span>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        VRR + V-Sync
-                                        <div class="card-basic">
-                                            <p>
-                                                d3d9.maxFrameRate = <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                                ...or lower
-                            </li>
-                        </ol>
                         </p>
                     </div>
                 </div>

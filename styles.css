@@ -359,6 +359,13 @@ b.card-basic {
     margin: auto;
 }
 
+.width-limited {
+    max-width: 90%;
+}
+
+.width-full {
+    max-width: 100%;
+}
 
 #card-buttons {
     position: absolute;
@@ -710,10 +717,14 @@ b.card-basic {
         width: fit-content;
     }
 
-    #logo{
+    #logo {
         margin-left: 0px;
         margin-right: 0px;
         width: 128px;
+    }
+
+    .width-limited {
+        max-width: 100%;
     }
 }
 
