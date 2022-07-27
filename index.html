@@ -331,9 +331,10 @@
                     <div class="card">
                         <p>
                         <h3>Translation magic</h3>
-                        DXVK is a Direct3D 9-11 to Vulkan translation layer created mainly for Linux, but works <u>unofficially</u> on Windows.
+                        DXVK is an open source Direct3D 9-11 to Vulkan translator project lead by <a href="https://github.com/doitsujin">doitsujin</a> and <a href="https://github.com/Joshua-Ashton">Joshua Ashton</a>. While created mainly for Linux, works
+                        <u>unofficially</u> on Windows.
                         <br>
-                        In short, it makes possible to run Fallout using Vulkan API which has benefits of much lower drawcall overhead than D3D9,
+                        In short, it allows to run Fallout using Vulkan API which has benefits of much lower drawcall overhead than D3D9,
                         which is one of the main performance limiting factors in this game.
                         <br>
                         <div class="card-red">
@@ -561,81 +562,64 @@
                         <p>
                         <h3>(Not) Pushing the limits</h3>
                         Limiting framerate is very important for overall stability. A good limiter will most importantly improve framepacing, reducing microstutter. Other benefits could be reduced latency and power consumption.
+
                         <div class="card-red">
                             <p>
                                 Always limit your framerate to an amount you can actually achieve, otherwise you won't get any benefits!
                                 <br>
-                                Letting your GPU overwork itself has a big latency impact, so try to cap your framerate at such value, where your GPU doesn't sit at constant 100% usage
+                                Letting your GPU overwork itself has a big latency impact, so try to cap your framerate at such value, where your GPU doesn't sit at constant 100% usage.
+                                <br>
+                                Running at smoother, lower framerate is much better than high, albeit laggy one.
                             </p>
+                        </div>
+
+                        <h3>Recommended setups</h3>
+                        <h4>V-Sync</h4>
+                        <ul>
+                            <li>
+                                Framerate must be capped slightly below refresh rate to reduce latency
+                            </li>
+                        </ul>
+                        <h4>G-Sync | Freesync</h4>
+                        <ul>
+                            <li>
+                                V-Sync must be enabled, in order to fully get rid of tearing
+                            </li>
+                            <li>
+                                Framerate must be capped below refresh rate, in order for VRR to not disengage and fallback to V-Sync - this causes very big increase in latency
+                            </li>
+                        </ul>
+
+                        If you play with V-Sync disabled, there's nothing besides the limiter to set up
+
+                        <h3>Finding the limit</h3>
+                        <p>
+                            Enter your refresh rate here for automatic calculation of FPS limits below. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
+                        <div>
+                            <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
+                            <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button>
                         </div>
                         <div class="card-yellow">
-                            <h4>For proper G-Sync | Freesync usage...</h4>
                             <p>
-                            <ol>
-                                <li>
-                                    V-Sync must be enabled, in order to fully get rid of tearing
-                                </li>
-                                <li>
-                                    Framerate must be capped below refresh rate, in order for VRR to not disengage and fallback to V-Sync - this causes very big increase in latency.
-                                </li>
-                            </ol>
+                                If you don't use, or not have VRR, it's best to limit your framerate in full intervals. (30 at 60hz, 72 at 144hz, etc.)
                             </p>
                         </div>
-                        <p>
-                            Enter your refresh rate here for automatic calculation of suggested FPS limits below. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
-                            <br>
-                            If you don't use, or have VRR, it's best to limit your framerate in full intervals. (30 at 60hz, 72 at 144hz, etc.)
-                        <div>
-                            <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()">
-                            <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Calculate</button>
-                        </div>
                         </p>
                         </p>
+                        <h3>
+                            So many options...
+                        </h3>
+                        Limiters presented here are ordered by their precision, from best to acceptable. The better ones are smoother and can provide better latency reductions, but are not as fast to setup compared to the built-in driver alternatives and
+                        may have some compatibility issues.
                         <p>
-                        <table class="center" style="width: 100%; height: 96px;">
-                            <tr>
-                                <th colspan="3">
-                                    <h3 class="center">Select your graphics API</h3>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <button class="api-selection" onclick="expandLimiterTutorials(this, expanderD3D9, expanderVulkan)">
-                                        <b>
-                                            D3D9
-                                            <br>
-                                            (Default)
-                                        </b>
-                                    </button>
-                                </th>
-                                <th>
-
-                                </th>
-                                <th>
-                                    <button class="api-selection" onclick="expandLimiterTutorials(this, expanderVulkan, expanderD3D9)">
-                                        <b>
-                                            Vulkan
-                                            <br>
-                                            (DXVK)
-                                        </b>
-                                    </button>
-                                </th>
-                            </tr>
-                        </table>
-                        </p>
-                    </div>
-                    <div class="expander-bottom" id="expanderD3D9">
-                        <!-- SK -->
-                        <p>
+                            <!-- SK -->
                         <div class="expander-top clickable center width-limited" onclick="expandCard(this, specialk)">
                             <p>
                             <h3>
                                 Special K
                             </h3>
-                            Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR (not applicable to this game, sadly). The overall list of features is
-                            too
-                            long to write here, but the most important one used here is its
-                            best-in-class framerate limiter.
+                            Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR. The overall list of features is
+                            too long to write here, but the most important one used here is its best-in-class framerate limiter.
                             <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
                             </p>
                         </div>
@@ -645,16 +629,13 @@
                                 <p>
                                 <ul>
                                     <li>
-                                        Special K works only on <b>Windows 8 and higher</b>
-                                    </li>
-                                    <li>
-                                        Special K requires Fullscreen Optimizations to <u><b>NOT</b></u> disabled (FalloutNV.exe -> Properties -> Compatibility)
+                                        Special K works only on <b>Windows 8.1 and higher</b>
                                     </li>
                                     <li>
                                         Special K may conflict with Riva Tuner. If the game crashes or SK doesn't show up in game, make sure <b>Riva Tuner</b> is <b>not running</b>, or set Riva Runer's <b>injection delay</b> to <b>30000</b>
                                     </li>
                                     <li>
-                                        Special K's UI/OSD breaks water reflections. This is can be fixed by DXVK. On D3D9 the only option is either to not have SK visible
+                                        Special K's UI/OSD breaks water reflections. This is can be fixed by DXVK. On D3D9 the only option is to not have SK visible
                                     </li>
                                 </ul>
                                 </p>
@@ -824,6 +805,88 @@
                         </div>
                         </p>
 
+                        <!-- DXVK -->
+                        <p>
+                        <div class="expander-top clickable center width-limited" onclick="expandCard(this, dxvk)">
+                            <p>
+                            <h3>
+                                DXVK
+                            </h3>
+                            DXVK's built-in, basic limiter
+                            <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
+                            </p>
+                        </div>
+
+                        <div class="expander-bottom center width-limited" id="dxvk">
+                            <p>
+                            <div class="card-red">
+                                <h3>Warning!</h3>
+                                <p>
+                                    DXVK's limiter is <u><b>BROKEN</b></u> above 60Hz. If you use a high refresh rate display, use other limiters
+                                </p>
+                            </div>
+                            <div class="card-yellow">
+                                <h3>Before you start...</h3>
+                                <p>
+                                <ul>
+                                    <li>
+                                        Lines that have <b class="card-basic">#</b> are commented out, so make sure to remove it when enabling settings!
+                                    </li>
+                                    <li>
+                                        DXVK's limiter doesn't work when its (or game's) V-Sync is enabled!
+                                        <ol>
+                                            <li>
+                                                Disable V-Sync in DXVK (will override game's setting)
+                                                <div class="card-basic">
+                                                    <p>
+                                                        d3d9.presentInterval = 0
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Enable V-Sync in your GPU driver
+                                            </li>
+                                        </ol>
+                                    </li>
+                                </ul>
+                                </p>
+                            </div>
+                            <ol>
+                                <li>
+                                    Open (or create) <b>dxvk.conf</b> text file inside your <b>root folder</b> of Fallout: New Vegas with any text editor and write:
+                                    <ul>
+                                        <li>
+                                            No V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    d3d9.maxFrameRate = <span class="iFpsFixed">(RefreshRate)</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    d3d9.maxFrameRate = <span class="iFpsVSync">(RefreshRate - 1)</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            VRR + V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    d3d9.maxFrameRate = <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    ...or lower
+                                </li>
+                            </ol>
+                            </p>
+                        </div>
+                        </p>
+
                         <!-- Drivers -->
                         <p>
                         <div class="card center width-limited">
@@ -950,89 +1013,6 @@
                                 </p>
                             </div>
                             </p>
-                        </div>
-                        </p>
-                    </div>
-
-                    <div class="expander-bottom" id="expanderVulkan">
-                        <p>
-                        <div class="card center width-limited">
-
-                            <h3>
-                                DXVK
-                            </h3>
-                            <!-- <div class="card-yellow">
-                            <p>
-                                Limiters mentioned in D3D9 section work, but perform worse than the DXVK's one, so I don't recommend them
-                            </p>
-                        </div> How the turntables -->
-                            <div class="card-red">
-                                <h3>Warning!</h3>
-                                <p>
-                                <h3>DXVK's limiter is <u><b>BROKEN</b></u> above 60Hz. If you use a high refresh rate display, use limiters from D3D9 section.</h3>
-                                </p>
-                            </div>
-                            <div class="card-yellow">
-                                <h3>Before you start...</h3>
-                                <p>
-                                <ul>
-                                    <li>
-                                        Lines that have <b class="card-basic">#</b> are commented out, so make sure to remove it when enabling settings!
-                                    </li>
-                                    <li>
-                                        DXVK accepts only integer values!
-                                    </li>
-                                    <li>
-                                        DXVK's limiter doesn't work when its (or game's) V-Sync is enabled!
-                                        <ol>
-                                            <li>
-                                                Disable V-Sync in DXVK (will override game's setting)
-                                                <div class="card-basic">
-                                                    <p>
-                                                        d3d9.presentInterval = 0
-                                                    </p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                Enable V-Sync in your GPU driver
-                                            </li>
-                                        </ol>
-                                    </li>
-                                </ul>
-                                </p>
-                            </div>
-                            <ol>
-                                <li>
-                                    Open (or create) <b>dxvk.conf</b> text file inside your <b>root folder</b> of Fallout: New Vegas with any text editor and write:
-                                    <ul>
-                                        <li>
-                                            No V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    d3d9.maxFrameRate = <span class="iFpsFixed">(RefreshRate)</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    d3d9.maxFrameRate = <span class="iFpsVSync">(RefreshRate - 1)</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            VRR + V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    d3d9.maxFrameRate = <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    ...or lower
-                                </li>
-                            </ol>
                         </div>
                         </p>
                     </div>
