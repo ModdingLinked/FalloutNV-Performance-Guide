@@ -154,7 +154,6 @@ input:active {
     animation: slide-up 0.4s;
     z-index: 0;
     position: relative;
-    overflow-y: hidden;
 }
 
 .api-selection {
