@@ -37,6 +37,12 @@
                         Terminology
                     </a>
 
+                    <a href="#DriversAndOS" title="🙃 Graphics Drivers and Windows">
+                        <span class="subIcon">🪟</span>
+                        <span class="flippy">🙃</span>
+                        Drivers and Windows
+                    </a>
+
                     <a href="#StewieTweaks" title="🙃 lStewieAl's Tweaks and Engine Fixes">
                         <span class="subIcon">🔧</span>
                         <span class="flippy">🙃</span>
@@ -75,6 +81,7 @@
                 </p>
             </div>
             <div class="content">
+
                 <!-- Introduction -->
                 <div>
                     <span id="Introduction" onclick="location.href='#Introduction'">
@@ -201,6 +208,91 @@
                     </div>
                 </div>
 
+                <!-- Drivers and Windows-->
+                <div>
+                    <span id="DriversAndOS" onclick="location.href='#DriversAndOS'">
+                        <h2>Graphics Drivers and Windows</h2>
+                    </span>
+                    <div class="card">
+                        <p>
+                        <h3>Driver Updates</h3>
+                        Not much to say here - for the best compatibility and performance, you <b>must</b> be using the newest driver for your graphics card.
+                        </p>
+                        <p>
+                        You can check what GPU you have by opening Task Manager, and going to the Performance tab - the last GPU on the left pane is your main one.
+                        <br>
+                        If you don't see any GPU there, that means your GPU is too old to use DXVK.
+                        <div class="card-red">
+                            <p>
+                                This step is mandatory if you want to use DXVK!
+                            </p>
+                        </div>
+                        <table class="center" style="width: 100%; height: 96px;">
+                            <tr>
+                                <th colspan="3">
+                                    <h3 class="center">Select your graphics card to go the driver download page</h3>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <a href="https://www.nvidia.com/download/index.aspx" target="_blank">
+                                        <button class="button-big" style="background-color: #71bb21; color: white">
+                                            <b>
+                                                NVIDIA
+                                            </b>
+                                        </button>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a href="https://www.amd.com/en/support" target="_blank">
+                                        <button class="button-big" style="background-color: #dc0032; color: white">
+                                            <b>
+                                                AMD
+                                            </b>
+                                        </button>
+                                    </a>
+                                </th>
+                                <th>
+                                    <a href="https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html" target="_blank">
+                                        <button class="button-big" style="background-color: #2166b3; color: white">
+                                            <b>
+                                                INTEL
+                                            </b>
+                                        </button>
+                                    </a>
+                                </th>
+                            </tr>
+                        </table>
+                        <h3>Windows</h3>
+                        <p>
+                        Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition.
+                        If you don't have a GPU with MPO support, you can mitigate this by disabling Fullscreen Optimizations.
+                        </p>
+                        It's still weird to have unactivated Windows though.
+                        <p>
+                        <div class="card-red">
+                            <p>
+                                Having the watermark without MPOs will disable VRR and increase latency and stuttering!
+                            </p>
+                        </div>
+                        <div class="card-yellow">
+                            <p>
+                                This applies only to D3D9 with FSO, since windowed is already in the composed mode, and DXVK uses FSE.
+                                <br>
+                                If you have:
+                                <ul>
+                                    <li>Nvidia 16 series and newer</li>
+                                    <li>AMD Vega and newer</li>
+                                    <li>Intel CPUs 8th Gen and newer</li>
+                                </ul>
+                                You can also ignore it, since these models have Multiplane Overlays which allow for hardware composition.
+                            </p>
+                        </div>
+                        </p>
+                        </p>
+                    </div>
+                </div>
+
                 <!-- Tweaks -->
                 <div>
                     <span id="StewieTweaks" onclick="location.href='#StewieTweaks'">
@@ -218,7 +310,8 @@
                                 guides, you may skip this step since it's already included there
                             </p>
                         </div>
-                        lStewieAl's Tweaks and Engine Fixes is a mod by... <a href="https://www.nexusmods.com/newvegas/users/2232669">lStewieAl</a>, that does what it says - it adds tweaks and fixes the engine. The scope of this mod can't be overstated.
+                        lStewieAl's Tweaks and Engine Fixes is a mod by... <a href="https://www.nexusmods.com/newvegas/users/2232669" target="_blank">lStewieAl</a>, that does what it says - it adds tweaks and fixes the engine. The scope of this mod can't
+                        be overstated.
                         <h3>Installation</h3>
                         <ol>
                             <li>
@@ -618,12 +711,13 @@
                             <h3>
                                 Special K
                             </h3>
-                            Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR. The overall list of features is
+                            Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR. Its list of features is
                             too long to write here, but the most important one used here is its best-in-class framerate limiter.
                             <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
                             </p>
                         </div>
                         <div class="expander-bottom center width-limited" id="specialk">
+                            <p>
                             <div class="card-red">
                                 <h3>Warning!</h3>
                                 <p>
@@ -715,6 +809,9 @@
                                                     </li>
                                                 </ul>
                                                 Click on <b>Advanced</b> and enable <b>Low Latency Mode</b>
+                                                <div class="card-yellow">
+                                                    <p>If you use DXVK, you must double your limiter value, otherwise you'll get halved framerate</p>
+                                                </div>
                                                 </p>
                                             </div>
                                         </li>
@@ -728,6 +825,7 @@
                                     <br>
                                 </p>
                             </ol>
+                            </p>
                         </div>
                         </p>
 
