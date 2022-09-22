@@ -465,12 +465,9 @@
                                         <li>
                                             <p>
                                                 Intel GPUs from 6th Gen and newer most often work provided you have <a href="https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html" target="_blank">newest drivers</a>
-                                                installed. 
+                                                installed. <br>DXVK is broken past the 1.10.1 version.
                                                 <br>
-                                                Despite that, don't expect a big difference, if any, since the game will still be GPU bound.
-                                            </p>
-                                            <p>
-                                                DXVK is broken past the 1.10.1 version.
+                                                Don't expect a big performance difference, if any, since the game will still be GPU bound.
                                             </p>
                                         </li>
                                     </ul>
@@ -695,7 +692,7 @@
 
                         <h3>Finding the limit</h3>
                         <p>
-                            Enter your refresh rate here for automatic calculation of FPS limits below. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
+                            Enter your refresh rate here for automatic calculation of FPS limits <b>in the next section</b>. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
                         <div>
                             <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
                             <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button>
@@ -738,6 +735,11 @@
                                     </li>
                                     <li>
                                         Special K's UI/OSD breaks water reflections. This is can be fixed by DXVK. On D3D9 the only option is to not have SK visible
+                                        <ul>
+                                            <li>
+                                                Ironically, Special K doesn't natively support <b>DXVK</b>, which can sometimes lead to <b>compatibility issues</b>.
+                                            </li>
+                                        </ul>
                                     </li>
                                 </ul>
                                 </p>
