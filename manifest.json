@@ -1,0 +1,21 @@
+{
+  "background_color": "#202020",
+  "description": "A guide to making Fallout New Vegas run smoother. Hopefully.",
+  "dir": "auto",
+  "display": "minimal-ui",
+  "name": "New Vegas Performance Guide",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "New Vegas Performance Guide",
+  "start_url": "/",
+  "theme_color": "#202020",
+  "categories": [],
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "https://wallsogb.github.io/FalloutNV-Performance-Guide/UI/logo.webp"
+    }
+  ],
+  "shortcuts": [],
+  "lang": "en"
+}
