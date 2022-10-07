@@ -132,6 +132,10 @@
                                 which in turn allows for stutter reduction and tear-free display of unstable framerate<sup><a href="#ad1">[1]</a></sup>,
                                 and with a proper FPS cap - lower latency compared to V-Sync
                             </li>
+                            <li>
+                                <b>Multiplane Overlays (MPOs)</b> - hardware scanout planes for the GPU. They allow hardware image composition without any latency or performance penalty (for example displaying windows on top of each other), as well as their hardware scaling and stretching.
+                                MPOs are supported since Windows 8.1. Hardware capabilities vary between GPU manufacturers.
+                            </li>
                             <li><b>Presentation models:</b></li>
                             <ul>
                                 <li>
