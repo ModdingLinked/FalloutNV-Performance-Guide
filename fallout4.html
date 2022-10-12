@@ -69,7 +69,7 @@
                     <div class="card">
                         <p>
                         <h3>Welcome!</h3>
-                        This is a little spin-off for Fallout 4 | Skyrim made in collaboration with <a href="https://themidnightride.github.io/">The Midnight Ride</a> and <a href="https://dragonbornsfate.github.io/intro.html">Dragonborn's Fate</a>guides.
+                        This is a little spin-off for Fallout 4 | Skyrim made in collaboration with <a href="https://themidnightride.github.io/">The Midnight Ride</a> and <a href="https://dragonbornsfate.github.io/intro.html">Dragonborn's Fate</a> guides.
                         </p>
                         <p>
                             If you want to see the full guide dedicated to Fallout New Vegas, go <a href="https://wallsogb.github.io/FalloutNV-Performance-Guide/">here</a>.
@@ -100,7 +100,8 @@
                                 and with a proper FPS cap - lower latency compared to V-Sync
                             </li>
                             <li>
-                                <b>Multiplane Overlays (MPOs)</b> - hardware scanout planes for the GPU. They allow hardware image composition without any latency or performance penalty (for example displaying windows on top of each other), as well as their hardware scaling and stretching.
+                                <b>Multiplane Overlays (MPOs)</b> - hardware scanout planes for the GPU. They allow for hardware image composition without any latency or performance penalty (for example displaying windows on top of each other), as well as
+                                their hardware scaling and stretching.
                                 MPOs are supported since Windows 8.1. Hardware capabilities vary between GPU manufacturers.
                             </li>
                             <li><b>Presentation models:</b></li>
@@ -303,23 +304,41 @@
                         </div>
 
                         <h3>Recommended setups</h3>
-                        <h4>V-Sync</h4>
+                        Recommended configurations based on selected display scenarios:
                         <ul>
                             <li>
-                                Framerate must be capped slightly below refresh rate to reduce latency
+                                <h4>V-Sync</h4>
+                                <ul>
+                                    <li>
+                                        Framerate must be capped slightly below refresh rate to reduce latency
+                                    </li>
+                                    <div class="card-red">
+                                        <p>
+                                            V-Sync on its own is <u>NOT</u> a limiter. Using it as one introduces a latency penalty
+                                        </p>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>G-Sync | Freesync</h4>
+                                <ul>
+                                    <li>
+                                        V-Sync must be enabled, in order to fully get rid of tearing
+                                    </li>
+                                    <li>
+                                        Framerate must be capped below refresh rate, in order for VRR to not disengage and fallback to V-Sync, as this causes a very big increase in latency
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>No V-Sync</h4>
+                                <ul>
+                                    <li>
+                                        Nothing!
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
-                        <h4>G-Sync | Freesync</h4>
-                        <ul>
-                            <li>
-                                V-Sync must be enabled, in order to fully get rid of tearing
-                            </li>
-                            <li>
-                                Framerate must be capped below refresh rate, in order for VRR to not disengage and fallback to V-Sync - this causes very big increase in latency
-                            </li>
-                        </ul>
-
-                        If you play with V-Sync disabled, there's nothing besides the limiter to set up
 
                         <h3>Finding the limit</h3>
                         <p>

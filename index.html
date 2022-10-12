@@ -133,7 +133,8 @@
                                 and with a proper FPS cap - lower latency compared to V-Sync
                             </li>
                             <li>
-                                <b>Multiplane Overlays (MPOs)</b> - hardware scanout planes for the GPU. They allow hardware image composition without any latency or performance penalty (for example displaying windows on top of each other), as well as their hardware scaling and stretching.
+                                <b>Multiplane Overlays (MPOs)</b> - hardware scanout planes for the GPU. They allow for hardware image composition without any latency or performance penalty (for example displaying windows on top of each other), as well as
+                                their hardware scaling and stretching.
                                 MPOs are supported since Windows 8.1. Hardware capabilities vary between GPU manufacturers.
                             </li>
                             <li><b>Presentation models:</b></li>
@@ -368,7 +369,7 @@
                             </li>
                             <li>
                                 <p>
-                                    Open <b>NVTF.ini</b> in <b class="card-basic">NVSE\Plugins</b> as a text file and edit:
+                                    Open <b>NVTF.ini</b> in Mod Organizer and edit:
                                 <div class="card-basic">
                                     <p>
                                         bModifyDirectXBehavior=1
@@ -400,6 +401,8 @@
                                                 bUseDefaultPoolForTextures=1
                                             </p>
                                         </div>
+                                        Enabled by default
+                                        <br>
                                         Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures.
                                         <br>
                                         If you don't plan on using any texture mods, it's not needed.
@@ -586,19 +589,8 @@
                                             </li>
                                             <ul>
                                                 <li>
-                                                    <b>Alt-Tab doesn't work at all if <span title="New Vegas Tick Fix">NVTF</span>'s</b>
-                                                </li>
-                                            </ul>
-                                        </ul>
-                                        <div class="card-basic" id="karutpls">
-                                            <p>
-                                                bUseDefaultPoolForTextures
-                                            </p>
-                                        </div>
-                                        <ul>
-                                            <ul>
-                                                <li style="list-style: none;">
-                                                    <b>is enabled, unless you use <a href="#DXVK" title="🙃 Vulkan - DXVK">DXVK</a></b>
+                                                    Alt-Tab <b>doesn't work at all</b> if <b><span title="New Vegas Tick Fix">NVTF</span>'s pool change</b>
+                                                    is <b>enabled</b>, unless you use <b><a href="#DXVK" title="🙃 Vulkan - DXVK">DXVK</a></b>
                                                 </li>
                                             </ul>
                                             <li>
@@ -680,23 +672,41 @@
                         </div>
 
                         <h3>Recommended setups</h3>
-                        <h4>V-Sync</h4>
+                        Recommended configurations based on selected display scenarios:
                         <ul>
                             <li>
-                                Framerate must be capped slightly below refresh rate to reduce latency
+                                <h4>V-Sync</h4>
+                                <ul>
+                                    <li>
+                                        Framerate must be capped slightly below refresh rate to reduce latency
+                                    </li>
+                                    <div class="card-red">
+                                        <p>
+                                            V-Sync on its own is <u>NOT</u> a limiter. Using it as one introduces a latency penalty
+                                        </p>
+                                    </div>
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>G-Sync | Freesync</h4>
+                                <ul>
+                                    <li>
+                                        V-Sync must be enabled, in order to fully get rid of tearing
+                                    </li>
+                                    <li>
+                                        Framerate must be capped below refresh rate, in order for VRR to not disengage and fallback to V-Sync, as this causes a very big increase in latency
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h4>No V-Sync</h4>
+                                <ul>
+                                    <li>
+                                        Nothing!
+                                    </li>
+                                </ul>
                             </li>
                         </ul>
-                        <h4>G-Sync | Freesync</h4>
-                        <ul>
-                            <li>
-                                V-Sync must be enabled, in order to fully get rid of tearing
-                            </li>
-                            <li>
-                                Framerate must be capped below refresh rate, in order for VRR to not disengage and fallback to V-Sync - this causes very big increase in latency
-                            </li>
-                        </ul>
-
-                        If you play with V-Sync disabled, there's nothing besides the limiter to set up
 
                         <h3>Finding the limit</h3>
                         <p>
@@ -717,8 +727,9 @@
                         </h3>
                         Limiters presented here are ordered by their precision, from best to acceptable. The better ones are smoother and can provide better latency reductions, but are not as fast to setup compared to the built-in driver alternatives and
                         may have some compatibility issues.
+
+                        <!-- SK -->
                         <p>
-                            <!-- SK -->
                         <div class="expander-top clickable center width-limited" onclick="expandCard(this, specialk)">
                             <p>
                             <h3>
@@ -742,7 +753,7 @@
                                         Special K may conflict with Riva Tuner. If the game crashes or SK doesn't show up in game, make sure <b>Riva Tuner</b> is <b>not running</b>, or set Riva Runer's <b>injection delay</b> to <b>30000</b>
                                     </li>
                                     <li>
-                                        Special K's UI/OSD breaks water reflections. This is can be fixed by DXVK. On D3D9 the only option is to not have SK visible
+                                        Special K's UI/OSD breaks water reflections. This is fixed by DXVK. On D3D9 the only option is to not have SK's interface visible
                                         <ul>
                                             <li>
                                                 Ironically, Special K doesn't natively support <b>DXVK</b>, which can sometimes lead to <b>compatibility issues</b>.
@@ -854,7 +865,7 @@
                             <h3>
                                 RivaTuner Statistics Server
                             </h3>
-                            Riva Tuner Statistic Server by Unwinder is probably the most famous FPS Limiter and OSD software, thanks to its compatibility, reliability and ease of use.
+                            Riva Tuner Statistic Server by Unwinder is probably the most famous FPS Limiter and OSD software, thanks to its performance, compatibility, reliability and ease of use.
                             <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
                             </p>
                         </div>
