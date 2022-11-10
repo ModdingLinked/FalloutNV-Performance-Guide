@@ -74,6 +74,12 @@
                         FPS Limiters
                     </a>
 
+                    <a href="#FAQ" title="🙃 FAQ">
+                        <span class="subIcon">❓</span>
+                        <span class="flippy">🙃</span>
+                        FAQ
+                    </a>
+
                     <a href="#Finish" title="🙃 Finish">
                         <span class="subIcon">🏁</span>
                         <span class="flippy">🙃</span>
@@ -206,7 +212,8 @@
                                 <li id="ad3">
                                     OpenGL can be displayed using D3D11 thanks to Special K, which enables Flip Model and all its benefits along with HDR.
                                     <br>
-                                    Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one, and Vulkan interop doesn't work with DXVK. 
+                                    Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one, and Vulkan interop
+                                    doesn't work with DXVK.
                                 </li>
                             </ol>
                         </span>
@@ -283,7 +290,7 @@
                         </div>
                         <div class="card-yellow">
                             <p>
-                                This applies only to D3D9 with FSO, since windowed is already in the composed mode, and DXVK uses FSE.
+                                This applies only to D3D9 with FSO, since Windowed is already in the composed mode, and DXVK uses FSE.
                                 <br>
                                 If you have:
                             <ul>
@@ -752,12 +759,10 @@
                                         Special K may conflict with Riva Tuner. If the game crashes or SK doesn't show up in game, make sure <b>Riva Tuner</b> is <b>not running</b>, or set Riva Runer's <b>injection delay</b> to <b>30000</b>
                                     </li>
                                     <li>
-                                        Special K's UI/OSD breaks water reflections. This is fixed by DXVK. On D3D9 the only option is to not have SK's interface visible
-                                        <ul>
-                                            <li>
-                                                Ironically, Special K doesn't natively support <b>DXVK</b>, which can sometimes lead to <b>compatibility issues</b>.
-                                            </li>
-                                        </ul>
+                                        Special K's UI/OSD breaks water reflections. This is fixed by either DXVK or ReShade.
+                                    </li>
+                                    <li>
+                                        Special K doesn't natively support <b>Vulkan</b>, so when using DXVK it recognizes the game as D3D9.
                                     </li>
                                 </ul>
                                 </p>
@@ -1140,6 +1145,49 @@
                             </div>
                             </p>
                         </div>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Finish -->
+                <div>
+                    <span id="FAQ" onclick="location.href='#FAQ'">
+                        <h2>FAQ</h2>
+                    </span>
+                    <div class="card">
+                        <p>
+                        <h3>Are those questions really frequent?</h3>
+                        <ul>
+                            <li>
+                                <h4>Okay, but I <i>need</i> to use Windowed mode. What now?</h4>
+                                Well, use Windowed mode then. Both OneTweak and Special K can enable borderless mode.
+                            </li>
+                            <li>
+                                <h4>Do texture mods really have an impact on performance?</h4>
+                                Not directly, no. As long as you don't go over your VRAM budget and use NVTF's memory pool patch you'll be fine.
+                                <br>
+                                What <i>is</i> guaranteed from higher resolution textures is increase their in load time. This can translate into longer stutter period on cell loads.
+                            </li>
+                            <li>
+                                <h4>DXVK is breaking HDR after exiting the game!</h4>
+                                Yes, unfortunately due to how FSE works, in addition to lack of native Windows support from DXVK, it doesn't properly handle the HDR API.
+                                <br>
+                                The only real solution is to use Windowed mode.
+                            </li>
+                            <li>
+                                <h4>Is dgVoodoo 2 a viable alternative to DXVK?</h4>
+                                No. While it's true that you'd gain properly working Windowed mode and HDR from it, in contrast to DXVK you are guaranteed to get lower perfomance due to the translation overhead.
+                                <br>
+                                If you can handle the performance loss, sure go ahead.
+                            </li>
+                            <li>
+                                <h4>Is it possible to use D3D9Ex in Fallout New Vegas?</h4>
+                                Yes - Fallout New Vegas, oddly enough is the only Bethesda title with native D3D9Ex support. Does it work well? Not really.
+                                <br>
+                                While Special K's D3D9Ex enforcement works far better that NVTF's, it still suffers from CPU perfomance loss and increased GPU usage.
+                                <br>
+                            </li>
+                        </ul>
                         </p>
                     </div>
                 </div>
