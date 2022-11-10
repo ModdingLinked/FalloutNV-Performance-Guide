@@ -134,9 +134,7 @@
                             </li>
                             <li>
                                 <b>G-Sync | Freesync</b> - <b>Variable Refresh Rate (VRR)</b> technologies developed by NVIDIA and AMD respectively.
-                                They allow the display to adapt its refresh rate to the framerate,
-                                which in turn allows for stutter reduction and tear-free display of unstable framerate<sup><a href="#ad1">[1]</a></sup>,
-                                and with a proper FPS cap - lower latency compared to V-Sync
+                                They allow the display to adapt its refresh rate to the framerate, allowing to use V-Sync at arbitrary framerates and reduce its latency<sup><a href="#ad1">[1]</a></sup> .
                             </li>
                             <li>
                                 <b>Multiplane Overlays (MPOs)</b> - hardware scanout planes for the GPU. They allow for hardware image composition without any latency or performance penalty (for example displaying windows on top of each other), as well as
@@ -198,11 +196,8 @@
                         <span class="annotations">
                             <ol>
                                 <li id="ad1">
-                                    Emphasis on unstable, because tear-free, no-latency experience is possible with stable framerates on fixed refresh rate displays by hiding the tearline in VBlank (see RTSS Scanline Sync, Special K Latent Sync, FPS
-                                    Monitor
-                                    Cyber Sync).
-                                    <br>
-                                    It requires some tinkering to work though, and is not guaranteed to work on every display at default timings
+                                    Yes, despite popular misinformation, VRR alone doesn't get rid of tearing. It can minimize the rolling tear however, but that varies between displays, and such, it's not a guaranteed feature.
+                                    Additionally, the latency reduction applies <b>only</b> at framerates below V-Sync window (display's native refresh rate) - if framerate matches the native refresh rate, VRR engages V-Sync emulation.
                                 </li>
                                 <li id="ad2">
                                     D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and UE4 implemented Flip Model support around 2019 - 7 years after its release!).
