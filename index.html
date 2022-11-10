@@ -487,7 +487,7 @@
                                     <p>
                                         Fallout: New Vegas has some known shader issues. They are not guaranteed to happen, but they can occur:
                                     <ul>
-                                        <li>Broken transparency multisampling - alpha textures are more translucent, and are aliased</li>
+                                        <li>Broken transparency multisampling - alpha textures are more translucent and aliased</li>
                                         <li>Broken grass rendering - grass gets a dither effect instead of smooth fade in the distance</li>
                                         <li>Broken water reflections</li>
                                         <li>Broken lights and artifacting</li>
@@ -495,29 +495,17 @@
                                     </p>
                                 </li>
                             </ul>
-                            <div class="card-yellow">
-                                <p>
-                                    Due to DXVK's nature it relies on shader cache, which is compiled during the first use of that shader.
-                                    <br>
-                                    Because of that you can experience increased short stutter at the beginning of your playthrough.
-                                    <br>
-                                    This is completely normal, and will not reoccur after compilation has finished.
-                                    <br>
-                                    <a href="https://github.com/Sporif/dxvk-async/releases/latest" target="_blank">DXVK-Async</a> alleviates this problem thanks to making the compilation asynchronous
-                                </p>
-                            </div>
                             </p>
                         </div>
                         <h3>Installation</h3>
                         <ol>
                             <li>
                                 <p>
-                                    Open <a href="https://github.com/Sporif/dxvk-async/releases/latest" target="_blank">DXVK-Async Github page</a>
-                                    and click on <b>dxvk-async-1.10.3.tar.gz</b> to download it
+                                    Download pre-configured DXVK from <a href="https://www.nexusmods.com/newvegas/mods/76432" target="_blank">Nexus</a>
                                 </p>
                                 <p>
                                 <div class="card-red">
-                                    <p>Intel GPUs need to use the <a href="https://github.com/Sporif/dxvk-async/releases/tag/1.10.1">1.10.1 version</a></p>
+                                    <p>Intel GPUs need to use the <a href="https://www.nexusmods.com/newvegas/mods/76432?tab=files&file_id=1000092094" target="_blank">1.10.1 version</a></p>
                                 </div>
                                 </p>
                             </li>
@@ -525,20 +513,6 @@
                                 <p>
                                     Extract <b>d3d9.dll</b> from <b>x32 folder</b> inside downloaded archive to your <b>Fallout: New Vegas root folder</b>
                                 </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Create <b>dxvk.conf</b> text file and write:
-                                <div class="card-basic">
-                                    <p>
-                                        dxvk.enableAsync = true
-                                    </p>
-                                </div>
-                                <div>
-                                    <p>
-                                        This enables async patch in DXVK.</span>
-                                    </p>
-                                    </p>
                             </li>
                         </ol>
                         </p>
@@ -900,7 +874,7 @@
                                             VRR + V-Sync
                                             <div class="card-basic">
                                                 <p>
-                                                    <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
+                                                    <span class="fpsVRR">(RefreshRate * 0.932)</span>
                                                 </p>
                                             </div>
                                         </li>
@@ -1061,7 +1035,7 @@
                                                 VRR + V-Sync
                                                 <div class="card-basic">
                                                     <p>
-                                                        <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
+                                                        <span class="fpsVRR">(RefreshRate * 0.932)</span>
                                                     </p>
                                                 </div>
                                             </li>
@@ -1123,7 +1097,7 @@
                                                 VRR + V-Sync
                                                 <div class="card-basic">
                                                     <p>
-                                                        <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
+                                                        <span class="fpsVRR">(RefreshRate * 0.932)</span>
                                                     </p>
                                                 </div>
                                             </li>
