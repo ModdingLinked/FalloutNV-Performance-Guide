@@ -812,6 +812,9 @@
                                 <p>
                                 <ul>
                                     <li>
+                                        <h3><b>DXVK with DXGI requires</b> Special K to use <b>global injection</b>, which I don't cover at the moment</h3>
+                                    </li>
+                                    <li>
                                         Special K works only on <b>Windows 8.1 and higher</b>
                                     </li>
                                     <li>
@@ -837,24 +840,6 @@
                                     Download the <a href="https://special-k.info/" target="_blank"><b>Special K Archive</b></a> from the <b>Stable</b> section, then extract <b>SpecialK32.dll</b>
                                     to your Fallout New Vegas <b>root folder</b> and rename it to <b>dinput8.dll</b>
                                 </li>
-                                <ul>
-                                    <li>
-                                        If you use DXVK with DXGI, create <b>dinput8.ini</b> and paste:
-                                        <div class="card-basic">
-                                            <p>
-                                                [API.Hook]
-                                                <br>
-                                                d3d11=false
-                                            </p>
-                                        </div>
-                                        <div class="card-yellow">
-                                            <p>
-                                                This disables DXGI support until I find a way to reliably hook without resorting to global injection.
-                                            </p>
-                                        </div>
-                                        <div></div>
-                                    </li>
-                                </ul>
                                 <li>
                                     Launch Fallout New Vegas and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel
                                 </li>
