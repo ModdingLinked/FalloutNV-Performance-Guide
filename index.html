@@ -207,7 +207,7 @@
                                 <li id="ad3">
                                     OpenGL can be displayed using D3D11 thanks to Special K, which enables Flip Model and all its benefits along with HDR.
                                     <br>
-                                    Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one, 
+                                    Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one,
                                     while DXVK compatibility requires toggling a flag in Nvidia Profile Inspector - see <a href="#dxvk-flip">here</a>.
                                 </li>
                             </ol>
@@ -568,6 +568,11 @@
                                     Click <b>Apply & Close</b>
                                 </li>
                             </ol>
+                            <div class="card-yellow">
+                                <p>
+                                    If you've done it in the <b>Global Profile</b>, then all DXVK games will get benefits from the Flip Model.
+                                </p>
+                            </div>
                             <li>
                                 Press <b>Apply changes</b> and exit
                             </li>
@@ -825,9 +830,6 @@
                                 <p>
                                 <ul>
                                     <li>
-                                        <h3><b>DXVK with DXGI requires</b> Special K to use <b>global injection</b>, which I don't cover at the moment</h3>
-                                    </li>
-                                    <li>
                                         Special K works only on <b>Windows 8.1 and higher</b>
                                     </li>
                                     <li>
@@ -852,6 +854,34 @@
                                 <li>
                                     Download the <a href="https://special-k.info/" target="_blank"><b>Special K Archive</b></a> from the <b>Stable</b> section, then extract <b>SpecialK32.dll</b>
                                     to your Fallout New Vegas <b>root folder</b> and rename it to <b>dinput8.dll</b>
+                                </li>
+                                <li class="card-yellow">
+                                    <h3>DXVK with DXGI users!</h3>
+                                    <br>
+                                    Create <b class="card-basic">custom_dinput8.ini</b> and paste:
+                                    <div class="card-basic">
+                                        <p>
+                                        [API.Hook]
+                                        <br>
+                                        LastKnown=64
+                                        <br>
+                                        ddraw=false
+                                        <br>
+                                        d3d8=false
+                                        <br>
+                                        d3d9=false
+                                        <br>
+                                        d3d9ex=false
+                                        <br>
+                                        d3d11=true
+                                        <br>
+                                        OpenGL=false
+                                        <br>
+                                        [Window.System]
+                                        <br>
+                                        DontHookWndProc=true
+                                    </p>
+                                    </div>
                                 </li>
                                 <li>
                                     Launch Fallout New Vegas and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel
@@ -932,7 +962,6 @@
                                     <img src="limiters/SK.webp" class="limiters-img">
                                     <br>
                                 </p>
-                                <!--
                                 <div class="card-yellow">
                                     <p>
                                     <h2>Nvidia Exclusive - HDR output</h2>
@@ -947,10 +976,12 @@
                                         <li>
                                             Restart the game.
                                         </li>
+                                        <li>
+                                            For more information, see <a href="https://wiki.special-k.info/en/HDR/Retrofit" target="_blank">Special K Wiki</a>
+                                        </li>
                                     </ul>
                                     </p>
                                 </div>
-                                -->
                             </ol>
                             </p>
                         </div>
