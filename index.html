@@ -1259,10 +1259,6 @@
                         <h3>Are those questions really frequent?</h3>
                         <ul>
                             <li>
-                                <h4>Okay, but I <i>need</i> to use Windowed mode. What now?</h4>
-                                Well, use Windowed mode then. Both OneTweak and Special K can enable borderless mode.
-                            </li>
-                            <li>
                                 <h4>Do texture mods really have an impact on performance?</h4>
                                 Not directly, no. As long as you don't go over your VRAM budget and use NVTF's memory pool patch you'll be fine. If you run out of VRAM, you'll either crash, or experience massive stutters.
                                 <br>
@@ -1272,7 +1268,7 @@
                                 <h4>DXVK is breaking HDR after exiting the game!</h4>
                                 Yes, unfortunately due to how FSE works, in addition to lack of native Windows support from DXVK, it doesn't properly handle the HDR API.
                                 <br>
-                                The only real solution is to use Windowed mode.
+                                If you have a Nvidia GPU, use <a href="#DXVK">DXVK with DXGI</a> (You'll get actuall HDR too!). Otherwise, normal Windowed.
                             </li>
                             <li>
                                 <h4>Is dgVoodoo 2 a viable alternative to DXVK?</h4>
