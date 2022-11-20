@@ -274,7 +274,7 @@
                         <h3>Windows</h3>
                         <p>
                             Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition.
-                            If you don't have a GPU with MPO support, you can mitigate this by disabling Fullscreen Optimizations.
+                            If you don't have a GPU with MPO (Multiplane Overlay) support, you can mitigate this by disabling Fullscreen Optimizations.
                         </p>
                         It's still weird to have unactivated Windows though.
                         <p>
@@ -285,7 +285,7 @@
                         </div>
                         <div class="card-yellow">
                             <p>
-                                This applies only to D3D9 with FSO, since Windowed is already in the composed mode, and DXVK uses FSE.
+                                This applies only to D3D9 with FSO and DXVK with DXGI, since D3D9 Windowed is already in the composed mode, and DXVK uses FSE.
                                 <br>
                                 If you have:
                             <ul>
