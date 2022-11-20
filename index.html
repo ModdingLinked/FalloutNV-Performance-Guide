@@ -207,8 +207,8 @@
                                 <li id="ad3">
                                     OpenGL can be displayed using D3D11 thanks to Special K, which enables Flip Model and all its benefits along with HDR.
                                     <br>
-                                    Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one, and Vulkan interop
-                                    doesn't work with DXVK.
+                                    Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one, 
+                                    while DXVK compatibility requires toggling a flag in Nvidia Profile Inspector - see <a href="#dxvk-flip">here</a>.
                                 </li>
                             </ol>
                         </span>
@@ -465,9 +465,7 @@
                                     <ul>
                                         <li>
                                             <p>
-                                                Nvidia GPU laptops with integrated graphics fail to run DXVK properly on Windows, resulting in worse than native performance.
-                                                <br>
-                                                Unless you can use Nvidia GPU as the display output (e.g. MUX switch), it's recommended to stay away from DXVK on those devices until this issue is fixed
+                                                Nvidia GPU laptops need to enable DXGI interop (see below) for the best performance
                                             </p>
                                         </li>
                                         <li>
@@ -508,7 +506,7 @@
                                     <br>
                                     DXVK-Async alleviates this problem thanks to making the compilation asynchronous
 
-                                    <h4>DXVK 2.0 resolves this on latest Nvidia drivers by precompiling shaders on launch, but async patch still applies to other GPUs.</h4>
+                                <h4>DXVK 2.0 resolves this on latest Nvidia drivers by precompiling shaders on launch, but async patch still applies to other GPUs.</h4>
                                 </p>
                             </div>
                             </p>
@@ -548,6 +546,32 @@
                                 </p>
                             </li>
                         </ol>
+                        <h3 id="dxvk-flip">Enabling Flip Model (DXVK with DXGI)</h3>
+                        <div class="card-yellow">
+                            <p>
+                                At the time of writing, this feature is <b>Nvidia</b> only!
+                            </p>
+                        </div>
+                        Nvidia's drivers have ability to interop Vulkan to DXGI allowing for Flip Model in Windowed mode, which leads to <b>HDR support</b>, <b>native VRR</b> support, and best <b>performance</b> and <b>latency</b>.
+                        <ol>
+                            <li>Download <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a></li>
+                            <li>Enable "Show unknown settings from NVIDIA predefined profiles" in the top bar.</li>
+                            <li>In <b>8 - Extra</b> section fin <b class="card-basic">OGL_DX_PRESENT_DEBUG</b> and set it to <b class="card-basic" style="letter-spacing: 0.2em;">0x00080000 (NvRemixBridge)</b></li>
+                            <div class="card-red">
+                                <p>
+                                    If you don't see this option, then your driver is not up to date!
+                                </p>
+                            </div>
+                            <li>Press <b>Apply changes</b> and exit</li>
+                            <li>Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b> </li>
+                            <div class="card-basic">
+                                <p>
+                                    [Display]
+                                    <br>
+                                    bFull Screen=0
+                                </p>
+                            </div>
+                        </ol>
                         </p>
                     </div>
                 </div>
@@ -565,13 +589,34 @@
                             <table style="border-spacing: 4px;" class="comparison-table">
                                 <tr>
                                     <th>
+                                        <h2>Flip Windowed
+                                            <br>(DXVK with DXGI)
+                                        </h2>
+                                    </th>
+                                    <th>
                                         <h2>Fullscreen</h2>
                                     </th>
                                     <th>
-                                        <h2>Windowed</h2>
+                                        <h2>Non-Flip Windowed <br> (D3D9, Base DXVK)</h2>
                                     </th>
                                 </tr>
+
                                 <tr>
+                                    <td class="card-green">
+                                        <ul>
+                                            <li>Best latency and performance</li>
+                                            <li>Variable Refresh Rate works without any problems</li>
+                                            <li>
+                                                HDR output
+                                            </li>
+                                            <li>
+                                                Fast Alt-Tab
+                                            </li>
+                                            <li>
+                                                Native support for color profiles
+                                            </li>
+                                        </ul>
+                                    </td>
                                     <td class="card-green">
                                         <ul>
                                             <li>Best latency and performance, especially with <span title="Fullscreen optimizations">FSO</span></li>
@@ -590,6 +635,16 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td class="card-red">
+                                        <ul>
+                                            <li>
+                                                In-Game brightness settings don't work
+                                            </li>
+                                            <li>
+                                                Nvidia only
+                                            </li>
+                                        </ul>
+                                    </td>
                                     <td class="card-red">
                                         <ul>
                                             <li>
@@ -744,7 +799,7 @@
                                 Special K
                             </h3>
                             Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR. Its list of features is
-                            too long to write here, but the most important one used here is its best-in-class framerate limiter.
+                            too long to write here, but the most important one used here is its <b>best-in-class framerate limiter</b> and <b>HDR</b>.
                             <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
                             </p>
                         </div>
@@ -764,7 +819,7 @@
                                         Special K's interface breaks water reflections when visible. This is fixed by DXVK. (Or simply just don't have it visible).
                                     </li>
                                     <li>
-                                        Special K doesn't natively support <b>Vulkan</b>, so when using DXVK it recognizes the game as D3D9.
+                                        Special K doesn't natively support <b>Vulkan</b>, so when using DXVK without DXGI it recognizes the game as D3D9.
                                     </li>
                                 </ul>
                                 </p>
@@ -780,6 +835,18 @@
                                     Download the <a href="https://special-k.info/" target="_blank"><b>Special K Archive</b></a> from the <b>Stable</b> section, then extract <b>SpecialK32.dll</b>
                                     to your Fallout New Vegas <b>root folder</b> and rename it to <b>dinput8.dll</b>
                                 </li>
+                                <ul>
+                                    <li>
+                                        If you use DXVK with DXGI, create <b>dinput8.ini</b> and paste:
+                                        <div class="card-basic">
+                                            <p>
+                                                [API.Hook]
+                                                <br>
+                                                d3d9=false
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
                                 <li>
                                     Launch Fallout New Vegas and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel
                                 </li>
@@ -859,6 +926,23 @@
                                     <img src="limiters/SK.webp" class="limiters-img">
                                     <br>
                                 </p>
+                                <div class="card-yellow">
+                                    <p>
+                                    <h2>Nvidia Exclusive - HDR output</h2>
+                                    If you have a HDR compatible display, you can use Special K to output in native HDR!
+                                    <ul>
+                                        <li>
+                                            Open the HDR menu at the top of Special K's control panel menu and press the HDR Setup button.
+                                        </li>
+                                        <li>
+                                            Select the scRGB HDR option from the HDR Calibration widget.
+                                        </li>
+                                        <li>
+                                            Restart the game.
+                                        </li>
+                                    </ul>
+                                    </p>
+                                </div>
                             </ol>
                             </p>
                         </div>
