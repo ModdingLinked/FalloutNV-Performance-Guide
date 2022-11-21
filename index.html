@@ -233,7 +233,7 @@
                             If you don't see any GPU there, that means your GPU is too old to use DXVK.
                         <div class="card-red">
                             <p>
-                                This step is mandatory if you want to use DXVK!
+                            <h3>This step is mandatory if you want to use DXVK!</h3>
                             </p>
                         </div>
                         <table class="center" style="width: 100%; height: 96px;">
@@ -862,28 +862,28 @@
                                     Create <b class="card-basic">custom_dinput8.ini</b> and paste:
                                     <div class="card-basic">
                                         <p>
-                                        [API.Hook]
-                                        <br>
-                                        LastKnown=64
-                                        <br>
-                                        ddraw=false
-                                        <br>
-                                        d3d8=false
-                                        <br>
-                                        d3d9=false
-                                        <br>
-                                        d3d9ex=false
-                                        <br>
-                                        d3d11=true
-                                        <br>
-                                        OpenGL=false
-                                        <br>
-                                        [Window.System]
-                                        <br>
-                                        DontHookWndProc=true
-                                        <br>
-                                        Center=true
-                                    </p>
+                                            [API.Hook]
+                                            <br>
+                                            LastKnown=64
+                                            <br>
+                                            ddraw=false
+                                            <br>
+                                            d3d8=false
+                                            <br>
+                                            d3d9=false
+                                            <br>
+                                            d3d9ex=false
+                                            <br>
+                                            d3d11=true
+                                            <br>
+                                            OpenGL=false
+                                            <br>
+                                            [Window.System]
+                                            <br>
+                                            DontHookWndProc=true
+                                            <br>
+                                            Center=true
+                                        </p>
                                     </div>
                                 </li>
                                 <li>
@@ -1159,6 +1159,11 @@
                                 NVIDIA | AMD driver
                             </h3>
                             The most basic limiters from this list, but definitely the easiest and fastest to set up!
+                            <div class="card-red">
+                                <p>
+                                    These are here just as a fallback. I don't really recommend using them unless you have compatibility issues with ones above
+                                </p>
+                            </div>
                             <p>
                             <div class="expander-top clickable width-full" onclick="expandCard(this, nvidia)">
                                 <p>
