@@ -13,6 +13,7 @@
         <meta property="og:description" content="A guide to making Fallout New Vegas run smoother. Hopefully.">
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3f3f3">
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#202020">
+        <meta name="keywords" content="Fallout New Vegas, DXVK, FPS, performance, Fallout, FNV, New Vegas, Vulkan, fps limit, Special K, Riva Tuner, RTSS, stutter, lag, latency, hitches">
         <link rel="icon" type="image/x-icon" href=".\favicon.webp">
         <script src="https://kit.fontawesome.com/baff4f2fd4.js" crossorigin="anonymous"></script>
         <script src="javascript.js"></script>
@@ -112,7 +113,7 @@
                             </p>
                         </div>
                         <div>
-                            <img src="UI/logo.webp" id="logo">
+                            <img src="UI/logo.webp" id="logo" alt="Logo of a Vault-Boy with glasses typing on a computer">
                         </div>
                     </div>
                 </div>
@@ -821,7 +822,7 @@
                             </h3>
                             Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR. Its list of features is
                             too long to write here, but the most important one used here is its <b>best-in-class framerate limiter</b> and <b>HDR</b>.
-                            <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
+                            <img class="chevron" style="float: right;" src="UI/Chevron Down.svg" alt="UI element - Chevron">
                             </p>
                         </div>
                         <div class="expander-bottom center width-limited" id="specialk">
@@ -907,7 +908,7 @@
                                             <div class="expander-top clickable" style="max-width: 70%;" onclick="expandCard(this, latentSync)">
                                                 <p>
                                                     Optional - Disabled V-Sync with no tearing
-                                                    <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
+                                                    <img class="chevron" style="float: right;" src="UI/Chevron Down.svg" alt="UI element - Chevron">
                                                 </p>
                                             </div>
 
@@ -967,7 +968,7 @@
                                 <p>
                                     Your configuration should look similar to this
                                     <br>
-                                    <img src="limiters/SK.webp" class="limiters-img">
+                                    <img src="limiters/SK.webp" class="limiters-img" alt="Screenshot showcasing Special K's control panel">
                                     <br>
                                 </p>
                                 <div class="card-yellow">
@@ -1003,7 +1004,7 @@
                                 RivaTuner Statistics Server
                             </h3>
                             Riva Tuner Statistic Server by Unwinder is probably the most famous FPS Limiter and OSD software, thanks to its performance, compatibility, reliability and ease of use.
-                            <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
+                            <img class="chevron" style="float: right;" src="UI/Chevron Down.svg" alt="UI element - Chevron">
                             </p>
                         </div>
                         <div class="expander-bottom center width-limited" id="rtss">
@@ -1068,94 +1069,12 @@
                                 <p>
                                     Your configuration should look similar to this
                                     <br>
-                                    <img src="limiters/RTSS.webp" class="limiters-img">
+                                    <img src="limiters/RTSS.webp" class="limiters-img" alt="Screenshot showcasing RTSS' settings">
                                     <br>
                                 </p>
                             </ol>
                         </div>
                         </p>
-
-                        <!-- DXVK - This is getting tiresome
-                        <p>
-                        <div class="expander-top clickable center width-limited" onclick="expandCard(this, dxvk)">
-                            <p>
-                            <h3>
-                                DXVK
-                            </h3>
-                            DXVK's built-in, basic limiter
-                            <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
-                            </p>
-                        </div>
-
-                        <div class="expander-bottom center width-limited" id="dxvk">
-                            <p>
-                            <div class="card-red">
-                                <h3>Warning!</h3>
-                                <p>
-                                    DXVK's limiter is <u><b>BROKEN</b></u> above 60Hz. If you use a high refresh rate display, use other limiters
-                                </p>
-                            </div>
-                            <div class="card-yellow">
-                                <h3>Before you start...</h3>
-                                <p>
-                                <ul>
-                                    <li>
-                                        Lines that have <b class="card-basic">#</b> are commented out, so make sure to remove it when enabling settings!
-                                    </li>
-                                    <li>
-                                        DXVK's limiter doesn't work when its (or game's) V-Sync is enabled!
-                                        <ol>
-                                            <li>
-                                                Disable V-Sync in DXVK (will override game's setting)
-                                                <div class="card-basic">
-                                                    <p>
-                                                        d3d9.presentInterval = 0
-                                                    </p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                Enable V-Sync in your GPU driver
-                                            </li>
-                                        </ol>
-                                    </li>
-                                </ul>
-                                </p>
-                            </div>
-                            <ol>
-                                <li>
-                                    Open (or create) <b>dxvk.conf</b> text file inside your <b>root folder</b> of Fallout: New Vegas with any text editor and write:
-                                    <ul>
-                                        <li>
-                                            No V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    d3d9.maxFrameRate = <span class="iFpsFixed">(RefreshRate)</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    d3d9.maxFrameRate = <span class="iFpsVSync">(RefreshRate - 1)</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            VRR + V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    d3d9.maxFrameRate = <span class="fpsVRR">(RefreshRate - (RefreshRate * 0.068))</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    ...or lower
-                                </li>
-                            </ol>
-                            </p>
-                        </div>
-                        </p>-->
 
                         <!-- Drivers -->
                         <p>
@@ -1174,7 +1093,7 @@
                                 <p>
                                 <h4>
                                     NVIDIA
-                                    <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
+                                    <img class="chevron" style="float: right;" src="UI/Chevron Down.svg" alt="UI element - Chevron">
                                 </h4>
                                 </p>
                             </div>
@@ -1224,7 +1143,7 @@
                                 <p>
                                     Your configuration should look similar to this
                                     <br>
-                                    <img src="limiters/Nvidia.webp" class="limiters-img">
+                                    <img src="limiters/Nvidia.webp" class="limiters-img" alt="Screenshot showcasing Nvidia Control Panel settings">
                                     <br>
                                 </p>
                             </div>
@@ -1236,7 +1155,7 @@
                                 <p>
                                 <h4>
                                     AMD
-                                    <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
+                                    <img class="chevron" style="float: right;" src="UI/Chevron Down.svg" alt="UI element - Chevron">
                                 </h4>
                                 </p>
                             </div>
@@ -1283,7 +1202,7 @@
                                 <p>
                                     Your configuration should look similar to this
                                     <br>
-                                    <img src="limiters/AMD.webp" class="limiters-img">
+                                    <img src="limiters/AMD.webp" class="limiters-img" alt="Screenshot showcasing AMD Software settings">
                                     <br>
                                 </p>
                             </div>
@@ -1395,7 +1314,7 @@
                                 <a href="https://www.nexusmods.com/site/users/16367674" target="_blank">Glaceon575</a> - for helping with benchmarks and providing screenshots for AMD GPUs
                             </li>
                             <li>
-                                You <img src="UI/pepestare.webp" id="pepestare">
+                                You <img src="UI/pepestare.webp" id="pepestare" alt="Image of Pepe the frog happily smiling and looking at the viewer">
                             </li>
                         </ul>
                         </p>
