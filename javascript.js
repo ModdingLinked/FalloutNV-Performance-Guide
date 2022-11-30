@@ -37,7 +37,6 @@ function toggleNav() {
 function refreshRateCalculations() {
     const rr = document.getElementById("refreshRateInput").value;
     if (rr > 24) {
-        const rrVSync = rr - 1;
         if (rr < 90) {
             var rrVRR = Math.round((rr - (rr * 0.034)));
         }
@@ -52,16 +51,16 @@ function refreshRateCalculations() {
         const iFpsVSync = document.getElementsByClassName("iFpsVSync");
 
         fpsFixed[0].innerHTML = rr;
-        fpsVSync[0].innerHTML = rrVSync;
+        fpsVSync[0].innerHTML = rr - 0.5;
 
         for (const fpsVRRItem of fpsVRR) {
             fpsVRRItem.innerHTML = Math.round(rrVRR);
         }
         for (const iFpsFixedItem of iFpsFixed) {
-            iFpsFixedItem.innerHTML = Math.round(rr);
+            iFpsFixedItem.innerHTML = rr;
         }
         for (const iFpsVSyncItem of iFpsVSync) {
-            iFpsVSyncItem.innerHTML = Math.round(rrVSync);
+            iFpsVSyncItem.innerHTML = rr - 1;
         }
     }
 }
