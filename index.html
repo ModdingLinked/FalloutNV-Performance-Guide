@@ -573,19 +573,9 @@
                         Nvidia's drivers have ability to interop Vulkan to DXGI allowing for Flip Model in Windowed mode, which leads to <b>HDR support</b>, <b>native VRR</b> support, and best <b>performance</b> and <b>latency</b>.
                         <ol>
                             <li>Download <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a></li>
-                            <li>Enable "Show unknown settings from NVIDIA predefined profiles" in the top bar (penultimate button).</li>
-                            <li>In <b>8 - Extra</b> section find <b class="card-basic">OGL_DX_PRESENT_DEBUG</b> and set it to <b class="card-basic" style="letter-spacing: 0.1em;">0x00080001</b>:</li>
-                            <ol>
-                                <li>
-                                    Select the setting and click on <b>Show bit value editor</b> on the top bar (last button).
-                                </li>
-                                <li>
-                                    In the first column, check bit <b class="card-basic" style="letter-spacing: 0.1em;">#00</b> and <b class="card-basic" style="letter-spacing: 0.1em;">#19</b>
-                                </li>
-                                <li>
-                                    Click <b>Apply & Close</b>
-                                </li>
-                            </ol>
+                            <li>Enable "Show unknown settings from NVIDIA predefined profiles" in the top bar (penultimate button)</li>
+                            <li>Press <b>Ctrl+F</b> and paste <b class="card-basic">OGL_DX_PRESENT_DEBUG</b></li>
+                            <li>Set the result to <b class="card-basic" style="letter-spacing: 0.1em;">0x00080001</b> and click <b>Apply & Close</b></li>
                             <div class="card-yellow">
                                 <p>
                                     If you've done it in the <b>Global Profile</b>, then all DXVK games will get benefits from the Flip Model.
