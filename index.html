@@ -624,7 +624,7 @@
                         <h3>Presentation problems</h3>
                         Here's a comparison of three display modes you can use in this game.
                         <div class="comparison">
-                            <table style="border-spacing: 4px;" class="comparison-table">
+                            <table class="comparison-table">
                                 <tr>
                                     <th>
                                         <h2>Flip Windowed
@@ -818,7 +818,7 @@
                         </div>
                         <div class="card-yellow">
                             <p>
-                                If you don't use, or not have VRR, it's best to limit your framerate in full intervals. (30 at 60hz, 72 at 144hz, etc.)
+                                If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.)
                             </p>
                         </div>
                         </p>
@@ -921,14 +921,14 @@
                                                     In right click menu select your refresh rate
                                                 </p>
                                             </div>
-                                            <div class="expander-top clickable" style="max-width: 70%;" onclick="expandCard(this, latentSync)">
+                                            <div class="expander-top clickable" class="width-very-limited" onclick="expandCard(this, latentSync)">
                                                 <p>
                                                     Optional - Disabled V-Sync with no tearing
                                                     <img class="chevron" style="float: right;" src="UI/Chevron Down.svg" alt="UI element - Chevron">
                                                 </p>
                                             </div>
 
-                                            <div class="expander-bottom" style="max-width: 70%;" id="latentSync">
+                                            <div class="expander-bottom" class="width-very-limited" id="latentSync">
                                                 <h4>It's best to do this in-game!</h4>
                                                 If you use <b>Fullscreen Mode without V-Sync</b> or <b>DXVK with DXGI</b> and <b>have stable framerate</b>, in limiter's right click menu select <b>Latent Sync</b>
                                                 <p>
@@ -957,7 +957,7 @@
                                             V-Sync
                                             <div class="card-basic">
                                                 <p>
-                                                    In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 1
+                                                    In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 0.5
                                                 </p>
                                             </div>
                                         </li>
@@ -989,8 +989,10 @@
                                 </p>
                                 <div class="card-yellow">
                                     <p>
-                                    <h2>Nvidia Exclusive - HDR output</h2>
-                                    If you have a HDR compatible display, you can use Special K to output in native HDR!
+                                        <span id="nvhdr" onclick="location.href='#nvhdr'">
+                                            <h2>Nvidia Exclusive - HDR output</h2>
+                                        </span>
+                                        If you have a HDR compatible display, you can use Special K to output in native HDR!
                                     <ul>
                                         <li>
                                             Open the HDR menu at the top of Special K's control panel menu and press the HDR Setup button.
