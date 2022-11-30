@@ -522,17 +522,15 @@ b.card-basic {
 }
 
 @keyframes rotate {
-    0% {
-        transform: rotate(0deg);
-    }
 
     50% {
-        transform: translateY(-6px) rotate(180deg);
+        transform: translateY(-6px) rotateZ(180deg);
     }
 
     100% {
-        transform: rotate(360deg);
+        transform: translateY(0px) rotateZ(360deg);
     }
+
 }
 
 @keyframes slide-down {
@@ -703,7 +701,7 @@ b.card-basic {
         margin-bottom: 20%;
         margin-left: 0;
         border-top-right-radius: 0;
-        overflow: scroll;
+        overflow-y: scroll;
     }
 
     .header {
