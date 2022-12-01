@@ -2,15 +2,23 @@
 <html lang="en">
 
     <head>
+        <script type="text/javascript">
+            (function (c, l, a, r, i, t, y) {
+                c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+                t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+                y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+            })(window, document, "clarity", "script", "eqp62sz0u1");
+        </script>
         <meta charset="UTF-8">
         <title>Fallout 4 | Skyrim Performance Tips</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="A guide to making Fallout 4 | Skyrim run smoother. Hopefully.">
+        <meta name="description" content="A bunch of tips to make Fallout 4 | Skyrim run smoother. Hopefully.">
         <meta property="og:title" content="Fallout 4 | Skyrim Performance Tips">
         <meta property="og:type" content="article">
         <meta property="og:url" content="https://wallsogb.github.io/FalloutNV-Performance-Guide">
         <meta property="og:image" content="https://wallsogb.github.io/FalloutNV-Performance-Guide/UI/logo.webp">
-        <meta property="og:description" content="A guide to making Fallout 4 | Skyrim run smoother. Hopefully.">
+        <meta property="og:description" content="A bunch of tips to make Fallout 4 | Skyrim run smoother. Hopefully.">
+        <meta name="keywords" content="Fallout 4, Skyrim, Skyrim Special Edition, Skyrim Anniversary Editio, SSE, AE, FPS, performance, Fallout, fps limit, Special K, Riva Tuner, RTSS, stutter, lag, latency, hitches, flip model, DXGI, interop, Nvidia, HDR">
         <script src="https://kit.fontawesome.com/baff4f2fd4.js" crossorigin="anonymous"></script>
         <script src="javascript.js"></script>
         <link rel="stylesheet" href="styles.css">
@@ -168,8 +176,8 @@
                                 <li id="ad3">
                                     OpenGL can be displayed using D3D11 thanks to Special K, which enables Flip Model and all its benefits along with HDR.
                                     <br>
-                                    Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one, and Vulkan interop
-                                    doesn't work with DXVK.
+                                    Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one,
+                                    while DXVK compatibility requires toggling a flag in Nvidia Profile Inspector - see <a href="https://wallsogb.github.io/FalloutNV-Performance-Guide/#dxvk-flip">here</a>.
                                 </li>
                             </ol>
                         </span>
@@ -276,7 +284,8 @@
                     <span id="RecommendedLimiters" onclick="location.href='#RecommendedLimiters'">
                         <h2>Recommended framerate limiters and their configurations</h2>
                     </span>
-                    <div class="card">
+                    <!--<div class="card"> -->
+                    <div class="expander-top" id="api-expander">
                         <p>
                         <h3>(Not) Pushing the limits</h3>
                         Limiting framerate is very important for overall stability. A good limiter will most importantly improve framepacing, reducing microstutter. Other benefits could be reduced latency and power consumption.
@@ -330,14 +339,14 @@
 
                         <h3>Finding the limit</h3>
                         <p>
-                            Enter your refresh rate here for automatic calculation of FPS limits below. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
+                            Enter your refresh rate here for automatic calculation of FPS limits <b>in the next section</b>. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
                         <div>
                             <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
                             <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button>
                         </div>
                         <div class="card-yellow">
                             <p>
-                                If you don't use, or not have VRR, it's best to limit your framerate in full intervals. (30 at 60hz, 72 at 144hz, etc.)
+                                If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.)
                             </p>
                         </div>
                         </p>
@@ -345,11 +354,8 @@
                         <h3>
                             So many options...
                         </h3>
-                        Limiters presented here are ordered by their precision, from best to acceptable. The better ones are smoother and can provide better latency reductions, but are not as fast to setup compared to the built-in driver alternatives and
-                        may have some compatibility issues.
-                        </p>
-                        <p>
-                        </p>
+                        Both limiters presented here are comparable in terms of precision, but Special K trumps RTSS when it comes to latency, at the cost of <b>lack of ENB compatibility</b>.
+
                         <!-- SK -->
                         <p>
                         <div class="expander-top clickable center width-limited" onclick="expandCard(this, specialk)">
@@ -357,12 +363,13 @@
                             <h3>
                                 Special K
                             </h3>
-                            Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR. The overall list of features is too
-                            long to write here, but the most important ones used here is its best-in-class framerate limiter, alongside with Texture Cache, which provides better VRAM management, and faster loading.
-                            <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
+                            Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR. Its list of features is
+                            too long to write here, but the most important one used here is its <b>best-in-class framerate limiter</b> and <b>HDR</b>.
+                            <img class="chevron" style="float: right;" src="UI/Chevron Down.svg" alt="UI element - Chevron">
                             </p>
                         </div>
                         <div class="expander-bottom center width-limited" id="specialk">
+                            <p>
                             <div class="card-red">
                                 <h3>Warning!</h3>
                                 <p>
@@ -374,10 +381,13 @@
                                         Special K may conflict with Riva Tuner. If the game crashes or SK doesn't show up in game, make sure <b>Riva Tuner</b> is <b>not running</b>, or set Riva Runer's <b>injection delay</b> to <b>30000</b>
                                     </li>
                                     <li>
+                                        Special K's interface breaks water reflections when visible. This is fixed by DXVK. (Or simply just don't have it visible)
+                                    </li>
+                                    <li>
                                         Special K is not compatible with ENB
                                     </li>
                                     <li>
-                                        Special K is not compatible with <b>.NET Framework</b> - it can be safely disabled, since it's only used for logging purposes.
+                                        Special K is not compatible with .NET Framework
                                     </li>
                                 </ul>
                                 </p>
@@ -390,7 +400,7 @@
                             <h4>Installation</h4>
                             <ol>
                                 <li>
-                                    Download the <a href="https://github.com/SpecialKO/SpecialK/releases/latest" target="_blank"><b>SpecialK.7z</b></a> from the <b>Assets</b> section, then extract <b>SpecialK64.dll</b>
+                                    Download the <a href="https://special-k.info/" target="_blank"><b>Special K Archive</b></a> from the <b>Stable</b> section, then extract <b>SpecialK64.dll</b>
                                     to your Fallout 4 | Skyrim <b>root folder</b> and rename it to <b>dxgi.dll</b>
                                 </li>
                                 <li>
@@ -406,16 +416,16 @@
                                                     In right click menu select your refresh rate
                                                 </p>
                                             </div>
-                                            <div class="expander-top clickable" style="max-width: 70%;" onclick="expandCard(this, latentSync)">
+                                            <div class="expander-top clickable" class="width-very-limited" onclick="expandCard(this, latentSync)">
                                                 <p>
                                                     Optional - Disabled V-Sync with no tearing
-                                                    <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
+                                                    <img class="chevron" style="float: right;" src="UI/Chevron Down.svg" alt="UI element - Chevron">
                                                 </p>
                                             </div>
 
-                                            <div class="expander-bottom" style="max-width: 70%;" id="latentSync">
+                                            <div class="expander-bottom" class="width-very-limited" id="latentSync">
                                                 <h4>It's best to do this in-game!</h4>
-                                                If you have <b>have stable framerate</b>, in limiter's right click menu select <b>Latent Sync</b>
+                                                If you play without V-Sync and <b>have stable framerate</b>, in limiter's right click menu select <b>Latent Sync</b>
                                                 <p>
                                                     In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use <b>Sync offset</b> slider so the tearing is not visible.
                                                     <br>
@@ -442,7 +452,7 @@
                                             V-Sync
                                             <div class="card-basic">
                                                 <p>
-                                                    In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 1
+                                                    In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 0.5
                                                 </p>
                                                 <p>
                                                     In Direct3D 11 Settings, under SwapChain Management:
@@ -485,34 +495,36 @@
                                                 </p>
                                             </div>
                                         </li>
-                                        If you want to enter a custom value, <b>Ctrl-Click</b> on the bar. You can also drag your mouse on it.
                                     </ul>
-                                    <div class="card-yellow">
-                                        <p>
-                                            Nvidia GPUs Exclusive - in <b>Advanced</b> options of <b>Framerate Limiter</b> you can toggle Nvidia Reflex for latency reductions.
-                                            <br>
-                                            <b>This setting is <u>not</u> the same as the Low Latency Mode in Nvidia Control Panel or Special K's!</b>
-                                        <ul>
-                                            <li>
-                                                Nothing But Boost - Forces the GPU to run at highest clocks to reduce microstutter and latency caused by downlocking - recommended setting
-                                            </li>
-                                            <li>
-                                                Low Latency - Enables Nvidia's Low Latency Reflex mode - can introduce stuttering when using G-Sync
-                                            </li>
-                                            <li>
-                                                Low Latency + Boost - Enables both settings
-                                            </li>
-                                        </ul>
-                                        </p>
-                                    </div>
+                                    ...if you want to enter a custom value, <b>Ctrl-Click</b> on the bar. You can also drag your mouse on it.
                                 </li>
                                 <p>
                                     Your configuration should look similar to this
                                     <br>
-                                    <img src="FO4/SK.webp" class="limiters-img">
+                                    <img src="FO4/SK.webp" class="limiters-img" alt="Screenshot showcasing Special K's control panel">
                                     <br>
                                 </p>
+                                <div class="card-yellow">
+                                    <p>
+                                        If you have a HDR compatible display, you can use Special K to output in native HDR!
+                                    <ul>
+                                        <li>
+                                            Open the HDR menu at the top of Special K's control panel menu and press the HDR Setup button.
+                                        </li>
+                                        <li>
+                                            Select the scRGB HDR option from the HDR Calibration widget.
+                                        </li>
+                                        <li>
+                                            Restart the game.
+                                        </li>
+                                        <li>
+                                            For more information, see <a href="https://wiki.special-k.info/en/HDR/Retrofit" target="_blank">Special K Wiki</a>
+                                        </li>
+                                    </ul>
+                                    </p>
+                                </div>
                             </ol>
+                            </p>
                         </div>
                         </p>
 
@@ -523,8 +535,8 @@
                             <h3>
                                 RivaTuner Statistics Server
                             </h3>
-                            Riva Tuner Statistic Server by Unwinder is probably the most famous FPS Limiter and OSD software, thanks to its compatibility, reliability and ease of use.
-                            <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
+                            Riva Tuner Statistic Server by Unwinder is probably the most famous FPS Limiter and <b>OSD software</b>, thanks to its performance, <b>compatibility</b>, reliability and ease of use.
+                            <img class="chevron" style="float: right;" src="UI/Chevron Down.svg" alt="UI element - Chevron">
                             </p>
                         </div>
                         <div class="expander-bottom center width-limited" id="rtss">
@@ -551,7 +563,7 @@
                                             V-Sync
                                             <div class="card-basic">
                                                 <p>
-                                                    <span class="fpsVSync">(RefreshRate - 1)</span>
+                                                    <span class="fpsVSync">(RefreshRate - 0.5)</span>
                                                 </p>
                                             </div>
                                         </li>
@@ -583,145 +595,10 @@
                                 <p>
                                     Your configuration should look similar to this
                                     <br>
-                                    <img src="FO4/RTSS.webp" class="limiters-img">
+                                    <img src="FO4/RTSS.webp" class="limiters-img" alt="Screenshot showcasing RTSS' settings">
                                     <br>
                                 </p>
                             </ol>
-                        </div>
-                        </p>
-
-                        <!-- Drivers -->
-                        <p>
-                        <div class="card center width-limited">
-                            <h3>
-                                NVIDIA | AMD driver
-                            </h3>
-                            The most basic limiters from this list, but definitely the easiest and fastest to set up!
-                            <p>
-                            <div class="expander-top clickable center width-full" onclick="expandCard(this, nvidia)">
-                                <p>
-                                <h4>
-                                    NVIDIA
-                                    <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
-                                </h4>
-                                </p>
-                            </div>
-                            <div class="expander-bottom center width-full" id="nvidia">
-                                <h4>Configuration</h4>
-                                <ol>
-                                    <li>
-                                        Open <b>NVIDIA Control Panel</b>, go to <b>Program Settings</b>
-                                    </li>
-                                    <li>
-                                        Select <b>Fallout4.exe | SkyrimSE.exe</b>. If it's not present, add it manually
-                                    </li>
-                                    <li>
-                                        In settings, set <b>Max Frame Rate</b> to:
-                                        <ul>
-                                            <li>
-                                                No V-Sync
-                                                <div class="card-basic">
-                                                    <p>
-                                                        <span class="iFpsFixed">(RefreshRate)</span>
-                                                    </p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                V-Sync
-                                                <div class="card-basic">
-                                                    <p>
-                                                        <span class="iFpsVSync">(RefreshRate - 1)</span>
-                                                    </p>
-                                                    <p>
-                                                        Set <b>Low Latency Mode</b> to On
-                                                    </p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                VRR + V-Sync
-                                                <div class="card-basic">
-                                                    <p>
-                                                        <span class="fpsVRR">(RefreshRate * 0.932)</span>
-                                                    </p>
-                                                    <p>
-                                                        Set <b>Low Latency Mode</b> to Ultra
-                                                    </p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        ...or lower
-                                    </li>
-                                    <li>
-                                        Click <b>Apply</b>
-                                    </li>
-                                </ol>
-                                <p>
-                                    Your configuration should look similar to this
-                                    <br>
-                                    <img src="FO4/Nvidia.webp" class="limiters-img">
-                                    <br>
-                                </p>
-                            </div>
-
-                            </p>
-                            <p>
-
-                            <div class="expander-top clickable center width-full" onclick="expandCard(this, amd)">
-                                <p>
-                                <h4>
-                                    AMD
-                                    <img class="chevron" style="float: right;" src="UI/Chevron Down.svg">
-                                </h4>
-                                </p>
-                            </div>
-                            <div class="expander-bottom center width-full" id="amd">
-                                <h4>Configuration</h4>
-                                <ol>
-                                    <li>
-                                        Open <b>AMD Software: Adrenaline Edition</b>, go to <b>Gaming</b> tab
-                                    </li>
-                                    <li>
-                                        Select <b>Fallout 4 | Skyrim</b> or search for it in the bar. If not present, click the three dots and add the executable manually.
-                                    </li>
-                                    <li>
-                                        In games's menu, enable <b>Radeon Chill™️</b> and set <b>Max FPS</b> to:
-                                        <ul>
-                                            <li>
-                                                No V-Sync
-                                                <div class="card-basic">
-                                                    <p>
-                                                        <span class="iFpsFixed">(RefreshRate)</span>
-                                                    </p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                V-Sync
-                                                <div class="card-basic">
-                                                    <p>
-                                                        <span class="iFpsVSync">(RefreshRate - 1)</span>
-                                                    </p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                VRR + V-Sync
-                                                <div class="card-basic">
-                                                    <p>
-                                                        <span class="fpsVRR">(RefreshRate * 0.932)</span>
-                                                    </p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                        ...or lower
-                                    </li>
-                                </ol>
-                                <p>
-                                    Your configuration should look similar to this
-                                    <br>
-                                    <img src="FO4/AMD.webp" class="limiters-img">
-                                    <br>
-                                </p>
-                            </div>
-                            </p>
                         </div>
                         </p>
                     </div>
@@ -740,6 +617,40 @@
                         <br>
                         You can also find me on <a href="https://discord.gg/DhX5S27" target="_blank">Viva New Vegas</a>, <a href="https://discord.gg/EebN93s" target="_blank">xNVSE</a>, <a href="https://discord.gg/taleoftwowastelands" target="_blank">Tale
                             of Two Wastelands</a> servers.
+                        </p>
+                        <p>
+                        <h3>To do</h3>
+                        <ol>
+                            <li>
+                                Test Doodlezoid's Reflex implementations
+                                <ol>
+                                    <li>
+                                        Test compatibility with SK
+                                    </li>
+                                    <li>
+                                        Check if they differ in any way
+                                    </li>
+                                    <li>
+                                        Check how good is Refelx's limiter
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                Test Doodlezoid's DSR for SSE.
+                                <ol>
+                                    <li>
+                                        Or wait until DLSS | FSR | XeSS is finished?
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                Add Doodlezoid's (dude) Shadow Boost for SSE
+                            </li>
+                            <li>
+                                Retest CPU usage and latency of the FPS limiter from Display Tweaks | FPS Fix
+                            </li>
+                        </ol>
+                        </p>
                     </div>
                 </div>
             </div>
