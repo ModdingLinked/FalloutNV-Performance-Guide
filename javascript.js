@@ -51,7 +51,7 @@ function refreshRateCalculations() {
         const iFpsVSync = document.getElementsByClassName("iFpsVSync");
 
         fpsFixed[0].innerHTML = rr;
-        fpsVSync[0].innerHTML = rr - 0.5;
+        fpsVSync[0].innerHTML = rr - 0.05;
 
         for (const fpsVRRItem of fpsVRR) {
             fpsVRRItem.innerHTML = Math.round(rrVRR);
