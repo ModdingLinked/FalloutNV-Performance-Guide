@@ -70,9 +70,9 @@ function rotate(element, rotation = 180) {
 }
 
 
-function expandCard(thisObj, $open) {
+function expandCard(thisObj, $open, $dontReset) {
     const chevron = thisObj.getElementsByClassName("chevron")[0]
-    if ($open.classList.contains('expander-opened')) {
+    if ($open.classList.contains('expander-opened') && !$dontReset) {
         rotate(chevron, 0)
         $open.classList.remove('expander-opened');
         setTimeout(() => $open.style.display = "none", 400);
@@ -83,28 +83,5 @@ function expandCard(thisObj, $open) {
         rotate(chevron, 180);
         $open.style.display = "block";
         thisObj.classList.add('active');
-    }
-}
-
-function expandLimiterTutorials(thisObj, $open, $close) {
-    const expanderTop = document.getElementById('api-expander');
-    if ($open.classList.contains('expander-opened')) {
-        thisObj.classList.remove('active');
-        $open.classList.remove('expander-opened');
-        setTimeout(() => $open.style.display = "none", 400)
-        expanderTop.classList.remove('active');
-    }
-    else {
-        if ($close.classList.contains('expander-opened')) {
-            $close.style.display = "none";
-            $close.classList.remove('expander-opened')
-            for (const activeButton of activeButtons = document.getElementsByClassName("api-selection active")) {
-                activeButton.classList.remove('active');
-            }
-        }
-        thisObj.classList.add('active');
-        $open.classList.add('expander-opened');
-        $open.style.display = "block";
-        expanderTop.classList.add('active');
     }
 }
