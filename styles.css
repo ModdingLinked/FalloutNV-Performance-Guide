@@ -75,6 +75,11 @@ h3 {
     height: auto;
 }
 
+#applyConfirmation {
+    opacity: 0%;
+    transition-duration: 1s;
+}
+
 a {
     color: rgb(101, 206, 253);
     text-decoration: none;

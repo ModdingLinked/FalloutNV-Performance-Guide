@@ -36,6 +36,8 @@ function toggleNav() {
 
 function refreshRateCalculations() {
     const rr = document.getElementById("refreshRateInput").value;
+    const confirmation = document.getElementById("applyConfirmation");
+    confirmation.style.opacity = "100%";
     if (rr > 24) {
         if (rr < 90) {
             var rrVRR = Math.round((rr - (rr * 0.034)));
@@ -63,6 +65,11 @@ function refreshRateCalculations() {
             iFpsVSyncItem.innerHTML = rr - 1;
         }
     }
+    setTimeout(fadeOut, 2500, confirmation);
+}
+
+function fadeOut(element) {
+    element.style.opacity = "0%";
 }
 
 function rotate(element, rotation = 180) {

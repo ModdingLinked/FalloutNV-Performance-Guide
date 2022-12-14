@@ -107,23 +107,42 @@
                         <div>
                             <p>
                             <h3>Welcome!</h3>
-                            This guide will try to help you optimizing your Fallout New Vegas for better, smoother experience.
-                            <br>
-                            While the guide is focused on this particular game, most stuff shown here is applicable to other games.
+                            Goal of this guide is to fix the abysmal performance in Fallout New Vegas by using more modern technologies and tweaks, and make you generally aware of its quirks and other potential issues.
                             </p>
                             <p>
-                                The guide is mostly written with an assumption that you've completed <b>Utilities</b> section from
+                                The guide is mostly written with an assumption that you've completed <b>Utilities</b> sections from
                                 <a href="https://vivanewvegas.github.io/utilities.html" target="_blank">Viva New Vegas</a>,
-                                <a href="https://thebestoftimes.github.io/essentials.html" target="_blank">The Best of Times</a>,
                                 <a href="https://wastelandsurvivalguide.com/utilities.html" target="_blank">Wasteland Survival Guide</a>
-                                or
-
+                                or <b>Essentials</b> from
+                                <a href="https://thebestoftimes.github.io/essentials.html" target="_blank">The Best of Times</a>,
                                 but it'll still cover mods contained within those two guides.
+                            </p>
+                            <p>
+                                While the guide is focused on this particular game, most stuff shown here is applicable to other games.
                             </p>
                         </div>
                         <div>
                             <img src="UI/logo.webp" id="logo" alt="Logo of a Vault-Boy with glasses typing on a computer">
                         </div>
+                    </div>
+                    <div class="card">
+                        <p>
+                        <h3>Why?</h3>
+                        </p>
+                        <p>
+                            Let's be honest here - the engine did not age well. The renderer is based on now 20 year old DirectX 9, which fails to fit-in with modern GPUs and Windows.
+                            It's extremely inefficient and CPU bound, has glaring issues with display modes, memory handling and overall stability.
+                            <br>
+                            As for Bethesda's code - it also fails (horribly) to scale well with modern CPUs, something that you can see even in their latest titles.
+                            <br>
+                            To make things worse, Fallout New Vegas was compiled without compiler optimizations.
+                        </p>
+                        <p>
+                            In short most performance issues can be summed with two words - CPU bottleneck.
+                        </p>
+                        <p>
+                            Even with that fact in mind, there are some tweaks to be done on the GPU and presentation side of things that can help with the overall responsiveness of the game, despite not fixing the performance on its own.
+                        </p>
                     </div>
                 </div>
 
@@ -304,7 +323,7 @@
                         <p>
                         <h3>Windows watermark</h3>
                         <p>
-                            Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition.
+                            Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition, which leads to increased latency, worse performance and disables VRR.
                             If you don't have a GPU with <a href="#Terminology">MPO (Multiplane Overlay)</a> support, you can mitigate this by disabling Fullscreen Optimizations.
                             <br>
                             It's still weird to have unactivated Windows though.
@@ -499,7 +518,7 @@
                         DXVK is an open source Direct3D 9-11 to Vulkan translator project lead by <a href="https://github.com/doitsujin">doitsujin</a> and <a href="https://github.com/Joshua-Ashton">Joshua Ashton</a>. While created mainly for Linux, works
                         <u>unofficially</u> on Windows.
                         <br>
-                        In short, it allows to run Fallout using Vulkan API which has benefits of much lower drawcall overhead than D3D9,
+                        In short, it allows to run Fallout using Vulkan API which has benefits of much lower draw call overhead than D3D9,
                         which is one of the main performance limiting factors in this game.
                         <br>
                         <div class="card-red">
@@ -508,7 +527,7 @@
                             <ul>
                                 <li>
                                     <p>
-                                        DXVK improves performance in mainly drawcall (CPU) bound scenarios (e.g. draw distance), and usually doesn't help much in GPU bound ones (e.g. resolution)
+                                        DXVK improves performance in mainly draw call (CPU) bound scenarios (e.g. draw distance), and usually doesn't help much in GPU bound ones (e.g. resolution)
                                     </p>
                                     <ul>
                                         <li>
@@ -546,7 +565,7 @@
                                     <ul>
                                         <li>
                                             <p>
-                                                <b>Nvidia GPU</b> laptops must use the <a href="#dxvk-flip">DXGI interop</a> (see below). 
+                                                <b>Nvidia GPU</b> laptops must use the <a href="#dxvk-flip">DXGI interop</a> (see below).
                                                 <br>
                                                 Using it on <b>desktops</b> is not required, but <b>highly recommended</b> for the most optimal experience
                                             </p>
@@ -816,19 +835,21 @@
                     <span id="RecommendedLimiters" onclick="location.href='#RecommendedLimiters'">
                         <h2>Recommended framerate limiters and their configurations</h2>
                     </span>
-                    <!--<div class="card"> -->
                     <div class="card">
                         <p>
                         <h3>(Not) Pushing the limits</h3>
-                        Limiting framerate is very important for overall stability. A good limiter will most importantly improve framepacing, reducing microstutter. Other benefits could be reduced latency and power consumption.
-
+                        Limiting framerate is very important for overall stability.
+                        <br>
+                        First and foremost, if you are using a good limiter, you'll be implementing correct framepacing, which is the most important think for the overall fell of fluidity.
+                        <br>
+                        More advanced limiters can also reduce latency or power consumption (It's difficult to have both).
                         <div class="card-red">
                             <p>
                                 Always limit your framerate to an amount you can actually achieve, otherwise you won't get any benefits!
                                 <br>
                                 Letting your GPU overwork itself has a big latency impact, so try to cap your framerate at such value, where your GPU doesn't sit at constant 100% usage.
                                 <br>
-                                Running at smoother, lower framerate is much better than high, albeit laggy one.
+                                Running at smoother, lower framerate is always better than high, albeit laggy and stuttery one.
                             </p>
                         </div>
                         </p>
@@ -866,7 +887,7 @@
                                 <h4>No V-Sync</h4>
                                 <ul>
                                     <li>
-                                        Nothing!
+                                        No special prerequisites.
                                     </li>
                                 </ul>
                             </li>
@@ -880,7 +901,7 @@
                             Enter your refresh rate here for automatic calculation of FPS limits <b>in the next section</b>. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
                         <div>
                             <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
-                            <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button>
+                            <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button><span class="disabled" id="applyConfirmation">Applied!</span>
                         </div>
                         <div class="card-yellow">
                             <p>
@@ -1339,6 +1360,8 @@
                             If you found this guide helpful, share it with others or support me on <a href="https://ko-fi.com/wall_sogb" target="_blank">Ko-Fi</a>
                         </p>
                         </p>
+                    </div>
+                    <div class="card">
                         <p>
                         <h3>Things worth reading</h3>
                         Here are some links to stuff that I recommend checking out:
@@ -1354,6 +1377,8 @@
                             </li>
                         </ul>
                         </p>
+                    </div>
+                    <div class="card">
                         <p>
                         <h3>Credits</h3>
                         This is the part where I'd like to thank people who have helped me in whatever way making this guide possible.
