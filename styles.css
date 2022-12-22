@@ -120,6 +120,34 @@ button:active,
     color: rgba(255, 255, 255, 78.6%);
 }
 
+#intel {
+    background-color: #2166b3;
+    color: white
+}
+
+#intel:hover {
+    background-color: hsl(212, 69%, 55%);
+}
+
+#amd {
+    background-color: #dc0032;
+    color: white
+}
+
+#amd:hover {
+    background-color: hsl(346, 100%, 65%);
+}
+
+#nvidia {
+    background-color: #71bb21;
+    color: white
+}
+
+#nvidia:hover {
+    background-color: hsl(89, 70%, 60%);
+}
+
+
 input:active {
     border-bottom: 1px solid rgb(101, 206, 253);
 }
@@ -144,7 +172,6 @@ input:active {
 .comparison-table .card-green {
     vertical-align: top;
 }
-
 
 .expander-top {
     border-bottom-left-radius: 8px;
@@ -721,6 +748,11 @@ b.card-basic {
     .comparison-table .card-red,
     .comparison-table .card-green {
         padding: 0em;
+    }
+
+    .comparison-table .card-yellow {
+        margin: 0em 0.75em 0em 0em;
+        padding: 0.1em 0.5em 0.1em 0.5em;
     }
 
     ul {

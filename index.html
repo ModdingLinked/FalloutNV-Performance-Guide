@@ -46,6 +46,12 @@
                         Drivers and Windows
                     </a>
 
+                    <a href="#DisplayModeComparison" title="🙃 Display modes">
+                        <span class="subIcon">🖥️</span>
+                        <span class="flippy">🙃</span>
+                        Display modes
+                    </a>
+
                     <a href="#StewieTweaks" title="🙃 lStewieAl's Tweaks and Engine Fixes">
                         <span class="subIcon">🔧</span>
                         <span class="flippy">🙃</span>
@@ -62,12 +68,6 @@
                         <span class="subIcon">🌋</span>
                         <span class="flippy">🙃</span>
                         DXVK
-                    </a>
-
-                    <a href="#DisplayModeComparison" title="🙃 Display modes">
-                        <span class="subIcon">🖥️</span>
-                        <span class="flippy">🙃</span>
-                        Display modes
                     </a>
 
                     <a href="#RecommendedLimiters" title="🙃 FPS Limiters">
@@ -197,7 +197,7 @@
                                 </li>
                                 <li id="BitBlt">
                                     <b>BitBlt Model</b> - older presentation model used by most applications.
-                                    While performing similarly to Flip Model in Fullscreen, in Windowed Mode it has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations.
+                                    While performing similarly to Flip Model in Fullscreen, in Windowed Mode it has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations due to being software composed.
                                     <br>
                                     The only presentation model for Windowed D3D9 (and lower), but still very common in D3D10 and D3D11 games.
                                     <p>
@@ -282,7 +282,7 @@
                             <tr>
                                 <th>
                                     <a href="https://www.nvidia.com/download/index.aspx" target="_blank">
-                                        <button class="button-big" style="background-color: #71bb21; color: white">
+                                        <button class="button-big" id="nvidia">
                                             <b>
                                                 NVIDIA
                                             </b>
@@ -291,7 +291,7 @@
                                 </th>
                                 <th>
                                     <a href="https://www.amd.com/en/support" target="_blank">
-                                        <button class="button-big" style="background-color: #dc0032; color: white">
+                                        <button class="button-big" id="amd">
                                             <b>
                                                 AMD
                                             </b>
@@ -300,7 +300,7 @@
                                 </th>
                                 <th>
                                     <a href="https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html" target="_blank">
-                                        <button class="button-big" style="background-color: #2166b3; color: white">
+                                        <button class="button-big" id="intel">
                                             <b>
                                                 INTEL
                                             </b>
@@ -370,6 +370,143 @@
                         <br>
                         <br>
                         This step is not mandatory, as when it comes to security, it's up to you to decide. Just letting you know that this exists, and even Microsoft acknowledges the fact that it can degrade perfomance.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- DisplayModeComparison -->
+                <div>
+                    <span id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
+                        <h2>Display mode differences</h2>
+                    </span>
+                    <div class="card">
+                        <p>
+                        <h3>Presentation problems</h3>
+                        Here's a comparison of three display modes you can use in this game. Situation is problematic mainly due to Vulkan and D3D9 using old <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">presentation models</a>.
+                        <div class="comparison">
+                            <table class="comparison-table">
+                                <tr>
+                                    <th>
+                                        <h2>Flip Windowed
+                                            <br>(DXVK with DXGI)
+                                        </h2>
+                                    </th>
+                                    <th>
+                                        <h2>Fullscreen</h2>
+                                    </th>
+                                    <th>
+                                        <h2>Non-Flip Windowed <br> (D3D9, Base DXVK)</h2>
+                                    </th>
+                                </tr>
+
+                                <tr>
+                                    <td class="card-green">
+                                        <ul>
+                                            <li>Best latency and performance</li>
+                                            <li>Variable Refresh Rate works without any problems</li>
+                                            <li>
+                                                HDR output
+                                            </li>
+                                            <li>
+                                                Fast Alt-Tab
+                                            </li>
+                                            <li>
+                                                Native support for color profiles
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="card-green">
+                                        <ul>
+                                            <li>Best latency and performance, especially with <span title="Fullscreen optimizations">FSO</span></li>
+                                            <li>Variable Refresh Rate works without any problems</li>
+                                        </ul>
+                                    </td>
+                                    <td class="card-green">
+                                        <ul>
+                                            <li>
+                                                Fast Alt-Tab
+                                            </li>
+                                            <li>
+                                                Better support for color profiles
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="card-red">
+                                        <ul>
+                                            <li>
+                                                In-Game brightness settings don't work
+                                            </li>
+                                            <li>
+                                                Nvidia only
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="card-red">
+                                        <ul>
+                                            <li>
+                                                Slower and unstable Alt-Tab, especially without <span title="Fullscreen optimizations">FSO</span>
+                                            </li>
+                                            <div class="card-yellow">
+                                                <p>
+                                                    Alt-Tab <b>doesn't work at all</b> if <b><a href="#NVTF" title="🙃 New Vegas Tick Fix">NVTF</a>'s pool change</b>
+                                                    is <b>enabled</b>, unless you use <b><a href="#DXVK" title="🙃 Vulkan - DXVK">DXVK</a></b>
+                                                </p>
+                                            </div>
+                                            <li>
+                                                Color profiles may disengage, especially without <span title="Fullscreen optimizations">FSO</span>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="card-red">
+                                        <ul>
+                                            <li>
+                                                High input lag and worse performance, especially when not using any FPS limiter
+                                            </li>
+                                            <li>
+                                                V-Sync is always on<sup><a href="#ad4">[4]</a></sup>
+                                            </li>
+                                            <li>
+                                                Variable Refresh Rate doesn't work natively
+                                            </li>
+                                            <ul>
+                                                <li>
+                                                    AMD supports Freesync in non-Flip Fullscreen windows, but latency and performance penalties remain
+                                                </li>
+                                                <li>
+                                                    Nvidia's G-Sync support for non-Flip windows is broken<sup><a href="#ad5">[5]</a></sup>
+                                                </li>
+                                            </ul>
+                                            <li>
+                                                In-Game brightness settings don't work
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <span class="annotations">
+                            <ol start="4">
+                                <li id="ad4">
+                                    Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
+                                </li>
+                                <li id="ad5">
+                                    While AMD enables Freesync for Fullscreen Windowed non-Flip surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
+                                    <br>
+                                    This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
+                                    <br>
+                                    Enabling it globally is a bad idea, because it disrupts normal desktop usage (e.g. screen can sync to sleeping windows).
+                                    <br>
+                                    It's recommended to use <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to
+                                    "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile. This makes Windowed G-Sync run only when Fallout New Vegas is running.
+                                    <br>
+                                    <b>Keep in mind that even with this method, this G-Sync implementation is still buggy - if you get any of the forementioned issues, disable it.</b>
+                                    <br>
+                                    <h4>Never enable Windowed G-Sync globally!</h4>
+                                </li>
+                            </ol>
+                        </span>
                         </p>
                     </div>
                 </div>
@@ -682,143 +819,6 @@
                             </div>
                             <li>Install <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> to disable window borders.</li>
                         </ol>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- DisplayModeComparison -->
-                <div>
-                    <span id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
-                        <h2>Display mode differences</h2>
-                    </span>
-                    <div class="card">
-                        <p>
-                        <h3>Presentation problems</h3>
-                        Here's a comparison of three display modes you can use in this game.
-                        <div class="comparison">
-                            <table class="comparison-table">
-                                <tr>
-                                    <th>
-                                        <h2>Flip Windowed
-                                            <br>(DXVK with DXGI)
-                                        </h2>
-                                    </th>
-                                    <th>
-                                        <h2>Fullscreen</h2>
-                                    </th>
-                                    <th>
-                                        <h2>Non-Flip Windowed <br> (D3D9, Base DXVK)</h2>
-                                    </th>
-                                </tr>
-
-                                <tr>
-                                    <td class="card-green">
-                                        <ul>
-                                            <li>Best latency and performance</li>
-                                            <li>Variable Refresh Rate works without any problems</li>
-                                            <li>
-                                                HDR output
-                                            </li>
-                                            <li>
-                                                Fast Alt-Tab
-                                            </li>
-                                            <li>
-                                                Native support for color profiles
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="card-green">
-                                        <ul>
-                                            <li>Best latency and performance, especially with <span title="Fullscreen optimizations">FSO</span></li>
-                                            <li>Variable Refresh Rate works without any problems</li>
-                                        </ul>
-                                    </td>
-                                    <td class="card-green">
-                                        <ul>
-                                            <li>
-                                                Fast Alt-Tab
-                                            </li>
-                                            <li>
-                                                Better support for color profiles
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="card-red">
-                                        <ul>
-                                            <li>
-                                                In-Game brightness settings don't work
-                                            </li>
-                                            <li>
-                                                Nvidia only
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="card-red">
-                                        <ul>
-                                            <li>
-                                                Slower Alt-Tab, especially without <span title="Fullscreen optimizations">FSO</span>
-                                            </li>
-                                            <ul>
-                                                <li>
-                                                    Alt-Tab <b>doesn't work at all</b> if <b><span title="New Vegas Tick Fix">NVTF</span>'s pool change</b>
-                                                    is <b>enabled</b>, unless you use <b><a href="#DXVK" title="🙃 Vulkan - DXVK">DXVK</a></b>
-                                                </li>
-                                            </ul>
-                                            <li>
-                                                Color profiles may disengage, especially without <span title="Fullscreen optimizations">FSO</span>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td class="card-red">
-                                        <ul>
-                                            <li>
-                                                High input lag and worse performance, especially when not using any FPS limiter
-                                            </li>
-                                            <li>
-                                                V-Sync is always on<sup><a href="#ad4">[4]</a></sup>
-                                            </li>
-                                            <li>
-                                                Variable Refresh Rate doesn't work natively
-                                            </li>
-                                            <ul>
-                                                <li>
-                                                    AMD supports Freesync in non-Flip Fullscreen windows, but latency and performance penalties remain
-                                                </li>
-                                                <li>
-                                                    Nvidia's G-Sync support for non-Flip windows is broken<sup><a href="#ad5">[5]</a></sup>
-                                                </li>
-                                            </ul>
-                                            <li>
-                                                In-Game brightness settings don't work
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                        <span class="annotations">
-                            <ol start="4">
-                                <li id="ad4">
-                                    Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
-                                </li>
-                                <li id="ad5">
-                                    While AMD enables Freesync for Fullscreen Windowed non-Flip surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
-                                    <br>
-                                    This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
-                                    <br>
-                                    Enabling it globally is a bad idea, because it disrupts normal desktop usage (e.g. screen can sync to sleeping windows).
-                                    <br>
-                                    It's recommended to use <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to
-                                    "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile. This makes Windowed G-Sync run only when Fallout New Vegas is running.
-                                    <br>
-                                    <b>Keep in mind that even with this method, this G-Sync implementation is still buggy - if you get any of the forementioned issues, disable it.</b>
-                                    <br>
-                                    <h4>Never enable Windowed G-Sync globally!</h4>
-                                </li>
-                            </ol>
-                        </span>
                         </p>
                     </div>
                 </div>
