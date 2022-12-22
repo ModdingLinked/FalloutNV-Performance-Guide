@@ -120,30 +120,30 @@ button:active,
     color: rgba(255, 255, 255, 78.6%);
 }
 
-#intel {
+#intelButton {
     background-color: #2166b3;
     color: white
 }
 
-#intel:hover {
+#intelButton:hover {
     background-color: hsl(212, 69%, 55%);
 }
 
-#amd {
+#amdButton {
     background-color: #dc0032;
     color: white
 }
 
-#amd:hover {
+#amdButton:hover {
     background-color: hsl(346, 100%, 65%);
 }
 
-#nvidia {
+#nvidiaButton {
     background-color: #71bb21;
     color: white
 }
 
-#nvidia:hover {
+#nvidiaButton:hover {
     background-color: hsl(89, 70%, 60%);
 }
 
