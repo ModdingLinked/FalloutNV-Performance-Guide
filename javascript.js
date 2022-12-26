@@ -40,10 +40,10 @@ function refreshRateCalculations() {
     confirmation.style.opacity = "100%";
     if (rr > 24) {
         if (rr < 90) {
-            var rrVRR = Math.round((rr - (rr * 0.034)));
+            var rrVRR = Math.round(rr * 0.96);
         }
         else {
-            var rrVRR = Math.round((rr - (rr * 0.068)));
+            var rrVRR = Math.round(rr * 0.94);
         }
 
         const fpsFixed = document.getElementsByClassName("fpsFixed");

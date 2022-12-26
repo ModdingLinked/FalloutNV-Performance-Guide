@@ -961,11 +961,11 @@
                                     to your Fallout New Vegas <b>root folder</b> and rename it to <b>dinput8.dll</b>
                                 </li>
                                 <li>
-                                    Download the <a href="https://github.com/WallSoGB/FalloutNV-Performance-Guide/raw/main/files/dinput8.zip" target="_blank">dinput8.zip</a> its content to your <b>root folder</b>.
+                                    Download the <a href="https://github.com/WallSoGB/FalloutNV-Performance-Guide/raw/main/files/sk_d3d9.zip" target="_blank">archive with preconfigured settings</a> and extract its content to your <b>root folder</b>.
                                     <div class="card-yellow">
                                         <p>
                                         <h4>DXVK with DXGI users!</h4>
-                                        You need to also download <a href="https://github.com/WallSoGB/FalloutNV-Performance-Guide/raw/main/files/custom_dinput8.zip" target="_blank">custom_dinput8.zip</a>
+                                        Download <a href="https://github.com/WallSoGB/FalloutNV-Performance-Guide/raw/main/files/sk_dxgi.zip" target="_blank">this archive</a> instead
                                         </p>
                                     </div>
                                 </li>
@@ -980,11 +980,15 @@
                                             <div class="card-basic">
                                                 <p>
                                                     In right click menu select your refresh rate
+                                                    <br>
+                                                    Click on <b>Advanced</b> and select the <b>Latent Sync (VSYNC -Off-)</b> mode
                                                 </p>
                                             </div>
+
+                                            <!-- Latent Sync -->
                                             <div class="expander-top clickable width-very-limited" onclick="expandCard(this, latentSync)">
                                                 <p>
-                                                    Optional - Disabled V-Sync with no tearing
+                                                    Optional - Configuring Latent Sync to get rid of tears
                                                     <img class="chevron" style="float: right;" src="UI/Chevron Down.svg" alt="UI element - Chevron">
                                                 </p>
                                             </div>
@@ -1001,15 +1005,15 @@
                                                 </p>
                                                 <div class="card-red">
                                                     <p>
-                                                        Latpops with dedicated GPUs that do not have MUX switches for direct dGPU<->Display connection will have problems with hiding the tearline.
-                                                            <br>
-                                                            While it may be impossible to hide it completely, latency benefits are still applicable.
+                                                        Laptops with dedicated GPUs that do not have MUX switches for a direct dGPU<->Display connection can have problems with hiding the tearline.
+                                                        <br>
+                                                        While it may be impossible to hide it completely, latency benefits are still applicable.
                                                     </p>
                                                     <p>
                                                         Some monitors have too small vertical blanking, so it's possible to not fully hide the tearing without timing modifications -
                                                         if you wish to pursue this topic, create a custom resolution with increased <b>Vertical Blanking</b> in your driver or with
                                                         <b><a href="https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU">Custom Resolution Utility</a></b>
-                                                    <h4>It's best to first test the resolution in driver, otherwise you may lock out your display</h4>
+                                                    <h4>It's best to first test the resolution in the driver settings, otherwise you may lock out your display</h4>
                                                     </p>
                                                 </div>
                                             </div>
@@ -1020,6 +1024,15 @@
                                                 <p>
                                                     In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 0.05
                                                 </p>
+                                                <div class="card-yellow">
+                                                    <p>If you use <b>DXVK with DXGI</b>, ignore above statement and:
+                                                    <p>
+                                                        In right click menu select your refresh rate
+                                                    </p>
+                                                    <p>
+                                                        Enable <b>Waitable SwapChain</b> in <b>Direct3D 11 Settings</b>, under <b>SwapChain Management</b>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </li>
                                         <li>
@@ -1032,9 +1045,11 @@
                                                         The bias option is not needed for lower values.
                                                     </li>
                                                 </ul>
-                                                Click on <b>Advanced</b> and enable <b>Low Latency Mode</b>
+                                                Click on <b>Advanced</b> and select the <b>Low-Latency - (VRR Optimized)</b> mode
                                                 <div class="card-yellow">
-                                                    <p>If you use DXVK, you must double your limiter value, otherwise you'll get halved framerate</p>
+                                                    <p>
+                                                        If you use <b>DXVK (without DXGI)</b>, you must double your limiter value, otherwise you'll get halved framerate
+                                                    </p>
                                                 </div>
                                                 </p>
                                             </div>
@@ -1092,7 +1107,7 @@
                             <div class="card-red">
                                 <h3>Warning!</h3>
                                 <p>
-                                    RTSS does <b>NOT</b> support DXVK 2.0 at the time of writing (DXGI works).
+                                    RTSS does <b>NOT</b> support DXVK 2.0 at the time of writing (DXVK with DXGI works).
                                 </p>
                             </div>
                             <h4>Installation</h4>
@@ -1126,7 +1141,7 @@
                                             VRR + V-Sync
                                             <div class="card-basic">
                                                 <p>
-                                                    <span class="fpsVRR">(RefreshRate * 0.932)</span>
+                                                    <span class="fpsVRR">(RefreshRate * 0.94)</span>
                                                 </p>
                                             </div>
                                         </li>
@@ -1210,7 +1225,7 @@
                                                 VRR + V-Sync
                                                 <div class="card-basic">
                                                     <p>
-                                                        <span class="fpsVRR">(RefreshRate * 0.932)</span>
+                                                        <span class="fpsVRR">(RefreshRate * 0.94)</span>
                                                     </p>
                                                 </div>
                                             </li>
@@ -1272,7 +1287,7 @@
                                                 VRR + V-Sync
                                                 <div class="card-basic">
                                                     <p>
-                                                        <span class="fpsVRR">(RefreshRate * 0.932)</span>
+                                                        <span class="fpsVRR">(RefreshRate * 0.94)</span>
                                                     </p>
                                                 </div>
                                             </li>
