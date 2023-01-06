@@ -395,7 +395,7 @@
                                         <h2>Fullscreen</h2>
                                     </th>
                                     <th>
-                                        <h2>Non-Flip Windowed <br> (D3D9, Base DXVK)</h2>
+                                        <h2>BitBlt Windowed <br> (D3D9, Base DXVK)</h2>
                                     </th>
                                 </tr>
 
@@ -472,10 +472,10 @@
                                             </li>
                                             <ul>
                                                 <li>
-                                                    AMD supports Freesync in non-Flip Fullscreen windows, but latency and performance penalties remain
+                                                    AMD supports Freesync in BitBlt windows that are fullscreen, but latency and performance penalties remain
                                                 </li>
                                                 <li>
-                                                    Nvidia's G-Sync support for non-Flip windows is broken<sup><a href="#ad5">[5]</a></sup>
+                                                    Nvidia's G-Sync support for BitBlt windows is broken<sup><a href="#ad5">[5]</a></sup>
                                                 </li>
                                             </ul>
                                             <li>
@@ -492,7 +492,7 @@
                                     Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
                                 </li>
                                 <li id="ad5">
-                                    While AMD enables Freesync for Fullscreen Windowed non-Flip surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
+                                    While AMD enables Freesync for Fullscreen Windowed BitBlt surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
                                     <br>
                                     This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
                                     <br>
@@ -581,20 +581,20 @@
                             </li>
                             <li>
                                 <p>
-                                    Open <b>NVTF.ini</b> in Mod Organizer and edit:
+                                    Open <b>NVTF.ini</b> in INI Editor by clicking on NVTF in Mod Organizer and set:
                                 <div class="card-basic">
                                     <p>
-                                        bModifyDirectXBehavior=1
+                                        bModifyDirectXBehavior = 1
                                     </p>
                                 </div>
                                 Enables NVTF's DirectX changes.
                                 <br>
-                                <b>Required for following settings to work:</b>
+                                <b>It's required for following settings to work:</b>
                                 <ul>
                                     <li>
                                         <div class="card-basic">
                                             <p>
-                                                bToggleTripleBuffering=1
+                                                bToggleTripleBuffering = 1
                                             </p>
                                         </div>
                                         Enables triple buffer V-Sync, which gets rid of problematic framerate halving on FPS drops/ instability caused by double buffer V-Sync.
@@ -610,7 +610,7 @@
                                     <li>
                                         <div class="card-basic">
                                             <p>
-                                                bUseDefaultPoolForTextures=1
+                                                bUseDefaultPoolForTextures = 1
                                             </p>
                                         </div>
                                         Enabled by default
