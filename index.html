@@ -817,23 +817,25 @@
                         </div>
                         Nvidia's drivers have ability to interop Vulkan to DXGI allowing for <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">Flip Model</a> in Windowed mode, which leads to <b>HDR support</b>, <b>native VRR</b> support, and best <b>performance</b> and <b>latency</b>.
                         <ol>
+                            <div class="card-yellow">
+                                <p>You can use global profile if you want to use Flip Model in all OpenGL and Vulkan titles</p>
+                            </div>
+                            <li>In Nvidia Control Panel, set <b class="card-basic">Vulkan/OpenGL present method</b> to <b class="card-basic">Prefer layered on DXGI Swapchain</b></li>
+                            <div class="card-red">
+                                <p>
+                                    If you don't see those options, then your driver is not up to date!
+                                </p>
+                            </div>
+                            <li>
+                                Press <b>Apply changes</b> and exit
+                            </li>
                             <li>Download <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a></li>
                             <li>Enable "Show unknown settings from NVIDIA predefined profiles" in the top bar (penultimate button)</li>
                             <li>Press <b>Ctrl+F</b> and paste <b class="card-basic">OGL_DX_PRESENT_DEBUG</b></li>
                             <li>Set the result to <b class="card-basic" style="letter-spacing: 0.1em;">0x00080001</b> and click <b>Apply & Close</b></li>
                             <div class="card-yellow">
                                 <p>
-                                    If you've done it in the <b>Global Profile</b>, then all DXVK games will get benefits from the Flip Model.
-                                </p>
-                            </div>
-                            <li>
-                                Press <b>Apply changes</b> and exit
-                            </li>
-
-                            <li>In Nvidia Control Panel, set <b class="card-basic">Vulkan/OpenGL present method</b> to <b class="card-basic">Prefer layered on DXGI Swapchain</b></li>
-                            <div class="card-red">
-                                <p>
-                                    If you don't see those options, then your driver is not up to date!
+                                    These flags enable DXVK support and fix forced promotion to FSE in some games.
                                 </p>
                             </div>
                             <li>Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b> </li>
@@ -1362,7 +1364,7 @@
                                 <h4>You talk about HDR. I thought FNV already had it?</h4>
                                 HDR mentioned in game setting refers to HDR rendering, where game renders lighting passes in 16 bits, instead of 8. This leads to properly glowing lights thanks to the precision of using 65536 colors per channel instead of 256. (Glowing elements won't be clamped anymore, and will glow instead.)
                                 <br>
-                                Due to the old age of the game, this data is later converted to 8 bit SDR (HDR in Windows was added in 2017!). Additionally, D3D9 obviously doesn't support HDR output in the first place, hence the need for the DXGI interop. 
+                                Due to the old age of the game, this data is later converted to 8 bit SDR (HDR in Windows was added in 2017!). Additionally, D3D9 obviously doesn't support HDR output in the first place, hence the need for the DXGI interop.
                             </li>
                             <li>
                                 <h4>DXVK is breaking HDR after exiting the game!</h4>
@@ -1462,8 +1464,8 @@
                     </div>
                     <div class="card">
                         <p>
-                            <h3>Changelog</h3>
-                            Changes are documented on the <a href="https://github.com/WallSoGB/FalloutNV-Performance-Guide/commits/main" target="_blank">commit history</a>
+                        <h3>Changelog</h3>
+                        Changes are documented on the <a href="https://github.com/WallSoGB/FalloutNV-Performance-Guide/commits/main" target="_blank">commit history</a>
                         </p>
                     </div>
                 </div>
