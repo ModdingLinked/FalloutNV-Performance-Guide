@@ -387,15 +387,23 @@
                             <table class="comparison-table">
                                 <tr>
                                     <th>
-                                        <h2>Flip Windowed
-                                            <br>(DXVK with DXGI)
+                                        <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">
+                                            Flip Windowed
+                                            <br>
+                                            (DXVK with DXGI)
                                         </h2>
                                     </th>
                                     <th>
-                                        <h2>Fullscreen</h2>
+                                        <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">
+                                            Fullscreen
+                                        </h2>
                                     </th>
                                     <th>
-                                        <h2>BitBlt Windowed <br> (D3D9, Base DXVK)</h2>
+                                        <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">
+                                            BitBlt Windowed
+                                            <br>
+                                            (D3D9, Base DXVK)
+                                        </h2>
                                     </th>
                                 </tr>
 
@@ -417,7 +425,7 @@
                                     </td>
                                     <td class="card-green">
                                         <ul>
-                                            <li>Best latency and performance, especially with <span title="Fullscreen optimizations">FSO</span></li>
+                                            <li>Best latency and performance, especially with <span title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSO</span></li>
                                             <li>Variable Refresh Rate works without any problems</li>
                                         </ul>
                                     </td>
@@ -446,7 +454,7 @@
                                     <td class="card-red">
                                         <ul>
                                             <li>
-                                                Slower and unstable Alt-Tab, especially without <span title="Fullscreen optimizations">FSO</span>
+                                                Slower and unstable Alt-Tab, especially without <span title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSO</span>
                                             </li>
                                             <div class="card-yellow">
                                                 <p>
@@ -455,7 +463,7 @@
                                                 </p>
                                             </div>
                                             <li>
-                                                Color profiles may disengage, especially without <span title="Fullscreen optimizations">FSO</span>
+                                                Color profiles may disengage, especially without <span title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSO</span>
                                             </li>
                                         </ul>
                                     </td>
@@ -551,7 +559,7 @@
                                         bInlineVanillaFunctions=1
                                     </p>
                                 </div>
-                                This enables some optimizations to vanilla functions, which leads to decreased loading times and improved general performance.
+                                Enables tons of optimizations to vanilla functions, which leads to decreased loading times and improved general performance.
                                 </p>
                             </li>
                         </ol>
@@ -621,7 +629,7 @@
                                         <br>
                                         <div class="card-red">
                                             <p>
-                                                <b>This change breaks alt-tab functionality in Fullscreen Mode.</b>
+                                                <b>This change breaks alt-tab functionality in Fullscreen Mode.<sup><a href="#ad6">[6]</a></sup></b>
                                                 <br>
                                                 To mitigate that either use <a href="#DXVK">DXVK</a>, or <a href="#FAQ">Windowed Mode</a>.
                                                 <br>
@@ -631,8 +639,31 @@
                                     </li>
                                 </ul>
                                 </p>
+                                <div class="card-yellow">
+                                    <p>
+                                        If you are lucky to have a <b class="card-basic">Ryzen 7 5800X3D</b> CPU, you can enable this setting for a massive performance boost.
+                                        <br>
+                                        Other CPUs don't get any benefit due to insufficient cache size.
+                                    <div class="card-basic">
+                                        <p>
+                                            bAlternateGTCFix = 1
+                                        </p>
+                                    </div>
+                                    </p>
+                                </div>
                             </li>
                         </ol>
+                        <span class="annotations">
+                            <ol start="6">
+                                <li id="ad6">
+                                    D3D9 loses the graphics device if it loses the screen ownership (Alt-Tab, Sleep, etc.). To recover, it needs to either have a copy of textures in RAM, or be able to reconstruct the memory from ground up.
+                                    <br>
+                                    Fallout New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
+                                    <br>
+                                    DXVK fixes this by simply being in place of D3D9, while Windowed mode guarantees the game will never own the screen in the first place.
+                                </li>
+                            </ol>
+                        </span>
                         </p>
                     </div>
                 </div>
@@ -650,7 +681,11 @@
                         <br>
                         In short, it allows to run Fallout using Vulkan API which has benefits of much lower draw call overhead than D3D9,
                         which is one of the main performance limiting factors in this game.
-                        <br>
+                        <div class="card-yellow">
+                            <p>
+                                If you use Linux, most of this is irrelevant, since Proton on Linux obviously uses DXVK already.
+                            </p>
+                        </div>
                         <div class="card-red">
                             <p>
                             <h3>Things about DXVK you must acknowledge:</h3>
@@ -712,9 +747,9 @@
                                     <p>
                                         Fallout New Vegas has some known shader issues. They are not guaranteed to happen (getting rarer with DXVK updates), but they can occur:
                                     <ul>
-                                        <li>Broken transparency multisampling - alpha textures are more translucent and aliased, and get dither effect instead of a smooth fade</li>
-                                        <li>Broken water reflections</li>
-                                        <li>Broken lights and artifacting</li>
+                                        <li>Broken transparency multisampling - transparent textures are dithered (Guaranteed - DXVK issue with handling driver formats)</li>
+                                        <li>Broken water reflections (Rare, most reports come from AMD cards)</li>
+                                        <li>Broken lights and artifacting (Rare, most reports come from AMD cards)</li>
                                     </ul>
                                     </p>
                                 </li>
@@ -738,7 +773,7 @@
                             <li>
                                 <p>
                                     Open <a href="https://github.com/Sporif/dxvk-async/releases/latest" target="_blank">DXVK-Async Github page</a>
-                                    and click on <b>dxvk-async-2.0.tar.gz</b> to download it
+                                    and click on <b class="card-basic">dxvk-async-2.0.tar.gz</b> to download it
                                 </p>
                                 <p>
                                 <div class="card-red">
@@ -777,7 +812,7 @@
                             <p>
                                 Nvidia resets those flags on driver updates! Make sure to reapply them after updating.
                                 <br>
-                                Thanks Nvidia!
+                                <a href="https://youtu.be/_36yNWw_07g?t=9" target="_blank">Thanks Nvidia!</a>
                             </p>
                         </div>
                         Nvidia's drivers have ability to interop Vulkan to DXGI allowing for <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">Flip Model</a> in Windowed mode, which leads to <b>HDR support</b>, <b>native VRR</b> support, and best <b>performance</b> and <b>latency</b>.
@@ -998,8 +1033,8 @@
                                                 <div class="card-red">
                                                     <p>
                                                         Laptops with dedicated GPUs that do not have MUX switches for a direct dGPU<->Display connection can have problems with hiding the tearline.
-                                                        <br>
-                                                        While it may be impossible to hide it completely, latency benefits are still applicable.
+                                                            <br>
+                                                            While it may be impossible to hide it completely, latency benefits are still applicable.
                                                     </p>
                                                     <p>
                                                         Some monitors have too small vertical blanking, so it's possible to not fully hide the tearing without timing modifications -
@@ -1096,16 +1131,10 @@
                             </p>
                         </div>
                         <div class="expander-bottom center width-limited" id="rtssExpander">
-                            <div class="card-red">
-                                <h3>Warning!</h3>
-                                <p>
-                                    RTSS does <b>NOT</b> support DXVK 2.0 at the time of writing (DXVK with DXGI works).
-                                </p>
-                            </div>
                             <h4>Installation</h4>
                             <ol>
                                 <li>
-                                    Install and open <a href="https://www.guru3d.com/files-get/rtss-rivatuner-statistics-server-download,17.html" target="_blank">RTSS</a>, press green <b>Add</b> button and select FalloutNV.exe
+                                    Install and open <a href="https://forums.guru3d.com/threads/msi-ab-rtss-development-news-thread.412822/page-188#post-6069278" target="_blank">RTSS</a>, press green <b>Add</b> button and select FalloutNV.exe
                                 </li>
                                 <li>
                                     Set <b>Application Detection Level</b> to <b>Low</b>
@@ -1308,7 +1337,7 @@
                     </span>
                     <div class="card">
                         <p>
-                        <h3>Are those questions really frequent?</h3>
+                        <h3>Are these questions really frequent?</h3>
                         <ul>
                             <li>
                                 <h4>I can't use DXVK or DXGI, am I out of luck?</h4>
@@ -1330,6 +1359,12 @@
                                 What <i>is</i> guaranteed from higher resolution textures is increase in their load time. This can translate into longer stutter periods on cell loads.
                             </li>
                             <li>
+                                <h4>You talk about HDR. I thought FNV already had it?</h4>
+                                HDR mentioned in game setting refers to HDR rendering, where game renders lighting passes in 16 bits, instead of 8. This leads to properly glowing lights thanks to the precision of using 65536 colors per channel instead of 256. (Glowing elements won't be clamped anymore, and will glow instead.)
+                                <br>
+                                Due to the old age of the game, this data is later converted to 8 bit SDR (HDR in Windows was added in 2017!). Additionally, D3D9 obviously doesn't support HDR output in the first place, hence the need for the DXGI interop. 
+                            </li>
+                            <li>
                                 <h4>DXVK is breaking HDR after exiting the game!</h4>
                                 Yes, unfortunately due to how FSE works, in addition to lack of native Windows support from DXVK, it doesn't properly handle the HDR API.
                                 <br>
@@ -1337,7 +1372,7 @@
                             </li>
                             <li>
                                 <h4>Is dgVoodoo 2 a viable alternative to DXVK?</h4>
-                                No. While it's true that you'd gain properly working Windowed mode and HDR from it, in contrast to DXVK you are guaranteed to get lower perfomance due to the translation overhead.
+                                No. While it's true that you'd gain Windowed mode with Flip Model and HDR from it, in contrast to DXVK you are guaranteed to get lower perfomance due to the translation overhead.
                                 <br>
                                 If you can handle the performance loss, sure go ahead.
                             </li>
@@ -1361,7 +1396,7 @@
                     <div class="card">
                         <p>
                         <h3>The End?</h3>
-                        Congratulations! You've made it through! I hope this guide helped you making Fallout New Vegas a smoother experience.
+                        Congratulations! You've made it through! I hope this guide has helped you making Fallout New Vegas a smoother experience.
                         <br>
                         If you have any issues, questions, critiques or recommendations hit me up on Discord - Wall_SoGB#2421.
                         <br>
@@ -1423,6 +1458,12 @@
                                 You <img src="UI/pepestare.webp" id="pepestare" alt="Image of Pepe the frog happily smiling and looking at the viewer">
                             </li>
                         </ul>
+                        </p>
+                    </div>
+                    <div class="card">
+                        <p>
+                            <h3>Changelog</h3>
+                            Changes are documented on the <a href="https://github.com/WallSoGB/FalloutNV-Performance-Guide/commits/main" target="_blank">commit history</a>
                         </p>
                     </div>
                 </div>
