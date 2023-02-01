@@ -712,7 +712,7 @@
                                             A <b class="card-basic">VK_EXT_robustness2</b> driver extension
                                         </li>
                                     </ol>
-                                    You can check if your GPU supports them using <a href="https://www.techpowerup.com/download/techpowerup-gpu-z/" target="_blank">GPU-Z</a>, in the <b>Advanced</b> tab.
+                                    You can check if your GPU supports them using <a href="https://www.techpowerup.com/download/techpowerup-gpu-z/" target="_blank">GPU-Z</a>, in the <b>Advanced</b> tab -> Vulkan section.
                                     <br>
                                     Keep in mind that even with those conditions met, DXVK 2.0 may not work correctly for you, due to its Linux-based nature.
                                 </li>
@@ -722,7 +722,7 @@
                                     <ul>
                                         <li>
                                             <p>
-                                                <b>Nvidia GPU</b> laptops must use the <a href="#dxvk-flip">DXGI interop</a> (see below).
+                                                <b>Nvidia GPU</b> laptops <b>must</b> use the <a href="#dxvk-flip">DXGI interop</a> (see below).
                                                 <br>
                                                 Using it on <b>desktops</b> is not required, but <b>highly recommended</b> for the most optimal experience
                                             </p>
@@ -730,6 +730,10 @@
                                         <li>
                                             <p>
                                                 <b>AMD GPUs</b> are more prone to shader issues on Windows (situation is completely reversed on Linux)
+                                                <br>
+                                                AMD laptops <b>can not</b> use DXVK due to presentation issues
+                                                <br>
+                                                (Vulkan runs in a broken state, GPU is underutilized and can't use proper fullscreen mode - on Nvidia this is resolved by using DXGI presentation, but AMD lacks such feature).
                                             </p>
                                         </li>
                                         <li>
