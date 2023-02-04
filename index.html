@@ -155,7 +155,7 @@
                             </li>
                             <li id="VRR">
                                 <b>G-Sync | Freesync</b> - <b>Variable Refresh Rate (VRR)</b> technologies developed by NVIDIA and AMD respectively.
-                                They allow the display to adapt its refresh rate to the framerate, allowing to use V-Sync at arbitrary framerates and reduce its latency<sup><a title="Why?" href="#ad1">[1]</a></sup> .
+                                They allow the display to adapt its refresh rate to the framerate, allowing to use V-Sync at arbitrary framerates and reduce its latency<sup><a title="Why?" href="#annotation1">[1]</a></sup> .
                             </li>
                             <li id="MPO">
                                 <b>Multiplane Overlays (MPOs)</b> - hardware scanout planes for the GPU. They allow for hardware image composition without any latency or performance penalty (for example displaying windows on top of each other), as well as
@@ -189,7 +189,7 @@
                                     <br>
                                     Allows "fullscreen-level" of performance and latency. Has native VRR support in Windowed Mode. Additionally, DXGI version supports tearing (V-Sync off) in Windowed Mode, HDR and has Multiplane Overlay (MPO) support.
                                     <br>
-                                    DXGI variant is supported only in D3D10 and upwards<sup><a title="Why?" href="#ad2">[2]</a></sup>, enforced only in D3D12, and exists only on Windows 8 and upwards.
+                                    DXGI variant is supported only in D3D10 and upwards<sup><a title="Why?" href="#annotation2">[2]</a></sup>, enforced only in D3D12, and exists only on Windows 8 and upwards.
                                     <br>
                                     D3D9Ex Flip Model is not feature matched and lacks any DXGI improvements.
                                     <br>
@@ -201,7 +201,7 @@
                                     <br>
                                     The only presentation model for Windowed D3D9 (and lower), but still very common in D3D10 and D3D11 games.
                                     <p>
-                                        Vulkan and OpenGL<sup><a title="Why?" href="#ad3">[3]</a></sup> use BitBlt in Windowed Mode.
+                                        Vulkan and OpenGL<sup><a title="Why?" href="#annotation3">[3]</a></sup> use BitBlt in Windowed Mode.
                                     </p>
                                 </li>
                             </ul>
@@ -473,7 +473,7 @@
                                                 High input lag and worse performance, especially when not using any FPS limiter
                                             </li>
                                             <li>
-                                                V-Sync is always on<sup><a title="Why?" href="#ad4">[4]</a></sup>
+                                                V-Sync is always on<sup><a title="Why?" href="#annotation4">[4]</a></sup>
                                             </li>
                                             <li>
                                                 Variable Refresh Rate doesn't work natively
@@ -483,7 +483,7 @@
                                                     AMD supports Freesync in BitBlt windows that are fullscreen, but latency and performance penalties remain
                                                 </li>
                                                 <li>
-                                                    Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#ad5">[5]</a></sup>
+                                                    Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation5">[5]</a></sup>
                                                 </li>
                                             </ul>
                                             <li>
@@ -629,7 +629,7 @@
                                         <br>
                                         <div class="card-red">
                                             <p>
-                                                <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#ad6">[6]</a></sup></b>
+                                                <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation6">[6]</a></sup></b>
                                                 <br>
                                                 To mitigate that either use <a href="#DXVK">DXVK</a>, or <a href="#FAQ">Windowed Mode</a>.
                                                 <br>
