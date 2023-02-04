@@ -165,7 +165,7 @@
                         </ul>
                         <span class="annotations">
                             <ol>
-                                <li id="ad1">
+                                <li id=#annotation1">
                                     Yes, despite popular misinformation, VRR alone doesn't get rid of tearing. It can minimize the rolling tear however, but that varies between displays, and such, it's not a guaranteed feature.
                                     Additionally, the latency reduction applies <b>only</b> at framerates below V-Sync window (display's native refresh rate) - if framerate matches the native refresh rate, VRR engages V-Sync emulation.
                                 </li>
@@ -236,12 +236,12 @@
                         </ul>
                         <span class="annotations">
                             <ol start="2">
-                                <li id="ad2">
+                                <li id=#annotation2">
                                     D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and UE4 implemented Flip Model support around 2019 - 7 years after its release!).
                                     <br>
                                     Flip Model in Windowed Mode can be enabled in those games using Special K (D3D11 only) or Windows 11's (22H2) Optimizations for Windowed Games (both D3D10 and D3D11)
                                 </li>
-                                <li id="ad3">
+                                <li id=#annotation3">
                                     OpenGL can be displayed using D3D11 thanks to Special K, which enables Flip Model and all its benefits along with HDR.
                                     <br>
                                     Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one,
@@ -496,10 +496,10 @@
                         </div>
                         <span class="annotations">
                             <ol start="4">
-                                <li id="ad4">
+                                <li id=#annotation4">
                                     Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
                                 </li>
-                                <li id="ad5">
+                                <li id=#annotation5">
                                     While AMD enables Freesync for Fullscreen Windowed BitBlt surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
                                     <br>
                                     This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
@@ -655,7 +655,7 @@
                         </ol>
                         <span class="annotations">
                             <ol start="6">
-                                <li id="ad6">
+                                <li id=#annotation6">
                                     D3D9 loses the graphics device if it loses the screen ownership (Alt-Tab, Sleep, etc.). To recover, it needs to either have a copy of textures in RAM, or be able to reconstruct the memory from ground up.
                                     <br>
                                     Fallout New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
