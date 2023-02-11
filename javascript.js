@@ -39,13 +39,7 @@ function refreshRateCalculations() {
     const confirmation = document.getElementById("applyConfirmation");
     confirmation.style.opacity = "100%";
     if (rr > 24) {
-        if (rr < 90) {
-            var rrVRR = Math.round(rr * 0.96);
-        }
-        else {
-            var rrVRR = Math.round(rr * 0.94);
-        }
-
+        var rrVRR = Math.round(rr*(1 - rr * 0.00028));
         const fpsFixed = document.getElementsByClassName("fpsFixed");
         const fpsVSync = document.getElementsByClassName("fpsVSync");
         const fpsVRR = document.getElementsByClassName("fpsVRR");
@@ -56,7 +50,7 @@ function refreshRateCalculations() {
         fpsVSync[0].innerHTML = rr - 0.05;
 
         for (const fpsVRRItem of fpsVRR) {
-            fpsVRRItem.innerHTML = Math.round(rrVRR);
+            fpsVRRItem.innerHTML = rrVRR;
         }
         for (const iFpsFixedItem of iFpsFixed) {
             iFpsFixedItem.innerHTML = rr;
