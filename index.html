@@ -410,7 +410,7 @@
                                 <tr>
                                     <td class="card-green">
                                         <ul>
-                                            <li>Best latency and performance</li>
+                                            <li>Best latency</li>
                                             <li>Variable Refresh Rate works without any problems</li>
                                             <li>
                                                 <a href="#specialk">HDR output</a>
@@ -449,6 +449,12 @@
                                             <li>
                                                 Nvidia only
                                             </li>
+                                            <li>
+                                                Potentially worse performance due to Nvidia's idiotic programming<sup><a title="Why?" href="#annotation4">[4]</a></sup>
+                                            </li>
+                                            <li>
+                                                Compatibility issues with overlays, for the same reason.
+                                            </li>
                                         </ul>
                                     </td>
                                     <td class="card-red">
@@ -470,10 +476,10 @@
                                     <td class="card-red">
                                         <ul>
                                             <li>
-                                                High input lag and worse performance, especially when not using any FPS limiter
+                                                High input lag and worse performance, especially when not using any FPS limiter and/ or using a laptop
                                             </li>
                                             <li>
-                                                V-Sync is always on<sup><a title="Why?" href="#annotation4">[4]</a></sup>
+                                                V-Sync is always on<sup><a title="Why?" href="#annotation5">[5]</a></sup>
                                             </li>
                                             <li>
                                                 Variable Refresh Rate doesn't work natively
@@ -483,11 +489,14 @@
                                                     AMD supports Freesync in BitBlt windows that are fullscreen, but latency and performance penalties remain
                                                 </li>
                                                 <li>
-                                                    Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation5">[5]</a></sup>
+                                                    Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation6">[6]</a></sup>
                                                 </li>
                                             </ul>
                                             <li>
                                                 In-Game brightness settings don't work
+                                            </li>
+                                            <li>
+                                                Higher memory bandwidth and usage.
                                             </li>
                                         </ul>
                                     </td>
@@ -497,9 +506,12 @@
                         <span class="annotations">
                             <ol start="4">
                                 <li id="annotation4">
-                                    Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
+                                    Nvidia recreates the swapchain every frame. This needlessly degrades performance and introduces compatiblity issues.
                                 </li>
                                 <li id="annotation5">
+                                    Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
+                                </li>
+                                <li id="annotation6">
                                     While AMD enables Freesync for Fullscreen Windowed BitBlt surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
                                     <br>
                                     This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
