@@ -450,7 +450,7 @@
                                                 Nvidia only
                                             </li>
                                             <li>
-                                                Potentially worse performance due to Nvidia's idiotic programming<sup><a title="Why?" href="#annotation4">[4]</a></sup>
+                                                Potentially worse performance compared to Fullscreen DXVK due to Nvidia's idiotic programming<sup><a title="Why?" href="#annotation4">[4]</a></sup>
                                             </li>
                                             <li>
                                                 Compatibility issues with overlays, for the same reason.
@@ -855,10 +855,10 @@
                                 <li>
                                     In the first column, check bit <b class="card-basic" style="letter-spacing: 0.1em;">#00</b> and <b class="card-basic" style="letter-spacing: 0.1em;">#19</b>
                                     <div class="card-yellow">
-                                    <p>
-                                        These flags enable DXVK support and fix forced promotion to <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> in some games.
-                                    </p>
-                                </div>
+                                        <p>
+                                            These flags enable DXVK support and fix forced promotion to <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> in some games.
+                                        </p>
+                                    </div>
                                 </li>
                                 <li>
                                     Click <b>Apply & Close</b>
@@ -995,13 +995,13 @@
                                         Special K may conflict with Riva Tuner. If the game crashes or SK doesn't show up in game, make sure <b>Riva Tuner</b> is <b>not running</b>, or set Riva Runer's <b>injection delay</b> to <b>30000</b>
                                     </li>
                                     <li>
-                                        Special K's interface breaks water reflections when visible. This is fixed by DXVK. (Or simply just don't have it visible).
+                                        Special K's interface in D3D9 breaks water reflections when visible. Simply not having Special K's interaface visible fixes the issue.
                                     </li>
                                     <li>
-                                        Special K doesn't natively support <b>Vulkan</b>, so when using DXVK without DXGI it recognizes the game as D3D9.
+                                        Special K <b>doesn't</b> natively support <b>Vulkan</b>, so unless you are using the DXGI interop, I recommend choosing something else.
                                     </li>
                                     <li>
-                                        <b>Nvidia and Steam Overlays</b> can sometimes block Special K from displaying with DXVK - DXGI. If you don't see the Control Panel, try disabling these overlays.
+                                        <b>Nvidia and Steam Overlays</b> can sometimes block Special K from displaying with DXVK - DXGI. If you don't see the Control Panel, try disabling these overlays and restarting your device.
                                     </li>
                                 </ul>
                                 </p>
@@ -1103,11 +1103,6 @@
                                                     </li>
                                                 </ul>
                                                 Click on <b>Advanced</b> and select the <b>Low-Latency - (VRR Optimized)</b> mode
-                                                <div class="card-yellow">
-                                                    <p>
-                                                        If you use <b>DXVK (without DXGI)</b>, you must double your limiter value, otherwise you'll get halved framerate
-                                                    </p>
-                                                </div>
                                                 </p>
                                             </div>
                                         </li>
@@ -1192,7 +1187,7 @@
                                             VRR + V-Sync
                                             <div class="card-basic">
                                                 <p>
-                                                    <span class="fpsVRR">(RefreshRate * (1 - RefreshRate  * 0.00028))</span>
+                                                    <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>
                                                 </p>
                                             </div>
                                         </li>
@@ -1271,7 +1266,7 @@
                                                 VRR + V-Sync
                                                 <div class="card-basic">
                                                     <p>
-                                                        <span class="fpsVRR">(RefreshRate * (1 - RefreshRate  * 0.00028))</span>
+                                                        <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>
                                                     </p>
                                                 </div>
                                             </li>
@@ -1333,7 +1328,7 @@
                                                 VRR + V-Sync
                                                 <div class="card-basic">
                                                     <p>
-                                                        <span class="fpsVRR">(RefreshRate * (1 - RefreshRate  * 0.00028))</span>
+                                                        <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>
                                                     </p>
                                                 </div>
                                             </li>
