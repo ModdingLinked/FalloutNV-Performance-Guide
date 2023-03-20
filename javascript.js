@@ -1,5 +1,22 @@
 window.addEventListener('resize', sizeChanged);
 
+function toggleTestMenu(ID) {
+    const menu = document.getElementById(ID);
+    menu.classList.toggle("show");
+    window.onclick = function (e) {
+        if (!e.target.matches(".dropdown-button")) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i = 0;
+            for (i; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains("show")) {
+                    openDropdown.classList.toggle("show");
+                }
+            }
+        }
+    }
+}
+
 let settings = {
     grass: 0,
     light: 200,
@@ -21,8 +38,8 @@ function sizeChanged() {
     }
 }
 
-function toggleNav() {
-    if (document.getElementById("sidebar").style.width == 0) {
+function toggleMenuByID() {
+    if (document.getElementById("sidebar").style.width == "0") {
         document.getElementById("header").style.marginLeft = "80%";
         document.getElementById("sidebar").style.width = "80%";
         document.getElementById("flippyHeader").innerText = "🙂";
@@ -36,10 +53,11 @@ function toggleNav() {
 
 function refreshRateCalculations() {
     const rr = document.getElementById("refreshRateInput").value;
+
     const confirmation = document.getElementById("applyConfirmation");
     confirmation.style.opacity = "100%";
-    if (rr > 24) {
-        var rrVRR = Math.round(rr*(1 - rr * 0.00028));
+    if (rr > "24") {
+        var rrVRR = Math.round(rr * (1 - rr * 0.00028));
         const fpsFixed = document.getElementsByClassName("fpsFixed");
         const fpsVSync = document.getElementsByClassName("fpsVSync");
         const fpsVRR = document.getElementsByClassName("fpsVRR");
@@ -69,7 +87,6 @@ function fadeOut(element) {
 function rotate(element, rotation = 180) {
     element.style.transform = 'rotatex(' + rotation + 'deg)';
 }
-
 
 function expandCard(thisObj, $open, $dontReset) {
     const chevron = thisObj.getElementsByClassName("chevron")[0]
