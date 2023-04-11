@@ -647,7 +647,7 @@
                                     <br>
                                     <div class="card-red">
                                         <p>
-                                            <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation6">[6]</a></sup></b>
+                                            <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation7">[7]</a></sup></b>
                                             <br>
                                             To mitigate that either use <a href="#DXVK">DXVK</a>, or <a href="#FAQ">Windowed Mode</a>.
                                             <br>
@@ -672,8 +672,8 @@
                         </li>
                     </ol>
                     <span class="annotations">
-                        <ol start="6">
-                            <li id="annotation6">
+                        <ol start="7">
+                            <li id="annotation7">
                                 D3D9 loses the graphics device if it loses the screen ownership (Alt-Tab, Sleep, etc.). To recover, it needs to either have a copy of textures in RAM, or be able to reconstruct the memory from ground up.
                                 <br>
                                 Fallout New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
