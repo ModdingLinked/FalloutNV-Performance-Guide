@@ -455,10 +455,10 @@
                                             Nvidia only
                                         </li>
                                         <li>
-                                            Potentially worse performance compared to Fullscreen DXVK due to Nvidia's idiotic programming<sup><a title="Why?" href="#annotation4">[4]</a></sup> (Desktop only)
+                                            Potentially worse performance compared to Fullscreen DXVK on Desktop due to being Laptop optimized
                                         </li>
                                         <li>
-                                            Compatibility issues with overlays, for the same reason
+                                            Compatibility issues with overlays, for the same reason as above.
                                         </li>
                                     </ul>
                                 </td>
@@ -487,7 +487,7 @@
                                             High input lag and worse performance, especially when not using any FPS limiter and/ or using a laptop
                                         </li>
                                         <li>
-                                            V-Sync is always on<sup><a title="Why?" href="#annotation5">[5]</a></sup>
+                                            V-Sync is always on<sup><a title="Why?" href="#annotation5">[4]</a></sup>
                                         </li>
                                         <li>
                                             Variable Refresh Rate doesn't work natively
@@ -497,7 +497,7 @@
                                                 AMD supports Freesync in BitBlt windows that are fullscreen, but latency and performance penalties remain
                                             </li>
                                             <li>
-                                                Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation6">[6]</a></sup>
+                                                Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation6">[5]</a></sup>
                                             </li>
                                         </ul>
                                         <li>
@@ -514,12 +514,9 @@
                     <span class="annotations">
                         <ol start="4">
                             <li id="annotation4">
-                                Nvidia recreates the swapchain every frame. This needlessly degrades performance and introduces compatiblity issues.
-                            </li>
-                            <li id="annotation5">
                                 Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
                             </li>
-                            <li id="annotation6">
+                            <li id="annotation5">
                                 While AMD enables Freesync for Fullscreen Windowed BitBlt surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
                                 <br>
                                 This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
@@ -649,7 +646,7 @@
                                     <br>
                                     <div class="card-red">
                                         <p>
-                                            <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation7">[7]</a></sup></b>
+                                            <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation6">[6]</a></sup></b>
                                             <br>
                                             To mitigate that either use <a href="#DXVK">DXVK</a>, or <a href="#FAQ">Windowed Mode</a>.
                                             <br>
@@ -674,8 +671,8 @@
                         </li>
                     </ol>
                     <span class="annotations">
-                        <ol start="7">
-                            <li id="annotation7">
+                        <ol start="6">
+                            <li id="annotation6">
                                 D3D9 loses the graphics device if it loses the screen ownership (Alt-Tab, Sleep, etc.). To recover, it needs to either have a copy of textures in RAM, or be able to reconstruct the memory from ground up.
                                 <br>
                                 Fallout New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
