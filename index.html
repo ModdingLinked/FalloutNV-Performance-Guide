@@ -770,11 +770,11 @@
                                             installed. <br>DXVK is broken past the 1.10.1 version.
                                             <br>
                                             Don't expect a big performance difference, if any, since the game will still be mostly GPU bound.
-                                            <div class="card-yellow">
-                                                <p>
-                                                    Arc GPUs should work fine, but are untested.
-                                                </p>
-                                            </div>
+                                        <div class="card-yellow">
+                                            <p>
+                                                Arc GPUs should work fine, but are untested.
+                                            </p>
+                                        </div>
                                         </p>
                                     </li>
                                 </ul>
@@ -805,39 +805,45 @@
                         </div>
                         </p>
                     </div>
+                    </p>
+                </div>
+                <div class="card" id="dxvk-HDR">
+                    <p>
+                    <h3>HDR-Mod</h3>
+                    HDR-Mod is a DXVK mod made by <a href="https://github.com/EndlesslyFlowering" target="_blank">Lilium (aka EndlesslyFlowering)</a> and <a href="https://github.com/WallSoGB" target="_blank">me</a> with the intention of adding HDR functionality to D3D9 games.
+                    Effectively it does 2 major things:
+                    <ul>
+                        <li>
+                            <p>
+                                Allows to display the game at bit depth higher than 8.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                This eliminates color banding from the game.
+                            </p>
+                        </li>
+                    </ul>
+                    This allows for HDR output and eliminates color banding from the game.
+                    <br>
+                    DXVK doesn't perform any HDR tone mapping, so you need to use <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a> (Nvidia only) or <a href="https://reshade.me/" target="_blank">ReShade</a> for that.
                     <div class="card-yellow">
                         <p>
-                            <h3>HDR-Mod</h3>
-                            HDR-Mod is a DXVK mod made by <a href="https://github.com/EndlesslyFlowering" target="_blank">Lilium (aka EndlesslyFlowering)</a> and <a href="https://github.com/WallSoGB" target="_blank">me</a> with the intention of adding HDR functionality to D3D9 games.
-                            Effectively it does 2 major things:
-                            <ul>
-                                <li>
-                                    <p>
-                                        Allows to display the game at bit depth higher than 8.
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        This eliminates color banding from the game.
-                                    </p>
-                                </li>
-                            </ul>
-                            This allows for HDR output and eliminates color banding from the game.
-                            <br>
-                            DXVK doesn't perform any HDR tone mapping, so you need to use <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a> (Nvidia only) or <a href="https://reshade.me/" target="_blank">ReShade</a> for that.
-                            <h3>Known quirks and issues</h3>
-                            <ul>
-                                <li>
-                                    Any images produced by the game that were meant to be in 8 bit (screenshots, save images) are distorted due to lack of color conversion. 
-                                    <br>
-                                    This is purely visual and doesn't affect gameplay. 
-                                    <br>
-                                    For screenshots it's recommended to use Game Bar, Steam (Beta) or your tone mapping utility.
-                                </li>
-                            </ul>
+                        <h4>Known quirks and issues</h4>
+                        <ul>
+                            <li>
+                                Any images produced by the game that were meant to be in 8 bit (screenshots, save images) are distorted due to lack of color conversion.
+                                <br>
+                                This is purely visual and doesn't affect gameplay.
+                                <br>
+                                For screenshots it's recommended to use Game Bar, Steam (Beta) or your tone mapping utility.
+                            </li>
+                        </ul>
                         </p>
                     </div>
-
+                    </p>
+                </div>
+                <div class="card">
                     <h3>Installation</h3>
                     <ol>
                         <li>
@@ -980,7 +986,7 @@
                                 </div>
                                 <div class="card-yellow">
                                     <p>
-                                        This workaround applies only to <span title="Riva Tuner Statistic Server" onclick="expandCard(rtss, rtssExpander, 1); location.href='#rtss'">RTSS</span> and D3D9 Special K. 
+                                        This workaround applies only to <span title="Riva Tuner Statistic Server" onclick="expandCard(rtss, rtssExpander, 1); location.href='#rtss'">RTSS</span> and D3D9 Special K.
                                         <br>
                                         (Not needed if you use <span title="Special K" onclick="expandCard(specialk, specialkExpander, 1); location.href='#specialk'">Special K + DXVK with DXGI</span>)
                                         <br>
@@ -1021,19 +1027,19 @@
                     </p>
                     <p>
                         Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
-                        <div>
-                            <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
-                            <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button><span class="disabled" id="applyConfirmation">Applied!</span>
-                        </div>
-                        <div class="card-yellow">
-                            <p>
-                                If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.)
-                            </p>
-                        </div>
+                    <div>
+                        <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
+                        <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button><span class="disabled" id="applyConfirmation">Applied!</span>
+                    </div>
+                    <div class="card-yellow">
+                        <p>
+                            If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.)
+                        </p>
+                    </div>
                     </p>
                     <p>
-                    Click on the cards below to show the instructions for each limiter.
-                    <!-- SK -->
+                        Click on the cards below to show the instructions for each limiter.
+                        <!-- SK -->
                     <p>
                     <div class="expander-top clickable center width-limited" onclick="expandCard(this, specialkExpander)" id="specialk">
                         <p>
