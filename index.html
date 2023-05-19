@@ -805,6 +805,38 @@
                         </div>
                         </p>
                     </div>
+                    <div class="card-yellow">
+                        <p>
+                            <h3>HDR Mod</h3>
+                            HDR version of DXVK does 2 major things:
+                            <ul>
+                                <li>
+                                    <p>
+                                        Allows to display the game at bit depth higher than 8.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        This eliminates color banding from the game.
+                                    </p>
+                                </li>
+                            </ul>
+                            This allows for HDR output and eliminates color banding from the game.
+                            <br>
+                            DXVK doesn't perform any HDR tone mapping, so you need to use <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a> (Nvidia only) or <a href="https://reshade.me/" target="_blank">ReShade</a> for that.
+                            <h3>Known quirks and issues</h3>
+                            <ul>
+                                <li>
+                                    Any images produced by the game that were meant to be in 8 bit (screenshots, save images) are distorted due to lack of color conversion. 
+                                    <br>
+                                    This is purely visual and doesn't affect gameplay. 
+                                    <br>
+                                    For screenshots it's recommended to use Game Bar or your tone mapping utility.
+                                </li>
+                            </ul>
+                        </p>
+                    </div>
+
                     <h3>Installation</h3>
                     <ol>
                         <li>
