@@ -418,7 +418,7 @@
                                         <li>Best latency</li>
                                         <li>Variable Refresh Rate works without any problems</li>
                                         <li>
-                                            <a href="#specialk">HDR output</a>
+                                            HDR output
                                         </li>
                                         <li>
                                             Fast Alt-Tab
@@ -431,6 +431,9 @@
                                 <td class="card-green">
                                     <ul>
                                         <li>Best latency and performance, especially with <span title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSO</span></li>
+                                        <li>
+                                            HDR output (Requires DXVK)
+                                        </li>
                                         <li>Variable Refresh Rate works without any problems</li>
                                     </ul>
                                 </td>
@@ -455,7 +458,7 @@
                                             Nvidia only
                                         </li>
                                         <li>
-                                            Potentially worse performance compared to Fullscreen DXVK on Desktop due to being Laptop optimized
+                                            Potentially worse performance compared to Fullscreen DXVK on Desktops due to being Laptop optimized
                                         </li>
                                         <li>
                                             Compatibility issues with overlays, for the same reason as above.
@@ -478,6 +481,9 @@
                                         </li>
                                         <li>
                                             Doesn't work at all on hybrid GPU laptops when using DXVK - uses Windowed instead which massively degrades performance. Nvidia GPUs must use DXGI.
+                                        </li>
+                                        <li>
+                                            HDR can cause issues on Alt-Tab, especially on AMD GPUs
                                         </li>
                                     </ul>
                                 </td>
@@ -505,6 +511,9 @@
                                         </li>
                                         <li>
                                             Higher memory bandwidth and usage
+                                        </li>
+                                        <li>
+                                            No HDR support
                                         </li>
                                     </ul>
                                 </td>
@@ -720,7 +729,7 @@
                                 </ul>
                             </li>
                             <li>
-                                DXVK 2.0 <b>requires</b>:
+                                DXVK 2.0 and higher <b>require</b>:
                                 <ol>
                                     <li>
                                         A Vulkan 1.3 driver
@@ -729,9 +738,11 @@
                                         A <b class="card-basic">VK_EXT_robustness2</b> driver extension
                                     </li>
                                 </ol>
-                                You can check if your GPU supports them using <a href="https://www.techpowerup.com/download/techpowerup-gpu-z/" target="_blank">GPU-Z</a>, in the <b>Advanced</b> tab -> Vulkan section.
+                                Generally almost all modern (2015+) GPUs support them, but if you'd like to sanity check yours, use <a href="https://www.techpowerup.com/download/techpowerup-gpu-z/" target="_blank">GPU-Z</a>, and go to the <b>Advanced</b> tab -> <b>Vulkan</b> section.
                                 <br>
-                                Keep in mind that even with those conditions met, DXVK 2.0 may not work correctly for you, due to its Linux-based nature.
+                                Those functionalities are a part of your GPU driver, so make sure you have the <a href="#DriversAndOS">latest available version</a>.
+                                <br>
+                                Keep in mind that even with those conditions met, DXVK 2.0+ may not work correctly for you, due to its Linux-based nature.
                             </li>
                             <li>
                                 <p>
@@ -759,6 +770,11 @@
                                             installed. <br>DXVK is broken past the 1.10.1 version.
                                             <br>
                                             Don't expect a big performance difference, if any, since the game will still be mostly GPU bound.
+                                            <div class="card-yellow">
+                                                <p>
+                                                    Arc GPUs should work fine, but are untested.
+                                                </p>
+                                            </div>
                                         </p>
                                     </li>
                                 </ul>
@@ -766,11 +782,11 @@
                             </li>
                             <li>
                                 <p>
-                                    Fallout New Vegas has some known shader issues. They are not guaranteed to happen (getting rarer with DXVK updates), but they can occur:
+                                    Fallout New Vegas has some known shader issues or quirks. They are not guaranteed to happen (getting rarer with DXVK updates), but they can occur:
                                 <ul>
-                                    <li>Broken transparency multisampling - transparent textures are dithered (Guaranteed - DXVK handles alpha to coverage differently than drivers)</li>
-                                    <li>Broken water reflections (Rare, most reports come from AMD cards)</li>
-                                    <li>Broken lights and artifacting (Rare, most reports come from AMD cards)</li>
+                                    <li>Transparency multisampling uses dithering - (DXVK handles alpha to coverage differently than drivers)</li>
+                                    <li>Broken water reflections (Rare, most reports come from older AMD GPUs)</li>
+                                    <li>Broken lights and artifacting (Rare, most reports come from older AMD GPUs)</li>
                                 </ul>
                                 </p>
                             </li>
@@ -793,30 +809,22 @@
                     <ol>
                         <li>
                             <p>
-                                Open <a href="https://gitlab.com/Ph42oN/dxvk-gplasync/-/blob/main/dxvk-gplasync-2.2-1.tar.gz" target="_blank">DXVK-GPLAsync GitLab page</a>
-                                and download it
-                            </p>
-                            <p>
-                            <div class="card-red">
-                                <p>GPUs lacking VK 1.3 support or having issues with 2.0, must use the <a href="https://github.com/Sporif/dxvk-async/releases/tag/1.10.3" target="_blank">1.10.3 version</a></p>
-                                <p>Intel GPUs need to use the <a href="https://github.com/Sporif/dxvk-async/releases/tag/1.10.1" target="_blank">1.10.1 version</a></p>
-                            </div>
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Extract <b>d3d9.dll</b> from <b>x32 folder</b> inside downloaded archive to your <b>Fallout New Vegas root folder</b>
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Download <a href="https://performance.moddinglinked.com/files/dxvk-conf.zip">dxvk-conf.zip</a> and extract its content to <b>Fallout New Vegas root folder</b>
+                                Download the latest <a href="https://www.nexusmods.com/newvegas/mods/79299?tab=files" target="_blank">DXVK version</a> from Nexus.
                             </p>
                             <div class="card-yellow">
                                 <p>
-                                    Included dxvk.conf file enables the async patch and sets the "Float Emulation" setting to "strict" for better compatiblity and potentially less z-fighting.
+                                    If you have a <b>HDR display</b>, you can select the <b>HDR version</b>.
                                 </p>
                             </div>
+                            <div class="card-red">
+                                <p>GPUs lacking VK 1.3 support or having issues with 2.0, must use the <b><a href="https://github.com/Sporif/dxvk-async/releases/tag/1.10.3" target="_blank">1.10.3 version</a></b>.</p>
+                                <p><b>Intel GPUs</b> need to use the <b><a href="https://github.com/Sporif/dxvk-async/releases/tag/1.10.1" target="_blank">1.10.1 version</a></b>.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <p>
+                                Extract archive contents into your <b>Fallout New Vegas root folder</b>.
+                            </p>
                         </li>
                     </ol>
                     </p>
@@ -836,7 +844,7 @@
                             <a href="https://youtu.be/_36yNWw_07g?t=6" target="_blank">Thanks Nvidia!</a>
                         </p>
                     </div>
-                    Nvidia's drivers have ability to interop Vulkan to DXGI allowing for <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">Flip Model</a> in Windowed mode, which leads to <b>HDR support</b>, <b>native VRR</b> support, and best <b>performance</b> and <b>latency</b>.
+                    Nvidia's drivers have ability to interop Vulkan to DXGI allowing for <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">Flip Model</a> in Windowed mode, which has <b>HDR</b> and <b>VRR</b> support, and better <b>latency</b>.
                     <ol>
                         <div class="card-yellow">
                             <p>You can use global profile if you want to use Flip Model in all OpenGL and Vulkan titles</p>
@@ -850,15 +858,24 @@
                         <li>
                             Press <b>Apply changes</b> and exit
                         </li>
-                        <li>Download <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a></li>
-                        <li>Enable "Show unknown settings from NVIDIA predefined profiles" in the top bar (penultimate button)</li>
-                        <li>Press <b>Ctrl+F</b> and paste <b class="card-basic">OGL_DX_PRESENT_DEBUG</b></li>
+                        <li>
+                            Download <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a>.
+                        </li>
+                        <li>
+                            Extract the archive and run the program.
+                        </li>
+                        <li>
+                            Enable "Show unknown settings from NVIDIA predefined profiles" in the top bar (penultimate button).
+                        </li>
+                        <li>
+                            Press <b>Ctrl+F</b> and paste <b class="card-basic">OGL_DX_PRESENT_DEBUG</b>.
+                        </li>
                         <ol>
                             <li>
                                 Select the setting and click on <b>Show bit value editor</b> on the top bar (last button).
                             </li>
                             <li>
-                                In the first column, check bit <b class="card-basic" style="letter-spacing: 0.1em;">#00</b> and <b class="card-basic" style="letter-spacing: 0.1em;">#19</b>
+                                In the first column, check bit <b class="card-basic" style="letter-spacing: 0.1em;">#00</b> and <b class="card-basic" style="letter-spacing: 0.1em;">#19</b>.
                                 <div class="card-yellow">
                                     <p>
                                         These flags enable DXVK support and fix forced promotion to <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> in some games.
@@ -873,7 +890,7 @@
                             Click <b>Apply changes</b> in the top right and exit.
                         </li>
                         <li>
-                            Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b>
+                            Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b>.
                         </li>
                         <div class="card-basic">
                             <p>
@@ -921,11 +938,21 @@
                             <h4>V-Sync</h4>
                             <ul>
                                 <li>
-                                    Framerate must be capped slightly below refresh rate to reduce latency
+                                    Framerate must be capped slightly below refresh rate to reduce latency.
                                 </li>
                                 <div class="card-red">
                                     <p>
-                                        V-Sync on its own is <u>NOT</u> a limiter. Using it as one introduces a latency penalty
+                                        V-Sync on its own is <i><u>NOT</u></i> a limiter. Using it as one introduces a <b>massive</b> latency penalty.
+                                    </p>
+                                </div>
+                                <div class="card-yellow">
+                                    <p>
+                                        This workaround applies only to <span title="Riva Tuner Statistic Server" onclick="expandCard(rtss, rtssExpander, 1); location.href='#rtss'">RTSS</span> and D3D9 Special K. 
+                                        <br>
+                                        (Not needed if you use <span title="Special K" onclick="expandCard(specialk, specialkExpander, 1); location.href='#specialk'">Special K + DXVK with DXGI</span>)
+                                        <br>
+                                        <br>
+                                        Driver limiters are not precise enough to pull this off without risking stutter.
                                     </p>
                                 </div>
                             </ul>
@@ -934,10 +961,10 @@
                             <h4>G-Sync | Freesync</h4>
                             <ul>
                                 <li>
-                                    V-Sync must be enabled, in order to fully get rid of tearing
+                                    V-Sync must be enabled, in order to fully get rid of tearing.
                                 </li>
                                 <li>
-                                    Framerate must be capped below refresh rate, in order for VRR to not disengage and fallback to V-Sync, as this causes a very big increase in latency
+                                    Framerate must be capped below refresh rate, in order for VRR to not disengage and fallback to V-Sync, as this causes a very big increase in latency.
                                 </li>
                             </ul>
                         </li>
@@ -954,29 +981,25 @@
                 </div>
                 <div class="card">
                     <p>
-                    <h3>Finding the limit</h3>
-                    <p>
-                        Enter your refresh rate here for automatic calculation of FPS limits <b>in the next section</b>. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
-                    <div>
-                        <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
-                        <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button><span class="disabled" id="applyConfirmation">Applied!</span>
-                    </div>
-                    <div class="card-yellow">
-                        <p>
-                            If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.)
-                        </p>
-                    </div>
-                    </p>
-                    </p>
-                </div>
-                <div class="card">
-                    <p>
                     <h3>
                         So many options...
                     </h3>
-                    Limiters presented here are ordered by their precision, from best to acceptable. The better ones are smoother and can provide better latency reductions, but are not as fast to setup compared to the built-in driver alternatives and
-                    may have some compatibility issues.
-
+                    Limiters presented here are ordered by their precision, from best to acceptable. The better ones are smoother and can provide better latency reductions, but may have some compatibility issues.
+                    </p>
+                    <p>
+                        Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
+                        <div>
+                            <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
+                            <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button><span class="disabled" id="applyConfirmation">Applied!</span>
+                        </div>
+                        <div class="card-yellow">
+                            <p>
+                                If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.)
+                            </p>
+                        </div>
+                    </p>
+                    <p>
+                    Click on the cards below to show the instructions for each limiter.
                     <!-- SK -->
                     <p>
                     <div class="expander-top clickable center width-limited" onclick="expandCard(this, specialkExpander)" id="specialk">
@@ -1125,9 +1148,9 @@
                                     <span id="nvhdr" onclick="location.href='#nvhdr'">
                                         <h2>Nvidia Exclusive - HDR output</h2>
                                     </span>
-                                    If you have a HDR compatible display, you can use Special K to output in native HDR!
+                                    If you have a HDR compatible display and use HDR DXVK, you can use Special K to output in native HDR.
                                     <br>
-                                    <b>Keep in mind that it will decrease your performance due to higher render bit depth.</b>
+                                    <b>Keep in mind that it can decrease your performance a bit due to higher render bit depth.</b>
                                 <ul>
                                     <li>
                                         Open the HDR menu at the top of Special K's control panel menu and press the HDR Setup button.
@@ -1255,18 +1278,10 @@
                                     In settings, set <b>Max Frame Rate</b> to:
                                     <ul>
                                         <li>
-                                            No V-Sync
+                                            V-Sync | No V-Sync
                                             <div class="card-basic">
                                                 <p>
                                                     <span class="iFpsFixed">(RefreshRate)</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    <span class="iFpsVSync">(RefreshRate - 1)</span>
                                                 </p>
                                             </div>
                                         </li>
@@ -1317,18 +1332,10 @@
                                     In games's menu, enable <b>Radeon Chill™️</b> and set <b>Max FPS</b> to:
                                     <ul>
                                         <li>
-                                            No V-Sync
+                                            V-Sync | No V-Sync
                                             <div class="card-basic">
                                                 <p>
                                                     <span class="iFpsFixed">(RefreshRate)</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    <span class="iFpsVSync">(RefreshRate - 1)</span>
                                                 </p>
                                             </div>
                                         </li>
@@ -1368,7 +1375,7 @@
                     <h3>Are these questions really frequent?</h3>
                     <ul>
                         <li>
-                            <h4>I can't use DXVK or DXGI, and I need to Alt-Tab - am I out of luck?</h4>
+                            <h4>I can't use DXVK, and I need to Alt-Tab - am I out of luck?</h4>
                             Yeah, all you can do is download <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> and use the legacy Windowed mode.
                             <br>
                             Also enable <b>Windowed mode</b> itself in <b>FalloutCustom.ini</b> (OneTweak itself doesn't change display modes)
@@ -1437,7 +1444,7 @@
                         I recommend checking this guide from time to time - I'm not done yet.
                     </p>
                     <p>
-                        If you found this guide helpful, share it with others or support me on <a href="https://ko-fi.com/wall_sogb" target="_blank">Ko-Fi</a>
+                        If you found this guide helpful, share it with others or support me on <a href="https://ko-fi.com/wall_sogb" target="_blank">Ko-Fi</a> or <a href="https://patreon.com/WallSoGB" target="_blank">Patreon</a>
                     </p>
                     </p>
                 </div>
