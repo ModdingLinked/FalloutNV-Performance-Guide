@@ -78,6 +78,12 @@
                     FPS Limiters
                 </a>
 
+                <a href="#DecompressingRecords" title="🙃 Decompressing Records">
+                    <span class="subIcon">📦</span>
+                    <span class="flippy">🙃</span>
+                    Decompression
+                </a>
+
                 <a href="#FAQ" title="🙃 FAQ">
                     <span class="subIcon">❓</span>
                     <span class="flippy">🙃</span>
@@ -150,7 +156,7 @@
                     <h2>Terminology</h2>
                 </span>
                 <div class="card">
-                    <h3>Things that are good to know</h3>
+                    <h3>Things You Should Know</h3>
                     <ul>
                         <li id="VSync">
                             <b>Vertical Synchronization (V-Sync)</b> - technology allowing to keep display's scanout and refresh in phase to eliminate screen tearing,
@@ -319,7 +325,7 @@
                 </div>
                 <div class="card">
                     <p>
-                    <h3>Windows watermark</h3>
+                    <h3>Windows Watermark</h3>
                     <p>
                         Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition, which leads to increased latency, worse performance and disables VRR.
                         If you don't have a GPU with <a href="#Terminology">MPO (Multiplane Overlay)</a> support, you can mitigate this by disabling Fullscreen Optimizations.
@@ -382,11 +388,11 @@
             <!-- DisplayModeComparison -->
             <div>
                 <span id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
-                    <h2>Display mode differences</h2>
+                    <h2>Display Mode Differences</h2>
                 </span>
                 <div class="card">
                     <p>
-                    <h3>Presentation problems</h3>
+                    <h3>Presentation Problems</h3>
                     Here's a comparison of three display modes you can use in this game. Situation is problematic mainly due to Vulkan and D3D9 using old <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">presentation models</a>.
                     <div class="comparison">
                         <table class="comparison-table">
@@ -563,8 +569,7 @@
                             guides, you may skip this step since it's already included there
                         </p>
                     </div>
-                    lStewieAl's Tweaks and Engine Fixes is a mod by... <a href="https://www.nexusmods.com/newvegas/users/2232669" target="_blank">lStewieAl</a>, that does what it says - it adds tweaks and fixes the engine. The scope of this mod can't
-                    be overstated.
+                    lStewieAl's Tweaks and Engine Fixes is a mod by... <a href="https://www.nexusmods.com/newvegas/users/2232669" target="_blank">lStewieAl</a>, that does what it says - it adds tweaks and fixes the engine. The scope of this mod can't be overstated.
                     <h3>Installation</h3>
                     <ol>
                         <li>
@@ -600,12 +605,11 @@
                 </span>
                 <div class="card">
                     <p>
-                    <h3>Stutter remover</h3>
-                    New Vegas Tick Fix is a mod by <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a> that fixes and improves game's internal clocks and memory management, which dramatically reduces stutter. It also
-                    allows for
-                    playing above 60fps without breaking physics.
-                    <br>
-                    Additionally, it has some DirectX changes, which help with performance and greatly reduce memory usage.
+                        New Vegas Tick Fix is a mod by <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a> that fixes and improves game's internal clocks and memory management, which dramatically reduces stutter. It also
+                        allows for
+                        playing above 60fps without breaking physics.
+                        <br>
+                        Additionally, it has some DirectX changes, which help with performance and greatly reduce memory usage.
                     <h3>Installation</h3>
                     <ol>
                         <li>
@@ -701,9 +705,8 @@
                 </span>
                 <div class="card">
                     <p>
-                    <h3>Translation magic</h3>
-                    DXVK is an open source Direct3D 9-11 to Vulkan translator project lead by <a href="https://github.com/doitsujin">doitsujin</a> and <a href="https://github.com/Joshua-Ashton">Joshua Ashton</a>. While created mainly for Linux, works
-                    <u>unofficially</u> on Windows.
+                    <h3>Translation Magic</h3>
+                    DXVK is an open source Direct3D 9-11 to Vulkan translator project lead by <a href="https://github.com/doitsujin">doitsujin</a> and <a href="https://github.com/Joshua-Ashton">Joshua Ashton</a>. While created mainly for Linux, works <u>unofficially</u> on Windows.
                     <br>
                     In short, it allows to run Fallout using Vulkan API which has benefits of much lower draw call overhead than D3D9,
                     which is one of the main performance limiting factors in this game.
@@ -947,11 +950,11 @@
             <!-- RecommendedLimiters -->
             <div>
                 <span id="RecommendedLimiters" onclick="location.href='#RecommendedLimiters'">
-                    <h2>Recommended framerate limiters and their configurations</h2>
+                    <h2>Recommended FPS Limiters and Their Configurations</h2>
                 </span>
                 <div class="card">
                     <p>
-                    <h3>(Not) Pushing the limits</h3>
+                    <h3>(Not) Pushing the Limits</h3>
                     Limiting framerate is very important for overall stability.
                     <br>
                     First and foremost, if you are using a good limiter, you'll be implementing correct framepacing, which is the most important think for the overall fell of fluidity.
@@ -970,7 +973,7 @@
                 </div>
                 <div class="card">
                     <p>
-                    <h3>Recommended setups</h3>
+                    <h3>Recommended Setups</h3>
                     Recommended configurations based on selected display scenarios:
                     <ul>
                         <li>
@@ -1404,6 +1407,30 @@
                 </div>
             </div>
 
+            <!-- Decompressing Records -->
+            <div>
+                <span id="DecompressingRecords" onclick="location.href='#DecompressingRecords'">
+                    <h2>Decompressing Records</h2>
+                </span>
+                <div class="card">
+                    <p>
+                        This process will greatly reduce stutters thanks to the lessened CPU load when accessing records.
+                    <h3>The Process</h3>
+                    <ol>
+                        <li>Have xEdit already set up and added to MO2, you can follow <a href="https://wastelandsurvivalguide.com/docs/xedit#setup">this guide</a> if you don't know how to do this.</li>
+                        <li>Press CTRL+E in MO2 and select the xEdit executable.</li>
+                        <li>Add <b>-IKnowIllBreakMyGameWithThis</b> to the <b>Arguments</b> text box.</li>
+                        <li>Download the <a href="https://www.nexusmods.com/newvegas/mods/74181">Decompress Records</a> script from Nexus.</li>
+                        <li>Extract the archive and drag the <b>Decompress Records.pas</b> inside the <b>Edit Scripts</b> folder contained in the xEdit folder.</li>
+                        <li>Run xEdit, then load every plugin.</li>
+                        <li>Once the background loader finishes, press CTRL+A then right-click and <b>Apply script</b>.</li>
+                        <li>Type Decompress Records, then apply.</li>
+                        <li>It is recommended to remove the argument line you added in step 3.</li>
+                    </ol>
+                    </p>
+                </div>
+            </div>
+
             <!-- FAQ -->
             <div>
                 <span id="FAQ" onclick="location.href='#FAQ'">
@@ -1522,7 +1549,7 @@
                                     <a href="https://www.nexusmods.com/newvegas/users/53377026" target="_blank">LOC (aka ItsMeJesusHChrist)</a> - for making the awesome logo for the guide
                                 </li>
                                 <li>
-                                    nice try <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a>, but you are not getting credited
+                                    Nice try <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a>, but you are not getting credited
                                 </li>
                             </ul>
                         </li>
