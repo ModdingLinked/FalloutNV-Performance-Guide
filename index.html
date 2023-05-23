@@ -342,7 +342,7 @@
                             Click <b>Save All Information</b> and save the file.
                         </li>
                         <li>
-                            Open the <b class="card-basic">DxDiag.txt</b> file, press <b>Ctrl+F</b> and look for <b class="card-basic">MPO MaxPlanes</b>
+                            Open the <b class="card-basic">DxDiag.txt</b> file, press <b class="card-basic">Ctrl+F</b> and look for <b class="card-basic">MPO MaxPlanes</b>
                         </li>
                         <li>
                             If the number is <b>greater than 1</b>, then your GPU has MPO support.
@@ -605,7 +605,7 @@
                 </span>
                 <div class="card">
                     <p>
-                    <h3>What it Does</h3>
+                    <h3>Stutter Remover</h3>
                     New Vegas Tick Fix is a mod by <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a> that fixes and improves game's internal clocks and memory management, which dramatically reduces stutter. It also
                     allows for
                     playing above 60fps without breaking physics.
@@ -911,7 +911,7 @@
                             Enable "Show unknown settings from NVIDIA predefined profiles" in the top bar (penultimate button).
                         </li>
                         <li>
-                            Press <b>Ctrl+F</b> and paste <b class="card-basic">OGL_DX_PRESENT_DEBUG</b>.
+                            Press <b class="card-basic">Ctrl+F</b> and paste <b class="card-basic">OGL_DX_PRESENT_DEBUG</b>.
                         </li>
                         <ol>
                             <li>
@@ -1150,7 +1150,7 @@
                                         V-Sync
                                         <div class="card-basic">
                                             <p>
-                                                In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 0.05
+                                                In right click menu select your refresh rate, then <b class="card-basic">Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 0.05
                                             </p>
                                             <div class="card-yellow">
                                                 <p>If you use <b>DXVK with DXGI</b>, ignore above statement and:
@@ -1178,7 +1178,7 @@
                                         </div>
                                     </li>
                                 </ul>
-                                ...if you want to enter a custom value, <b>Ctrl-Click</b> on the bar. You can also drag your mouse on it.
+                                ...if you want to enter a custom value, <b class="card-basic">Ctrl-Click</b> on the bar. You can also drag your mouse on it.
                             </li>
                             <p>
                                 Your configuration should look similar to this (DXGI configuration shown, D3D9 one is more barebones)
@@ -1415,19 +1415,34 @@
                 </span>
                 <div class="card">
                     <p>
-                    <h3>What it Does</h3>
-                    This will greatly reduce stutters thanks to the lessened CPU load when accessing records.
+                    <h3>zLag</h3>
+                    Game by default uses zLib compression for most things, plugin records included. Unfortunately, zLib is very slow and CPU heavy (especially on modern SSDs), which sadly results in loading stutter, mainly in mods with lots of NPCs or new landscapes.
+                    <br>
+                    Luckily, you can very easily decompress any plugin using xEdit and a <a href="https://www.nexusmods.com/newvegas/mods/74181" target="_blank">simple script</a>.
+                    <div class="card-yellow">
+                        <p>
+                            It's recommended to do it after you are done with installing all mods in your modlist.
+                        </p>
+                    </div>
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
                     <h3>The Process</h3>
                     <ol>
-                        <li>Have xEdit already set up and added to MO2, you can follow <a href="https://wastelandsurvivalguide.com/docs/xedit#setup">this guide</a> if you don't know how to do this.</li>
-                        <li>Press CTRL+E in MO2 and select the xEdit executable.</li>
-                        <li>Add <b>-IKnowIllBreakMyGameWithThis</b> to the <b>Arguments</b> text box.</li>
-                        <li>Download the <a href="https://www.nexusmods.com/newvegas/mods/74181">Decompress Records</a> script from Nexus.</li>
-                        <li>Extract the archive and drag the <b>Decompress Records.pas</b> inside the <b>Edit Scripts</b> folder contained in the xEdit folder.</li>
+                        <li>If you don't have xEdit already set up, follow <a href="https://wastelandsurvivalguide.com/docs/xedit#setup" target="_blank">this guide</a>.</li>
+                        <li>Press <b class="card-basic">Ctrl+E</b> in MO2 and select the xEdit executable.</li>
+                        <li>Add <b class="card-basic">-IKnowIllBreakMyGameWithThis</b> to the <b>Arguments</b> text box.</li>
+                        <li>Download the <a href="https://www.nexusmods.com/newvegas/mods/74181" target="_blank">Decompress Records</a> script from Nexus.</li>
+                        <li>From the downloaded archive, extract <b>Decompress Records.pas</b> into the <b>Edit Scripts</b> folder contained in the xEdit folder.</li>
                         <li>Run xEdit, then load every plugin.</li>
-                        <li>Once the background loader finishes, press CTRL+A then right-click and <b>Apply script</b>.</li>
+                        <li>Once the background loader finishes, press <b class="card-basic">Ctrl+A</b> then right-click and <b>Apply script</b>.</li>
                         <li>Type Decompress Records, then apply.</li>
-                        <li>It is recommended to remove the argument line you added in step 3.</li>
+                        <div class="card-yellow">
+                            <p>
+                                It's recommended to remove the argument line you added in step 3.
+                            </p>
+                        </div>
                     </ol>
                     </p>
                 </div>
@@ -1479,7 +1494,7 @@
                         </li>
                         <li>
                             <h4>Is dgVoodoo 2 a viable alternative to DXVK?</h4>
-                            No. While it's true that you'd gain Windowed mode with Flip Model and HDR from it, in contrast to DXVK you are guaranteed to get lower perfomance due to the translation overhead.
+                            No. While it is true that you'd gain Windowed mode with Flip Model and HDR from it, in contrast to DXVK you are guaranteed to get lower perfomance due to the translation overhead.
                             <br>
                             If you can handle the performance loss, sure go ahead.
                         </li>
