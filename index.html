@@ -468,6 +468,8 @@
                                         </li>
                                         <li>
                                             Compatibility issues with overlays, for the same reason as above.
+                                            <br>
+                                            (Partially fixed by <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a>)
                                         </li>
                                     </ul>
                                 </td>
@@ -570,11 +572,11 @@
                         </p>
                     </div>
                     lStewieAl's Tweaks and Engine Fixes is a mod by... <a href="https://www.nexusmods.com/newvegas/users/2232669" target="_blank">lStewieAl</a>, that does what it says - it adds tweaks and fixes the engine. The scope of this mod can't be overstated.
-                </p>
-            </div>
-            <div class="card">
-                <p>
-                <h3>Installation</h3>
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Installation</h3>
                     <ol>
                         <li>
                             <p>
@@ -897,17 +899,38 @@
                     </div>
                     Nvidia's drivers have ability to interop Vulkan to DXGI allowing for <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">Flip Model</a> in Windowed mode, which has <b>HDR</b> and <b>VRR</b> support, and better <b>latency</b>.
                     <ol>
-                        <div class="card-yellow">
-                            <p>You can use global profile if you want to use Flip Model in all OpenGL and Vulkan titles</p>
+                        <li>
+                            Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b>.
+                        </li>
+                        <div class="card-basic">
+                            <p>
+                                [Display]
+                                <br>
+                                bFull Screen=0
+                            </p>
                         </div>
-                        <li>In Nvidia Control Panel, in 3D Settings, set <b class="card-basic">Vulkan/OpenGL present method</b> to <b class="card-basic">Prefer layered on DXGI Swapchain</b></li>
+                        <br>
+                        <div class="card-yellow">
+                            <p>
+                                It's recommend to use <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a>, since it configures the interop automatically and applies other compatiblity fixes.
+                                <br>
+                                It also resolves the settings issue mentioned above.
+                                <br>
+                                <br>
+                                In case you don't want to, or can't use Special K, you can follow the steps below.
+                            </p>
+                        </div>
+                        <li>In Nvidia Control Panel, in 3D Settings, set <b class="card-basic">Vulkan/OpenGL present method</b> to <b class="card-basic">Prefer layered on DXGI Swapchain</b>
+                            <br>
+                            You can use global profile if you want to use Flip Model in all OpenGL and Vulkan titles.
+                        </li>
                         <div class="card-red">
                             <p>
                                 If you don't see those options, then your driver is not up to date!
                             </p>
                         </div>
                         <li>
-                            Press <b>Apply changes</b> and exit
+                            Press <b>Apply changes</b> and exit.
                         </li>
                         <li>
                             Download <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a>.
@@ -940,16 +963,6 @@
                         <li>
                             Click <b>Apply changes</b> in the top right and exit.
                         </li>
-                        <li>
-                            Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b>.
-                        </li>
-                        <div class="card-basic">
-                            <p>
-                                [Display]
-                                <br>
-                                bFull Screen=0
-                            </p>
-                        </div>
                         <li>Install <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> to disable window borders.</li>
                     </ol>
                     </p>
@@ -1077,11 +1090,11 @@
                                     Special K's interface in D3D9 breaks water reflections when visible. Simply not having Special K's interaface visible fixes the issue.
                                 </li>
                                 <li>
-                                    Special K <b>doesn't</b> natively support <b>Vulkan</b>, so unless you are using the DXGI interop, I recommend choosing something else.
+                                    Special K's Vulkan support is currently limited to Nvidia GPUs.
                                 </li>
-                                <li>
+                                <!--                                 <li>
                                     <b>Nvidia and Steam Overlays</b> can sometimes block Special K from displaying with DXVK - DXGI. If you don't see the Control Panel, try disabling these overlays and restarting your device.
-                                </li>
+                                </li> -->
                             </ul>
                             </p>
                         </div>
@@ -1097,16 +1110,15 @@
                                 to your Fallout New Vegas <b>root folder</b> and rename it to <b>dinput8.dll</b>
                             </li>
                             <li>
-                                Download the <a href="https://performance.moddinglinked.com/files/sk_d3d9.zip" target="_blank">archive with preconfigured settings</a> and extract its content to your <b>root folder</b>.
-                                <div class="card-yellow">
-                                    <p>
-                                    <h4>DXVK with DXGI users!</h4>
-                                    Download <a href="https://performance.moddinglinked.com/files/sk_dxgi.zip" target="_blank">this archive</a> instead
-                                    </p>
-                                </div>
+                                Download the <a href="https://performance.moddinglinked.com/files/sk.zip" target="_blank">archive with preconfigured settings</a> and extract its content to your <b>root folder</b>.
                             </li>
+                            <div class="card-yellow">
+                                <p>
+                                    If you use <b>DXVK</b>, on the first launch Special K will ask you to enable DXVK support/ Vulkan bridge. Click <b>Yes</b> and relaunch the game if needed.
+                                </p>
+                            </div>
                             <li>
-                                Launch Fallout New Vegas and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel
+                                Launch Fallout New Vegas and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel.
                             </li>
                             <li>
                                 Enable the <b>Framerate Limit</b> by ticking the checkbox, then right click on the bar (not graph) next to it:
@@ -1158,7 +1170,7 @@
                                         V-Sync
                                         <div class="card-basic">
                                             <p>
-                                                In right click menu select your refresh rate, then <b class="card-basic">Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 0.05
+                                                In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 0.05
                                             </p>
                                             <div class="card-yellow">
                                                 <p>If you use <b>DXVK with DXGI</b>, ignore above statement and:
@@ -1189,7 +1201,7 @@
                                 ...if you want to enter a custom value, <b class="card-basic">Ctrl-Click</b> on the bar. You can also drag your mouse on it.
                             </li>
                             <p>
-                                Your configuration should look similar to this (DXGI configuration shown, D3D9 one is more barebones)
+                                Your configuration should look similar to this (Picture shows V-Sync configuration on DXVK + DXGI)
                                 <br>
                                 <img src="limiters/SK.webp" class="limiters-img" alt="Screenshot showcasing Special K's control panel">
                                 <br>
