@@ -42,18 +42,6 @@
                     Terminology
                 </a>
 
-                <a href="#DriversAndOS" title="🙃 Graphics Drivers and Windows">
-                    <span class="subIcon">🪟</span>
-                    <span class="flippy">🙃</span>
-                    Drivers and Windows
-                </a>
-
-                <a href="#DisplayModeComparison" title="🙃 Display modes">
-                    <span class="subIcon">🖥️</span>
-                    <span class="flippy">🙃</span>
-                    Display modes
-                </a>
-
                 <a href="#StewieTweaks" title="🙃 lStewieAl's Tweaks and Engine Fixes">
                     <span class="subIcon">🔧</span>
                     <span class="flippy">🙃</span>
@@ -64,6 +52,18 @@
                     <span class="subIcon">⏱️</span>
                     <span class="flippy">🙃</span>
                     New Vegas Tick Fix
+                </a>
+
+                <a href="#DriversAndOS" title="🙃 Graphics Drivers and Windows">
+                    <span class="subIcon">🪟</span>
+                    <span class="flippy">🙃</span>
+                    Drivers and Windows
+                </a>
+
+                <a href="#DisplayModeComparison" title="🙃 Display modes">
+                    <span class="subIcon">🖥️</span>
+                    <span class="flippy">🙃</span>
+                    Display modes
                 </a>
 
                 <a href="#DXVK" title="🙃 DXVK">
@@ -263,6 +263,163 @@
                 </div>
             </div>
 
+
+            <!-- Tweaks -->
+            <div>
+                <span id="StewieTweaks" onclick="location.href='#StewieTweaks'">
+                    <h2>lStewieAl's Tweaks and Engine Fixes</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <h3>All-in-one</h3>
+                    <div class="card-yellow">
+                        <p>
+                            If you use
+                            <b>Viva New Vegas</b>,
+                            <b>The Best Of Times</b>
+                            or
+                            <b>Wasteland Surival Guide</b>
+                            guides, you may skip this section since it's already included there
+                        </p>
+                    </div>
+                    lStewieAl's Tweaks and Engine Fixes is a mod by... <a href="https://www.nexusmods.com/newvegas/users/2232669" target="_blank">lStewieAl</a>, that does what it says - it adds tweaks and fixes the engine. The scope of this mod can't be overstated.
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Installation</h3>
+                    <ol>
+                        <li>
+                            <p>
+                                If they are not already installed, download <a href="https://www.nexusmods.com/newvegas/mods/66347" target="_blank" title="lStewieAl's Tweaks and Engine Fixes">lStewieAl's Tweaks and Engine Fixes</a> <b>and</b> Stewie
+                                Tweaks INI (Optional Files section) from Nexus
+                                and install them with your mod manager.
+                            </p>
+                        </li>
+                        <li>
+                            Launch your game to populate the INI file, then exit
+                        </li>
+                        <li>
+                            <p>
+                                Open <b>nvse_stewie_tweaks.ini</b> in Mod Organizer and edit:
+                            <div class="card-basic">
+                                <p>
+                                    bInlineVanillaFunctions=1
+                                </p>
+                            </div>
+                            Enables tons of optimizations to vanilla functions, which leads to decreased loading times and improved general performance.
+                            </p>
+                        </li>
+                    </ol>
+                    </p>
+                </div>
+            </div>
+
+            <!-- NVTF -->
+            <div>
+                <span id="NVTF" onclick="location.href='#NVTF'">
+                    <h2>New Vegas Tick Fix</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <h3>Stutter Remover</h3>
+                    New Vegas Tick Fix is a mod by <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a> that fixes and improves game's internal clocks and memory management, which dramatically reduces stutter. It also
+                    allows for
+                    playing above 60fps without breaking physics.
+                    <br>
+                    Additionally, it has some DirectX changes, which help with performance and greatly reduce memory usage.
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Installation</h3>
+                    <ol>
+                        <li>
+                            <p>
+                                If it's not already installed, download <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank" title="New Vegas Tick Fix">NVTF</a> from Nexus and install with your mod manager.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Double-click on NVTF in Mod Organizer, then open <b>NVTF.ini</b> in the <b>INI Files</b> tab, and set:
+                            <div class="card-basic">
+                                <p>
+                                    bModifyDirectXBehavior = 1
+                                </p>
+                            </div>
+                            Enables NVTF's DirectX changes.
+                            <br>
+                            <b>It's required for following settings to work:</b>
+                            <ul>
+                                <li>
+                                    <div class="card-basic">
+                                        <p>
+                                            bToggleTripleBuffering = 1
+                                        </p>
+                                    </div>
+                                    Enables triple buffer V-Sync, which gets rid of problematic framerate halving on FPS drops/ instability caused by double buffer V-Sync.
+                                    <br>
+                                    <div class="card-yellow">
+                                        <p>
+                                            <b>This change has no effect if you don't use V-Sync</b>
+                                            <br>
+                                            The potential latency increase is eliminated by properly capping FPS, which is done later in the guide
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card-basic">
+                                        <p>
+                                            bUseDefaultPoolForTextures = 1
+                                        </p>
+                                    </div>
+                                    Enabled by default
+                                    <br>
+                                    Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures.
+                                    <br>
+                                    It's <b>required</b> if you play at <b>resolutions higher than 1080p</b>.
+                                    <br>
+                                    <div class="card-red">
+                                        <p>
+                                            <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation6">[6]</a></sup></b>
+                                            <br>
+                                            To mitigate that either use <a href="#DXVK">DXVK</a>, or <a href="#FAQ">Windowed Mode</a>.
+                                            <br>
+                                            Or just don't Alt-Tab.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                            </p>
+                            <div class="card-yellow">
+                                <p>
+                                    If you own a <b>Ryzen CPU from the X3D series</b>, you can enable this setting for a massive performance boost.
+                                    <br>
+                                    Other CPUs don't get any benefit due to insufficient cache size.
+                                <div class="card-basic">
+                                    <p>
+                                        bAlternateGTCFix = 1
+                                    </p>
+                                </div>
+                                </p>
+                            </div>
+                        </li>
+                    </ol>
+                    <span class="annotations">
+                        <ol start="6">
+                            <li id="annotation6">
+                                D3D9 loses the graphics device if it loses the screen ownership (Alt-Tab, Sleep, etc.). To recover, it needs to either have a copy of textures in RAM, or be able to reconstruct the memory from ground up.
+                                <br>
+                                Fallout New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
+                                <br>
+                                DXVK fixes this by simply being in place of D3D9, while Windowed mode guarantees the game will never own the screen in the first place.
+                            </li>
+                        </ol>
+                    </span>
+                    </p>
+                </div>
+            </div>
+
             <!-- Drivers and Windows-->
             <div>
                 <span id="DriversAndOS" onclick="location.href='#DriversAndOS'">
@@ -326,10 +483,25 @@
                     <p>
                     <h3>Windows Watermark</h3>
                     <p>
+                    <div class="card-yellow">
+                        <p>
+                            This part applies only to <b>D3D9 with Fullscreen Optimizations</b> and <b>DXVK with DXGI</b>, since D3D9 Windowed is already in the DWM composed mode, and DXVK uses <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span>.
+                            <br>
+                            You can ignore this section if you have following GPUs:
+                        <ul>
+                            <li>Nvidia 16 series and newer</li>
+                            <li>AMD Vega and newer</li>
+                            <li>Intel CPUs 8th Gen and newer</li>
+                        </ul>
+                        </p>
+                    </div>
+                    </p>
+                    <p>
                         Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition, which leads to increased latency, worse performance and disables VRR.
+                        <br>
                         If you don't have a GPU with <a href="#Terminology">MPO (Multiplane Overlay)</a> support, you can mitigate this by disabling Fullscreen Optimizations.
                         <br>
-                        It's still weird to have unactivated Windows though.
+                        (Keep in mind that this trick won't work on modern, D3D12 games, so it's still recommended to just activate Windows)
                         <br>
                         <br>
                         How to check if your GPU supports MPOs:
@@ -348,25 +520,11 @@
                         </li>
                     </ol>
                     </p>
-
                     <p>
                     <div class="card-red">
                         <p>
                             Having the watermark without MPOs will disable VRR and increase latency and stuttering!
                         </p>
-                        <div class="card-yellow">
-                            <p>
-                                This applies only to <b>D3D9 with Fullscreen Optimizations</b> and <b>DXVK with DXGI</b>, since D3D9 Windowed is already in the composed mode, and DXVK uses <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span>.
-                                <br>
-                                If you have:
-                            <ul>
-                                <li>Nvidia 16 series and newer</li>
-                                <li>AMD Vega and newer</li>
-                                <li>Intel CPUs 8th Gen and newer</li>
-                            </ul>
-                            You can also ignore it, since these models have Multiplane Overlays.
-                            </p>
-                        </div>
                     </div>
                     </p>
                     </p>
@@ -374,12 +532,41 @@
                 <div class="card">
                     <p>
                     <h3>Virtualization</h3>
-                    Windows 11 uses virtualization features to increase OS and inter-process security. Unfortunately, this can come at a performance cost, especially on lower-end hardware.
+                    Windows 11 uses virtualization features to increase system and inter-process security. Unfortunately, this can come at a performance cost, especially on lower-end hardware.
                     <br>
                     I won't be writing on how to disable them, because... <a href="https://support.microsoft.com/en-us/windows/options-to-optimize-gaming-performance-in-windows-11-a255f612-2949-4373-a566-ff6f3f474613" target="_blank">Microsoft already made a tutorial about it</a>.
                     <br>
                     <br>
                     This step is not mandatory, as when it comes to security, it's up to you to decide. Just letting you know that this exists, and even Microsoft acknowledges the fact that it can degrade perfomance.
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Game Mode</h3>
+                    Windows 10 introduced a feature called <a href="ms-settings:gaming-gamemode">Game Mode</a>, which puts the system in a more gaming-friendly state.
+                    </p>
+                    <p>
+                        Game Mode features:
+                    <ul>
+                        <li>
+                            Disables Windows Update.
+                        </li>
+                        <li>
+                            Disables notifications.
+                        </li>
+                        <li>
+                            Disables file indexing, if "Respect Device Power Mode Settings" is enabled in <a href="ms-settings:search">Search settings</a>.
+                        </li>
+                        <li>
+                            Sets Game Mode power mode (Requires <a href="ms-settings:powersleep">Balanced power plan</a> to be active).
+                        </li>
+                        <li>
+                            Enables CPU scheduling optimizations for Ryzen CPUs.
+                        </li>
+                    </ul>
+                    </p>
+                    <p>
+                        Game Mode is enabled by default. If you had it disabled for some reason, you can enable it <a href="ms-settings:gaming-gamemode">here</a>.
                     </p>
                 </div>
             </div>
@@ -552,162 +739,6 @@
                 </div>
             </div>
 
-            <!-- Tweaks -->
-            <div>
-                <span id="StewieTweaks" onclick="location.href='#StewieTweaks'">
-                    <h2>lStewieAl's Tweaks and Engine Fixes</h2>
-                </span>
-                <div class="card">
-                    <p>
-                    <h3>All-in-one</h3>
-                    <div class="card-yellow">
-                        <p>
-                            If you use
-                            <b>Viva New Vegas</b>,
-                            <b>The Best Of Times</b>
-                            or
-                            <b>Wasteland Surival Guide</b>
-                            guides, you may skip this section since it's already included there
-                        </p>
-                    </div>
-                    lStewieAl's Tweaks and Engine Fixes is a mod by... <a href="https://www.nexusmods.com/newvegas/users/2232669" target="_blank">lStewieAl</a>, that does what it says - it adds tweaks and fixes the engine. The scope of this mod can't be overstated.
-                    </p>
-                </div>
-                <div class="card">
-                    <p>
-                    <h3>Installation</h3>
-                    <ol>
-                        <li>
-                            <p>
-                                If they are not already installed, download <a href="https://www.nexusmods.com/newvegas/mods/66347" target="_blank" title="lStewieAl's Tweaks and Engine Fixes">lStewieAl's Tweaks and Engine Fixes</a> <b>and</b> Stewie
-                                Tweaks INI (Optional Files section) from Nexus
-                                and install them with your mod manager.
-                            </p>
-                        </li>
-                        <li>
-                            Launch your game to populate the INI file, then exit
-                        </li>
-                        <li>
-                            <p>
-                                Open <b>nvse_stewie_tweaks.ini</b> in Mod Organizer and edit:
-                            <div class="card-basic">
-                                <p>
-                                    bInlineVanillaFunctions=1
-                                </p>
-                            </div>
-                            Enables tons of optimizations to vanilla functions, which leads to decreased loading times and improved general performance.
-                            </p>
-                        </li>
-                    </ol>
-                    </p>
-                </div>
-            </div>
-
-            <!-- NVTF -->
-            <div>
-                <span id="NVTF" onclick="location.href='#NVTF'">
-                    <h2>New Vegas Tick Fix</h2>
-                </span>
-                <div class="card">
-                    <p>
-                    <h3>Stutter Remover</h3>
-                    New Vegas Tick Fix is a mod by <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a> that fixes and improves game's internal clocks and memory management, which dramatically reduces stutter. It also
-                    allows for
-                    playing above 60fps without breaking physics.
-                    <br>
-                    Additionally, it has some DirectX changes, which help with performance and greatly reduce memory usage.
-                    </p>
-                </div>
-                <div class="card">
-                    <p>
-                    <h3>Installation</h3>
-                    <ol>
-                        <li>
-                            <p>
-                                If it's not already installed, download <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank" title="New Vegas Tick Fix">NVTF</a> from Nexus and install with your mod manager.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Double-click on NVTF in Mod Organizer, then open <b>NVTF.ini</b> in the <b>INI Files</b> tab, and set:
-                            <div class="card-basic">
-                                <p>
-                                    bModifyDirectXBehavior = 1
-                                </p>
-                            </div>
-                            Enables NVTF's DirectX changes.
-                            <br>
-                            <b>It's required for following settings to work:</b>
-                            <ul>
-                                <li>
-                                    <div class="card-basic">
-                                        <p>
-                                            bToggleTripleBuffering = 1
-                                        </p>
-                                    </div>
-                                    Enables triple buffer V-Sync, which gets rid of problematic framerate halving on FPS drops/ instability caused by double buffer V-Sync.
-                                    <br>
-                                    <div class="card-yellow">
-                                        <p>
-                                            <b>This change has no effect if you don't use V-Sync</b>
-                                            <br>
-                                            The potential latency increase is eliminated by properly capping FPS, which is done later in the guide
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-basic">
-                                        <p>
-                                            bUseDefaultPoolForTextures = 1
-                                        </p>
-                                    </div>
-                                    Enabled by default
-                                    <br>
-                                    Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures.
-                                    <br>
-                                    It's <b>required</b> if you play at <b>resolutions higher than 1080p</b>.
-                                    <br>
-                                    <div class="card-red">
-                                        <p>
-                                            <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation6">[6]</a></sup></b>
-                                            <br>
-                                            To mitigate that either use <a href="#DXVK">DXVK</a>, or <a href="#FAQ">Windowed Mode</a>.
-                                            <br>
-                                            Or just don't Alt-Tab.
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                            </p>
-                            <div class="card-yellow">
-                                <p>
-                                    If you own a <b>Ryzen CPU from the X3D series</b>, you can enable this setting for a massive performance boost.
-                                    <br>
-                                    Other CPUs don't get any benefit due to insufficient cache size.
-                                <div class="card-basic">
-                                    <p>
-                                        bAlternateGTCFix = 1
-                                    </p>
-                                </div>
-                                </p>
-                            </div>
-                        </li>
-                    </ol>
-                    <span class="annotations">
-                        <ol start="6">
-                            <li id="annotation6">
-                                D3D9 loses the graphics device if it loses the screen ownership (Alt-Tab, Sleep, etc.). To recover, it needs to either have a copy of textures in RAM, or be able to reconstruct the memory from ground up.
-                                <br>
-                                Fallout New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
-                                <br>
-                                DXVK fixes this by simply being in place of D3D9, while Windowed mode guarantees the game will never own the screen in the first place.
-                            </li>
-                        </ol>
-                    </span>
-                    </p>
-                </div>
-            </div>
-
             <!-- DXVK -->
             <div>
                 <span id="DXVK" onclick="location.href='#DXVK'">
@@ -716,7 +747,7 @@
                 <div class="card">
                     <p>
                     <h3>Translation Magic</h3>
-                    DXVK is an open source Direct3D 9-11 to Vulkan translator project lead by <a href="https://github.com/doitsujin">doitsujin</a> and <a href="https://github.com/Joshua-Ashton">Joshua Ashton</a>. While created mainly for Linux, works <u>unofficially</u> on Windows.
+                    DXVK is an open source Direct3D 9-11 to Vulkan translator project lead by <a href="https://github.com/doitsujin">Philip Rebohle (doitsujin)</a> and <a href="https://github.com/Joshua-Ashton">Joshua Ashton</a>. While created mainly for Linux, works <u>unofficially</u> on Windows.
                     <br>
                     In short, it allows you to run Fallout using the Vulkan API which has much lower draw call overhead than D3D9, which is one of the main performance limiting factors in this game.
                     <div class="card-yellow">
@@ -1187,7 +1218,7 @@
                                         VRR + V-Sync
                                         <div class="card-basic">
                                             <p>
-                                                In right click menu select <b>VRR Bias</b> and select the highest value.
+                                                In right click menu select <b>VRR Bias</b> and select the highest value from the <b>Refresh Rate Factors</b> menu.
                                             <ul>
                                                 <li>
                                                     The bias option is not needed for lower values.
@@ -1491,8 +1522,14 @@
                             </div>
                         </li>
                         <li>
+                            <h4>Why does Special K show D3D11 instead of Vulkan when using DXVK with DXGI?</h4>
+                            The DXGI interop uses D3D11 to display the game, and sometimes Special K can't detect the presence of DXVK due to 3rd party programs.
+                            <br>
+                            It's nothing to worry about, it's purely a visual difference - Special K is running in D3D11 mode regardless of the name you see.
+                        </li>
+                        <li>
                             <h4>Any way change brightness in Windowed Mode?</h4>
-                            You can use <a href="https://reshade.me/" target="_blank">ReShade</a> or <a href="https://www.nexusmods.com/newvegas/mods/51577/" target="_blank">Dynavision</a> to change the gamma.
+                            Use <a href="https://reshade.me/" target="_blank">ReShade</a> or <a href="https://www.nexusmods.com/newvegas/mods/51577/" target="_blank">Dynavision</a> to change the gamma.
                         </li>
                         <li>
                             <h4>Do texture mods really have an impact on performance?</h4>
