@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FNV Performance Guide</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A guide to making Fallout New Vegas run smoother. Hopefully. Covers DXVK, Alt-Tabbing, stutters and frametimes.">
+    <meta property="og:title" content="Fallout New Vegas Performance and Stability Guide">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://performance.moddinglinked.com">
+    <meta property="og:image" content="https://performance.moddinglinked.com/ui/logo.webp">
+    <meta property="og:description" content="A guide to making Fallout New Vegas run smoother. Hopefully. Covers DXVK, Alt-Tabbing, stutters and frametimes.">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3f3f3">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#202020">
+    <meta name="keywords" content="Fallout New Vegas, FNV, FalloutNV, FPS, Performance, Fallout, FPS Limit, SpecialK, Riva Tuner, RTSS, Stutter, Lag, Latency, Hitches, Flip Model, DXGI, Interop, Nvidia, HDR">
+    <link rel="icon" type="image/x-icon" href="../favicon.webp">
+    <script src="https://kit.fontawesome.com/baff4f2fd4.js" crossorigin="anonymous"></script>
+    <script src="../javascript.js"></script>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="../css/styles.css">
+    <meta http-equiv='content-language' content='en-us'>
+    <link rel="canonical" href="https://performance.moddinglinked.com">
+</head>
+
+<body class="theme dark-scheme">
+    <div style="overflow:auto">
+        <div class="header" id="header" onclick="toggleNav()">
+            <span class="flippy" id="flippyHeader">🙃</span>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <p>
+                <a href="#Introduction" title="🙃 Introduction">
+                    <span class="subIcon">👋</span>
+                    <span class="flippy">🙃</span>
+                    Introduction
+                </a>
+            </p>
+            <p>
+                <a href="#TestResults" title="🙃 TestResults">
+                    <span class="subIcon">📊</span>
+                    <span class="flippy">🙃</span>
+                    Test results
+                </a>
+            </p>
+        </div>
+        <div class="content">
+
+            <!-- Introduction -->
+            <div>
+                <span id="Introduction" onclick="location.href='#Introduction'">
+                    <h2>Introduction</h2>
+                </span>
+                <div class="card flex">
+                    <div>
+                        <p>
+                        <h3>Welcome!</h3>
+                        Write short desc here
+                        </p>
+                        <p>
+                            Write longer desc here
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TestResults -->
+            <div>
+                <span id="TestResults" onclick="location.href='#TestResults'">
+                    <h2>Test results</h2>
+                </span>
+                <div class="expander-top clickable" onclick="expandCard(this, test1)" id="test1Top">
+                    <p>
+                    <h3>Test name</h3>
+                    Initial test description
+                    <img class="chevron" style="float: right;" src="../ui/Chevron Down.svg" alt="UI element - Chevron">
+                    </p>
+                </div>
+                <div class="expander-bottom" id="test1">
+                    <p>
+                        <img src="./graphs/fnv/image0.png">
+                    </p>
+                    <p>
+                        Content
+                    </p>
+                </div>
+
+                <div class="expander-top clickable" onclick="expandCard(this, test2)" id="test2Top">
+                    <p>
+                    <h3>Test 2 name</h3>
+                    Initial test 2 description
+                    <img class="chevron" style="float: right;" src="../ui/Chevron Down.svg" alt="UI element - Chevron">
+                    </p>
+                </div>
+                <div class="expander-bottom" id="test2">
+                    <p>
+                        <img src="./graphs/fnv/image0.png">
+                    </p>
+                    <p>
+                        Content 2
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>I'm a footer 🦶<span class="Flippy">🙃</span>🦶</footer>
+</body>
+
+</html>
