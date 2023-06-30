@@ -245,6 +245,12 @@ img.chevron {
   transition: transform 0.1s;
 }
 
+hr {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  margin: 10px;
+}
+
 .sidebar {
   top: 0;
   float: left;
@@ -309,10 +315,13 @@ img.chevron {
           user-select: none;
 }
 
+.sidebar .flippy {
+  top: 3px;
+}
+
 .subIcon {
   position: relative;
   left: 15px;
-  top: -5px;
   margin-left: -12px;
   font-size: large;
   z-index: 0;
