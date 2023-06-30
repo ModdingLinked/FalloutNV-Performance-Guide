@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>TES4 Performance Guide</title>
+    <title>FNV Performance Guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A guide to making Oblivion run smoother. Hopefully. Covers DXVK, Alt-Tabbing, stutters and frametimes.">
-    <meta property="og:title" content="Oblivion Performance and Stability Guide">
+    <meta name="description" content="A guide to making Fallout New Vegas run smoother. Hopefully. Covers DXVK, Alt-Tabbing, stutters and frametimes.">
+    <meta property="og:title" content="Fallout New Vegas Performance and Stability Guide">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://performance.moddinglinked.com/tes4.html">
+    <meta property="og:url" content="https://performance.moddinglinked.com/fnv.html">
     <meta property="og:image" content="https://performance.moddinglinked.com/ui/logo.webp">
-    <meta property="og:description" content="A guide to making Oblivion run smoother. Hopefully. Covers DXVK, Alt-Tabbing, stutters and frametimes.">
+    <meta property="og:description" content="A guide to making Fallout New Vegas run smoother. Hopefully. Covers DXVK, Alt-Tabbing, stutters and frametimes.">
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3f3f3">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#202020">
     <meta name="keywords" content="Fallout New Vegas, FNV, FalloutNV, FPS, Performance, Fallout, FPS Limit, SpecialK, Riva Tuner, RTSS, Stutter, Lag, Latency, Hitches, Flip Model, DXGI, Interop, Nvidia, HDR, FO4, SSE, Fallout 4, Skyrim Special Edition, Skyrim">
@@ -20,7 +20,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/styles.css">
     <meta http-equiv='content-language' content='en-us'>
-    <link rel="canonical" href="https://performance.moddinglinked.com/tes4.html">
+    <link rel="canonical" href="https://performance.moddinglinked.com/fnv.html">
 </head>
 
 <body class="theme dark-scheme">
@@ -45,10 +45,16 @@
                     Introduction
                 </a>
 
-                <a href="#ORC" title="🙃 Oblivion Reloaded Combined">
+                <a href="#StewieTweaks" title="🙃 lStewieAl's Tweaks and Engine Fixes">
                     <span class="subIcon">🔧</span>
                     <span class="flippy">🙃</span>
-                    ORC
+                    lStewieAl's Tweaks
+                </a>
+
+                <a href="#NVTF" title="🙃 New Vegas Tick Fix">
+                    <span class="subIcon">⏱️</span>
+                    <span class="flippy">🙃</span>
+                    New Vegas Tick Fix
                 </a>
 
                 <a href="#DisplayModeComparison" title="🙃 Display modes">
@@ -100,26 +106,31 @@
                 <div class="card flex">
                     <div>
                         <p>
-                            The guide is mostly written with an assumption that you've completed <b>Utilities</b> sections from <a href="https://gloryofcyrodiil.moddinglinked.com/utilities.html" target="_blank">Glory of Cyrodiil</a>, but it'll still cover ORC.
+                            The guide is mostly written with an assumption that you've completed <b>Utilities</b> sections from <a href="https://vivanewvegas.moddinglinked.com/utilities.html" target="_blank">Viva New Vegas</a> or <b>Essentials</b> from <a href="https://thebestoftimes.moddinglinked.com/essentials.html" target="_blank">The Best of Times</a>, but it'll still cover mods contained within those guides.
                         </p>
                     </div>
                 </div>
             </div>
 
-            <!-- ORC -->
+            <!-- Tweaks -->
             <div>
-                <span id="ORC" onclick="location.href='#ORC'">
-                    <h2>Oblivion Reloaded Combined</h2>
+                <span id="StewieTweaks" onclick="location.href='#StewieTweaks'">
+                    <h2>lStewieAl's Tweaks and Engine Fixes</h2>
                 </span>
                 <div class="card">
                     <p>
                     <h3>All-in-one</h3>
                     <div class="card-yellow">
                         <p>
-                            If you use the <b>Glory of Cyrodiil</b> guide, you may skip this section since it's already included there.
+                            If you use
+                            <b>Viva New Vegas</b>,
+                            <b>The Best Of Times</b>
+                            or
+                            <b>Wasteland Surival Guide</b>
+                            guides, you may skip this section since it's already included there
                         </p>
                     </div>
-                    ORC fixes shaders and adds missing optimizations to the game engine, one of which is akin to <b>bModifyDirectXBehavior</b> from New Vegas Tick Fix, which allows us to run the game at high native resolutions and with more VRAM usage without crashing due to the VRAM being copied in RAM.
+                    lStewieAl's Tweaks and Engine Fixes is a mod by... <a href="https://www.nexusmods.com/newvegas/users/2232669" target="_blank">lStewieAl</a>, that does what it says - it adds tweaks and fixes the engine. The scope of this mod can't be overstated.
                     </p>
                 </div>
                 <div class="card">
@@ -128,10 +139,131 @@
                     <ol>
                         <li>
                             <p>
-                                If they are not already installed, download <a href="https://www.nexusmods.com/Core/Libs/Common/Widgets/DownloadPopUp?id=1000034808&nmm=1&game_id=101" target="_blank" title="Oblivion Reloaded Combined">Oblivion Reloaded Combined 180</a> <b>and</b> the <a href="https://github.com/WallSoGB/Glory-of-Cyrodiil/raw/main/files/ORC%20Custom%20Configuration.7z" target="_blank" title="ORC Custom Configuration">ORC Custom Configuration</a>.
+                                If they are not already installed, download <a href="https://www.nexusmods.com/newvegas/mods/66347" target="_blank" title="lStewieAl's Tweaks and Engine Fixes">lStewieAl's Tweaks and Engine Fixes</a> <b>and</b> Stewie
+                                Tweaks INI (Optional Files section) from Nexus
+                                and install them with your mod manager.
+                            </p>
+                        </li>
+                        <li>
+                            Launch your game to populate the INI file, then exit
+                        </li>
+                        <li>
+                            <p>
+                                Open <b>nvse_stewie_tweaks.ini</b> in Mod Organizer and edit:
+                            <div class="card-basic">
+                                <p>
+                                    bInlineVanillaFunctions=1
+                                </p>
+                            </div>
+                            Enables tons of optimizations to vanilla functions, which leads to decreased loading times and improved general performance.
                             </p>
                         </li>
                     </ol>
+                    </p>
+                </div>
+            </div>
+
+            <!-- NVTF -->
+            <div>
+                <span id="NVTF" onclick="location.href='#NVTF'">
+                    <h2>New Vegas Tick Fix</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <h3>Stutter Remover</h3>
+                    New Vegas Tick Fix is a mod by <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a> that fixes and improves game's internal clocks and memory management, which dramatically reduces stutter. It also
+                    allows for
+                    playing above 60fps without breaking physics.
+                    <br>
+                    Additionally, it has some DirectX changes, which help with performance and greatly reduce memory usage.
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Installation</h3>
+                    <ol>
+                        <li>
+                            <p>
+                                If it's not already installed, download <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank" title="New Vegas Tick Fix">NVTF</a> from Nexus and install with your mod manager.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Double-click on NVTF in Mod Organizer, then open <b>NVTF.ini</b> in the <b>INI Files</b> tab, and set:
+                            <div class="card-basic">
+                                <p>
+                                    bModifyDirectXBehavior = 1
+                                </p>
+                            </div>
+                            Enables NVTF's DirectX changes.
+                            <br>
+                            <b>It's required for following settings to work:</b>
+                            <ul>
+                                <li>
+                                    <div class="card-basic">
+                                        <p>
+                                            bToggleTripleBuffering = 1
+                                        </p>
+                                    </div>
+                                    Enables triple buffer V-Sync, which gets rid of problematic framerate halving on FPS drops/ instability caused by double buffer V-Sync.
+                                    <br>
+                                    <div class="card-yellow">
+                                        <p>
+                                            <b>This change has no effect if you don't use V-Sync</b>
+                                            <br>
+                                            The potential latency increase is eliminated by properly capping FPS, which is done later in the guide
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="card-basic">
+                                        <p>
+                                            bUseDefaultPoolForTextures = 1
+                                        </p>
+                                    </div>
+                                    Enabled by default
+                                    <br>
+                                    Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures.
+                                    <br>
+                                    It's <b>required</b> if you play at <b>resolutions higher than 1080p</b>.
+                                    <br>
+                                    <div class="card-red">
+                                        <p>
+                                            <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation6">[6]</a></sup></b>
+                                            <br>
+                                            To mitigate that either use <a href="#DXVK">DXVK</a>, or <a href="#FAQ">Windowed Mode</a>.
+                                            <br>
+                                            Or just don't Alt-Tab.
+                                        </p>
+                                    </div>
+                                </li>
+                            </ul>
+                            </p>
+                            <div class="card-yellow">
+                                <p>
+                                    If you own a <b>Ryzen CPU from the X3D series</b>, you can enable this setting for a massive performance boost.
+                                    <br>
+                                    Other CPUs don't get any benefit due to insufficient cache size.
+                                <div class="card-basic">
+                                    <p>
+                                        bAlternateGTCFix = 1
+                                    </p>
+                                </div>
+                                </p>
+                            </div>
+                        </li>
+                    </ol>
+                    <span class="annotations">
+                        <ol start="6">
+                            <li id="annotation6">
+                                D3D9 loses the graphics device if it loses the screen ownership (Alt-Tab, Sleep, etc.). To recover, it needs to either have a copy of textures in RAM, or be able to reconstruct the memory from ground up.
+                                <br>
+                                Fallout New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
+                                <br>
+                                DXVK fixes this by simply being in place of D3D9, while Windowed mode guarantees the game will never own the screen in the first place.
+                            </li>
+                        </ol>
+                    </span>
                     </p>
                 </div>
             </div>
@@ -231,7 +363,8 @@
                                         </li>
                                         <div class="card-yellow">
                                             <p>
-                                                Alt-Tab <b>doesn't work at all</b> if <b><a href="#ORC" title="🙃 Oblivion Reloaded Combined">ORC</a>'s pool change</b> is <b>enabled</b>, unless you use <b><a href="#DXVK" title="🙃 Vulkan - DXVK">DXVK</a></b>
+                                                Alt-Tab <b>doesn't work at all</b> if <b><a href="#NVTF" title="🙃 New Vegas Tick Fix">NVTF</a>'s pool change</b>
+                                                is <b>enabled</b>, unless you use <b><a href="#DXVK" title="🙃 Vulkan - DXVK">DXVK</a></b>
                                             </p>
                                         </div>
                                         <li>
@@ -291,7 +424,7 @@
                                 Enabling it globally is a bad idea, because it disrupts normal desktop usage (e.g. screen can sync to sleeping windows).
                                 <br>
                                 It's recommended to use <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to
-                                "<b>Fullscreen and Windowed</b>" in the <b>Oblivion</b> profile. This makes Windowed G-Sync run only when the game is running.
+                                "<b>Fullscreen and Windowed</b>" in the <b>Fallout - New Vegas</b> profile. This makes Windowed G-Sync run only when the game is running.
                                 <br>
                                 <b>Keep in mind that even with this method, this G-Sync implementation is still buggy - if you get any of the forementioned issues, disable it.</b>
                                 <br>
@@ -313,7 +446,7 @@
                     <h3>Translation Magic</h3>
                     DXVK is an open source Direct3D 9-11 to Vulkan translator project lead by <a href="https://github.com/doitsujin">Philip Rebohle (doitsujin)</a> and <a href="https://github.com/Joshua-Ashton">Joshua Ashton</a>. While created mainly for Linux, works <u>unofficially</u> on Windows.
                     <br>
-                    In short, it allows you to run Oblivion using the Vulkan API which has much lower draw call overhead than D3D9, which is one of the main performance limiting factors in this game.
+                    In short, it allows you to run Fallout using the Vulkan API which has much lower draw call overhead than D3D9, which is one of the main performance limiting factors in this game.
                     <div class="card-yellow">
                         <p>
                             If you use Linux, most of this is irrelevant, since Proton on Linux obviously uses DXVK already.
@@ -389,7 +522,7 @@
                             </li>
                             <li>
                                 <p>
-                                    Oblivion has some known shader issues or quirks. They are not guaranteed to happen (getting rarer with DXVK updates), but they can occur:
+                                    Fallout New Vegas has some known shader issues or quirks. They are not guaranteed to happen (getting rarer with DXVK updates), but they can occur:
                                 <ul>
                                     <li>Transparency multisampling uses dithering - (DXVK handles alpha to coverage differently than drivers)</li>
                                     <li>Broken water reflections (rare, most reports come from older AMD GPUs)</li>
@@ -414,6 +547,44 @@
                     </div>
                     </p>
                 </div>
+                <div class="card" id="dxvk-HDR">
+                    <p>
+                    <h3>HDR-Mod</h3>
+                    HDR-Mod is a DXVK mod made by <a href="https://github.com/EndlesslyFlowering" target="_blank">Lilium (aka EndlesslyFlowering)</a> and <a href="https://github.com/WallSoGB" target="_blank">me</a> with the intention of adding HDR functionality to D3D9 games.
+                    Effectively it does 2 major things:
+                    <ul>
+                        <li>
+                            <p>
+                                Displays the game at bit depth higher than 8.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                Upgrades render targets to 16 bit.
+                            </p>
+                        </li>
+                    </ul>
+                    This allows for HDR output and eliminates color banding from the game.
+                    <br>
+                    DXVK doesn't perform any HDR tone mapping, so you need to use <a href="https://github.com/Filoppi/PumboAutoHDR" target="_blank">Pumbo's ReShade AutoHDR</a> or <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a> (Nvidia only) for that.
+                    <div class="card-yellow">
+                        <p>
+                        <h4>Known quirks and issues</h4>
+                        <ul>
+                            <li>
+                                Any images produced by the game that were meant to be in 8 bit (screenshots, save images) are distorted due to lack of color conversion.
+                                <br>
+                                This is purely visual and doesn't affect gameplay.
+                                <br>
+                                <a href="https://discord.gg/uYkHFZX2" target="_blank">New Vegas Reloaded fixes save images.</a>
+                                <br>
+                                For screenshots it's recommended to use Game Bar, Steam or your tone mapping utility.
+                            </li>
+                        </ul>
+                        </p>
+                    </div>
+                    </p>
+                </div>
                 <div class="card">
                     <h3>Installation</h3>
                     <ol>
@@ -433,7 +604,7 @@
                         </li>
                         <li>
                             <p>
-                                Extract archive contents into your <b>Oblivion root folder</b>.
+                                Extract archive contents into your <b>Fallout New Vegas root folder</b>.
                             </p>
                         </li>
                     </ol>
@@ -459,7 +630,7 @@
                     Be wary that current implementation of the interop will degrade performance on PCs.
                     <ol>
                         <li>
-                            Enable <b>Windowed mode</b> in <b>Oblivion.ini</b>.
+                            Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b>.
                         </li>
                         <div class="card-basic">
                             <p>
@@ -852,7 +1023,7 @@
                                 Install and launch <a href="https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html" target="_blank">RTSS</a>. Open your System Tray (the triangle pointing upwards on the taskbar) and click on the RTSS icon to open it.
                             </li>
                             <li>
-                                Press green <b>Add</b> button and select <b>Oblivion.exe</b>.
+                                Press green <b>Add</b> button and select <b>FalloutNV.exe</b>.
                             </li>
                             <li>
                                 Set <b>Application Detection Level</b> to <b>Low</b>.
@@ -1038,7 +1209,7 @@
                             <h4>I can't use DXVK, and I need to Alt-Tab - am I out of luck?</h4>
                             Yeah, all you can do is download <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> and use the legacy Windowed mode.
                             <br>
-                            Also enable <b>Windowed mode</b> itself in <b>Oblivion.ini</b>: (OneTweak itself doesn't change display modes)
+                            Also enable <b>Windowed mode</b> itself in <b>FalloutCustom.ini</b>: (OneTweak itself doesn't change display modes)
                             <div class="card-basic">
                                 <p>
                                     [Display]
@@ -1059,9 +1230,15 @@
                         </li>
                         <li>
                             <h4>Do texture mods really have an impact on performance?</h4>
-                            Not directly, no. As long as you don't go over your VRAM budget and use ORC's memory pool patch you'll be fine. If you run out of VRAM, you'll either crash, or experience massive stutters.
+                            Not directly, no. As long as you don't go over your VRAM budget and use NVTF's memory pool patch you'll be fine. If you run out of VRAM, you'll either crash, or experience massive stutters.
                             <br>
                             What <i>is</i> guaranteed from higher resolution textures is increase in their load time. This can translate into longer stutter periods on cell loads.
+                        </li>
+                        <li>
+                            <h4>You talk about HDR. I thought FNV already had it?</h4>
+                            HDR mentioned in game setting refers to HDR rendering, where game renders lighting passes in 16 bits, instead of 8. This leads to properly glowing lights thanks to the precision of using 65536 colors per channel instead of 256. (Glowing elements won't be clamped anymore, and will glow instead.)
+                            <br>
+                            Due to the old age of the game, this data is later converted to 8 bit SDR (HDR in Windows was added in 2017!). Additionally, D3D9 obviously doesn't support HDR output in the first place, hence the need for the DXGI interop.
                         </li>
                         <li>
                             <h4>DXVK is breaking HDR after exiting the game!</h4>
@@ -1076,8 +1253,11 @@
                             If you can handle the performance loss, sure go ahead.
                         </li>
                         <li>
-                            <h4>Is it possible to use D3D9Ex in Oblivion?</h4>
-                            Technically yes thanks to <a href="https://www.nexusmods.com/oblivion/mods/50348" target="_blank"> Oblivion Display Tweaks</a>. Does it work well? Not really.
+                            <h4>Is it possible to use D3D9Ex in Fallout New Vegas?</h4>
+                            Technically yes - Fallout New Vegas, oddly enough is the only Bethesda title with native D3D9Ex support. Does it work well? Not really.
+                            <br>
+                            While Special K's D3D9Ex enforcement works far better that NVTF's, it still suffers from CPU perfomance loss and increased GPU usage.
+                            <br>
                         </li>
                     </ul>
                     </p>
@@ -1092,7 +1272,7 @@
                 <div class="card">
                     <p>
                     <h3>The End?</h3>
-                    Congratulations! You've made it through! I hope this guide has helped you making Oblivion a smoother experience.
+                    Congratulations! You've made it through! I hope this guide has helped you making Fallout New Vegas a smoother experience.
                     <br>
                     <br>
                     If you have any issues, questions, critiques or recommendations hit me up on Discord - wall_sogb.
