@@ -266,6 +266,7 @@ hr {
     background: #2b2b2b;
     outline: 1px solid rgba(0, 0, 0, 10%);
     transition: all 333ms Cubic-Bezier(0, 0, 0, 1);
+    overflow: hidden;
 }
 
 .sidebar p {
@@ -736,7 +737,7 @@ footer {
     }
 
     .sidebar {
-        height: auto;
+        height: 100%;
         width: 0;
         margin-top: 0;
         margin-bottom: 20%;
