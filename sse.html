@@ -3,18 +3,20 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Skyrim Performance Tips</title>
+    <title>SSE Performance Guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A bunch of tips to make Skyrim run smoother. Hopefully.">
-    <meta property="og:title" content="Skyrim Performance Tips">
+    <meta name="description" content="A guide to making Skyrim SE run smoother. Hopefully. Covers Alt-Tabbing, stutters and frametimes.">
+    <meta property="og:title" content="Skyrim SE Performance and Stability Guide">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://performance.moddinglinked.com/sse.html">
-    <meta property="og:image" content="https://performance.moddinglinked.com/ui/logo.webp">
-    <meta property="og:description" content="A bunch of tips to make Skyrim run smoother. Hopefully.">
-    <meta name="keywords" content="Skyrim, Skyrim Special Edition, Skyrim Anniversary Edition, SSE, AE, FPS, performance, Fallout, fps limit, Special K, Riva Tuner, RTSS, stutter, lag, latency, hitches, flip model, DXGI, interop, Nvidia, HDR">
-    <script src="https://kit.fontawesome.com/baff4f2fd4.js" crossorigin="anonymous"></script>
+    <meta property="og:url" content="https://performance.moddinglinked.com">
+    <meta property="og:description" content="A guide to making Skyrim SE run smoother. Hopefully. Covers Alt-Tabbing, stutters and frametimes.">
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f3f3f3">
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#202020">
+    <meta name="keywords" content="Skyrim SE, SkyrimSE, Skyrim Special Edition, TESV, TES5, FPS, Performance, FPS Limit, SpecialK, Riva Tuner, RTSS, Stutter, Lag, Latency, Hitches, Flip Model, DXGI, Interop, Nvidia, HDR">
     <link rel="icon" type="image/x-icon" href=".\favicon.webp">
+    <script src="https://kit.fontawesome.com/baff4f2fd4.js" crossorigin="anonymous"></script>
     <script src="javascript.js"></script>
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/styles.css">
     <meta http-equiv='content-language' content='en-us'>
     <link rel="canonical" href="https://performance.moddinglinked.com">
@@ -32,37 +34,27 @@
                     <span class="flippy">🙃</span>
                     Fallout New Vegas
                 </a>
-
+                <!--
                 <a href="./fallout4.html" title="🙃 Fallout 4">
                     <span class="subIcon">🤖</span>
                     <span class="flippy">🙃</span>
                     Fallout 4
                 </a>
-
+                -->
                 <a href="./tes4.html" title="🙃 Oblivion">
                     <span class="subIcon">🔥</span>
                     <span class="flippy">🙃</span>
                     Oblivion
                 </a>
-
                 <a href="./sse.html" title="🙃 Skyrim Special Edition" class="selected">
                     <span class="subIcon">🐲</span>
                     <span class="flippy">🙃</span>
                     Skyrim Special Edition
                 </a>
-
                 <a href="./starfield.html" title="🙃 Starfield">
                     <span class="subIcon">🚀</span>
                     <span class="flippy">🙃</span>
                     Starfield
-                </a>
-
-                <hr>
-
-                <a href="./tests/testing.html" title="🙃 Testing">
-                    <span class="subIcon">📊</span>
-                    <span class="flippy">🙃</span>
-                    Testing
                 </a>
 
                 <hr>
@@ -72,31 +64,36 @@
                     <span class="flippy">🙃</span>
                     Introduction
                 </a>
-
                 <a href="#Terminology" title="🙃 Terminology">
                     <span class="subIcon">📖</span>
                     <span class="flippy">🙃</span>
                     Terminology
                 </a>
-
                 <a href="#DriversAndOS" title="🙃 Graphics Drivers and Windows">
                     <span class="subIcon">🪟</span>
                     <span class="flippy">🙃</span>
                     Drivers and Windows
                 </a>
-
-                <a href="#DisplayMode" title="🙃 Display mode">
+                <a href="#DisplayModeComparison" title="🙃 Display modes">
                     <span class="subIcon">🖥️</span>
                     <span class="flippy">🙃</span>
                     Display modes
                 </a>
-
+                <a href="#DisplayTweaks" title="🙃 Display Tweaks">
+                    <span class="subIcon">🔧</span>
+                    <span class="flippy">🙃</span>
+                    Display Tweaks
+                </a>
                 <a href="#RecommendedLimiters" title="🙃 FPS Limiters">
                     <span class="subIcon">🛑</span>
                     <span class="flippy">🙃</span>
                     FPS Limiters
                 </a>
-
+                <a href="#FAQ" title="🙃 FAQ">
+                    <span class="subIcon">❓</span>
+                    <span class="flippy">🙃</span>
+                    FAQ
+                </a>
                 <a href="#Finish" title="🙃 Finish">
                     <span class="subIcon">🏁</span>
                     <span class="flippy">🙃</span>
@@ -105,19 +102,25 @@
             </p>
         </div>
         <div class="content">
+
             <!-- Introduction -->
             <div>
                 <span id="Introduction" onclick="location.href='#Introduction'">
                     <h2>Introduction</h2>
                 </span>
-                <div class="card">
-                    <p>
-                    <h3>Welcome!</h3>
-                    This is a little spin-off for Skyrim made in collaboration with the <a href="https://dragonbornsfate.moddinglinked.com/">Dragonborn's Fate</a> guide.
-                    </p>
-                    <p>
-                        If you want to see the full guide dedicated to Fallout New Vegas, go <a href="https://performance.moddinglinked.com/">here</a>.
-                    </p>
+                <div class="card flex">
+                    <div>
+                        <p>
+                        <h3>Welcome!</h3>
+                        Goal of this guide is to fix the abysmal performance in Skyrim Special Edition by using more modern technologies and tweaks, and make you generally aware of its quirks and other potential issues.
+                        </p>
+                        <p>
+                            The guide is mostly written with an assumption that you've completed <b>Utilities</b> sections from <a href="https://dragonbornsfate.moddinglinked.com/utilities.html" target="_blank">A Dragonborn's Fate</a>.
+                        </p>
+                        <p>
+                            While the guide is focused on this particular game, most stuff shown here is applicable to other games.
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -127,7 +130,7 @@
                     <h2>Terminology</h2>
                 </span>
                 <div class="card">
-                    <h3>Things that are good to know</h3>
+                    <h3>Things You Should Know</h3>
                     <ul>
                         <li id="VSync">
                             <b>Vertical Synchronization (V-Sync)</b> - technology allowing to keep display's scanout and refresh in phase to eliminate screen tearing,
@@ -137,7 +140,7 @@
                         </li>
                         <li id="VRR">
                             <b>G-Sync | Freesync</b> - <b>Variable Refresh Rate (VRR)</b> technologies developed by NVIDIA and AMD respectively.
-                            They allow the display to adapt its refresh rate to the framerate, allowing to use V-Sync at arbitrary framerates and reduce its latency<sup><a href="#annotation1">[1]</a></sup> .
+                            They allow the display to adapt its refresh rate to the framerate, allowing to use V-Sync at arbitrary framerates and reduce its latency<sup><a title="Why?" href="#annotation1">[1]</a></sup> .
                         </li>
                         <li id="MPO">
                             <b>Multiplane Overlays (MPOs)</b> - hardware scanout planes for the GPU. They allow for hardware image composition without any latency or performance penalty (for example displaying windows on top of each other), as well as
@@ -171,19 +174,19 @@
                                 <br>
                                 Allows "fullscreen-level" of performance and latency. Has native VRR support in Windowed Mode. Additionally, DXGI version supports tearing (V-Sync off) in Windowed Mode, HDR and has Multiplane Overlay (MPO) support.
                                 <br>
-                                DXGI variant is supported only in D3D10 and upwards<sup><a href="#annotation2">[2]</a></sup>, enforced only in D3D12, and exists only on Windows 8 and upwards.
+                                DXGI variant is supported only in D3D10 and upwards<sup><a title="Why?" href="#annotation2">[2]</a></sup>, enforced only in D3D12, and exists only on Windows 8 and upwards.
                                 <br>
                                 D3D9Ex Flip Model is not feature matched and lacks any DXGI improvements.
                                 <br>
-                                More information <a href="https://devblogs.microsoft.com/directx/dxgi-flip-model/" target="_blank">here</a>
+                                More information <a href="https://devblogs.microsoft.com/directx/dxgi-flip-model/" target="_blank">here</a>.
                             </li>
                             <li id="BitBlt">
                                 <b>BitBlt Model</b> - older presentation model used by most applications.
-                                While performing similarly to Flip Model in Fullscreen, in Windowed Mode it has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations.
+                                While performing similarly to Flip Model in Fullscreen, in Windowed Mode it has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations due to being software composed.
                                 <br>
                                 The only presentation model for Windowed D3D9 (and lower), but still very common in D3D10 and D3D11 games.
                                 <p>
-                                    Vulkan and OpenGL<sup><a href="#annotation3">[3]</a></sup> use BitBlt in Windowed Mode.
+                                    Vulkan and OpenGL<sup><a title="Why?" href="#annotation3">[3]</a></sup> use BitBlt in Windowed Mode.
                                 </p>
                             </li>
                         </ul>
@@ -199,20 +202,20 @@
                                 Supported by every graphics API other than D3D12
                             </li>
                             <li id="FSO">
-                                <b>Fullscreen with Fullscreen Optimizations (Fullscreen Optimizations)</b> - an update to FSE for DirectX added in Windows 10 1803.
+                                <b>Fullscreen with Fullscreen Optimizations (Fullscreen Optimizations)</b> - an update to <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> for DirectX added in Windows 10 1803.
                                 <br>
-                                Converts DirectX applications running in FSE mode into a pseudo borderless mode with Flip Model for faster Alt-Tab,
+                                Converts DirectX applications running in <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> mode into a pseudo borderless mode with Flip Model for faster Alt-Tab,
                                 lower latency, better color profile handling, and support for Windowed overlays (Xbox Game Bar, volume and brightness sliders etc.).
                                 <br>
                                 Because of being a Windowed Mode under the hood, it can break e.g. brightness control in old games that modify system gamma instead of window's.
                                 <br>
                                 Enabled by default for every application.
                                 <br>
-                                More information <a href="https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/" target="_blank">here</a>
+                                More information <a href="https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/" target="_blank">here</a>.
                             </li>
                             <li id="Windowed">
                                 <b>Windowed</b> - method of displaying content in a window, always managed by DWM. Due to being a window, Alt-Tab is fast, and color profiles usually don't have any problems.
-                                If not using Flip Model, it has worse performance compared to Fullscreen Optimizations | FSE, lacks native VRR support, has increased input latency and uses always-on V-Sync
+                                If not using Flip Model, it has worse performance compared to Fullscreen Optimizations | <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span>, lacks native VRR support, has increased input latency and uses always-on V-Sync
                             </li>
                         </ul>
                     </ul>
@@ -227,7 +230,7 @@
                                 OpenGL can be displayed using D3D11 thanks to Special K, which enables Flip Model and all its benefits along with HDR.
                                 <br>
                                 Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one,
-                                while DXVK compatibility requires toggling a flag in Nvidia Profile Inspector - see <a href="./index.html#dxvk-flip" target="_blank">here</a>.
+                                while DXVK compatibility requires toggling a flag in Nvidia Profile Inspector - see <a href="#dxvk-flip">here</a>.
                             </li>
                         </ol>
                     </span>
@@ -289,9 +292,9 @@
                 </div>
                 <div class="card">
                     <p>
-                    <h3>Windows watermark</h3>
+                    <h3>Windows Watermark</h3>
                     <p>
-                        Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition.
+                        Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition, which leads to increased latency, worse performance and disables VRR.
                         If you don't have a GPU with <a href="#Terminology">MPO (Multiplane Overlay)</a> support, you can mitigate this by disabling Fullscreen Optimizations.
                         <br>
                         It's still weird to have unactivated Windows though.
@@ -306,7 +309,7 @@
                             Click <b>Save All Information</b> and save the file.
                         </li>
                         <li>
-                            Open the <b class="card-basic">DxDiag.txt</b> file, press <b>Ctrl+F</b> and look for <b class="card-basic">MPO MaxPlanes</b>
+                            Open the <b class="card-basic">DxDiag.txt</b> file, press <b class="card-basic">Ctrl+F</b> and look for <b class="card-basic">MPO MaxPlanes</b>
                         </li>
                         <li>
                             If the number is <b>greater than 1</b>, then your GPU has MPO support.
@@ -321,10 +324,12 @@
                         </p>
                         <div class="card-yellow">
                             <p>
+                                This applies only to <b>Windowed Mode (with Flip Model)</b> and <b>Fullscreen with FSO</b>.
+                                <br>
                                 If you have:
                             <ul>
                                 <li>Nvidia 16 series and newer</li>
-                                <li>AMD Vega and newer</li>
+                                <li>AMD Vega and newer (single display only)</li>
                                 <li>Intel CPUs 8th Gen and newer</li>
                             </ul>
                             You can also ignore it, since these models have Multiplane Overlays.
@@ -347,19 +352,78 @@
                 </div>
             </div>
 
-            <!-- Presentation -->
+            <!-- DisplayModeComparison -->
             <div>
-                <span id="DisplayMode" onclick="location.href='#DisplayMode'">
-                    <h2>Display mode</h2>
+                <span id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
+                    <h2>Display Mode Differences</h2>
                 </span>
                 <div class="card">
                     <p>
-                    <h3>Clarifications</h3>
-                    As you may have noticed, the guide makes you use Windowed Mode instead of classic, Fullscreen Exclusive. If you are concerned about the performance loss or not working G-Sync, don't be!
-                    <br>
-                    Display Tweaks enables Flip Model, which like I mentioned before, allows windowed games to run with a fullscreen level of performance and latency, alongside with VRR support (and more).
-                    <br>
-                    Thus running the game in legacy fullscreen mode is not worth it, and has no benefits. Welcome to the <strike>2012</strike> future! (Unless you don't activate Windows)
+                    <h3>Presentation Problems</h3>
+                    Here's a comparison of two display modes you can use in this game.
+                    <div class="comparison">
+                        <table class="comparison-table">
+                            <tr>
+                                <th>
+                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
+                                        Flip Windowed
+                                    </h2>
+                                </th>
+                                <th>
+                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
+                                        Fullscreen
+                                    </h2>
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>
+                                            Fast Alt-Tab
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>Segs</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            Cope
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            Slower and unstable Alt-Tab, especially without <span title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSO</span>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Display Tweaks -->
+            <div>
+                <span id="#DisplayTweaks" onclick="location.href='#DisplayTweaks'">
+                    <h2>Display Tweaks</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <div class="card-yellow">
+                        <p>
+                            Follow the steps from <a href="https://dragonbornsfate.moddinglinked.com/utilities.html#display_tweaks" target="_blank">DBF</a>, then disable the main FPS limiter (line 204). We will later set up a limiter with better tools.
+                        </p>
+                    </div>
                     </p>
                 </div>
             </div>
@@ -367,16 +431,16 @@
             <!-- RecommendedLimiters -->
             <div>
                 <span id="RecommendedLimiters" onclick="location.href='#RecommendedLimiters'">
-                    <h2>Recommended framerate limiters and their configurations</h2>
+                    <h2>Recommended FPS Limiters and Their Configurations</h2>
                 </span>
                 <div class="card">
                     <p>
-                    <h3>(Not) Pushing the limits</h3>
+                    <h3>(Not) Pushing the Limits</h3>
                     Limiting framerate is very important for overall stability.
                     <br>
                     First and foremost, if you are using a good limiter, you'll be implementing correct framepacing, which is the most important think for the overall fell of fluidity.
                     <br>
-                    More advanced limiters can also reduce latency or power consumption (It's difficult to have both).
+                    More advanced limiters can also reduce latency or power consumption (it's difficult to have both).
                     <div class="card-red">
                         <p>
                             Always limit your framerate to an amount you can actually achieve, otherwise you won't get any benefits!
@@ -390,18 +454,23 @@
                 </div>
                 <div class="card">
                     <p>
-                    <h3>Recommended setups</h3>
+                    <h3>Recommended Setups</h3>
                     Recommended configurations based on selected display scenarios:
                     <ul>
                         <li>
                             <h4>V-Sync</h4>
                             <ul>
                                 <li>
-                                    Framerate must be capped slightly below refresh rate to reduce latency
+                                    Framerate must be capped slightly below refresh rate to reduce latency.
                                 </li>
                                 <div class="card-red">
                                     <p>
-                                        V-Sync on its own is <u>NOT</u> a limiter. Using it as one introduces a latency penalty
+                                        V-Sync on its own is <i><u>NOT</u></i> a limiter. Using it as one introduces a <b>massive</b> latency penalty.
+                                    </p>
+                                </div>
+                                <div class="card-yellow">
+                                    <p>
+                                        Driver limiters are not precise enough to pull this off without risking stutter.
                                     </p>
                                 </div>
                             </ul>
@@ -410,10 +479,10 @@
                             <h4>G-Sync | Freesync</h4>
                             <ul>
                                 <li>
-                                    V-Sync must be enabled, in order to fully get rid of tearing
+                                    V-Sync must be enabled, in order to fully get rid of tearing.
                                 </li>
                                 <li>
-                                    Framerate must be capped below refresh rate, in order for VRR to not disengage and fallback to V-Sync, as this causes a very big increase in latency
+                                    Framerate must be capped below refresh rate, in order for VRR to not disengage and fallback to V-Sync, as this causes a very big increase in latency.
                                 </li>
                             </ul>
                         </li>
@@ -433,9 +502,23 @@
                     <h3>
                         So many options...
                     </h3>
-                    Both limiters presented here are comparable in terms of precision, but Special K trumps RTSS when it comes to latency, at the cost of <b>lack of ENB compatibility</b> and slightly higher power usage.
-
-                    <!-- SK -->
+                    Limiters presented here are ordered by their precision, from best to acceptable. The better ones are smoother and can provide better latency reductions, but may have some compatibility issues.
+                    </p>
+                    <p>
+                        Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
+                    <div>
+                        <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
+                        <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button><span class="disabled" id="applyConfirmation">Applied!</span>
+                    </div>
+                    <div class="card-yellow">
+                        <p>
+                            If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.)
+                        </p>
+                    </div>
+                    </p>
+                    <p>
+                        Click on the cards below to show the instructions for each limiter.
+                        <!-- SK -->
                     <p>
                     <div class="expander-top clickable center width-limited" onclick="expandCard(this, specialkExpander)" id="specialk">
                         <p>
@@ -444,7 +527,7 @@
                         </h3>
                         Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR.
                         <br>
-                        Its list of features is too long to write here, but the most important one used here is its <b>incredibly versatile limiter</b> and <b>HDR</b>.
+                        Its list of features is too long to write here, but the most important one used here is its <b>incredibly versatile limiter</b> and if using DXGI, <b>HDR</b> and (almost) lagless V-Sync.
                         <img class="chevron" style="float: right;" src="ui/Chevron Down.svg" alt="UI element - Chevron">
                         </p>
                     </div>
@@ -454,15 +537,11 @@
                             <h3>Warning!</h3>
                             <p>
                             <ul>
-
                                 <li>
                                     Special K may conflict with Riva Tuner. If the game crashes or SK doesn't show up in game, make sure <b>Riva Tuner</b> is <b>not running</b>, or set Riva Runer's <b>injection delay</b> to <b>30000</b>
                                 </li>
                                 <li>
-                                    Special K is not compatible with ENB
-                                </li>
-                                <li>
-                                    Special K is not compatible with .NET Framework
+                                    Special K is not compatible with ENB.
                                 </li>
                             </ul>
                             </p>
@@ -471,18 +550,18 @@
                             <p>
                                 I'm not providing calculated values here, because Special K already does that automatically, and with higher precision
                             </p>
-                            <p>
-                                If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.)
-                            </p>
                         </div>
                         <h4>Installation</h4>
                         <ol>
                             <li>
                                 Download the <a href="https://special-k.info/" target="_blank"><b>Special K Archive</b></a> from the <b>Stable</b> section, then extract <b>SpecialK64.dll</b>
-                                to your Skyrim <b>root folder</b> and rename it to <b>dxgi.dll</b>
+                                to your Skyrim SE <b>root folder</b> and rename it to <b>dxgi.dll</b>
                             </li>
                             <li>
-                                Launch Skyrim and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel
+                                Download the <a href="https://performance.moddinglinked.com/files/sk.zip" target="_blank">archive with preconfigured settings</a> and extract its content to your <b>root folder</b>.
+                            </li>
+                            <li>
+                                Launch Skyrim and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel.
                             </li>
                             <li>
                                 Enable the <b>Framerate Limit</b> by ticking the checkbox, then right click on the bar (not graph) next to it:
@@ -492,18 +571,22 @@
                                         <div class="card-basic">
                                             <p>
                                                 In right click menu select your refresh rate
+                                                <br>
+                                                Click on <b>Advanced</b> and select the <b>Latent Sync (VSYNC -Off-)</b> mode
                                             </p>
                                         </div>
-                                        <div class="expander-top clickable" class="width-very-limited" onclick="expandCard(this, latentSync)">
+
+                                        <!-- Latent Sync -->
+                                        <div class="expander-top clickable width-very-limited" onclick="expandCard(this, latentSync)">
                                             <p>
-                                                Optional - Disabled V-Sync with no tearing
+                                                Optional - Configuring Latent Sync to get rid of tears
                                                 <img class="chevron" style="float: right;" src="ui/Chevron Down.svg" alt="UI element - Chevron">
                                             </p>
                                         </div>
 
-                                        <div class="expander-bottom" class="width-very-limited" id="latentSync">
+                                        <div class="expander-bottom width-very-limited" id="latentSync">
                                             <h4>It's best to do this in-game!</h4>
-                                            If you play without V-Sync and <b>have stable framerate</b>, in limiter's right click menu select <b>Latent Sync</b>
+                                            If you use <b>Fullscreen Mode without V-Sync</b> and <b>have stable framerate</b>, in limiter's right click menu select <b>Latent Sync</b>
                                             <p>
                                                 In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use <b>Sync offset</b> slider so the tearing is not visible.
                                                 <br>
@@ -513,7 +596,7 @@
                                             </p>
                                             <div class="card-red">
                                                 <p>
-                                                    Latpops with dedicated GPUs that do not have MUX switches for direct dGPU<->Display connection will have problems with hiding the tearline.
+                                                    Laptops with dedicated GPUs that do not have MUX switches for a direct dGPU<->Display connection can have problems with hiding the tearline.
                                                         <br>
                                                         While it may be impossible to hide it completely, latency benefits are still applicable.
                                                 </p>
@@ -521,7 +604,7 @@
                                                     Some monitors have too small vertical blanking, so it's possible to not fully hide the tearing without timing modifications -
                                                     if you wish to pursue this topic, create a custom resolution with increased <b>Vertical Blanking</b> in your driver or with
                                                     <b><a href="https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU">Custom Resolution Utility</a></b>
-                                                <h4>It's best to first test the resolution in driver, otherwise you may lock out your display</h4>
+                                                <h4>It's best to first test the resolution in the driver settings, otherwise you may lock out your display</h4>
                                                 </p>
                                             </div>
                                         </div>
@@ -529,22 +612,15 @@
                                     <li>
                                         V-Sync
                                         <div class="card-basic">
+                                            <div class="card-red">
+                                                <p>
+                                                    The subtraction is needed only for D3D9!
+                                                    <br>
+                                                    The preset included with the guide already optimizes V-Sync for DXGI, so you only need to select the limit.
+                                                </p>
+                                            </div>
                                             <p>
-                                                In right click menu select your refresh rate
-                                            </p>
-                                            <p>
-                                                In Direct3D 11 Settings, under SwapChain Management:
-                                            <ul>
-                                                <li>
-                                                    Enable <b>Waitable SwapChain</b>
-                                                </li>
-                                                <li>
-                                                    Set <b>BackBuffer Count</b> to <b>3</b>
-                                                </li>
-                                                <li>
-                                                    Set <b>Maximum Device Latency</b> to <b>4</b>
-                                                </li>
-                                            </ul>
+                                                In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 0.05
                                             </p>
                                         </div>
                                     </li>
@@ -558,51 +634,19 @@
                                                     The bias option is not needed for lower values.
                                                 </li>
                                             </ul>
-                                            Click on <b>Advanced</b> and enable <b>Low Latency Mode</b> (Not Reflex!)
-                                            </p>
-                                            <p>
-                                                In Direct3D 11 Settings, under SwapChain Management:
-                                            <ul>
-                                                <li>
-                                                    Set <b>BackBuffer Count</b> to <b>3</b>
-                                                </li>
-                                                <li>
-                                                    Set <b>Maximum Device Latency</b> to <b>2</b>
-                                                </li>
-                                            </ul>
+                                            Click on <b>Advanced</b> and select the <b>Low-Latency - (VRR Optimized)</b> mode
                                             </p>
                                         </div>
                                     </li>
                                 </ul>
-                                ...if you want to enter a custom value, <b>Ctrl-Click</b> on the bar. You can also drag your mouse on it.
+                                ...if you want to enter a custom value, <b class="card-basic">Ctrl-Click</b> on the bar. You can also drag your mouse on it.
                             </li>
                             <p>
-                                Your configuration should look similar to this
+                                Your configuration should look similar to this:
                                 <br>
-                                <img src="FO4/SK.webp" class="limiters-img" alt="Screenshot showcasing Special K's control panel">
+                                <img src="limiters/SK.webp" class="limiters-img" alt="Screenshot showcasing Special K's control panel">
                                 <br>
                             </p>
-                            <div class="card-yellow">
-                                <p>
-                                    If you have a HDR compatible display, you can use Special K to output in native HDR!
-                                    <br>
-                                    <b>Keep in mind that it will decrease your performance due to higher render bit depth.</b>
-                                <ul>
-                                    <li>
-                                        Open the HDR menu at the top of Special K's control panel menu and press the HDR Setup button.
-                                    </li>
-                                    <li>
-                                        Select the scRGB HDR option from the HDR Calibration widget.
-                                    </li>
-                                    <li>
-                                        Restart the game.
-                                    </li>
-                                    <li>
-                                        For more information, see <a href="https://wiki.special-k.info/en/HDR/Retrofit" target="_blank">Special K Wiki</a>
-                                    </li>
-                                </ul>
-                                </p>
-                            </div>
                         </ol>
                         </p>
                     </div>
@@ -620,34 +664,22 @@
                         </p>
                     </div>
                     <div class="expander-bottom center width-limited" id="rtssExpander">
-                        <p>
-                        <h4>Finding the limit</h4>
-                        <p>
-                            Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
-                        <div>
-                            <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
-                            <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button><span class="disabled" id="applyConfirmation">Applied!</span>
-                        </div>
-                        <div class="card-yellow">
-                            <p>
-                                If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.)
-                            </p>
-                        </div>
-                        </p>
-                        </p>
                         <h4>Installation</h4>
                         <ol>
                             <li>
-                                Install and open <a href="https://www.guru3d.com/files-get/rtss-rivatuner-statistics-server-download,17.html" target="_blank">RTSS</a>, press green <b>Add</b> button and select SkyrimSE.exe
+                                Install and launch <a href="https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html" target="_blank">RTSS</a>. Open your System Tray (the triangle pointing upwards on the taskbar) and click on the RTSS icon to open it
                             </li>
                             <li>
-                                Set <b>Application Detection Level</b> to <b>Low</b>.
+                                Press green <b>Add</b> button and select SkyrimSE.exe
+                            </li>
+                            <li>
+                                Set <b>Application Detection Level</b> to <b>Low</b>
                             </li>
                             <li>
                                 Set <b>Framerate Limit</b> to:
                                 <ul>
                                     <li>
-                                        No V-Sync:
+                                        No V-Sync
                                         <div class="card-basic">
                                             <p>
                                                 <span class="fpsFixed">(RefreshRate)</span>
@@ -655,7 +687,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        V-Sync:
+                                        V-Sync
                                         <div class="card-basic">
                                             <p>
                                                 <span class="fpsVSync">(RefreshRate - 0.05)</span>
@@ -663,7 +695,7 @@
                                         </div>
                                     </li>
                                     <li>
-                                        VRR + V-Sync:
+                                        VRR + V-Sync
                                         <div class="card-basic">
                                             <p>
                                                 <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>
@@ -680,24 +712,159 @@
                                         Enable <b>Passive Waiting</b>
                                     </li>
                                     <li>
-                                        Set framerate limiter to <b>Front Edge Sync</b>.
+                                        Set framerate limiter to <b>Front Edge Sync</b>
                                     </li>
                                 </ul>
                             </li>
                             <li>
-                                Enable <b>Start with Windows</b> or launch RTSS everytime before you play.
+                                Enable <b>Start with Windows</b> or launch RTSS everytime before you play
                             </li>
                             <p>
                                 Your configuration should look similar to this:
                                 <br>
-                                <img src="ui/RTSS.webp" class="limiters-img" alt="Screenshot showcasing RTSS' settings">
+                                <img src="limiters/RTSS.webp" class="limiters-img" alt="Screenshot showcasing RTSS' settings">
                                 <br>
                             </p>
                         </ol>
                     </div>
                     </p>
+
+                    <!-- Drivers -->
+                    <p>
+                    <div class="card center width-limited">
+                        <h3>
+                            NVIDIA | AMD driver
+                        </h3>
+                        The most basic limiters from this list, but definitely the easiest and fastest to set up!
+                        <p>
+                        <div class="expander-top clickable width-full" onclick="expandCard(this, nvidiaExpander)" id="nvidia">
+                            <p>
+                            <h4>
+                                NVIDIA
+                                <img class="chevron" style="float: right;" src="ui/Chevron Down.svg" alt="UI element - Chevron">
+                            </h4>
+                            </p>
+                        </div>
+                        <div class="expander-bottom width-full" id="nvidiaExpander">
+                            <h4>Configuration</h4>
+                            <ol>
+                                <li>
+                                    Open <b>NVIDIA Control Panel</b>, go to <b>Program Settings</b>
+                                </li>
+                                <li>
+                                    Select <b>SkyrimSE.exe</b>. If it's not present, add it manually
+                                </li>
+                                <li>
+                                    In settings, set <b>Max Frame Rate</b> to:
+                                    <ul>
+                                        <li>
+                                            V-Sync | No V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    <span class="iFpsFixed">(RefreshRate)</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            VRR + V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    ...or lower
+                                </li>
+                                <li>
+                                    Click <b>Apply</b>
+                                </li>
+                            </ol>
+                            <p>
+                                Your configuration should look similar to this:
+                                <br>
+                                <img src="limiters/Nvidia.webp" class="limiters-img" alt="Screenshot showcasing Nvidia Control Panel settings">
+                                <br>
+                            </p>
+                        </div>
+
+                        </p>
+                        <p>
+
+                        <div class="expander-top clickable width-full" onclick="expandCard(this, amdExpander)" id="amd">
+                            <p>
+                            <h4>
+                                AMD
+                                <img class="chevron" style="float: right;" src="ui/Chevron Down.svg" alt="UI element - Chevron">
+                            </h4>
+                            </p>
+                        </div>
+                        <div class="expander-bottom width-full" id="amdExpander">
+                            <h4>Configuration</h4>
+                            <ol>
+                                <li>
+                                    Open <b>AMD Software: Adrenaline Edition</b>, go to <b>Gaming</b> tab
+                                </li>
+                                <li>
+                                    Select <b>SkyrimSE</b> or search for it in the bar. If not present, click on the three dots and add the executable manually.
+                                </li>
+                                <li>
+                                    In games's menu, enable <b>Radeon Chill™️</b> and set <b>Max FPS</b> to:
+                                    <ul>
+                                        <li>
+                                            V-Sync | No V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    <span class="iFpsFixed">(RefreshRate)</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            VRR + V-Sync
+                                            <div class="card-basic">
+                                                <p>
+                                                    <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    ...or lower
+                                </li>
+                            </ol>
+                            <p>
+                                Your configuration should look similar to this:
+                                <br>
+                                <img src="limiters/AMD.webp" class="limiters-img" alt="Screenshot showcasing AMD Software settings">
+                                <br>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                    </p>
+                    </p>
                 </div>
             </div>
+
+            <!-- FAQ -->
+            <div>
+                <span id="FAQ" onclick="location.href='#FAQ'">
+                    <h2>FAQ</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <h3>Are these questions really frequent?</h3>
+                    <ul>
+                        <li>
+                            <h4>Do texture mods really have an impact on performance?</h4>
+                            Not directly, no. As long as you don't go over your VRAM budget you'll be fine. If you run out of VRAM, you'll either crash, or experience massive stutters.
+                            <br>
+                            What <i>is</i> guaranteed from higher resolution textures is increase in their load time. This can translate into longer stutter periods on cell loads.
+                        </li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+
             <!-- Finish -->
             <div>
                 <span id="Finish" onclick="location.href='#Finish'">
@@ -705,8 +872,8 @@
                 </span>
                 <div class="card">
                     <p>
-                    <h3>Finish Line</h3>
-                    Congratulations! You've made it through! I hope this guide helped you making Skyrim a smoother experience.
+                    <h3>The End?</h3>
+                    Congratulations! You've made it through! I hope this guide has helped you making Skyrim Special Edition a smoother experience.
                     <br>
                     If you have any issues, questions, critiques or recommendations hit me up on Discord - wall_sogb.
                     <br>
@@ -714,39 +881,38 @@
                     <a href="https://discord.gg/moddinglinked" target="_blank">ModdingLinked</a>,
                     <a href="https://discord.gg/EebN93s" target="_blank">xNVSE</a>,
                     <a href="https://discord.gg/taleoftwowastelands" target="_blank">Tale of Two Wastelands</a> servers.
+                    <p>
+                        I recommend checking this guide from time to time - I'm not done yet.
                     </p>
                     <p>
-                    <h3>To do</h3>
-                    <ol>
+                        If you found this guide helpful, share it with others or support me on <a href="https://ko-fi.com/wall_sogb" target="_blank">Ko-Fi</a> or <a href="https://patreon.com/WallSoGB" target="_blank">Patreon</a>
+                    </p>
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Things worth reading</h3>
+                    Here are some links to stuff that I recommend checking out:
+                    <ul>
                         <li>
-                            Test Doodlezoid's Reflex implementations
-                            <ol>
-                                <li>
-                                    Test compatibility with SK
-                                </li>
-                                <li>
-                                    Check if they differ in any way
-                                </li>
-                                <li>
-                                    <del>Check how good is Reflex's limiter</del>
-                                    <br>
-                                    Somehow it's horrible. MS Hybrid issue?
-                                </li>
-                            </ol>
+                            <a href="https://www.pcgamingwiki.com/wiki/Home" target="_blank">PCGamingWiki</a> - Great website, contains really helpful info about games, patches, fixes and other PC gaming related stuff.
                         </li>
                         <li>
-                            Test DLSS | FSR | XeSS once they are finished
+                            <a href="https://blurbusters.com/" target="_blank">BlurBusters</a> - Amazing website by Mark Rejhon focused on displays, latency and image quality. Really worth checking it out if you are a geek for these things.
                         </li>
-                        <li>
-                            Add Doodlezoid's Shadow Boost for SSE
-                        </li>
-                    </ol>
+                    </ul>
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Changelog</h3>
+                    Changes are documented on the <a href="https://github.com/WallSoGB/FalloutNV-Performance-Guide/commits/main" target="_blank">commit history</a>
                     </p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer">I'm a footer 🦶<span class="Flippy">🙃</span>🦶</div>
+    <footer>I'm a footer 🦶<span class="Flippy">🙃</span>🦶</footer>
 </body>
 
 </html>
