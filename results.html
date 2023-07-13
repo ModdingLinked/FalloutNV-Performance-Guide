@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Performance Testing Results</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Collection of performance tests gathered in Fallout New Vegas and Fallout 4.">
+	<meta property="og:title" content="Performance Testing Results">
+	<meta property="og:type" content="article">
+	<meta property="og:url" content="https://performance.moddinglinked.com/results.html">
+	<meta property="og:image" content="https://performance.moddinglinked.com/ui/logo.webp">
+	<meta property="og:description" content="Collection of performance tests gathered in Fallout New Vegas and Fallout 4.">
+	<meta name="keywords" content="Fallout New Vegas, FNV, FalloutNV, Fallout 4, FPS, Performance, Fallout, FPS Limit, SpecialK, Riva Tuner, RTSS, Stutter, Lag, Latency, Hitches, Flip Model, DXGI, Interop, Nvidia, HDR">
+	<script src="https://kit.fontawesome.com/baff4f2fd4.js" crossorigin="anonymous"></script>
+	<link rel="icon" type="image/x-icon" href=".\favicon.webp">
+	<script src="javascript.js"></script>
+	<link rel="stylesheet" href="css/styles.css">
+	<meta http-equiv='content-language' content='en-us'>
+	<link rel="canonical" href="https://performance.moddinglinked.com">
+</head>
+
+<body class="theme dark-scheme">
+	<div style="overflow:auto">
+		<header id="header" onclick="toggleNav()">
+			<span class="flippy" id="flippyHeader">🙃</span>
+		</header>
+		<div class="sidebar" id="sidebar">
+			<p>
+				<a href="#Introduction" title="🙃 Introduction">
+					<span class="subIcon">👋</span>
+					<span class="flippy">🙃</span>
+					Introduction
+				</a>
+
+				<a href="#FalloutNV" title="🙃 Fallout NV Tests">
+					<span class="subIcon">📖</span>
+					<span class="flippy">🙃</span>
+					Terminology
+				</a>
+
+				<a href="#DriversAndOS" title="🙃 Graphics Drivers and Windows">
+					<span class="subIcon">🪟</span>
+					<span class="flippy">🙃</span>
+					Drivers and Windows
+				</a>
+			</p>
+		</div>
+		<div class="sidebarAlt" id="sidebarAlt">
+			<p>
+				<a href="https://performance.moddinglinked.com" target="_blank" title="🙃 Introduction">
+					<span class="subIcon">👋</span>
+					<span class="flippy">🙃</span>
+					Fallout NV Guide
+				</a>
+
+				<a href="https://performance.moddinglinked.com/fallout4" target="_blank" title="🙃 Fallout NV Tests">
+					<span class="subIcon">📖</span>
+					<span class="flippy">🙃</span>
+					Fallout 4 Guide
+				</a>
+			</p>
+		</div>
+		<div class="content">
+			<!-- Introduction -->
+			<div>
+				<span id="Introduction" onclick="location.href='#Introduction'">
+					<h2>Introduction</h2>
+				</span>
+				<div class="card">
+					<p>
+					<h3>Welcome!</h3>
+					This is a collection of performance tests gathered in Fallout New Vegas and Fallout 4, with the goal of debunking common performance claims made by various mods and to shine a light on how these games perform in different conditions and hardware setups, allowing users to make better decisions for their setup and modlist.
+					</p>
+				</div>
+			</div>
+
+			<!-- Fallout NV -->
+			<div class="card">
+				<div class="dropdown">
+					<span id="xNV" class="dropdown-button" onclick="toggleTestMenu('NewVegasTests');">
+						<h2>Fallout NV Tests</h2>
+					</span>
+					<div id="NewVegasTests" class="dropdown-test-content">
+						<p>Urmom</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fallout 4 -->
+			<div class="card">
+				<div class="dropdown">
+					<span id="xFO4" class="dropdown-button" onclick="toggleTestMenu('Fallout4Tests');">
+						<h2>Fallout 4 Tests</h2>
+					</span>
+					<div id="Fallout4Tests" class="dropdown-test-content">
+						<img src="CFX Runs/Corvega Roof - PRP.png">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>I'm a footer 🦶<span class="Flippy">🙃</span>🦶</footer>
+</body>
+
+</html>
