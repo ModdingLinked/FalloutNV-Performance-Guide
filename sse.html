@@ -79,11 +79,11 @@
                     <span class="flippy">🙃</span>
                     Display modes
                 </a>
-                <a href="#DisplayTweaks" title="🙃 Display Tweaks">
+                <!-- <a href="#DisplayTweaks" title="🙃 Display Tweaks">
                     <span class="subIcon">🔧</span>
                     <span class="flippy">🙃</span>
                     Display Tweaks
-                </a>
+                </a> -->
                 <a href="#RecommendedLimiters" title="🙃 FPS Limiters">
                     <span class="subIcon">🛑</span>
                     <span class="flippy">🙃</span>
@@ -251,6 +251,13 @@
                         <br>
                         <br>
                         You can check what GPU you have by opening Task Manager, and going to the Performance tab - the last GPU on the left pane is your main one.
+                        <br>
+                        If you don't see any GPU there, that means your GPU is too old to use DXVK.
+                    <div class="card-red">
+                        <p>
+                        <h3>This step is mandatory if you want to use DXVK!</h3>
+                        </p>
+                    </div>
                     <table class="center" style="width: 100%; height: 96px;">
                         <tr>
                             <th colspan="3">
@@ -294,10 +301,23 @@
                     <p>
                     <h3>Windows Watermark</h3>
                     <p>
+                    <div class="card-yellow">
+                        <p>
+                            You can ignore this section if you have following GPUs:
+                        <ul>
+                            <li>Nvidia 16 series and newer</li>
+                            <li>AMD Vega and newer (single display only)</li>
+                            <li>Intel CPUs 8th Gen and newer</li>
+                        </ul>
+                        </p>
+                    </div>
+                    </p>
+                    <p>
                         Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition, which leads to increased latency, worse performance and disables VRR.
+                        <br>
                         If you don't have a GPU with <a href="#Terminology">MPO (Multiplane Overlay)</a> support, you can mitigate this by disabling Fullscreen Optimizations.
                         <br>
-                        It's still weird to have unactivated Windows though.
+                        (Keep in mind that this trick won't work on modern, D3D12 games, so it's still recommended to just activate Windows)
                         <br>
                         <br>
                         How to check if your GPU supports MPOs:
@@ -316,25 +336,11 @@
                         </li>
                     </ol>
                     </p>
-
                     <p>
                     <div class="card-red">
                         <p>
                             Having the watermark without MPOs will disable VRR and increase latency and stuttering!
                         </p>
-                        <div class="card-yellow">
-                            <p>
-                                This applies only to <b>Windowed Mode (with Flip Model)</b> and <b>Fullscreen with FSO</b>.
-                                <br>
-                                If you have:
-                            <ul>
-                                <li>Nvidia 16 series and newer</li>
-                                <li>AMD Vega and newer (single display only)</li>
-                                <li>Intel CPUs 8th Gen and newer</li>
-                            </ul>
-                            You can also ignore it, since these models have Multiplane Overlays.
-                            </p>
-                        </div>
                     </div>
                     </p>
                     </p>
@@ -342,12 +348,41 @@
                 <div class="card">
                     <p>
                     <h3>Virtualization</h3>
-                    Windows 11 uses virtualization features to increase OS and inter-process security. Unfortunately, this can come at a performance cost, especially on lower-end hardware.
+                    Windows 11 uses virtualization features to increase system and inter-process security. Unfortunately, this can come at a performance cost, especially on lower-end hardware.
                     <br>
                     I won't be writing on how to disable them, because... <a href="https://support.microsoft.com/en-us/windows/options-to-optimize-gaming-performance-in-windows-11-a255f612-2949-4373-a566-ff6f3f474613" target="_blank">Microsoft already made a tutorial about it</a>.
                     <br>
                     <br>
                     This step is not mandatory, as when it comes to security, it's up to you to decide. Just letting you know that this exists, and even Microsoft acknowledges the fact that it can degrade perfomance.
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Game Mode</h3>
+                    Windows 10 introduced a feature called <a href="ms-settings:gaming-gamemode">Game Mode</a>, which puts the system in a more gaming-friendly state.
+                    </p>
+                    <p>
+                        Game Mode features:
+                    <ul>
+                        <li>
+                            Disables Windows Update.
+                        </li>
+                        <li>
+                            Disables notifications.
+                        </li>
+                        <li>
+                            Disables file indexing, if "Respect Device Power Mode Settings" is enabled in <a href="ms-settings:search">Search settings</a>.
+                        </li>
+                        <li>
+                            Sets Game Mode power mode (Requires <a href="ms-settings:powersleep">Balanced power plan</a> to be active).
+                        </li>
+                        <li>
+                            Enables CPU scheduling optimizations for Ryzen CPUs.
+                        </li>
+                    </ul>
+                    </p>
+                    <p>
+                        Game Mode is enabled by default. If you had it disabled for some reason, you can enable it <a href="ms-settings:gaming-gamemode">here</a>.
                     </p>
                 </div>
             </div>
@@ -360,18 +395,26 @@
                 <div class="card">
                     <p>
                     <h3>Presentation Problems</h3>
-                    Here's a comparison of two display modes you can use in this game when using Display Tweaks.
+                    Here's a comparison of two display modes you can use in this game.
                     <div class="comparison">
                         <table class="comparison-table">
                             <tr>
                                 <th>
                                     <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
                                         Flip Windowed
+                                        (Display Tweaks)
                                     </h2>
                                 </th>
                                 <th>
                                     <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
                                         Fullscreen
+                                    </h2>
+                                </th>
+                                <th>
+                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
+                                        BitBlt Windowed
+                                        <br>
+                                        (Vanilla, Windows 7)
                                     </h2>
                                 </th>
                             </tr>
@@ -402,6 +445,16 @@
                                         <li>Native support for driver based downsampling (DLDSR, RSR)</li>
                                     </ul>
                                 </td>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>
+                                            Fast Alt-Tab
+                                        </li>
+                                        <li>
+                                            Better support for color profiles
+                                        </li>
+                                    </ul>
+                                </td>
                             </tr>
                             <tr>
                                 <td class="card-red">
@@ -422,14 +475,62 @@
                                         </li>
                                     </ul>
                                 </td>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            High input lag and worse performance, especially when not using any FPS limiter and/ or using a laptop
+                                        </li>
+                                        <li>
+                                            V-Sync is always on<sup><a title="Why?" href="#annotation5">[4]</a></sup>
+                                        </li>
+                                        <li>
+                                            Variable Refresh Rate doesn't work natively
+                                        </li>
+                                        <ul>
+                                            <li>
+                                                AMD supports Freesync in BitBlt windows that are fullscreen, but latency and performance penalties remain
+                                            </li>
+                                            <li>
+                                                Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation6">[5]</a></sup>
+                                            </li>
+                                        </ul>
+                                        <li>
+                                            Higher memory bandwidth and usage
+                                        </li>
+                                        <li>
+                                            No HDR support
+                                        </li>
+                                    </ul>
+                                </td>
                             </tr>
                         </table>
                     </div>
+                    <span class="annotations">
+                        <ol start="4">
+                            <li id="annotation4">
+                                Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
+                            </li>
+                            <li id="annotation5">
+                                While AMD enables Freesync for Fullscreen Windowed BitBlt surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
+                                <br>
+                                This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
+                                <br>
+                                Enabling it globally is a bad idea, because it disrupts normal desktop usage (e.g. screen can sync to sleeping windows).
+                                <br>
+                                It's recommended to use <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to
+                                "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile. This makes Windowed G-Sync run only when Fallout New Vegas is running.
+                                <br>
+                                <b>Keep in mind that even with this method, this G-Sync implementation is still buggy - if you get any of the forementioned issues, disable it.</b>
+                                <br>
+                                <h4>Never enable Windowed G-Sync globally!</h4>
+                            </li>
+                        </ol>
+                    </span>
                     </p>
                 </div>
             </div>
 
-            <!-- Display Tweaks -->
+            <!-- Display Tweaks
             <div>
                 <span id="#DisplayTweaks" onclick="location.href='#DisplayTweaks'">
                     <h2>Display Tweaks</h2>
@@ -443,7 +544,7 @@
                     </div>
                     </p>
                 </div>
-            </div>
+            </div> -->
 
             <!-- RecommendedLimiters -->
             <div>
