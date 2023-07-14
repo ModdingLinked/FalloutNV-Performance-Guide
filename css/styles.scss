@@ -75,6 +75,17 @@ h3 {
     height: auto;
 }
 
+.graph-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 2pt 4pt 0 rgba(0, 0, 0, 50%);
+    border-radius: 6pt;
+    max-width: 80%;
+    max-height: 90%;
+    height: auto;
+}
+
 #applyConfirmation {
     opacity: 0%;
     transition-duration: 1s;
@@ -168,6 +179,7 @@ input:active {
     font-size: 1.5em;
 }
 
+.comparison-table .card,
 .comparison-table .card-red,
 .comparison-table .card-green {
     vertical-align: top;
@@ -247,9 +259,29 @@ img.chevron {
 }
 
 hr {
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 4px;
     margin: 10px;
+}
+
+.page-picker {
+    display: flex;
+    flex-direction: row;
+    flex-flow: row;
+    flex-basis: auto;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0.25em 2em 0.25em 2em;
+
+}
+
+.page-picker a {
+    flex-basis: 10%;
+    flex-grow: 1;
+    text-align: center;
+    padding: 1em;
+    margin: 0em 0.2em 0em 0.2em;
+    text-decoration: none;
 }
 
 .sidebar {
@@ -259,7 +291,7 @@ hr {
     text-align: center;
     position: fixed;
     z-index: 2;
-    margin-top: 40px;
+    margin-top: 1em;
     margin-left: 0.75em;
     border-radius: 4px;
     user-select: none;
@@ -288,11 +320,17 @@ hr {
     transition: all 187ms Cubic-Bezier(0, 0, 0, 1);
 }
 
+.page-picker a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.0605);
+}
+
 .sidebar a:hover {
     background: rgba(255, 255, 255, 0.0605);
     border: 1px solid rgba(255, 255, 255, 0.0605);
 }
 
+.page-picker a:active,
 .sidebar a:active {
     background: rgba(255, 255, 255, 0.0419);
     border: 1px solid rgba(255, 255, 255, 0.0419);
@@ -305,6 +343,7 @@ hr {
     z-index: 1;
 }
 
+.page-picker a:hover .flippy,
 .sidebar a:hover .flippy,
 .header:hover span,
 .flippy:hover {
@@ -313,6 +352,7 @@ hr {
     user-select: none;
 }
 
+.page-picker .flippy,
 .sidebar .flippy {
     top: 3px;
 }
@@ -323,6 +363,11 @@ hr {
     margin-left: -12px;
     font-size: large;
     z-index: 0;
+}
+
+.selected {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
 }
 
 .card {
@@ -402,6 +447,13 @@ b.card-basic {
     float: left;
     margin-left: 14.5em;
     width: 80%;
+    padding: 0 2em;
+    z-index: 0;
+}
+
+.content-index {
+    margin-left: 14.5em;
+    margin-right: 14.5em;
     padding: 0 2em;
     z-index: 0;
 }
@@ -607,6 +659,10 @@ footer {
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 4%);
     }
 
+    hr {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
     input,
     button,
     .button,
@@ -715,22 +771,44 @@ footer {
         color: rgba(0, 0, 0, 0.8956);
     }
 
+    .page-picker a:active,
     .sidebar a:active {
         background: rgba(0, 0, 0, 0.0241);
         border: 1px solid rgba(0, 0, 0, 0.0241);
         color: rgba(0, 0, 0, 0.6063);
     }
 
+    .page-picker a:hover,
     .sidebar a:hover {
         background: rgba(0, 0, 0, 0.0373);
         border: 1px solid rgba(0, 0, 0, 0.0373);
         color: rgba(0, 0, 0, 0.8956);
     }
+
+    *::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: rgba(99, 99, 99, 0.63);
+        border-radius: 20px;
+    }
+
+    *::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(34, 34, 34, 0.63);
+        border-radius: 20px;
+        scale: 10%
+    }
 }
 
 @media only screen and (max-width: 900px) {
 
-    .content {
+    .content,
+    .content-index {
         width: 100%;
         margin-left: 0;
         margin-top: 50px;

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Starfield Performance Tips</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A bunch of tips to make Starfield run smoother. Hopefully.">
+    <meta property="og:title" content="Starfield Performance Tips">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://performance.moddinglinked.com/skyrimse.html">
+    <meta property="og:image" content="https://performance.moddinglinked.com/ui/logo.webp">
+    <meta property="og:description" content="A bunch of tips to make Starfield run smoother. Hopefully.">
+    <meta name="keywords" content="Starfield, FPS, performance, Fallout, fps limit, Special K, Riva Tuner, RTSS, stutter, lag, latency, hitches, flip model, DXGI, interop, Nvidia, HDR">
+    <script src="https://kit.fontawesome.com/baff4f2fd4.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="img\favicon.webp">
+    <script src="javascript.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <meta http-equiv='content-language' content='en-us'>
+    <link rel="canonical" href="https://performance.moddinglinked.com">
+</head>
+
+<body class="theme dark-scheme">
+    <div style="overflow:auto">
+        <div class="header" id="header" onclick="toggleNav()">
+            <span class="flippy" id="flippyHeader">🙃</span>
+        </div>
+        <div class="sidebar" id="sidebar">
+            <p>
+                <a href="./falloutnv.html" title="🙃 Fallout New Vegas">
+                    <span class="subIcon">🌵</span>
+                    <span class="flippy">🙃</span>
+                    Fallout New Vegas
+                </a>
+                <!--
+                <a href="./fallout4.html" title="🙃 Fallout 4">
+                    <span class="subIcon">🤖</span>
+                    <span class="flippy">🙃</span>
+                    Fallout 4
+                </a>
+                -->
+                <a href="./oblivion.html" title="🙃 Oblivion">
+                    <span class="subIcon">🔥</span>
+                    <span class="flippy">🙃</span>
+                    Oblivion
+                </a>
+                <a href="./skyrimse.html" title="🙃 Skyrim Special Edition">
+                    <span class="subIcon">🐲</span>
+                    <span class="flippy">🙃</span>
+                    Skyrim Special Edition
+                </a>
+                <a href="#Finish" title="🙃 Starfield" class="selected">
+                    <span class="subIcon">🚀</span>
+                    <span class="flippy">🙃</span>
+                    Starfield
+                </a>
+
+                <hr>
+
+                <a href="#Introduction" title="🙃 Introduction">
+                    <span class="subIcon">👋</span>
+                    <span class="flippy">🙃</span>
+                    Introduction
+                </a>
+                <a href="#Terminology" title="🙃 Terminology">
+                    <span class="subIcon">📖</span>
+                    <span class="flippy">🙃</span>
+                    Terminology
+                </a>
+                <a href="#DriversAndOS" title="🙃 Graphics Drivers and Windows">
+                    <span class="subIcon">🪟</span>
+                    <span class="flippy">🙃</span>
+                    Drivers and Windows
+                </a>
+                <a href="#DisplayModeComparison" title="🙃 Display modes">
+                    <span class="subIcon">🖥️</span>
+                    <span class="flippy">🙃</span>
+                    Display modes
+                </a>
+            </p>
+        </div>
+
+        <div class="content">
+            <!-- Introduction -->
+            <div>
+                <span id="Introduction" onclick="location.href='#Introduction'">
+                    <h2>Wait for it</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <h3>Houston, we have a problem</h3>
+                    Starfield is using D3D12 and I guarantee you Bethesda will butcher it. Get ready.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Terminology -->
+            <div>
+                <span id="Terminology" onclick="location.href='#Terminology'">
+                    <h2>Terminology</h2>
+                </span>
+                <div class="card">
+                    <h3>Things You Should Know</h3>
+                    <ul>
+                        <li id="VSync">
+                            <b>Vertical Synchronization (V-Sync)</b> - technology allowing to keep display's scanout and refresh in phase to eliminate screen tearing,
+                            at the cost of higher latency.
+                            <br>
+                            (Latency lowers along with refresh rate)
+                        </li>
+                        <li id="VRR">
+                            <b>G-Sync | Freesync</b> - <b>Variable Refresh Rate (VRR)</b> technologies developed by NVIDIA and AMD respectively.
+                            They allow the display to adapt its refresh rate to the framerate, allowing to use V-Sync at arbitrary framerates and reduce its latency<sup><a title="Why?" href="#annotation1">[1]</a></sup> .
+                        </li>
+                        <li id="MPO">
+                            <b>Multiplane Overlays (MPOs)</b> - hardware scanout planes for the GPU. They allow for hardware image composition without any latency or performance penalty (for example displaying windows on top of each other), as well as
+                            their hardware scaling and stretching.
+                            MPOs are supported since Windows 8.1. Hardware capabilities vary between GPU manufacturers.
+                        </li>
+                        <li id="latency">
+                            <b>Input Latency (lag)</b> - time between input event (mouse click, keyboard press) and the event being displayed on the screen. The lower the latency, the more responsive the game feels.
+                            <br>
+                            There are multiple sources of latency, varying from GPU/ CPU usage, display mode, framerate count and many more - most of them are covered in this guide.
+                        </li>
+                    </ul>
+                    <span class="annotations">
+                        <ol>
+                            <li id="annotation1">
+                                Yes, despite popular misinformation, VRR alone doesn't get rid of tearing. It can minimize the rolling tear however, but that varies between displays, and such, it's not a guaranteed feature.
+                                Additionally, the latency reduction applies <b>only</b> at framerates below V-Sync window (display's native refresh rate) - if framerate matches the native refresh rate, VRR engages V-Sync emulation.
+                            </li>
+                        </ol>
+                    </span>
+                </div>
+                <div class="expander-top clickable" onclick="expandCard(this, flipTalk)" id="flipTalkTop">
+                    <p>
+                    <h3>Technicalities</h3>
+                    More text inside. Explains the concept of presentation models and display modes. While not needed to use the guide, it'll help you with understanding why things are the way they are.
+                    <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
+                    </p>
+                </div>
+                <div class="expander-bottom" id="flipTalk">
+                    <p>
+                    <ul>
+                        <li><b>Presentation models:</b></li>
+                        <ul>
+                            <li id="Flip">
+                                <b>Flip Model</b> - presentation model first added in Windows 7 with D3D9Ex and upgraded in DXGI in Windows 8-10.
+                                <br>
+                                Allows "fullscreen-level" of performance and latency. Has native VRR support in Windowed Mode. Additionally, DXGI version supports tearing (V-Sync off) in Windowed Mode, HDR and has Multiplane Overlay (MPO) support.
+                                <br>
+                                DXGI variant is supported only in D3D10 and upwards<sup><a title="Why?" href="#annotation2">[2]</a></sup>, enforced only in D3D12, and exists only on Windows 8 and upwards.
+                                <br>
+                                D3D9Ex Flip Model is not feature matched and lacks any DXGI improvements.
+                                <br>
+                                More information <a href="https://devblogs.microsoft.com/directx/dxgi-flip-model/" target="_blank">here</a>.
+                            </li>
+                            <li id="BitBlt">
+                                <b>BitBlt Model</b> - older presentation model used by most applications.
+                                While performing similarly to Flip Model in Fullscreen, in Windowed Mode it has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations due to being software composed.
+                                <br>
+                                The only presentation model for Windowed D3D9 (and lower), but still very common in D3D10 and D3D11 games.
+                                <p>
+                                    Vulkan and OpenGL<sup><a title="Why?" href="#annotation3">[3]</a></sup> use BitBlt in Windowed Mode.
+                                </p>
+                            </li>
+                        </ul>
+                        <li>
+                            <b>Display modes:</b>
+                        </li>
+                        <ul>
+                            <li id="FSE">
+                                <b>Fullscreen Exclusive (FSE)</b> - legacy method of displaying content where application takes complete ownership of the screen.
+                                Has slow Alt-Tab due to display ownership transfer, can be problematic if games are badly coded and switch to odd resolutions or refresh rates by default. Can lose color profiles.
+                                Despite that, it offers the best feature compatibility and perfomance for games that don't use Flip Model. Deprecated by Fullscreen Optimizations and Windowed with Flip Model for DirectX games.
+                                <br>
+                                Supported by every graphics API other than D3D12
+                            </li>
+                            <li id="FSO">
+                                <b>Fullscreen with Fullscreen Optimizations (Fullscreen Optimizations)</b> - an update to <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> for DirectX added in Windows 10 1803.
+                                <br>
+                                Converts DirectX applications running in <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> mode into a pseudo borderless mode with Flip Model for faster Alt-Tab,
+                                lower latency, better color profile handling, and support for Windowed overlays (Xbox Game Bar, volume and brightness sliders etc.).
+                                <br>
+                                Because of being a Windowed Mode under the hood, it can break e.g. brightness control in old games that modify system gamma instead of window's.
+                                <br>
+                                Enabled by default for every application.
+                                <br>
+                                More information <a href="https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/" target="_blank">here</a>.
+                            </li>
+                            <li id="Windowed">
+                                <b>Windowed</b> - method of displaying content in a window, always managed by DWM. Due to being a window, Alt-Tab is fast, and color profiles usually don't have any problems.
+                                If not using Flip Model, it has worse performance compared to Fullscreen Optimizations | <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span>, lacks native VRR support, has increased input latency and uses always-on V-Sync
+                            </li>
+                        </ul>
+                    </ul>
+                    <span class="annotations">
+                        <ol start="2">
+                            <li id="annotation2">
+                                D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and UE4 implemented Flip Model support around 2019 - 7 years after its release!).
+                                <br>
+                                Flip Model in Windowed Mode can be enabled in those games using Special K (D3D11 only) or Windows 11's (22H2) Optimizations for Windowed Games (both D3D10 and D3D11)
+                            </li>
+                            <li id="annotation3">
+                                OpenGL can be displayed using D3D11 thanks to Special K, which enables Flip Model and all its benefits along with HDR.
+                                <br>
+                                Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one,
+                                while DXVK compatibility requires toggling a flag in Nvidia Profile Inspector - see <a href="#dxvk-flip">here</a>.
+                            </li>
+                        </ol>
+                    </span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Drivers and Windows-->
+            <div>
+                <span id="DriversAndOS" onclick="location.href='#DriversAndOS'">
+                    <h2>Graphics Drivers and Windows</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <h3>Driver Updates</h3>
+                    <p>
+                        Not much to say here - for the best compatibility and performance, you <b>must</b> be using the newest driver for your graphics card.
+                        <br>
+                        <br>
+                        You can check what GPU you have by opening Task Manager, and going to the Performance tab - the last GPU on the left pane is your main one.
+                        <br>
+                    <table class="center" style="width: 100%; height: 96px;">
+                        <tr>
+                            <th colspan="3">
+                                <h3 class="center">Select your graphics card to go the driver download page</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <a href="https://www.nvidia.com/download/index.aspx" target="_blank">
+                                    <button class="button-big" id="nvidiaButton">
+                                        <b>
+                                            NVIDIA
+                                        </b>
+                                    </button>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="https://www.amd.com/en/support" target="_blank">
+                                    <button class="button-big" id="amdButton">
+                                        <b>
+                                            AMD
+                                        </b>
+                                    </button>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html" target="_blank">
+                                    <button class="button-big" id="intelButton">
+                                        <b>
+                                            INTEL
+                                        </b>
+                                    </button>
+                                </a>
+                            </th>
+                        </tr>
+                    </table>
+                    </p>
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Windows Watermark</h3>
+                    <p>
+                    <div class="card-yellow">
+                        <p>
+                            You can ignore this section if you have following GPUs:
+                        <ul>
+                            <li>Nvidia 16 series and newer</li>
+                            <li>AMD Vega and newer (single display only)</li>
+                            <li>Intel CPUs 8th Gen and newer</li>
+                        </ul>
+                        </p>
+                    </div>
+                    </p>
+                    <p>
+                        Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition, which leads to increased latency, worse performance and disables VRR.
+                        <br>
+                        Since Starfield is using D3D12, there is no way to bypass the watermark since there is no Fullsceen Exclusive mode.
+                        <br>
+                        <br>
+                        How to check if your GPU supports MPOs:
+                    <ol>
+                        <li>
+                            Type <b class="card-basic">dxdiag</b> into Windows search
+                        </li>
+                        <li>
+                            Click <b>Save All Information</b> and save the file.
+                        </li>
+                        <li>
+                            Open the <b class="card-basic">DxDiag.txt</b> file, press <b class="card-basic">Ctrl+F</b> and look for <b class="card-basic">MPO MaxPlanes</b>
+                        </li>
+                        <li>
+                            If the number is <b>greater than 1</b>, then your GPU has MPO support.
+                        </li>
+                    </ol>
+                    </p>
+                    <p>
+                    <div class="card-red">
+                        <p>
+                            Having the watermark without MPOs will disable VRR and increase input latency and stuttering!
+                        </p>
+                    </div>
+                    </p>
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Virtualization</h3>
+                    Windows 11 uses virtualization features to increase system and inter-process security. Unfortunately, this can come at a performance cost, especially on lower-end hardware.
+                    <br>
+                    I won't be writing on how to disable them, because... <a href="https://support.microsoft.com/en-us/windows/options-to-optimize-gaming-performance-in-windows-11-a255f612-2949-4373-a566-ff6f3f474613" target="_blank">Microsoft already made a tutorial about it</a>.
+                    <br>
+                    <br>
+                    This step is not mandatory, as when it comes to security, it's up to you to decide. Just letting you know that this exists, and even Microsoft acknowledges the fact that it can degrade perfomance.
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Game Mode</h3>
+                    Windows 10 introduced a feature called <a href="ms-settings:gaming-gamemode">Game Mode</a>, which puts the system in a more gaming-friendly state.
+                    </p>
+                    <p>
+                        Game Mode features:
+                    <ul>
+                        <li>
+                            Disables Windows Update.
+                        </li>
+                        <li>
+                            Disables notifications.
+                        </li>
+                        <li>
+                            Disables file indexing, if "Respect Device Power Mode Settings" is enabled in <a href="ms-settings:search">Search settings</a>.
+                        </li>
+                        <li>
+                            Sets Game Mode power mode (Requires <a href="ms-settings:powersleep">Balanced power plan</a> to be active).
+                        </li>
+                        <li>
+                            Enables CPU scheduling optimizations for Ryzen CPUs.
+                        </li>
+                    </ul>
+                    </p>
+                    <p>
+                        Game Mode is enabled by default. If you had it disabled for some reason, you can enable it <a href="ms-settings:gaming-gamemode">here</a>.
+                    </p>
+                </div>
+            </div>
+
+            <!-- DisplayModeComparison -->
+            <div>
+                <span id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
+                    <h2>Display Mode Differences</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <h3>It's all Windowed?</h3>
+                    Starfield uses D3D12 which has Flip Model as the only presentation mode. This naturally means one thing: it's all Windowed, no matter what the name in settings is.
+                    <div class="comparison">
+                        <table class="comparison-table">
+                            <tr>
+                                <th>
+                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
+                                        Windowed / Fullscreen
+                                    </h2>
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>Best latency and performance</li>
+                                        <li>Native Refresh Rate support</li>
+                                        <li>Native HDR support</li>
+                                        <li>
+                                            Fast Alt-Tab
+                                        </li>
+                                        <li>
+                                            Native support for color profiles
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            Upscaling the window from lower resolutions requires MPOs
+                                            <br>
+                                            (Doesn't apply to in-engine upscaling or FSR, DLSS, etc. - different method)
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <p style="font-size: smaller;">
+                        Yes, this table is for joke purposes. There's no thing to compare here.
+                    </p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
