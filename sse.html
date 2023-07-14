@@ -360,7 +360,7 @@
                 <div class="card">
                     <p>
                     <h3>Presentation Problems</h3>
-                    Here's a comparison of two display modes you can use in this game.
+                    Here's a comparison of two display modes you can use in this game when using Display Tweaks.
                     <div class="comparison">
                         <table class="comparison-table">
                             <tr>
@@ -379,22 +379,39 @@
                             <tr>
                                 <td class="card-green">
                                     <ul>
+                                        <li>Best latency and performance</li>
+                                        <li>Variable Refresh Rate support</li>
+                                        <li>
+                                            HDR output
+                                        </li>
                                         <li>
                                             Fast Alt-Tab
+                                        </li>
+                                        <li>
+                                            Native support for color profiles
                                         </li>
                                     </ul>
                                 </td>
                                 <td class="card-green">
                                     <ul>
-                                        <li>Segs</li>
+                                        <li>Best latency and performance, especially with <span title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSO</span></li>
+                                        <li>
+                                            HDR output
+                                        </li>
+                                        <li>Variable Refresh Rate support</li>
+                                        <li>Native support for driver based downsampling (DLDSR, RSR)</li>
                                     </ul>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="card-red">
                                     <ul>
-                                        <li>
-                                            Cope
+                                        <li>Driver based downsampling (DLDSR, RSR) requires some tweaking if not using 3rd party tools</li>
+                                    </ul>
+                                    <ul>
+                                        <li>Upscaling the window from lower resolutions requires MPOs
+                                            <br>
+                                            (Doesn't apply to FSR, DLSS, etc. - different method)
                                         </li>
                                     </ul>
                                 </td>
@@ -470,6 +487,10 @@
                                 </div>
                                 <div class="card-yellow">
                                     <p>
+                                        This workaround applies only to <span title="Riva Tuner Statistic Server" onclick="expandCard(rtss, rtssExpander, 1); location.href='#rtss'">RTSS</span>.
+                                        <br>
+                                        (Not needed if you use <span title="Special K" onclick="expandCard(specialk, specialkExpander, 1); location.href='#specialk'">Special K</span>)
+                                        <br>
                                         Driver limiters are not precise enough to pull this off without risking stutter.
                                     </p>
                                 </div>
@@ -612,15 +633,8 @@
                                     <li>
                                         V-Sync
                                         <div class="card-basic">
-                                            <div class="card-red">
-                                                <p>
-                                                    The subtraction is needed only for D3D9!
-                                                    <br>
-                                                    The preset included with the guide already optimizes V-Sync for DXGI, so you only need to select the limit.
-                                                </p>
-                                            </div>
                                             <p>
-                                                In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 0.05
+                                                In right click menu select your refresh rate.
                                             </p>
                                         </div>
                                     </li>
