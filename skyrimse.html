@@ -669,14 +669,14 @@
                                     Special K includes its own Nvidia Reflex implementation, so the dedicated mod is not needed.
                                 </li>
                                 <li>
-                                    The following configuration will override some Display Tweaks settings (like V-Sync, buffer count, etc.). 
+                                    The following configuration will override some Display Tweaks settings (like V-Sync, buffer count, etc.).
                                 </li>
                             </ul>
                             </p>
                         </div>
                         <div class="card-yellow">
                             <p>
-                                I'm not providing calculated values here, because Special K already does that automatically, and with higher precision
+                                Calculated values are not provided because Special K already does that automatically, and with higher precision.
                             </p>
                         </div>
                         <h4>Installation</h4>
@@ -981,6 +981,18 @@
                             <br>
                             What <i>is</i> guaranteed from higher resolution textures is increase in their load time. This can translate into longer stutter periods on cell loads.
                         </li>
+                        <li>
+                            <h4>What about DLSS, FSR and XeSS?</h4>
+                            Skyrim Upscaler is a great mod if you are looking to improve GPU performance thanks to it's upscaling, but the current implementation of both the mod and the technologies leaves us with just DLSS and DLAA as the viable options. This is because XeSS and FSR have severe ghosting issues.
+                            <br>
+                            If you do want to use DLSS, keep these points in mind:
+                            <ul>
+                                <li>DLSS is only available for the NVidia RTX graphics cards (2000 series and above).</li>
+                                <li>DLSS is what allows you get better GPU performance and anti-aliasing, DLAA is a mode that gets rid of the upscaling part and flips that around, leading to a far better AA than normal DLSS (which would still be better than the vanilla TAA) with a small performance cost.</li>
+                                <li>There are various presets available in the configuration file for Skyrim Upscaler, these will change the visual result. Fiddle with them until you find a good balance.</li>
+                                <li>Skyrim Upscaler is currently pay-walled if you wish to use with ENB, but the free version on Nexus works totally fine with Community Shaders (which is highly recommended as alternative).</li>
+                            </ul>
+                        </li>
                     </ul>
                     </p>
                 </div>
@@ -1003,7 +1015,7 @@
                     <a href="https://discord.gg/skyrimmods" target="_blank">r/skyrimmods</a>,
                     <a href="https://discord.com/invite/nkrQybAsyy" target="_blank">Community Shaders</a> servers.
                     <p>
-                        I recommend checking this guide from time to time - I'm not done yet.
+                        I recommend checking this guide from time to time - We're not done yet.
                     </p>
                     <p>
                         If you found this guide helpful, share it with others or support me on <a href="https://ko-fi.com/wall_sogb" target="_blank">Ko-Fi</a> or <a href="https://patreon.com/WallSoGB" target="_blank">Patreon</a>
