@@ -360,10 +360,25 @@
                     <p>
                     <h3>Windows Watermark</h3>
                     <p>
+                    <div class="card-yellow">
+                        <p>
+                            This part applies only to <b>D3D9 with Fullscreen Optimizations</b> and <b>DXVK with DXGI</b>, since D3D9 Windowed is already in the DWM composed mode, and DXVK uses <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span>.
+                            <br>
+                            You can ignore this section if you have following GPUs:
+                        <ul>
+                            <li>Nvidia 16 series and newer</li>
+                            <li>AMD Vega and newer (single display only)</li>
+                            <li>Intel CPUs 8th Gen and newer</li>
+                        </ul>
+                        </p>
+                    </div>
+                    </p>
+                    <p>
                         Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition, which leads to increased latency, worse performance and disables VRR.
+                        <br>
                         If you don't have a GPU with <a href="#Terminology">MPO (Multiplane Overlay)</a> support, you can mitigate this by disabling Fullscreen Optimizations.
                         <br>
-                        It's still weird to have unactivated Windows though.
+                        (Keep in mind that this trick won't work on modern, D3D12 games, so it's still recommended to just activate Windows)
                         <br>
                         <br>
                         How to check if your GPU supports MPOs:
@@ -382,25 +397,11 @@
                         </li>
                     </ol>
                     </p>
-
                     <p>
                     <div class="card-red">
                         <p>
                             Having the watermark without MPOs will disable VRR and increase input latency and stuttering!
                         </p>
-                        <div class="card-yellow">
-                            <p>
-                                This applies only to <b>D3D9 with Fullscreen Optimizations</b> and <b>DXVK with DXGI</b>, since D3D9 Windowed is already in the composed mode, and DXVK uses <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span>.
-                                <br>
-                                If you have:
-                            <ul>
-                                <li>Nvidia 16 series and newer</li>
-                                <li>AMD Vega and newer (single display only)</li>
-                                <li>Intel CPUs 8th Gen and newer</li>
-                            </ul>
-                            You can also ignore it, since these models have Multiplane Overlays.
-                            </p>
-                        </div>
                     </div>
                     </p>
                     </p>
@@ -408,12 +409,44 @@
                 <div class="card">
                     <p>
                     <h3>Virtualization</h3>
-                    Windows 11 uses virtualization features to increase OS and inter-process security. Unfortunately, this can come at a performance cost, especially on lower-end hardware.
+                    Windows 11 uses virtualization features to increase system and inter-process security. Unfortunately, this can come at a performance cost, especially on lower-end hardware.
                     <br>
                     I won't be writing on how to disable them, because... <a href="https://support.microsoft.com/en-us/windows/options-to-optimize-gaming-performance-in-windows-11-a255f612-2949-4373-a566-ff6f3f474613" target="_blank">Microsoft already made a tutorial about it</a>.
                     <br>
                     <br>
                     This step is not mandatory, as when it comes to security, it's up to you to decide. Just letting you know that this exists, and even Microsoft acknowledges the fact that it can degrade perfomance.
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Game Mode</h3>
+                    Windows 10 introduced a feature called <a href="ms-settings:gaming-gamemode">Game Mode</a>, which puts the system in a more gaming-friendly state.
+                    </p>
+                    <p>
+                        Game Mode features:
+                    <ul>
+                        <li>
+                            Increases game's priority when in foreground.
+                        </li>
+                        <li>
+                            Disables Windows Update.
+                        </li>
+                        <li>
+                            Disables notifications.
+                        </li>
+                        <li>
+                            Disables file indexing, if "Respect Device Power Mode Settings" is enabled in <a href="ms-settings:search">Search settings</a>.
+                        </li>
+                        <li>
+                            Sets Game Mode power mode (Requires <a href="ms-settings:powersleep">Balanced power plan</a> to be active).
+                        </li>
+                        <li>
+                            Enables CPU scheduling optimizations for Ryzen CPUs.
+                        </li>
+                    </ul>
+                    </p>
+                    <p>
+                        Game Mode is enabled by default. If you had it disabled for some reason, you can enable it <a href="ms-settings:gaming-gamemode">here</a>.
                     </p>
                 </div>
             </div>
