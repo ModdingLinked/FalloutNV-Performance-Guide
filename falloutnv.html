@@ -138,6 +138,13 @@
                         <p>
                             While the guide is focused on this particular game, most stuff shown here is applicable to other games.
                         </p>
+                        <p>
+                            Content presented here may seem insanely long, but that's really just because I'm trying to explain everything in detail to reduce further questions and confusion - sadly there's a lot of "gotchas" when it comes to PC hardware and its configurations.
+                            <br>
+                            Most abbreviations are explained in <a href="#Terminology">Terminology</a> section, and can always be hovered over to see their full name.
+                            <br>
+                            If you find some sections confusing, feel free to ask on <a href="https://discord.gg/S99Ary5eba" target="_blank">Discord</a>.
+                        </p>
                         <!--
                             <p>Performance logging results gathered by me and VishVadeva are posted <a href=".\results.html">here</a>.</p>
                         -->
@@ -250,9 +257,9 @@
                                 Supported by every graphics API other than D3D12
                             </li>
                             <li id="FSO">
-                                <b>Fullscreen with Fullscreen Optimizations (Fullscreen Optimizations)</b> - an update to <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> for DirectX added in Windows 10 1803.
+                                <b>Fullscreen with Fullscreen Optimizations (Fullscreen Optimizations)</b> - an update to <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> for DirectX added in Windows 10 1803.
                                 <br>
-                                Converts DirectX applications running in <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> mode into a pseudo borderless mode with Flip Model for faster Alt-Tab,
+                                Converts DirectX applications running in <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> mode into a pseudo borderless mode with Flip Model for faster Alt-Tab,
                                 lower latency, better color profile handling, and support for Windowed overlays (Xbox Game Bar, volume and brightness sliders etc.).
                                 <br>
                                 Because of being a Windowed Mode under the hood, it can break e.g. brightness control in old games that modify system gamma instead of window's.
@@ -262,8 +269,8 @@
                                 More information <a href="https://devblogs.microsoft.com/directx/demystifying-full-screen-optimizations/" target="_blank">here</a>.
                             </li>
                             <li id="Windowed">
-                                <b>Windowed</b> - method of displaying content in a window, always managed by DWM. Due to being a window, Alt-Tab is fast, and color profiles usually don't have any problems.
-                                If not using Flip Model, it has worse performance compared to Fullscreen Optimizations | <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span>, lacks native VRR support, has increased input latency and uses always-on V-Sync
+                                <b>Windowed</b> - method of displaying content in a window, always managed by <span class="abbreviation" title="Desktop Window Manager - Windows component responsible for displaying and managing windows">DWM</span>. Due to being a window, Alt-Tab is fast, and color profiles usually don't have any problems.
+                                If not using Flip Model, it has worse performance compared to Fullscreen Optimizations | <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span>, lacks native VRR support, has increased input latency and uses always-on V-Sync
                             </li>
                         </ul>
                     </ul>
@@ -279,6 +286,8 @@
                                 <br>
                                 Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one,
                                 while DXVK compatibility requires toggling a flag in Nvidia Profile Inspector - see <a href="#dxvk-flip">here</a>.
+                                <br>
+                                AMD drivers have a D3D12 interop for OpenGL and Vulkan that can be toggled by enabling triple buffering in Radeon Settings.Due to how it's implemented, it can cause crashes with games or mods that spawn both D3D12 and OpenGL devices, and its compatibility is spotty at best.
                             </li>
                         </ol>
                     </span>
@@ -393,7 +402,7 @@
                                     <br>
                                     <div class="card-red">
                                         <p>
-                                            <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation6">[6]</a></sup></b>
+                                            <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation4">[4]</a></sup></b>
                                             <br>
                                             To mitigate that either use <a href="#DXVK">DXVK</a>, or <a href="#FAQ">Windowed Mode</a>.
                                             <br>
@@ -406,8 +415,8 @@
                         </li>
                     </ol>
                     <span class="annotations">
-                        <ol start="6">
-                            <li id="annotation6">
+                        <ol start="4">
+                            <li id="annotation4">
                                 D3D9 loses the graphics device if it loses the screen ownership (Alt-Tab, Sleep, etc.). To recover, it needs to either have a copy of textures in RAM, or be able to reconstruct the memory from ground up.
                                 <br>
                                 Fallout New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
@@ -481,11 +490,11 @@
                 </div>
                 <div class="card">
                     <p>
-                    <h3>Windows Watermark</h3>
+                    <h3>Multiplane Overlays and Windows Watermark</h3>
                     <p>
                     <div class="card-yellow">
                         <p>
-                            This part applies only to <b>D3D9 with Fullscreen Optimizations</b> and <b>DXVK with DXGI</b>, since D3D9 Windowed is already in the DWM composed mode, and DXVK uses <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span>.
+                            This part applies only to <b>D3D9 with Fullscreen Optimizations</b> and <b>DXVK with DXGI</b>, since D3D9 Windowed is already in the <span class="abbreviation" title="Desktop Window Manager - Windows component responsible for displaying and managing windows">DWM</span> composed mode, and DXVK uses <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span>.
                             <br>
                             You can ignore this section if you have following GPUs:
                         <ul>
@@ -497,7 +506,7 @@
                     </div>
                     </p>
                     <p>
-                        Make sure your Windows is activated, otherwise the watermark will kick the game into the DWM composition, which leads to increased latency, worse performance and disables VRR.
+                        Make sure your Windows is activated, otherwise the watermark will kick the game into the <span class="abbreviation" title="Desktop Window Manager - Windows component responsible for displaying and managing windows">DWM</span> composition, which leads to increased latency, worse performance and disables VRR.
                         <br>
                         If you don't have a GPU with <a href="#Terminology">MPO (Multiplane Overlay)</a> support, you can mitigate this by disabling Fullscreen Optimizations.
                         <br>
@@ -552,7 +561,7 @@
                             Enables AutoHDR for DXGI based games.
                         </li>
                         <li>
-                            Enables VRR optimizations for games using Flip Model <sup title="Forces the screen to sync to game's refresh rate instead of any windows that may be on top of it.">[?]</sup>.
+                            Enables VRR optimizations for games using Flip Model - Forces the screen to sync to game's refresh rate instead of any windows that may be on top of it.
                         </li>
                         <li>
                             Disables Windows Update.
@@ -628,7 +637,7 @@
                                 </td>
                                 <td class="card-green">
                                     <ul>
-                                        <li>Best latency and performance, especially with <span title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSO</span></li>
+                                        <li>Best latency and performance, especially with <span class="abbreviation" title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSO</span></li>
                                         <li>
                                             HDR output (Requires DXVK)
                                         </li>
@@ -653,13 +662,10 @@
                                             In-Game brightness settings don't work
                                         </li>
                                         <li>
-                                            Nvidia only
+                                            Nvidia only (AMD's support is inconsistent between users + latest drivers don't work with DXVK)
                                         </li>
                                         <li>
-                                            Worse performance compared to Fullscreen DXVK on Desktops due to being Laptop optimized
-                                        </li>
-                                        <li>
-                                            Compatibility issues with overlays, for the same reason as above.
+                                            Potential compatibility issues with overlays that can't properly discern between DXGI and Vulkan surfaces.
                                             <br>
                                             (Partially fixed by <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a>)
                                         </li>
@@ -668,7 +674,7 @@
                                 <td class="card-red">
                                     <ul>
                                         <li>
-                                            Slower and unstable Alt-Tab, especially without <span title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSO</span>
+                                            Slower and unstable Alt-Tab, especially without <span class="abbreviation" title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" class="abbreviation">FSO</span>
                                         </li>
                                         <div class="card-yellow">
                                             <p>
@@ -677,7 +683,7 @@
                                             </p>
                                         </div>
                                         <li>
-                                            Color profiles may disengage, especially without <span title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSO</span>
+                                            Color profiles may disengage, especially without <span class="abbreviation" title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" class="abbreviation">FSO</span>
                                         </li>
                                         <li>
                                             Doesn't work at all on hybrid GPU laptops when using DXVK - uses Windowed instead which massively degrades performance. Nvidia GPUs must use DXGI.
@@ -693,7 +699,7 @@
                                             High input lag and worse performance, especially when not using any FPS limiter and/or using a laptop
                                         </li>
                                         <li>
-                                            V-Sync is always on<sup><a title="Why?" href="#annotation5">[4]</a></sup>
+                                            V-Sync is always on<sup><a title="Why?" href="#annotation5">[5]</a></sup>
                                         </li>
                                         <li>
                                             Variable Refresh Rate doesn't work natively
@@ -703,7 +709,7 @@
                                                 AMD supports Freesync in BitBlt windows that are fullscreen, but latency and performance penalties remain
                                             </li>
                                             <li>
-                                                Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation6">[5]</a></sup>
+                                                Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation6">[6]</a></sup>
                                             </li>
                                         </ul>
                                         <li>
@@ -721,11 +727,11 @@
                         </table>
                     </div>
                     <span class="annotations">
-                        <ol start="4">
-                            <li id="annotation4">
+                        <ol start="5">
+                            <li id="annotation5">
                                 Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
                             </li>
-                            <li id="annotation5">
+                            <li id="annotation6">
                                 While AMD enables Freesync for Fullscreen Windowed BitBlt surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
                                 <br>
                                 This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
@@ -758,7 +764,7 @@
                     In short, it allows you to run Fallout using the Vulkan API which has much lower draw call overhead than D3D9, which is one of the main performance limiting factors in this game.
                     <div class="card-yellow">
                         <p>
-                            If you use Linux, most of this is irrelevant, since Proton on Linux obviously uses DXVK already.
+                            If you use Linux, most of this is irrelevant, since Proton on Linux uses DXVK already.
                         </p>
                     </div>
                     <div class="card-red">
@@ -806,11 +812,16 @@
                                     </li>
                                     <li>
                                         <p>
-                                            <b>AMD GPUs</b> are more prone to shader issues on Windows (situation is completely reversed on Linux)
-                                            <br>
-                                            AMD dGPU laptops lacking direct dGPU output <b>can not</b> use DXVK due to presentation issues. (Integrated graphics work fine.)
-                                            <br>
-                                            (Vulkan runs in a broken state, GPU is underutilized and can't use proper fullscreen mode - on Nvidia this is resolved by using DXGI presentation, AMD lacks such feature).
+                                        <div class="card-yellow">
+                                            <p>
+                                                AMD's Windows drivers past 23.9.1 are broken and either don't work at all, or have severe performance issues.
+                                            </p>
+                                        </div>
+                                        <b>AMD GPUs</b> are more prone to shader issues on Windows (situation is completely reversed on Linux)
+                                        <br>
+                                        AMD dGPU laptops lacking direct dGPU output <b>can not</b> use DXVK due to presentation issues. (Integrated graphics work fine.)
+                                        <br>
+                                        (Vulkan runs in a broken state, GPU is underutilized and can't use proper fullscreen mode - on Nvidia this is resolved by using DXGI presentation, AMD lacks such feature).
                                         </p>
                                     </li>
                                     <li>
@@ -834,8 +845,7 @@
                                     Fallout New Vegas has some known shader issues or quirks. They are not guaranteed to happen (getting rarer with DXVK updates), but they can occur:
                                 <ul>
                                     <li>Transparency multisampling uses dithering - (DXVK handles alpha to coverage differently than drivers)</li>
-                                    <li>Broken water reflections (rare, most reports come from older AMD GPUs)</li>
-                                    <li>Broken lights and artifacting (rare, most reports come from older AMD GPUs)</li>
+                                    <li>Blood decals can suffer from color overflow and turn white - uncommon, most reports come from AMD GPUs, but issue can appear on Nvidia</li>
                                 </ul>
                                 </p>
                             </li>
@@ -991,7 +1001,7 @@
                                 In the first column, check bit <b class="card-basic" style="letter-spacing: 0.1em;">#00</b> and <b class="card-basic" style="letter-spacing: 0.1em;">#19</b>.
                                 <div class="card-yellow">
                                     <p>
-                                        These flags enable DXVK support and fix forced promotion to <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> in some games.
+                                        These flags enable DXVK support and fix forced promotion to <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> in some games.
                                     </p>
                                 </div>
                             </li>
@@ -1050,7 +1060,7 @@
                                 </div>
                                 <div class="card-yellow">
                                     <p>
-                                        This workaround applies only to <span title="Riva Tuner Statistic Server" onclick="expandCard(rtss, rtssExpander, 1); location.href='#rtss'">RTSS</span> and D3D9 Special K.
+                                        This workaround applies only to <span class="abbreviation" title="Riva Tuner Statistic Server" onclick="expandCard(rtss, rtssExpander, 1); location.href='#rtss'">RTSS</span> and D3D9 Special K.
                                         <br>
                                         (Not needed if you use <span title="Special K" onclick="expandCard(specialk, specialkExpander, 1); location.href='#specialk'">Special K + DXVK with DXGI</span>)
                                         <br>
@@ -1112,7 +1122,7 @@
                         </h3>
                         Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR.
                         <br>
-                        Its list of features is too long to write here, but the most important one used here is its <b>incredibly versatile limiter</b> and if using DXGI, <b>HDR</b> and (almost) lagless V-Sync.
+                        Its <a href="https://wiki.special-k.info/FAQ" target="_blank">list of features is too long</a> to write here, but the most important one used here is its <b>incredibly versatile limiter</b> and if using DXGI, <b>HDR</b> and (almost) lagless V-Sync.
                         <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
                         </p>
                     </div>
@@ -1280,7 +1290,7 @@
                         <h3>
                             RivaTuner Statistics Server
                         </h3>
-                        Riva Tuner Statistic Server by Unwinder is probably the most famous FPS Limiter and OSD software, thanks to its <b>performance</b>, compatibility and <b>power usage</b>.
+                        Riva Tuner Statistic Server by <a href="https://forums.guru3d.com/members/unwinder.30019/" target="_blank">Unwinder</a> is probably the most famous FPS Limiter and OSD software, thanks to its <b>performance</b>, compatibility and <b>versatile On-Screen Display</b>.
                         <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
                         </p>
                     </div>
@@ -1476,10 +1486,10 @@
                     <h3>Are these questions really frequent?</h3>
                     <ul>
                         <li>
-                            <h4>I can't use DXVK, and I need to Alt-Tab - am I out of luck?</h4>
-                            Yeah, all you can do is download <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> and use the legacy Windowed mode.
+                            <h4>I can't use DXVK, and I need to Alt-Tab!</h4>
+                            All you can do is download <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> or <a href="#specialk">Special K</a> and use the legacy Windowed mode.
                             <br>
-                            Also enable <b>Windowed mode</b> itself in <b>FalloutCustom.ini</b> (OneTweak itself doesn't change display modes)
+                            Remember to enable <b>Windowed mode</b> itself in <b>FalloutCustom.ini</b>!
                             <div class="card-basic">
                                 <p>
                                     [Display]
@@ -1496,7 +1506,7 @@
                         </li>
                         <li>
                             <h4>Any way change brightness in Windowed Mode?</h4>
-                            Use <a href="https://reshade.me/" target="_blank">ReShade</a> or <a href="https://www.nexusmods.com/newvegas/mods/51577/" target="_blank">Dynavision</a> to change the gamma.
+                            Use <a href="https://reshade.me/" target="_blank">ReShade</a> or <a href="https://www.nexusmods.com/newvegas/mods/51577/" target="_blank">Dynavision</a> to change the brightness.
                         </li>
                         <li>
                             <h4>Do texture mods really have an impact on performance?</h4>
@@ -1512,7 +1522,7 @@
                         </li>
                         <li>
                             <h4>DXVK is breaking HDR after exiting the game!</h4>
-                            Yes, unfortunately due to how <span title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> works, in addition to lack of native Windows support from DXVK, it doesn't properly handle the HDR API.
+                            Yes, unfortunately due to how <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> works, in addition to lack of native Windows support from DXVK, it doesn't properly handle the HDR API.
                             <br>
                             If you have a Nvidia GPU, use <a href="#DXVK">DXVK with DXGI</a> (You'll get actual HDR too!). Otherwise, normal Windowed.
                         </li>
@@ -1528,6 +1538,10 @@
                             <br>
                             While Special K's D3D9Ex enforcement works far better that NVTF's, it still suffers from CPU perfomance loss and increased GPU usage.
                             <br>
+                        </li>
+                        <li>
+                            <h4>During ReShade installation, which API should I choose if I use DXVK?</h4>
+                            Vulkan.
                         </li>
                     </ul>
                     </p>
@@ -1571,6 +1585,9 @@
                         </li>
                         <li>
                             <a href="https://blurbusters.com/" target="_blank">BlurBusters</a> - Amazing website by Mark Rejhon focused on displays, latency and image quality. Really worth checking it out if you are a geek for these things.
+                        </li>
+                        <li>
+                            <a href="https://discord.gg/tX79HQaVDJ" target="_blank">HDR Den</a> - Discord server dedicated to HDR enthusiasts and developers. If you want to learn more about HDR, this is the place to go.
                         </li>
                     </ul>
                     </p>
