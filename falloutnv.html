@@ -287,7 +287,9 @@
                                 Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one,
                                 while DXVK compatibility requires toggling a flag in Nvidia Profile Inspector - see <a href="#dxvk-flip">here</a>.
                                 <br>
-                                AMD drivers have a D3D12 interop for OpenGL and Vulkan that can be toggled by enabling triple buffering in Radeon Settings.Due to how it's implemented, it can cause crashes with games or mods that spawn both D3D12 and OpenGL devices, and its compatibility is spotty at best.
+                                AMD drivers have a D3D12 interop for OpenGL that can be toggled by enabling triple buffering in Radeon Settings. Vulkan interop is enabled automatically in windowed mode.
+                                <br>
+                                However, due to how it's implemented, it can cause crashes with games or mods that spawn both D3D12 and OpenGL devices, and its compatibility is spotty at best.
                             </li>
                         </ol>
                     </span>
@@ -622,7 +624,7 @@
                             <tr>
                                 <td class="card-green">
                                     <ul>
-                                        <li>Best latency</li>
+                                        <li>Best latency and performance</li>
                                         <li>Variable Refresh Rate works without any problems</li>
                                         <li>
                                             HDR output
@@ -662,12 +664,9 @@
                                             In-Game brightness settings don't work
                                         </li>
                                         <li>
-                                            Nvidia only (AMD's support is inconsistent between users + latest drivers don't work with DXVK)
-                                        </li>
-                                        <li>
                                             Potential compatibility issues with overlays that can't properly discern between DXGI and Vulkan surfaces.
                                             <br>
-                                            (Partially fixed by <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a>)
+                                            (Nvidia: Partially fixed by <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a>)
                                         </li>
                                     </ul>
                                 </td>
@@ -812,16 +811,11 @@
                                     </li>
                                     <li>
                                         <p>
-                                        <div class="card-yellow">
-                                            <p>
-                                                AMD's Windows drivers past 23.9.1 are broken and either don't work at all, or have severe performance issues.
-                                            </p>
-                                        </div>
-                                        <b>AMD GPUs</b> are more prone to shader issues on Windows (situation is completely reversed on Linux)
-                                        <br>
-                                        AMD dGPU laptops lacking direct dGPU output <b>can not</b> use DXVK due to presentation issues. (Integrated graphics work fine.)
-                                        <br>
-                                        (Vulkan runs in a broken state, GPU is underutilized and can't use proper fullscreen mode - on Nvidia this is resolved by using DXGI presentation, AMD lacks such feature).
+                                            <b>AMD GPUs</b> are more prone to shader issues on Windows (situation is completely reversed on Linux)
+                                            <br>
+                                            Some Windows users report that drivers past 23.9.1 are broken and either don't work at all, or have severe performance issues.
+                                            <br>
+                                            That said, versions 23.12.1 and later should work fine if using the <a href="#dxvk-flip">DXGI interop</a>.
                                         </p>
                                     </li>
                                     <li>
@@ -932,88 +926,124 @@
                 <div class="card">
                     <p>
                     <h3 id="dxvk-flip">Enabling Flip Model (DXVK with DXGI)</h3>
-                    <div class="card-yellow">
+                    Nvidia and AMD drivers have ability to interop Vulkan to DXGI allowing for <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">Flip Model</a> in Windowed mode, which has <b>HDR</b> and <b>VRR</b> support, and better <b>latency</b>.
+                    <div class="expander-top clickable center width-limited" onclick="expandCard(this, nvidiaFlipExpander)" id="nvidiaFlip">
                         <p>
-                            At the time of writing, this feature is <b>Nvidia</b> only!
+                        <h3>
+                            Nvidia
+                            <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
+                        </h3>
                         </p>
                     </div>
-                    <div class="card-red">
-                        <p>
-                            Nvidia resets those settings on driver updates! Make sure to reapply them after updating.
-                            <br>
-                            <a href="https://youtu.be/_36yNWw_07g?t=6" target="_blank">Thanks Nvidia!</a>
-                        </p>
-                    </div>
-                    Nvidia's drivers have ability to interop Vulkan to DXGI allowing for <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">Flip Model</a> in Windowed mode, which has <b>HDR</b> and <b>VRR</b> support, and better <b>latency</b>.
-                    <br>
-                    Be wary that current implementation of the interop will degrade performance on PCs.
-                    <ol>
-                        <li>
-                            Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b>.
-                        </li>
-                        <div class="card-basic">
-                            <p>
-                                [Display]
-                                <br>
-                                bFull Screen=0
-                            </p>
-                        </div>
-                        <br>
-                        <div class="card-yellow">
-                            <p>
-                                It's recommend to use <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a>, since it configures the interop automatically and applies other compatiblity fixes.
-                                <br>
-                                It also resolves the settings issue mentioned above.
-                                <br>
-                                <br>
-                                In case you don't want to, or can't use Special K, you can follow the steps below.
-                            </p>
-                        </div>
-                        <li>In Nvidia Control Panel, in 3D Settings, set <b class="card-basic">Vulkan/OpenGL present method</b> to <b class="card-basic">Prefer layered on DXGI Swapchain</b>
-                            <br>
-                            You can use global profile if you want to use Flip Model in all OpenGL and Vulkan titles.
-                        </li>
-                        <div class="card-red">
-                            <p>
-                                If you don't see those options, then your driver is not up to date!
-                            </p>
-                        </div>
-                        <li>
-                            Press <b>Apply changes</b> and exit.
-                        </li>
-                        <li>
-                            Download <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a>.
-                        </li>
-                        <li>
-                            Extract the archive and run the program.
-                        </li>
-                        <li>
-                            Enable "Show unknown settings from NVIDIA predefined profiles" in the top bar (penultimate button).
-                        </li>
-                        <li>
-                            Press <b class="card-basic">Ctrl+F</b> and paste <b class="card-basic">OGL_DX_PRESENT_DEBUG</b>.
-                        </li>
+                    <div class="expander-bottom center width-limited" id="nvidiaFlipExpander">
                         <ol>
                             <li>
-                                Select the setting and click on <b>Show bit value editor</b> on the top bar (last button).
+                                Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b>.
+                            </li>
+                            <div class="card-basic">
+                                <p>
+                                    [Display]
+                                    <br>
+                                    bFull Screen=0
+                                </p>
+                            </div>
+                            <br>
+                            <div class="card-yellow">
+                                <p>
+                                    It's recommend to use <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a>, since it configures the interop automatically and applies other compatiblity fixes.
+                                    <br>
+                                    It also resolves the settings reset issue mentioned below.
+                                    <br>
+                                    <br>
+                                    In case you don't want to, or can't use Special K, you can follow the steps below.
+                                </p>
+                            </div>
+                            <li>In Nvidia Control Panel, in 3D Settings, set <b class="card-basic">Vulkan/OpenGL present method</b> to <b class="card-basic">Prefer layered on DXGI Swapchain</b>
+                                <br>
+                                You can use global profile if you want to use Flip Model in all OpenGL and Vulkan titles.
+                            </li>
+                            <div class="card-red">
+                                <p>
+                                    If you don't see those options, then your driver is not up to date!
+                                </p>
+                                <hr>
+                                <p>
+                                    Nvidia resets those settings on driver updates! Make sure to reapply them after updating.
+                                    <br>
+                                    <a href="https://youtu.be/_36yNWw_07g?t=6" target="_blank">Thanks Nvidia!</a>
+                                </p>
+                            </div>
+                            <li>
+                                Press <b>Apply changes</b> and exit.
                             </li>
                             <li>
-                                In the first column, check bit <b class="card-basic" style="letter-spacing: 0.1em;">#00</b> and <b class="card-basic" style="letter-spacing: 0.1em;">#19</b>.
-                                <div class="card-yellow">
-                                    <p>
-                                        These flags enable DXVK support and fix forced promotion to <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> in some games.
-                                    </p>
-                                </div>
+                                Download <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a>.
                             </li>
                             <li>
-                                Click <b>Apply & Close</b>
+                                Extract the archive and run the program.
+                            </li>
+                            <li>
+                                Enable "Show unknown settings from NVIDIA predefined profiles" in the top bar (penultimate button).
+                            </li>
+                            <li>
+                                Press <b class="card-basic">Ctrl+F</b> and paste <b class="card-basic">OGL_DX_PRESENT_DEBUG</b>.
+                            </li>
+                            <ol>
+                                <li>
+                                    Select the setting and click on <b>Show bit value editor</b> on the top bar (last button).
+                                </li>
+                                <li>
+                                    In the first column, check bits:
+                                    <b class="card-basic" style="letter-spacing: 0.1em;">#00</b>,
+                                    <b class="card-basic" style="letter-spacing: 0.1em;">#02</b>,
+                                    <b class="card-basic" style="letter-spacing: 0.1em;">#05</b>,
+                                    <b class="card-basic" style="letter-spacing: 0.1em;">#07</b>,
+                                    <b class="card-basic" style="letter-spacing: 0.1em;">#19</b>,
+                                    <div class="card-yellow">
+                                        <p>
+                                            These flags enable DXVK support, improve performance and fix forced promotion to <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> in some games.
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    Click <b>Apply & Close</b>
+                                </li>
+                            </ol>
+                            <li>
+                                Click <b>Apply changes</b> in the top right and exit.
+                            </li>
+                            <li>
+                                Install <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> to disable window borders.
                             </li>
                         </ol>
-                        <li>
-                            Click <b>Apply changes</b> in the top right and exit.
-                        </li>
-                        <li>Install <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> to disable window borders.</li>
-                    </ol>
+                    </div>
+                    <div class="expander-top clickable center width-limited" onclick="expandCard(this, amdFlipExpander)" id="amdFlip">
+                        <p>
+                        <h3>
+                            AMD
+                            <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
+                        </h3>
+                        </p>
+                    </div>
+                    <div class="expander-bottom center width-limited" id="amdFlipExpander">
+                        <ol>
+                            <li>
+                                Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b>.
+                            </li>
+                            <div class="card-basic">
+                                <p>
+                                    [Display]
+                                    <br>
+                                    bFull Screen=0
+                                </p>
+                            </div>
+                            <br>
+                            <li>
+                                Install <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> to disable window borders.
+                            </li>
+                        </ol>
+                    </div>
+
                     </p>
                 </div>
             </div>
@@ -1139,7 +1169,7 @@
                                     Special K's interface in D3D9 breaks water reflections when visible. Simply not having Special K's interaface visible fixes the issue.
                                 </li>
                                 <li>
-                                    Special K's Vulkan support is currently limited to Nvidia GPUs.
+                                    Special K's Vulkan support is currently limited to <b>Nvidia</b> GPUs.
                                 </li>
                                 <!--                                 <li>
                                     <b>Nvidia and Steam Overlays</b> can sometimes block Special K from displaying with DXVK - DXGI. If you don't see the Control Panel, try disabling these overlays and restarting your device.
