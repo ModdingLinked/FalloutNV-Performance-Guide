@@ -441,6 +441,7 @@ b.card-basic {
     cursor: pointer;
     user-select: none;
     transition: all 333ms Cubic-Bezier(0, 0, 0, 1);
+    margin-top: 0.033em !important;
 }
 
 .content {
@@ -929,7 +930,7 @@ footer {
 }
 
 .progress-bar {
-    height: 0.11em;
+    height: 0.1em;
     background-color: #71e075;
     width: 0;
 }
