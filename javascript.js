@@ -1,18 +1,7 @@
 window.addEventListener('resize', sizeChanged);
+window.addEventListener('DOMContentLoaded', updateProgressBarAndFadeIn);
+window.onscroll = function () { updateProgressBarAndFadeIn() };
 
-let settings = {
-    grass: 0,
-    light: 200,
-    specularity: 200,
-    objects: 2.5,
-};
-
-let selectedSettings = {
-    grass: -1,
-    light: -1,
-    specularity: -1,
-    objects: -1,
-};
 function sizeChanged() {
     if (document.documentElement.clientWidth > 760) {
         document.getElementById("header").style.marginLeft = "";
@@ -70,7 +59,6 @@ function rotate(element, rotation = 180) {
     element.style.transform = 'rotatex(' + rotation + 'deg)';
 }
 
-
 function expandCard(thisObj, $open, $dontReset) {
     const chevron = thisObj.getElementsByClassName("chevron")[0]
     if ($open.classList.contains('expander-opened') && !$dontReset) {
@@ -85,4 +73,23 @@ function expandCard(thisObj, $open, $dontReset) {
         $open.style.display = "block";
         thisObj.classList.add('active');
     }
+}
+
+function updateProgressBarAndFadeIn() {
+    var sections = document.getElementsByClassName("section");
+    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = window.innerHeight;
+
+    for (var i = 0; i < sections.length; i++) {
+        var sectionTop = sections[i].getBoundingClientRect().top;
+        var sectionHeight = sections[i].clientHeight;
+
+        if (sectionTop < height && sectionTop + sectionHeight > 0) {
+            sections[i].classList.add("fade-in");
+        }
+    }
+
+
+    height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    document.getElementById("myBar").style.width = (winScroll / height) * 100 + "%";
 }

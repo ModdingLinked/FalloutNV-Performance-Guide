@@ -921,3 +921,24 @@ footer {
     text-decoration: underline !important;
     text-decoration-style: dotted !important;
 }
+
+.progress-container {
+    width: 100%;
+    background-color: #6e6e6e;
+    position: fixed;
+}
+
+.progress-bar {
+    height: 0.11em;
+    background-color: #71e075;
+    width: 0;
+}
+
+.section {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.section.fade-in {
+    opacity: 1;
+}

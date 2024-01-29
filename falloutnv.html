@@ -24,6 +24,10 @@
 </head>
 
 <body class="theme dark-scheme">
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
+
     <div style="overflow:auto">
         <div class="header" id="header" onclick="toggleNav()">
             <span class="flippy" id="flippyHeader">🙃</span>
@@ -31,7 +35,7 @@
         <div class="sidebar" id="sidebar">
             <p>
                 <a href="./falloutnv.html" title="🙃 Fallout New Vegas" class="selected">
-                    <span class="subIcon">🌵</span>
+                    <span class="subIcon">🏜️</span>
                     <span class="flippy">🙃</span>
                     Fallout New Vegas
                 </a>
@@ -44,11 +48,12 @@
                 </a>
                 -->
 
-                <a href="./skyrimse.html" title="🙃 Skyrim Special Edition">
+                <!--
+                    <a href="./skyrimse.html" title="🙃 Skyrim Special Edition">
                     <span class="subIcon">🐲</span>
                     <span class="flippy">🙃</span>
                     Skyrim Special Edition
-                </a>
+                </a> -->
 
                 <hr>
 
@@ -118,7 +123,7 @@
         <div class="content">
 
             <!-- Introduction -->
-            <div>
+            <div class="section">
                 <span id="Introduction" onclick="location.href='#Introduction'">
                     <h2>Introduction</h2>
                 </span>
@@ -175,7 +180,7 @@
             </div>
 
             <!-- Terminology -->
-            <div>
+            <div class="section">
                 <span id="Terminology" onclick="location.href='#Terminology'">
                     <h2>Terminology</h2>
                 </span>
@@ -299,7 +304,7 @@
 
 
             <!-- Tweaks -->
-            <div>
+            <div class="section">
                 <span id="EngineOptimizations" onclick="location.href='#EngineOptimizations'">
                     <h2>lStewieAl's Mods</h2>
                 </span>
@@ -339,7 +344,7 @@
             </div>
 
             <!-- NVTF -->
-            <div>
+            <div class="section">
                 <span id="NVTF" onclick="location.href='#NVTF'">
                     <h2>New Vegas Tick Fix</h2>
                 </span>
@@ -432,7 +437,7 @@
             </div>
 
             <!-- Drivers and Windows-->
-            <div>
+            <div class="section">
                 <span id="DriversAndOS" onclick="location.href='#DriversAndOS'">
                     <h2>Graphics Drivers and Windows</h2>
                 </span>
@@ -477,7 +482,7 @@
                                 </a>
                             </th>
                             <th>
-                                <a href="https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html" target="_blank">
+                                <a href="https://www.intel.com/content/www/us/en/download/785597/intel-arc-iris-xe-graphics-windows.html" target="_blank">
                                     <button class="button-big" id="intelButton">
                                         <b>
                                             INTEL
@@ -589,7 +594,7 @@
             </div>
 
             <!-- DisplayModeComparison -->
-            <div>
+            <div class="section">
                 <span id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
                     <h2>Display Mode Differences</h2>
                 </span>
@@ -754,7 +759,7 @@
             </div>
 
             <!-- DXVK -->
-            <div>
+            <div class="section">
                 <span id="DXVK" onclick="location.href='#DXVK'">
                     <h2>DXVK</h2>
                 </span>
@@ -785,7 +790,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
+<!--                             <li>
                                 DXVK 2.0 and higher <b>require</b>:
                                 <ol>
                                     <li>
@@ -800,7 +805,7 @@
                                 Those functionalities are a part of your GPU driver, so make sure you have the <a href="#DriversAndOS">latest available version</a>.
                                 <br>
                                 Keep in mind that even with those conditions met, DXVK 2.0+ may not work correctly for you, due to its Linux-based nature.
-                            </li>
+                            </li> -->
                             <li>
                                 <p>
                                     DXVK's GPU compatibility varies between manufacturers
@@ -914,7 +919,7 @@
                                 </p>
                             </div>
                             <div class="card-red">
-                                <p>GPUs lacking VK 1.3 support or having issues with 2.0, must use the <b><a href="https://www.nexusmods.com/Core/Libs/Common/Widgets/DownloadPopUp?id=1000102854&game_id=130" target="_blank">1.10.3 version</a></b>.</p>
+                                <p>GPUs lacking Vulkan 1.3 support or having issues with 2.0, must use the <b><a href="https://www.nexusmods.com/Core/Libs/Common/Widgets/DownloadPopUp?id=1000102854&game_id=130" target="_blank">1.10.3 version</a></b>.</p>
                                 <p><b>Intel GPUs</b> need to use the <b><a href="https://www.nexusmods.com/Core/Libs/Common/Widgets/DownloadPopUp?id=1000102855&game_id=130" target="_blank">1.10.1 version</a></b>.</p>
                             </div>
                         </li>
@@ -1052,7 +1057,7 @@
             </div>
 
             <!-- RecommendedLimiters -->
-            <div>
+            <div class="section">
                 <span id="RecommendedLimiters" onclick="location.href='#RecommendedLimiters'">
                     <h2>Recommended FPS Limiters and Their Configurations</h2>
                 </span>
@@ -1510,7 +1515,7 @@
             </div>
 
             <!-- FAQ -->
-            <div>
+            <div class="section">
                 <span id="FAQ" onclick="location.href='#FAQ'">
                     <h2>FAQ</h2>
                 </span>
@@ -1582,7 +1587,7 @@
             </div>
 
             <!-- Finish -->
-            <div>
+            <div class="section">
                 <span id="Finish" onclick="location.href='#Finish'">
                     <h2>Finish</h2>
                 </span>
