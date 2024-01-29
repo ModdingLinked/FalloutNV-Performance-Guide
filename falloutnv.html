@@ -814,11 +814,11 @@
                                     </li>
                                     <li>
                                         <p>
-                                            <b>AMD GPUs</b> are more prone to shader issues on Windows (situation is completely reversed on Linux)
+                                            <b>AMD GPUs must</b> use the <a href="#dxvk-flip">DXGI interop</a> (see below), otherwise they will suffer from severe performance issues or fail to launch the game.
                                             <br>
-                                            Some Windows users report that drivers past 23.9.1 are broken and either don't work at all, or have severe performance issues.
+                                            Shader issues are more common on Windows compared to other GPUs (situation is completely reversed on Linux).
                                             <br>
-                                            That said, versions 23.12.1 and later should work fine if using the <a href="#dxvk-flip">DXGI interop</a>.
+                                            AMD Windows drivers don't support shader precompilation, so you may experience increased stutter at the beginning of your playthrough.
                                         </p>
                                     </li>
                                     <li>
