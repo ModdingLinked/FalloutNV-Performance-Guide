@@ -2,6 +2,10 @@ window.addEventListener('resize', sizeChanged);
 window.addEventListener('DOMContentLoaded', updateProgressBarAndFadeIn);
 window.onscroll = function () { updateProgressBarAndFadeIn() };
 
+window.onload = function () {
+    DarkReader.disable();
+}
+
 function sizeChanged() {
     if (document.documentElement.clientWidth > 760) {
         document.getElementById("header").style.marginLeft = "";
