@@ -290,13 +290,17 @@
                             <li id="annotation2">
                                 D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and UE4 implemented Flip Model support around 2019 - 7 years after its release!).
                                 <br>
-                                Flip Model in Windowed Mode can be enabled in those games using Special K (D3D11 only) or Windows 11's (22H2) Optimizations for Windowed Games (both D3D10 and D3D11)
+                                Flip Model in Windowed Mode can be enabled in those games using Special K (D3D11 only) or Windows 11's (22H2) Optimizations for Windowed Games (both D3D10 and D3D11).
+                                <br>
+                                Both implementations have good compatiblity, but there are some niche cases where a game can be unsupported by Special K, but supported by Windows - and vice versa.
+                                <br>
+                                Special K is recommended only for single player games due to anti-cheat concerns (it's a mod after all), while Windows' method is safe to use anywhere due to being a system feature.
                             </li>
                             <li id="annotation3">
                                 OpenGL can be displayed using D3D11 thanks to Special K, which enables Flip Model and all its benefits along with HDR.
                                 <br>
-                                Nvidia drivers can also interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526, albeit as the time of writing, OpenGL interop degrades performance compared to Special K's one,
-                                while DXVK compatibility requires toggling a flag in Nvidia Profile Inspector - see <a href="#dxvk-flip">here</a>.
+                                Nvidia drivers can interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526.
+                                OpenGL interop by default degrades performance, while DXVK compatibility requires toggling a flag in Nvidia Profile Inspector - see <a href="#dxvk-flip">here</a> how to resolve both of these issues.
                                 <br>
                                 AMD drivers have a D3D12 interop for OpenGL that can be toggled by enabling triple buffering in Radeon Settings. Vulkan interop is enabled automatically in windowed mode.
                                 <br>
