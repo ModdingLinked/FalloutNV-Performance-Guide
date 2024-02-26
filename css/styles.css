@@ -901,4 +901,9 @@ footer {
 
 .section.fade-in {
   opacity: 1;
+}
+
+.faq h4 {
+  margin-top: 1.7em;
+  margin-bottom: 0.2em;
 }/*# sourceMappingURL=styles.css.map */

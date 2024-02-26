@@ -590,7 +590,7 @@
                     I won't be writing on how to disable them, because... <a href="https://support.microsoft.com/en-us/windows/options-to-optimize-gaming-performance-in-windows-11-a255f612-2949-4373-a566-ff6f3f474613" target="_blank">Microsoft already made a tutorial about it</a>.
                     <br>
                     <br>
-                    This step is not mandatory, as when it comes to security, it's up to you to decide. Just letting you know that this exists, and even Microsoft acknowledges the fact that it can degrade perfomance.
+                    This step is not mandatory, as when it comes to security, it's up to you to decide. Just letting you know that this exists, and that even Microsoft acknowledges the fact that it can degrade perfomance.
                     </p>
                 </div>
                 <div class="card">
@@ -644,19 +644,19 @@
                             <tr>
                                 <th>
                                     <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
-                                        Flip Windowed
+                                        Flip Model Windowed
                                         <br>
                                         (DXVK with DXGI)
                                     </h2>
                                 </th>
                                 <th>
                                     <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
-                                        Fullscreen
+                                        Legacy/Optimized Fullscreen
                                     </h2>
                                 </th>
                                 <th>
                                     <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
-                                        BitBlt Windowed
+                                        BitBlt Model Windowed
                                         <br>
                                         (D3D9, Base DXVK)
                                     </h2>
@@ -681,7 +681,7 @@
                                 </td>
                                 <td class="card-green">
                                     <ul>
-                                        <li>Best latency and performance, especially with <span class="abbreviation" title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSO</span></li>
+                                        <li>Best latency and performance, especially with <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span></li>
                                         <li>
                                             HDR output (Requires DXVK)
                                         </li>
@@ -718,7 +718,7 @@
                                 <td class="card-red">
                                     <ul>
                                         <li>
-                                            Slower and unstable Alt-Tab, especially without <span class="abbreviation" title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" class="abbreviation">FSO</span>
+                                            Slower and unstable Alt-Tab, especially without <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span>
                                         </li>
                                         <div class="card-yellow">
                                             <p>
@@ -727,10 +727,12 @@
                                             </p>
                                         </div>
                                         <li>
-                                            Color profiles may disengage, especially without <span class="abbreviation" title="Fullscreen optimizations" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" class="abbreviation">FSO</span>
+                                            Color profiles may disengage, especially without <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span>
                                         </li>
                                         <li>
-                                            Doesn't work at all on hybrid GPU laptops when using DXVK - uses Windowed instead which massively degrades performance. Nvidia GPUs must use DXGI.
+                                            When using DXVK, degrades performance on Nvidia laptops and AMD GPUs.
+                                            <br>
+                                            DXGI Interop with Flip Model must be used instead.
                                         </li>
                                         <li>
                                             HDR can cause issues on Alt-Tab, especially on AMD GPUs.
@@ -808,7 +810,7 @@
                     In short, it allows you to run Fallout using the Vulkan API which has much lower draw call overhead than D3D9, which is one of the main performance limiting factors in this game.
                     <div class="card-yellow">
                         <p>
-                            If you use Linux, most of this is irrelevant, since Proton on Linux uses DXVK already.
+                            If you play on Linux, you are already using DXVK. That said, it's still recommended to go through this section and use dxvk.conf from the Nexus release.
                         </p>
                     </div>
                     <div class="card-red">
@@ -818,31 +820,28 @@
                             <li>
                                 <p>
                                     DXVK improves performance in mainly draw call (CPU) bound scenarios (e.g. draw distance), and usually doesn't help much in GPU bound ones (e.g. resolution)
+                                    <ul>
+                                        <li>
+                                            <p>
+                                                It is possible that DXVK won't change anything for you, or even make things worse
+                                            </p>
+                                        </li>
+                                    </ul>
                                 </p>
+
+                            </li>
+                            <li>
+                                <p>
+                                You may experience increased stutter at the beginning of your playthrough due to shader compilation.
                                 <ul>
                                     <li>
                                         <p>
-                                            It is possible that DXVK won't change anything for you, or even make things worse
+                                            Guide uses DXVK-GPLAsync patch by <a href="https://gitlab.com/Ph42oN" target="_blank">Ph42oN</a> and <a href="https://github.com/Sporif" target="_blank">Sporif</a>, which trades intense stutter for briefly invisible objects.
                                         </p>
                                     </li>
                                 </ul>
+                                </p>
                             </li>
-                            <!--                             <li>
-                                DXVK 2.0 and higher <b>require</b>:
-                                <ol>
-                                    <li>
-                                        A Vulkan 1.3 compatible driver
-                                    </li>
-                                    <li>
-                                        A <b class="card-basic">VK_EXT_robustness2</b> driver extension
-                                    </li>
-                                </ol>
-                                Generally almost all modern (2015+) GPUs support them, but if you'd like to sanity check yours, use <a href="https://www.techpowerup.com/download/techpowerup-gpu-z/" target="_blank">GPU-Z</a>, and go to the <b>Advanced</b> tab -> <b>Vulkan</b> section.
-                                <br>
-                                Those functionalities are a part of your GPU driver, so make sure you have the <a href="#DriversAndOS">latest available version</a>.
-                                <br>
-                                Keep in mind that even with those conditions met, DXVK 2.0+ may not work correctly for you, due to its Linux-based nature.
-                            </li> -->
                             <li>
                                 <p>
                                     DXVK's GPU compatibility varies between manufacturers
@@ -860,20 +859,16 @@
                                             <br>
                                             Shader issues are more common on Windows compared to other GPUs (situation is completely reversed on Linux).
                                             <br>
-                                            AMD Windows drivers don't support shader precompilation, so you may experience increased stutter at the beginning of your playthrough.
+                                            AMD Windows drivers don't support shader precompilation, so you may experience increased shader compilation stutter.
                                         </p>
                                     </li>
                                     <li>
                                         <p>
                                             <b>Intel GPUs</b> from 6th Gen and newer can work provided you have <a href="https://www.intel.com/content/www/us/en/download/19344/intel-graphics-windows-dch-drivers.html" target="_blank">newest drivers</a>
-                                            installed. <br>DXVK is broken past the 1.10.1 version.
+                                            installed.
                                             <br>
-                                            Don't expect a big performance difference, if any, since the game will still be mostly GPU bound.
-                                        <div class="card-yellow">
-                                            <p>
-                                                Arc GPUs should work fine, but are untested.
-                                            </p>
-                                        </div>
+                                            On some iGPUs, DXVK is broken past the 1.10.1 version.
+                                            <br>
                                         </p>
                                     </li>
                                 </ul>
@@ -883,24 +878,17 @@
                                 <p>
                                     Fallout New Vegas has some known shader issues or quirks. They are not guaranteed to happen (getting rarer with DXVK updates), but they can occur:
                                 <ul>
-                                    <li>Transparency multisampling uses dithering - (DXVK handles alpha to coverage differently than drivers)</li>
+                                    <li>Transparency multisampling uses dithering - (Vulkan handles alpha to coverage differently than drivers)</li>
+<!--                                     <ul>
+                                        <li>
+                                            If you are an AMD, RADV Linux user, you can disable this behavior by setting <b class="card-basic">RADV_DEBUG=noatocdithering</b> environment variable.
+                                        </li>
+                                    </ul> -->
                                     <li>Blood decals can suffer from color overflow and turn white - uncommon, most reports come from AMD GPUs, but issue can appear on Nvidia</li>
                                 </ul>
                                 </p>
                             </li>
                         </ul>
-                        <div class="card-yellow">
-                            <p>
-                                Due to DXVK's nature it relies on shader cache, which is compiled during the first use of that shader.
-                                <br>
-                                Because of that you can experience increased short stutter at the beginning of your playthrough.
-                                <br>
-                                This is completely normal, and will not reoccur after compilation has finished.
-                                <br>
-                                DXVK-GPLAsync patch by <a href="https://gitlab.com/Ph42oN" target="_blank">Ph42oN</a> and <a href="https://github.com/Sporif" target="_blank">Sporif</a> alleviates this problem thanks to making the compilation asynchronous
-                            <h4>DXVK 2.0 and newer precompile shaders on launch, although at the time of writing, on Windows, this feature is Nvidia only. Ph42oN's async patch uses both methods, so it's safe to use on all GPU manufacturers.</h4>
-                            </p>
-                        </div>
                         </p>
                     </div>
                     </p>
@@ -927,18 +915,8 @@
                     DXVK doesn't perform any HDR tone mapping, so you need to use <a href="https://github.com/Filoppi/PumboAutoHDR" target="_blank">Pumbo's ReShade AutoHDR</a> or <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a> (Nvidia only) for that.
                     <div class="card-yellow">
                         <p>
-                        <h4>Known quirks and issues</h4>
-                        <ul>
-                            <li>
-                                Any images produced by the game that were meant to be in 8 bit (screenshots, save images) are distorted due to lack of color conversion.
-                                <br>
-                                This is purely visual and doesn't affect gameplay.
-                                <br>
-                                <a href="https://www.nexusmods.com/newvegas/mods/82985" target="_blank">HDR Save Image Patch</a> and <a href="https://discord.gg/j2mQYwjnje" target="_blank">New Vegas Reloaded</a> fix save images.
-                                <br>
-                                For screenshots it's recommended to use Game Bar, Steam or your tone mapping utility.
-                            </li>
-                        </ul>
+                        <h4>Screenshot Tonemapping</h4>
+                        Game's built-in screnshot function doesn't support HDR, so you need to use Special K, Game Bar, Steam or Nvidia Overlay to take screenshots.
                         </p>
                     </div>
                     </p>
@@ -957,13 +935,16 @@
                             </div>
                             <div class="card-red">
                                 <p>GPUs lacking Vulkan 1.3 support or having issues with 2.0, must use the <b><a href="https://www.nexusmods.com/Core/Libs/Common/Widgets/DownloadPopUp?id=1000102854&game_id=130" target="_blank">1.10.3 version</a></b>.</p>
-                                <p><b>Intel GPUs</b> need to use the <b><a href="https://www.nexusmods.com/Core/Libs/Common/Widgets/DownloadPopUp?id=1000102855&game_id=130" target="_blank">1.10.1 version</a></b>.</p>
+                                <p>Some <b>Intel iGPUs</b> need to use the <b><a href="https://www.nexusmods.com/Core/Libs/Common/Widgets/DownloadPopUp?id=1000102855&game_id=130" target="_blank">1.10.1 version</a></b>.</p>
                             </div>
                         </li>
                         <li>
                             <p>
                                 Extract archive contents into your <b>Fallout New Vegas root folder</b>.
                             </p>
+                        </li>
+                        <li>
+                            If you have chosen the HDR version, download <a href="https://www.nexusmods.com/newvegas/mods/82985" target="_blank">HDR Save Image Patch</a> and install it with your mod manager.
                         </li>
                     </ol>
                     </p>
@@ -1559,7 +1540,7 @@
                 <div class="card">
                     <p>
                     <h3>Are these questions really frequent?</h3>
-                    <ul>
+                    <ul class="faq">
                         <li>
                             <h4>I can't use DXVK, and I need to Alt-Tab!</h4>
                             All you can do is download <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> or <a href="#specialk">Special K</a> and use the legacy Windowed mode.
@@ -1572,6 +1553,33 @@
                                     bFull Screen=0
                                 </p>
                             </div>
+                        </li>
+                        <li>
+                            <h4>Fake Fullscreen, Borderless Windowed, Fullscreen Windowed, Windowed Fullscreen - is there any difference?</h4>
+                            No. All of these terms refer to the same thing - a borderless window that covers the whole screen. There's no official name for it, so people use different ways to describe it.
+                        </li>
+                        <li>
+                            <h4>Why is guide recommending using Windows' Game Mode? I heard that it's bad.</h4>
+                            Most, if not all Game Mode stigma comes around from its <a href="https://blogs.windows.com/windows-insider/2017/01/27/announcing-windows-10-insider-preview-build-15019-pc/">initial implementation in 2017</a>.
+                            <p>
+                            That version of Game Mode had two (now removed due to issues) features:
+                            <ul>
+                                <li>
+                                    <b>Resource prioritization</b> - Game Mode would try to prioritize resources for the game, which led to issues with background applications, or breaking games themselves.
+                                </li>
+                                <li>
+                                    <b>Flip Model upgrade for windowed games</b> - Original implementation tried to upgrade selected D3D9 and D3D11 games, but often faced an issue where games would not exit software composition, leading to increased lag and worse performance.
+                                </li>
+                            </ul>
+                            </p>
+                            <p>
+                            Modern Game Mode does not have these features, and instead focuses on generic Windows tweaks, like disabling background services (Windows Update, Search Indexing). 
+                            <br>
+                            Additionally, some vendors like AMD are using it to detect games and apply their own optimizations (CPU scheduling in AMD's case).
+                            </p>
+                            Flip Model upgrade functionality has been moved into Windows itself, split between Fullscreen Optimizations (All Direct3D versions; Windows 10) and Windowed Optimizations (Direct3D 10 and 11; Windows 11).
+                            <br>
+                            These features are enabled by default and don't suffer from the issues of the original Game Mode.
                         </li>
                         <li>
                             <h4>Why does Special K show D3D11 instead of Vulkan when using DXVK with DXGI?</h4>
@@ -1599,7 +1607,7 @@
                             <h4>DXVK is breaking HDR after exiting the game!</h4>
                             Yes, unfortunately due to how <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> works, in addition to lack of native Windows support from DXVK, it doesn't properly handle the HDR API.
                             <br>
-                            If you have a Nvidia GPU, use <a href="#DXVK">DXVK with DXGI</a> (You'll get actual HDR too!). Otherwise, normal Windowed.
+                            If your GPU supports it, use <a href="#DXVK">DXVK with DXGI</a> to resolve this issue.
                         </li>
                         <li>
                             <h4>Is dgVoodoo 2 a viable alternative to DXVK?</h4>
