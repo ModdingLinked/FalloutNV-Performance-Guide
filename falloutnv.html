@@ -829,19 +829,19 @@
                             <li>
                                 <p>
                                     DXVK improves performance in mainly draw call (CPU) bound scenarios (e.g. draw distance), and usually doesn't help much in GPU bound ones (e.g. resolution)
-                                    <ul>
-                                        <li>
-                                            <p>
-                                                It is possible that DXVK won't change anything for you, or even make things worse
-                                            </p>
-                                        </li>
-                                    </ul>
+                                <ul>
+                                    <li>
+                                        <p>
+                                            It is possible that DXVK won't change anything for you, or even make things worse
+                                        </p>
+                                    </li>
+                                </ul>
                                 </p>
 
                             </li>
                             <li>
                                 <p>
-                                You may experience increased stutter at the beginning of your playthrough due to shader compilation.
+                                    You may experience increased stutter at the beginning of your playthrough due to shader compilation.
                                 <ul>
                                     <li>
                                         <p>
@@ -909,18 +909,19 @@
                     <ul>
                         <li>
                             <p>
-                                Displays the game at bit depth higher than 8.
+                                Allows to display the game in HDR (10 or 16 bit).
                             </p>
                         </li>
                         <li>
                             <p>
-                                Upgrades render targets to 16 bit.
+                                Upgrades the precision with which the game calculates colors, greatly reducing banding - as long as you have a 10 bit display or better.
                             </p>
                         </li>
                     </ul>
-                    This allows for HDR output and eliminates color banding from the game.
                     <br>
-                    DXVK doesn't perform any HDR tone mapping, so you need to use <a href="https://github.com/Filoppi/PumboAutoHDR" target="_blank">Pumbo's ReShade AutoHDR</a> or <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a> (Nvidia only) for that.
+                    DXVK <b>doesn't perform any HDR</b> tone mapping, so you need to use <a href="https://github.com/Filoppi/PumboAutoHDR" target="_blank">Pumbo's ReShade AutoHDR</a> or <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a> (Nvidia only) for that.
+                    <br>
+                    Failing to do so will result in washed out colors and incorrect brightness.
                     <div class="card-yellow">
                         <p>
                         <h4>Screenshot Tonemapping</h4>
@@ -938,7 +939,7 @@
                             </p>
                             <div class="card-yellow">
                                 <p>
-                                    If you have a <b>HDR display</b>, you can select the <b>HDR version</b>.
+                                    If you have a <b>HDR display</b>, you can select the <b>HDR version</b> mentioned above.
                                 </p>
                             </div>
                             <div class="card-red">
@@ -1151,6 +1152,21 @@
                                 <li>
                                     No special prerequisites.
                                 </li>
+                                <div class="card-yellow">
+                                    <p>
+                                        Due to Bethesda's oversight, the V-Sync toggle in the launcher doesn't work.
+                                        <br>
+                                        To disable V-Sync, in <b>FalloutCustom.ini</b> set the following:
+                                    <div class="card-basic">
+                                        <p>
+                                            [Display]
+                                            <br>
+                                            iPresentInterval=0
+                                        </p>
+                                    </div>
+                                    Disabling V-Sync through other means (Driver, Special K, DXVK) also works.
+                                    </p>
+                                </div>
                             </ul>
                         </li>
                     </ul>
@@ -1299,6 +1315,10 @@
                                         <div class="card-basic">
                                             <p>
                                                 Included INI preset enables automatic VRR detection which takes care of everything.
+                                                <br>
+                                                To make sure the detection was successful, check if the <b>Auto VRR Mode</b> checkbox in <b>Advanced</b> limiter settings is green.
+                                                <br>
+                                                In case it failed, enable the limiter, right click on the bar and tick the <b>VRR Bias</b> option. After that, select <b>Low Latency (VRR Optimized)</b> mode.
                                             <div class="card-yellow">
                                                 <p>
                                                     The limit is selected based on your maximum refresh rate!
@@ -1570,7 +1590,7 @@
                             <h4>Why is guide recommending using Windows' Game Mode? I heard that it's bad.</h4>
                             Most, if not all Game Mode stigma comes around from its <a href="https://blogs.windows.com/windows-insider/2017/01/27/announcing-windows-10-insider-preview-build-15019-pc/">initial implementation in 2017</a>.
                             <p>
-                            That version of Game Mode had two (now removed due to issues) features:
+                                That version of Game Mode had two (now removed due to issues) features:
                             <ul>
                                 <li>
                                     <b>Resource prioritization</b> - Game Mode would try to prioritize resources for the game, which led to issues with background applications, or breaking games themselves.
@@ -1581,9 +1601,9 @@
                             </ul>
                             </p>
                             <p>
-                            Modern Game Mode does not have these features, and instead focuses on generic Windows tweaks, like disabling background services (Windows Update, Search Indexing). 
-                            <br>
-                            Additionally, some vendors like AMD are using it to detect games and apply their own optimizations (CPU scheduling in AMD's case).
+                                Modern Game Mode does not have these features, and instead focuses on generic Windows tweaks, like disabling background services (Windows Update, Search Indexing).
+                                <br>
+                                Additionally, some vendors like AMD are using it to detect games and apply their own optimizations (CPU scheduling in AMD's case).
                             </p>
                             Flip Model upgrade functionality has been moved into Windows itself, split between Fullscreen Optimizations (All Direct3D versions; Windows 10) and Windowed Optimizations (Direct3D 10 and 11; Windows 11).
                             <br>
@@ -1601,7 +1621,7 @@
                         </li>
                         <li>
                             <h4>Do texture mods really have an impact on performance?</h4>
-                            Not directly, no. As long as you don't go over your VRAM budget and use NVTF's memory pool patch you'll be fine. If you run out of VRAM, you'll either crash, or experience massive stutters.
+                            In most cases, no. As long as you don't go over your VRAM budget and use NVTF's memory pool patch you'll be fine. If you happen to run out of VRAM, you'll a massive performance degradation, due to graphics memory being spilled over into RAM.
                             <br>
                             What <i>is</i> guaranteed from higher resolution textures is increase in their load time. This can translate into longer stutter periods on cell loads.
                         </li>
