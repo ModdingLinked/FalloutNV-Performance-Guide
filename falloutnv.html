@@ -489,17 +489,19 @@
                         Not much to say here - for the best compatibility and performance, you <b>must</b> be using the newest driver for your graphics card.
                         <br>
                         <br>
-                        You can check what GPU you have by opening Task Manager, and going to the Performance tab - the last GPU on the left pane is your main one.
+                        You can check what GPU you have by opening Task Manager, and going to the Performance tab - the last GPU in the left pane should be your main one.
                         <br>
                         If you don't see any GPU there, that means your GPU is too old to use DXVK.
                     <div class="card-red">
                         <p>
-                        <h3>This step is mandatory if you want to use DXVK!</h3>
-
                         <h3>WARNING AMD USERS!</h3>
-                        If you don't plan on using DXVK, <b>downgrade</b> your drivers to <a href="https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-23.12.1-win10-win11-dec5-rdna.exe" target="_blank">23.12.1</a>!
-                        <br>
+
                         24.XX.X drivers fail to compile shaders, leading to instant crashes and being unable to play the game.
+                        <br>
+                        This can be mitigated by using <a href="#DXVK">DXVK with DXGI</a>.
+                        <br>
+                        <br>
+                        Downgrading your drivers to <a href="https://drivers.amd.com/drivers/whql-amd-software-adrenalin-edition-23.12.1-win10-win11-dec5-rdna.exe" target="_blank">23.12.1</a> is also an option, but may break other games, especially recent ones.
                         </p>
                     </div>
                     <table class="center" style="width: 100%; height: 96px;">
