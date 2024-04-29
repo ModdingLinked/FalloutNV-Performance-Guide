@@ -650,6 +650,9 @@
                     <p>
                     <h3>Presentation Problems</h3>
                     Here's a comparison of three display modes you can use in this game. Situation is problematic mainly due to Vulkan and D3D9 using old <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">presentation models</a>.
+                    <br>
+                    <br>
+                    This section is purely informative, just to let you know what options you have and what to expect from them.
                     <div class="comparison">
                         <table class="comparison-table">
                             <tr>
@@ -963,7 +966,7 @@
                 <div class="card">
                     <p>
                     <h3 id="dxvk-flip">Enabling Flip Model (DXVK with DXGI)</h3>
-                    Nvidia and AMD drivers have ability to interop Vulkan to DXGI allowing for <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">Flip Model</a> in Windowed mode, which has <b>HDR</b> and <b>VRR</b> support, and better <b>latency</b>.
+                    Nvidia and AMD drivers have ability to use DirectX to display Vulkan games allowing for <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">Flip Model</a> in Windowed mode, which has <b>HDR</b> and <b>VRR</b> support, and better <b>latency</b>.
                     <div class="card-red">
                         <p>
                             This step is mandatory for <b>Nvidia laptops</b> and <b>AMD GPUs</b> to work with DXVK, otherwise you will suffer heavy performance issues.
@@ -1127,6 +1130,7 @@
                     <ul>
                         <li>
                             <h4>V-Sync</h4>
+                            The "default" option - choose this if you don't have Variable Refresh Rate display or don't mind slight latency.
                             <ul>
                                 <li>
                                     Framerate must be capped slightly below refresh rate to reduce latency.
@@ -1150,6 +1154,7 @@
                         </li>
                         <li>
                             <h4>G-Sync | Freesync</h4>
+                            Choose this if you have a Variable Refresh Rate display - it offers the best balance between latency and visual smoothness.
                             <ul>
                                 <li>
                                     V-Sync must be enabled, in order to fully get rid of tearing.
@@ -1161,6 +1166,10 @@
                         </li>
                         <li>
                             <h4>No V-Sync</h4>
+                            Choose this if you want to reduce latency as much as possible, and don't mind tearing (if you are an advanced user, you can get rid of tearing using
+                            <a title="Special K" onclick="expandCard(specialk, specialkExpander, 1)" href="#specialk">Special K</a>
+                            or
+                            <a title="RTSS" onclick="expandCard(rtss, rtssExpander, 1)" href="#rtss">RTSS</a>).
                             <ul>
                                 <li>
                                     No special prerequisites.
@@ -1196,7 +1205,7 @@
                         Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
                     <div>
                         <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
-                        <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Apply</button><span class="disabled" id="applyConfirmation">Applied!</span>
+                        <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Calculate</button><span class="disabled" id="applyConfirmation">Done!</span>
                     </div>
                     <div class="card-yellow">
                         <p>
@@ -1206,6 +1215,7 @@
                     </p>
                     <p>
                         Click on the cards below to show the instructions for each limiter.
+
                         <!-- SK -->
                     <p>
                     <div class="expander-top clickable center width-limited" onclick="expandCard(this, specialkExpander)" id="specialk">
@@ -1527,6 +1537,7 @@
                         </p>
                     </div>
                     </p>
+
                     </p>
                 </div>
             </div>
@@ -1542,7 +1553,7 @@
                     <ul class="faq">
                         <li>
                             <h4>I can't use DXVK, and I need to Alt-Tab!</h4>
-                            All you can do is download <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> or <a href="#specialk">Special K</a> and use the legacy Windowed mode.
+                            All you can do is download <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> or <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a> and use the legacy Windowed mode.
                             <br>
                             Remember to enable <b>Windowed mode</b> itself in <b>FalloutCustom.ini</b>!
                             <div class="card-basic">
