@@ -75,16 +75,16 @@
                     Engine Optimizations
                 </a>
 
-                <a href="#FogCulling" title="🙃 Fog-based Object Culling">
-                    <span class="subIcon">🌫️</span>
-                    <span class="flippy">🙃</span>
-                    Fog Culling
-                </a>
-
                 <a href="#NVTF" title="🙃 New Vegas Tick Fix">
                     <span class="subIcon">⏱️</span>
                     <span class="flippy">🙃</span>
                     New Vegas Tick Fix
+                </a>
+
+                <a href="#FogCulling" title="🙃 Fog-based Object Culling">
+                    <span class="subIcon">🌫️</span>
+                    <span class="flippy">🙃</span>
+                    Fog Culling
                 </a>
 
                 <a href="#DriversAndOS" title="🙃 Graphics Drivers and Windows">
@@ -312,6 +312,20 @@
                 </div>
             </div>
 
+            <br>
+            <br>
+
+            <div class="card-green center">
+                <p>
+                <h2>Used a guide already?</h2>
+                <p>
+                    If you came here from <a href="https://vivanewvegas.moddinglinked.com/utilities.html" target="_blank">Viva New Vegas</a> or <a href="https://thebestoftimes.moddinglinked.com/essentials.html" target="_blank">The Best of Times</a>, you can skip the next two sections and jump right to <a href="#FogCulling">Fog-based Object Culling</a>.
+                    <br>
+                    <br>
+                    Following steps are for those who haven't used those guides, or want to know more about the more important settings.
+                </p>
+                </p>
+            </div>
 
             <!-- Tweaks -->
             <div class="section">
@@ -335,7 +349,7 @@
                         </li>
                         <li>
                             <p>
-                                If not already downloaded, download <a href="https://www.nexusmods.com/newvegas/mods/76522" target="_blank" title="Stewie Tweaks Essentials INI">Stewie Tweaks Essentials INI</a> and install it with your mod manager.
+                                If not already downloaded, download <a href="https://www.nexusmods.com/newvegas/mods/79358" target="_blank" title="Stewie Tweaks - VNV INI">Stewie Tweaks - VNV INI</a> and install it with your mod manager.
                             </p>
                         </li>
                         <li>
@@ -346,37 +360,6 @@
                         <li>
                             <p>
                                 Download <a href="https://www.nexusmods.com/newvegas/mods/67811" target="_blank" title="Faster Main Menu">Faster Main Menu</a> and install it with your mod manager.
-                            </p>
-                        </li>
-                    </ol>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Fog-based Culling -->
-            <div class="section">
-                <span id="FogCulling" onclick="location.href='#FogCulling'">
-                    <h2>Fog-based Object Culling</h2>
-                </span>
-                <div class="card">
-                    <p>
-                    <h3>Occluded</h3>
-                    Simple mod I made to help in areas like Dead Money or Point Lookout, which are very densely packed with objects, yet have a lot of fog hiding them.
-                    Dynamically adjusts draw distance in accordance with the fog to improve performance with little to no visual difference.
-                    </p>
-                    <div class="card-yellow">
-                        <p>
-                            Using this mod will prevent you from configuring draw distance settings in-game. Please use the launcher or INI to configure them.
-                        </p>
-                    </div>
-                </div>
-                <div class="card">
-                    <p>
-                    <h3>Installation</h3>
-                    <ol>
-                        <li>
-                            <p>
-                                Download <a href="https://www.nexusmods.com/newvegas/mods/79516" target="_blank" title="Fog-based Object Culling">Fog-based Object Culling</a> and install it with your mod manager.
                             </p>
                         </li>
                     </ol>
@@ -477,6 +460,37 @@
                 </div>
             </div>
 
+            <!-- Fog-based Culling -->
+            <div class="section">
+                <span id="FogCulling" onclick="location.href='#FogCulling'">
+                    <h2>Fog-based Object Culling</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <h3>Occluded</h3>
+                    Simple mod I made to help in areas like Dead Money or Point Lookout, which are very densely packed with objects, yet have a lot of fog hiding them.
+                    Dynamically adjusts draw distance in accordance with the fog to improve performance with little to no visual difference.
+                    </p>
+                    <div class="card-yellow">
+                        <p>
+                            Using this mod will prevent you from configuring draw distance settings in-game. Please use the launcher or INI to configure them.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Installation</h3>
+                    <ol>
+                        <li>
+                            <p>
+                                Download <a href="https://www.nexusmods.com/newvegas/mods/79516" target="_blank" title="Fog-based Object Culling">Fog-based Object Culling</a> and install it with your mod manager.
+                            </p>
+                        </li>
+                    </ol>
+                    </p>
+                </div>
+            </div>
+
             <!-- Drivers and Windows-->
             <div class="section">
                 <span id="DriversAndOS" onclick="location.href='#DriversAndOS'">
@@ -500,7 +514,7 @@
                         All previous drivers released in 2024 have a bug that causes the game to crash when starting the game!
                         <br>
                         <br>
-                        If for some reason you can't use the newest driver, you can either downgrade to December 2023 drivers, or use DXVK with DXGI. 
+                        If for some reason you can't use the newest driver, you can either downgrade to December 2023 drivers, or use DXVK with DXGI.
                         </p>
                     </div>
                     <table class="center" style="width: 100%; height: 96px;">
@@ -605,8 +619,42 @@
                 </div>
                 <div class="card">
                     <p>
+                    <h3>Power Plans and Modes</h3>
+                    With Windows 10, Microsoft introduced <a href="https://learn.microsoft.com/en-us/windows-hardware/customize/power-settings/configure-processor-power-management-options" target="_blank">power modes</a>, which are meant to be replacement for power plans in terms of power and perfomance management.
+                    <br>
+                    Power modes require the <b>Balanced power plan</b> to be active to work. If you're any other power plan, you won't be able to use them (On most modern systems, you may find that you don't even have other power plans at all because of this).
+                    <br>
+                    <br>
+                    To change your power mode, go to <a href="ms-settings:powersleep">Power</a> settings, and select whatever highest performance option you have if the dropdown menu.
+                    <div class="card-yellow">
+                        <p>
+                            On some older, or custom built machines you may not have selectable power modes at all - in that case, all that matters is just having the <b>Balanced power plan</b> active.
+                        </p>
+                        <p>
+                            If you are on a laptop, power modes are saved per connecton state - selecting a mode while on battery will not change the mode when you plug in the charger, and vice versa.
+                        </p>
+                    </div>
+
+                    <div class="card-red">
+                        <p>
+                        <h3>Warning!</h3>
+                        Using custom power plans is not recommended due to how integral the <b>Balanced power plan</b> is to Windows 10 and 11 at the low level.
+                        <br>
+                        It can break power management on modern hardware, and can lead to increased power consumption and/or decreased performance (or even mess up things like fan speed).
+                        <br>
+                        <br>
+                        It is safer to customize the <b>Balanced power plan</b> to your liking, rather than using a custom one. (We all can agree this is not intuitive at all).
+                        </p>
+                    </div>
+
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
                     <h3>Game Mode</h3>
                     Windows 10 introduced a feature called <a href="ms-settings:gaming-gamemode">Game Mode</a>, which puts the system in a more gaming-friendly state.
+                    <br>
+                    Game Mode is a "power mode overlay", which means it requires power modes to work - the Balanced power plan must be active.
                     </p>
                     <p>
                         Game Mode features:
@@ -625,9 +673,6 @@
                         </li>
                         <li>
                             Disables file indexing, if "Respect Device Power Mode Settings" is enabled in <a href="ms-settings:search">Search settings</a>.
-                        </li>
-                        <li>
-                            Sets Game Mode power mode (Requires <a href="ms-settings:powersleep">Balanced power plan</a> to be active).
                         </li>
                         <li>
                             Enables CPU scheduling optimizations for Ryzen CPUs.
