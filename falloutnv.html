@@ -87,6 +87,12 @@
                     Fog Culling
                 </a>
 
+                <a href="#zlibUpdated" title="🙃 zlib Updated">
+                    <span class="subIcon">📦</span>
+                    <span class="flippy">🙃</span>
+                    zlib
+                </a>
+
                 <a href="#DriversAndOS" title="🙃 Graphics Drivers and Windows">
                     <span class="subIcon">🪟</span>
                     <span class="flippy">🙃</span>
@@ -484,6 +490,50 @@
                         <li>
                             <p>
                                 Download <a href="https://www.nexusmods.com/newvegas/mods/79516" target="_blank" title="Fog-based Object Culling">Fog-based Object Culling</a> and install it with your mod manager.
+                            </p>
+                        </li>
+                    </ol>
+                    </p>
+                </div>
+            </div>
+
+            <!-- zlib Updated -->
+            <div class="section">
+                <span id="zlibUpdated" onclick="location.href='#zlibUpdated'">
+                    <h2>zlib Updated</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <h3>Compressed</h3>
+                    Fallout New Vegas uses <a href="https://www.zlib.net/" target="_blank">zlib</a> compression for its BSA archives and plugins (NPC and Landscape records).
+                    <br>
+                    zlib on its own does not belong to the fastest compression algorithms, and the version used by Bethesda is older than the game itself, which only makes things worse.
+                    <br>
+                    By simply updating the library to the latest version, you can cut the time spent on decompression in <b>half</b>, which leads to faster loading times and less stuttering.
+                    <div class="card-yellow">
+                        <p>
+                            This mod works only in cases where you actually <b>have</b> such compressed data in the first place.
+                            <br>
+                            Most mods from 2024 should not have plugin compression, and we decompress vanilla game files using <a href="https://www.nexusmods.com/newvegas/mods/65854" target="_blank">BSA Decompressor</a> or by <a href="https://taleoftwowastelands.com/" target="_blank">Tale of Two Wastelands</a>. In such cases, this mod won't have any effect, as there's nothing to do in the first place.
+                            <br>
+                            <br>
+                            Unfortunately, there are a lot of older (and even new) mods with compression applied (even <a href="https://www.nexusmods.com/newvegas/mods/51664" target="_blank">Yukichigai Unofficial Patch - YUP</a> itself).
+                            <br>
+                            In such cases it's recommended to actually decompress your plugins, which can be very easily done by following <a href="https://vivanewvegas.moddinglinked.com/decompress.html" target="_blank">this guide</a>. Prevention is better than mitigation, and costs nothing.
+                            <br>
+                            <br>
+                            Mods with BSA archives are already rare on Nexus, and usually recent, so most often they are not using compression, or deliberately compressed due to their large sizes. Using the plugin in such cases is more sensible.
+                        </p>
+                    </div>
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Installation</h3>
+                    <ol>
+                        <li>
+                            <p>
+                                Download <a href="https://www.nexusmods.com/newvegas/mods/85267" target="_blank" title="zlib Updated - NVSE">zlib Updated - NVSE</a> and install it with your mod manager.
                             </p>
                         </li>
                     </ol>
