@@ -1309,7 +1309,85 @@
                     <p>
                         Click on the cards below to show the instructions for each limiter.
 
-                        <!-- SK -->
+
+                        <!-- RTSS -->
+                    <p>
+                    <div class="expander-top clickable center width-limited" onclick="expandCard(this, rtssExpander)" id="rtss">
+                        <p>
+                        <h3>
+                            RivaTuner Statistics Server
+                        </h3>
+                        Riva Tuner Statistic Server by <a href="https://forums.guru3d.com/members/unwinder.30019/" target="_blank">Unwinder</a> is probably the most famous FPS Limiter and OSD software, thanks to its <b>performance</b>, <b>compatibility</b> and <b>versatile On-Screen Display</b>.
+                        <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
+                        </p>
+                    </div>
+                    <div class="expander-bottom center width-limited" id="rtssExpander">
+                        <h4>Installation</h4>
+                        <ol>
+                            <li>
+                                Install and launch <a href="https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html" target="_blank">RTSS</a>. Open your System Tray (the triangle pointing upwards on the taskbar) and click on the RTSS icon to open it
+                            </li>
+                            <li>
+                                Press green <b>Add</b> button and select FalloutNV.exe
+                            </li>
+                            <li>
+                                Set <b>Application Detection Level</b> to <b>Low</b>
+                            </li>
+                            <li>
+                                Set <b>Framerate Limit</b> to:
+                                <ul>
+                                    <li>
+                                        No V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                <span class="fpsFixed">(RefreshRate)</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                <span class="fpsVSync">(RefreshRate - 0.05)</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        VRR + V-Sync
+                                        <div class="card-basic">
+                                            <p>
+                                                <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                                ...or lower
+                            </li>
+                            <li>
+                                Enter settings using Setup button and:
+                                <ul>
+                                    <li>
+                                        Enable <b>Passive Waiting</b>
+                                    </li>
+                                    <li>
+                                        Set framerate limiter to <b>Front Edge Sync</b>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Enable <b>Start with Windows</b> or launch RTSS everytime before you play
+                            </li>
+                            <p>
+                                Your configuration should look similar to this:
+                                <br>
+                                <img src="img/limiters/RTSS.webp" class="limiters-img" alt="Screenshot showcasing RTSS' settings">
+                                <br>
+                            </p>
+                        </ol>
+                    </div>
+                    </p>
+
+                    <!-- SK -->
                     <p>
                     <div class="expander-top clickable center width-limited" onclick="expandCard(this, specialkExpander)" id="specialk">
                         <p>
@@ -1482,83 +1560,6 @@
                             </div>
                         </ol>
                         </p>
-                    </div>
-                    </p>
-
-                    <!-- RTSS -->
-                    <p>
-                    <div class="expander-top clickable center width-limited" onclick="expandCard(this, rtssExpander)" id="rtss">
-                        <p>
-                        <h3>
-                            RivaTuner Statistics Server
-                        </h3>
-                        Riva Tuner Statistic Server by <a href="https://forums.guru3d.com/members/unwinder.30019/" target="_blank">Unwinder</a> is probably the most famous FPS Limiter and OSD software, thanks to its <b>performance</b>, compatibility and <b>versatile On-Screen Display</b>.
-                        <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
-                        </p>
-                    </div>
-                    <div class="expander-bottom center width-limited" id="rtssExpander">
-                        <h4>Installation</h4>
-                        <ol>
-                            <li>
-                                Install and launch <a href="https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html" target="_blank">RTSS</a>. Open your System Tray (the triangle pointing upwards on the taskbar) and click on the RTSS icon to open it
-                            </li>
-                            <li>
-                                Press green <b>Add</b> button and select FalloutNV.exe
-                            </li>
-                            <li>
-                                Set <b>Application Detection Level</b> to <b>Low</b>
-                            </li>
-                            <li>
-                                Set <b>Framerate Limit</b> to:
-                                <ul>
-                                    <li>
-                                        No V-Sync
-                                        <div class="card-basic">
-                                            <p>
-                                                <span class="fpsFixed">(RefreshRate)</span>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        V-Sync
-                                        <div class="card-basic">
-                                            <p>
-                                                <span class="fpsVSync">(RefreshRate - 0.05)</span>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        VRR + V-Sync
-                                        <div class="card-basic">
-                                            <p>
-                                                <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>
-                                            </p>
-                                        </div>
-                                    </li>
-                                </ul>
-                                ...or lower
-                            </li>
-                            <li>
-                                Enter settings using Setup button and:
-                                <ul>
-                                    <li>
-                                        Enable <b>Passive Waiting</b>
-                                    </li>
-                                    <li>
-                                        Set framerate limiter to <b>Front Edge Sync</b>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                Enable <b>Start with Windows</b> or launch RTSS everytime before you play
-                            </li>
-                            <p>
-                                Your configuration should look similar to this:
-                                <br>
-                                <img src="img/limiters/RTSS.webp" class="limiters-img" alt="Screenshot showcasing RTSS' settings">
-                                <br>
-                            </p>
-                        </ol>
                     </div>
                     </p>
 
