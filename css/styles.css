@@ -191,6 +191,8 @@ input:active {
   background-color: rgba(255, 255, 255, 0.0512);
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.13);
   margin-bottom: 0 !important;
+  display: flex;
+  align-items: center;
 }
 
 .expander-top.active {
@@ -255,6 +257,7 @@ img.chevron {
   box-shadow: none;
   margin-top: 3px;
   transition: transform 0.1s;
+  margin-left: auto;
 }
 
 hr {
