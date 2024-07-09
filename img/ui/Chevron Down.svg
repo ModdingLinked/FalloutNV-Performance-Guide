@@ -1,7 +1,21 @@
-<!-- Exported by Character Map UWP -->
-<svg height="100%" viewBox="128 320 768 416" width="100%"
-  xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink">
-  <path d="M128,352C128,343.333 131.167,335.833 137.5,329.5C143.833,323.167 151.333,320 160,320C168.667,320 176.167,323.167 182.5,329.5L512,658.5L841.5,329.5C847.833,323.167 855.333,320 864,320C872.667,320 880.167,323.167 886.5,329.5C892.833,335.833 896,343.333 896,352C896,360.667 892.833,368.167 886.5,374.5L534.5,726.5C528.167,732.833 520.667,736 512,736C503.333,736 495.833,732.833 489.5,726.5L137.5,374.5C131.167,368.167 128,360.667 128,352Z" fill="#FFFFFF" fill-opacity="1">
-  </path>
-</svg>
+<!-- MIT License
+
+Copyright (c) 2020 Microsoft Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
+<svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4.293 8.293a1 1 0 0 1 1.414 0L12 14.586l6.293-6.293a1 1 0 1 1 1.414 1.414l-7 7a1 1 0 0 1-1.414 0l-7-7a1 1 0 0 1 0-1.414Z" fill="#FFFFFF"/></svg>
