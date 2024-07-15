@@ -1234,9 +1234,6 @@
                                         This workaround applies only to <span class="abbreviation" title="Riva Tuner Statistic Server" onclick="expandCard(rtss, rtssExpander, 1); location.href='#rtss'">RTSS</span> and D3D9 Special K.
                                         <br>
                                         (Not needed if you use <span title="Special K" onclick="expandCard(specialk, specialkExpander, 1); location.href='#specialk'">Special K + DXVK with DXGI</span>)
-                                        <br>
-                                        <br>
-                                        Driver limiters are not precise enough to pull this off without risking stutter.
                                     </p>
                                 </div>
                             </ul>
@@ -1561,77 +1558,6 @@
                                 </p>
                             </div>
                         </ol>
-                        </p>
-                    </div>
-                    </p>
-
-                    <!-- Drivers -->
-                    <p>
-                    <div class="card center width-limited">
-                        <h3>
-                            Driver Limiters
-                        </h3>
-                        The most basic limiters from this list, but definitely the easiest and fastest to set up!
-                        <p>
-                        <div class="expander-top clickable width-full" onclick="expandCard(this, nvidiaExpander)" id="nvidia">
-                            <div>
-                                <p>
-                                <h4>
-                                    NVIDIA
-                                </h4>
-                                </p>
-                            </div>
-                            <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
-                        </div>
-                        <div class="expander-bottom width-full" id="nvidiaExpander">
-                            <h4>Configuration</h4>
-                            <ol>
-                                <li>
-                                    Open <b>NVIDIA Control Panel</b>, go to <b>Program Settings</b>
-                                </li>
-                                <li>
-                                    Select <b>FalloutNV.exe</b>. If it's not present, add it manually
-                                </li>
-                                <li>
-                                    In settings, set <b>Max Frame Rate</b> to:
-                                    <ul>
-                                        <li>
-                                            V-Sync | No V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    <span class="iFpsFixed">(RefreshRate)</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            VRR + V-Sync
-                                            <div class="card-basic">
-                                                <p>
-                                                    <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>
-                                                </p>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    ...or lower
-                                </li>
-                                <li>
-                                    Click <b>Apply</b>
-                                </li>
-                            </ol>
-                            <p>
-                                Your configuration should look similar to this:
-                                <br>
-                                <img src="img/limiters/Nvidia.webp" class="limiters-img" alt="Screenshot showcasing Nvidia Control Panel settings">
-                                <br>
-                            </p>
-                        </div>
-                        <div class="card-yellow">
-                            <p>
-                                AMD's Radeon Chill limiter is not recommended due to its variable FPS target, which is not helpful and causes issues, especially with physics.
-                                <br>
-                                Please use RTSS.
-                            </p>
-                        </div>
                         </p>
                     </div>
                     </p>
