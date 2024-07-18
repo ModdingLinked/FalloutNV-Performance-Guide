@@ -1296,11 +1296,6 @@
                     <br>
                     </p>
                     <p>
-                        Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
-                    <div>
-                        <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
-                        <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Calculate</button><span class="disabled" id="applyConfirmation">Done!</span>
-                    </div>
                     <div class="card-yellow">
                         <p>
                             If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.)
@@ -1325,6 +1320,15 @@
                         <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
                     </div>
                     <div class="expander-bottom center width-limited" id="rtssExpander">
+                        <div class="card-yellow">
+                            <p>
+                                Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
+                                <div>
+                                    <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" max="120" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
+                                    <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Calculate</button><span class="disabled" id="applyConfirmation">Done!</span>
+                                </div>
+                            </p>
+                        </div>
                         <h4>Installation</h4>
                         <ol>
                             <li>
