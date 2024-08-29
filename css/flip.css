@@ -1,0 +1,131 @@
+input,
+button,
+.button,
+.button-big {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.0605);
+  border: 1px solid rgba(255, 255, 255, 0.093);
+  border-radius: 3px;
+  text-align: center;
+  min-height: 1em;
+  font-size: 1.1em;
+  transition: all 187ms Cubic-Bezier(0, 0, 0, 1);
+}
+
+input:hover,
+button:hover,
+.button:hover,
+.button-big:hover {
+  background-color: rgba(255, 255, 255, 0.0837);
+}
+
+input:active,
+button:active,
+.button:active,
+.button-big:active {
+  background-color: rgba(255, 255, 255, 0.0326);
+  border-color: rgba(255, 255, 255, 0.0698);
+  color: rgba(255, 255, 255, 0.786);
+}
+
+.button-big {
+  background-color: rgba(255, 255, 255, 0.0605);
+  border: 1px solid rgba(255, 255, 255, 0.093);
+  border-radius: 3px;
+  text-align: center;
+  padding: 0.7em;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  min-width: 5em;
+  max-width: 8em;
+  min-height: 1em;
+  width: 100%;
+  transition: all 187ms Cubic-Bezier(0, 0, 0, 1);
+}
+
+#intelButton {
+  background-color: #2166b3;
+  color: white;
+}
+
+#intelButton:hover {
+  background-color: hsl(212, 69%, 55%);
+}
+
+#amdButton {
+  background-color: #dc0032;
+  color: white;
+}
+
+#amdButton:hover {
+  background-color: hsl(346, 100%, 65%);
+}
+
+#nvidiaButton {
+  background-color: #71bb21;
+  color: white;
+}
+
+#nvidiaButton:hover {
+  background-color: hsl(89, 70%, 60%);
+}
+
+.comparison-table {
+  table-layout: fixed;
+  width: 100%;
+  border-spacing: 0.4em;
+}
+
+.comparison-table h2 {
+  font-size: 1.5em;
+}
+
+.comparison-table .card,
+.comparison-table .card-red,
+.comparison-table .card-green {
+  vertical-align: top;
+}
+
+.subIcon {
+  position: relative;
+  left: 15px;
+  margin-left: -12px;
+  font-size: large;
+  z-index: 0;
+}
+
+.abbreviation {
+  text-decoration: underline !important;
+  text-decoration-style: dotted !important;
+}
+
+@media only screen and (max-width: 700px) {
+  .headerTitle {
+    font-size: 0.7em;
+  }
+  .comparison-table .card-red,
+  .comparison-table .card-green {
+    padding: 0em;
+  }
+  .comparison-table .card-yellow {
+    margin: 0em 0.75em 0em 0em;
+    padding: 0.1em 0.5em 0.1em 0.5em;
+  }
+  .comparison-table {
+    border-spacing: 0.1em;
+  }
+  .comparison-table h2 {
+    font-size: 1em;
+  }
+  .comparison-table ul {
+    font-size: 0.8em;
+    word-wrap: break-word;
+    line-height: 1.3em;
+    list-style-position: outside;
+    margin-left: -3em;
+    list-style: none;
+  }
+}/*# sourceMappingURL=flip.css.map */
