@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <title>FNV Performance Guide</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A guide to making Fallout New Vegas run smoother. Hopefully. Covers DXVK, Alt-Tabbing, stutters and frametimes.">
-    <meta property="og:title" content="Fallout New Vegas Performance and Stability Guide">
+    <meta name="description" content="A guide to making Fallout: New Vegas run smoother. Hopefully. Covers DXVK, Alt-Tabbing, stutters and frametimes.">
+    <meta property="og:title" content="Fallout: New Vegas Performance and Stability Guide">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://performance.moddinglinked.com">
     <meta property="og:image" content="https://performance.moddinglinked.com/img/ui/logo.webp">
-    <meta property="og:description" content="A guide to making Fallout New Vegas run smoother. Hopefully. Covers DXVK, Alt-Tabbing, stutters and frametimes.">
+    <meta property="og:description" content="A guide to making Fallout: New Vegas run smoother. Hopefully. Covers DXVK, Alt-Tabbing, stutters and frametimes.">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#292329">
     <meta name="keywords" content="Fallout New Vegas, FNV, FalloutNV, FPS, Performance, Fallout, FPS Limit, SpecialK, Riva Tuner, RTSS, Stutter, Lag, Latency, Hitches, Flip Model, DXGI, Interop, Nvidia, HDR">
     <link rel="icon" type="image/x-icon" href="img\favicon.webp">
@@ -40,7 +40,7 @@
                 <img src="./img/UI/Navigation.svg" id="navButton">
             </div>
             <div class="headerTitle">
-                <a href="./falloutnv.html" id="headerTitle">Fallout New Vegas Performance Guide</a>
+                <a href="./falloutnv.html" id="headerTitle">Fallout: New Vegas Performance Guide</a>
             </div>
         </div>
         <div class="sidebar left-sidebar">
@@ -107,7 +107,7 @@
                     <div>
                         <p>
                         <h3>Welcome!</h3>
-                        Goal of this guide is to fix the abysmal performance in Fallout New Vegas by using more modern technologies and tweaks, and make you generally aware of its quirks and other potential issues.
+                        Goal of this guide is to fix the abysmal performance in Fallout: New Vegas by using more modern technologies and tweaks, and make you generally aware of its quirks and other potential issues.
                         </p>
                         <p>
                             The guide is mostly written with an assumption that you've completed <b>Utilities</b> sections from
@@ -141,7 +141,7 @@
                         <br>
                         As for Bethesda's code - it also fails (horribly) to scale well with modern processors, something that you can see even in their latest titles.
                         <br>
-                        To make things worse, Fallout New Vegas was compiled without compiler optimizations, which while making engine modding easier, reduces the overall performance.
+                        To make things worse, Fallout: New Vegas was compiled without compiler optimizations, which while making engine modding easier, reduces the overall performance.
                     </p>
                     <p>
                         In short most performance issues can be summed with two words: <b>CPU bottleneck</b>.
@@ -419,7 +419,7 @@
                             <li id="annotation4">
                                 D3D9 loses the graphics device if it loses the screen ownership (Alt-Tab, Sleep, etc.). To recover, it needs to either have a copy of textures in RAM, or be able to reconstruct the memory from ground up.
                                 <br>
-                                Fallout New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
+                                Fallout: New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
                                 <br>
                                 DXVK fixes this by simply being in place of D3D9, while Windowed mode guarantees the game will never own the screen in the first place.
                             </li>
@@ -468,7 +468,7 @@
                 <div class="card">
                     <p>
                     <h3>Compressed</h3>
-                    Fallout New Vegas uses <a href="https://www.zlib.net/" target="_blank">zlib</a> compression for its BSA archives and plugins (NPC and Landscape records).
+                    Fallout: New Vegas uses <a href="https://www.zlib.net/" target="_blank">zlib</a> compression for its BSA archives and plugins (NPC and Landscape records).
                     <br>
                     zlib on its own does not belong to the fastest compression algorithms, and the version used by Bethesda is older than the game itself, which only makes things worse.
                     <br>
@@ -935,7 +935,7 @@
                             </li>
                             <li>
                                 <p>
-                                    Fallout New Vegas has some known shader issues or quirks. They are not guaranteed to happen (getting rarer with DXVK updates), but they can occur:
+                                    Fallout: New Vegas has some known shader issues or quirks. They are not guaranteed to happen (getting rarer with DXVK updates), but they can occur:
                                 <ul>
                                     <li>Transparency multisampling uses dithering - (Vulkan handles alpha to coverage differently than drivers)</li>
                                     <ul>
@@ -1000,7 +1000,7 @@
                         </li>
                         <li>
                             <p>
-                                Extract archive contents into your <b>Fallout New Vegas root folder</b>.
+                                Extract archive contents into your <b>Fallout: New Vegas root folder</b>.
                             </p>
                         </li>
                         <li>
@@ -1407,7 +1407,7 @@
                                 Download the <a href="https://special-k.info/" target="_blank"><b>Special K Archive</b></a> from the <b>Stable</b> section.
                             </li>
                             <li>
-                                From the downloaded archive, extract <b>SpecialK32.dll</b> to your Fallout New Vegas <b>root folder</b> and rename it to <b>dinput8.dll</b>
+                                From the downloaded archive, extract <b>SpecialK32.dll</b> to your Fallout: New Vegas <b>root folder</b> and rename it to <b>dinput8.dll</b>
                             </li>
                             <li>
                                 Download the <a href="https://performance.moddinglinked.com/files/sk.zip" target="_blank">archive with preconfigured settings</a> and extract its content to your <b>root folder</b>.
@@ -1418,7 +1418,7 @@
                                 </p>
                             </div>
                             <li>
-                                Launch Fallout New Vegas and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel.
+                                Launch Fallout: New Vegas and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel.
                             </li>
                             <li>
                                 Enable the <b>Framerate Limit</b> by ticking the checkbox, then right click on the bar (not graph) next to it:
@@ -1631,8 +1631,8 @@
                             If you can handle the performance loss, sure go ahead.
                         </li>
                         <li>
-                            <h4>Is it possible to use D3D9Ex in Fallout New Vegas?</h4>
-                            Technically yes - Fallout New Vegas, oddly enough is the only Bethesda title with native D3D9Ex support. Does it work well? Not really.
+                            <h4>Is it possible to use D3D9Ex in Fallout: New Vegas?</h4>
+                            Technically yes - Fallout: New Vegas, oddly enough is the only Bethesda title with native D3D9Ex support. Does it work well? Not really.
                             <br>
                             While Special K's D3D9Ex enforcement works far better that NVTF's, it still suffers from CPU perfomance loss and increased GPU usage.
                             <br>
@@ -1654,7 +1654,7 @@
                 <div class="card">
                     <p>
                     <h3>The End?</h3>
-                    Congratulations! You've made it through! I hope this guide has helped you making Fallout New Vegas a smoother experience.
+                    Congratulations! You've made it through! I hope this guide has helped you making Fallout: New Vegas a smoother experience.
                     <br>
                     If you have any issues, questions, critiques or recommendations hit us up on Discord - wall_sogb and Ungeziefi.
                     <br>
