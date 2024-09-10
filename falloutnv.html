@@ -310,27 +310,12 @@
                 <div class="card">
                     <p>
                     <h3>Installation</h3>
+                    Download and install the following mods with your mod manager:
                     <ol>
-                        <li>
-                            <p>
-                                If not already downloaded, download <a href="https://www.nexusmods.com/newvegas/mods/66347" target="_blank" title="lStewieAl's Tweaks and Engine Fixes">lStewieAl's Tweaks and Engine Fixes</a> and install it with your mod manager.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                If not already downloaded, download <a href="https://www.nexusmods.com/newvegas/mods/79358" target="_blank" title="Stewie Tweaks - VNV INI">Stewie Tweaks - VNV INI</a> and install it with your mod manager.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Download <a href="https://www.nexusmods.com/newvegas/mods/80993" target="_blank" title="lStewieAl's Engine Optimizations">lStewieAl's Engine Optimizations</a> and install it with your mod manager.
-                            </p>
-                        </li>
-                        <li>
-                            <p>
-                                Download <a href="https://www.nexusmods.com/newvegas/mods/67811" target="_blank" title="Faster Main Menu">Faster Main Menu</a> and install it with your mod manager.
-                            </p>
-                        </li>
+                        <li><a href="https://www.nexusmods.com/newvegas/mods/66347" target="_blank" title="lStewieAl's Tweaks and Engine Fixes">lStewieAl's Tweaks and Engine Fixes</a></li>
+                        <li><a href="https://www.nexusmods.com/newvegas/mods/79358" target="_blank" title="Stewie Tweaks - VNV INI">Stewie Tweaks - VNV INI</a></li>
+                        <li><a href="https://www.nexusmods.com/newvegas/mods/80993" target="_blank" title="lStewieAl's Engine Optimizations">lStewieAl's Engine Optimizations</a></li>
+                        <li><a href="https://www.nexusmods.com/newvegas/mods/67811" target="_blank" title="Faster Main Menu">Faster Main Menu</a></li>
                     </ol>
                     </p>
                 </div>
@@ -345,8 +330,7 @@
                     <p>
                     <h3>Stutter Remover</h3>
                     New Vegas Tick Fix is a mod by <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a> that fixes and improves game's internal clocks and memory management, which dramatically reduces stutter. It also
-                    allows for
-                    playing above 60fps without breaking physics.
+                    allows playing above 60fps without breaking physics, although the recommended limit should be set to 120 FPS or below.
                     <br>
                     Additionally, it has some DirectX changes, which help with performance and greatly reduce memory usage.
                     </p>
@@ -357,63 +341,51 @@
                     <ol>
                         <li>
                             <p>
-                                If it's not already installed, download <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank" title="New Vegas Tick Fix">NVTF</a> from Nexus and install with your mod manager.
+                                Download <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank" title="New Vegas Tick Fix">NVTF</a> and install it with your mod manager. You should already have this after following TBoT or VNV.
                             </p>
                         </li>
                         <li>
                             <p>
-                                Double-click on NVTF in Mod Organizer, then open <b>NVTF.ini</b> in the <b>INI Files</b> tab, and set:
-                            <div class="card-basic">
+                                Install the <a href="https://www.nexusmods.com/newvegas/mods/81231" target="_blank" title="NVTF Texture Modding Preset">NVTF Texture Modding Preset</a>, then make sure that it's loaded after NVTF or any other presets.
+                            </p>
+                            <div class="card-red">
                                 <p>
-                                    bModifyDirectXBehavior = 1
+                                    This preset does multiple things:
                                 </p>
-                            </div>
-                            Enables NVTF's DirectX changes.
-                            <br>
-                            <b>It's required for following settings to work:</b>
-                            <ul>
-                                <li>
-                                    <div class="card-basic">
+                                <ul>
+                                    <li>
+                                        <div class="card-basic">
+                                            <p>
+                                                bToggleTripleBuffering = 1
+                                            </p>
+                                        </div>
                                         <p>
-                                            bToggleTripleBuffering = 1
+                                            This change has no effect if you don't use V-Sync and its potential latency increase is eliminated by properly capping FPS, which is covered later in the guide.
                                         </p>
-                                    </div>
-                                    Enables triple buffer V-Sync, which gets rid of problematic framerate halving on FPS drops/instability caused by double buffer V-Sync.
-                                    <br>
-                                    <div class="card-yellow">
+                                    </li>
+                                    <li>
+                                        <div class="card-basic">
+                                            <p>
+                                                bUseDefaultPoolForTextures = 1
+                                            </p>
+                                        </div>
                                         <p>
-                                            <b>This change has no effect if you don't use V-Sync</b>
+                                            Disables texture mirroring between VRAM and RAM, which decreases RAM usage and allows using high resolution textures.
                                             <br>
-                                            The potential latency increase is eliminated by properly capping FPS, which is done later in the guide
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="card-basic">
-                                        <p>
-                                            bUseDefaultPoolForTextures = 1
-                                        </p>
-                                    </div>
-                                    Enabled by default
-                                    <br>
-                                    Disables texture mirroring between VRAM and RAM, which decreases RAM usage. Allows to use high resolution textures.
-                                    <br>
-                                    It's <b>required</b> if you use any kind of graphics mods.
-                                    <br>
-                                    <div class="card-red">
-                                        <p>
+                                            <br>
                                             <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation4">[4]</a></sup></b>
                                             <br>
-                                            To mitigate that either use <a href="#DXVK">DXVK</a>, or <a href="#FAQ">Windowed Mode</a>.
-                                            <br>
-                                            Or just don't Alt-Tab.
+                                            To mitigate that, either use <a href="#DXVK">DXVK</a>, <a href="#FAQ">Windowed Mode</a> or just avoid Alt-Tabbing. This is also covered later in the guide.
                                         </p>
-                                    </div>
-                                </li>
-                            </ul>
-                            </p>
+                                    </li>
+                                </ul>
+                                </p>
+                            </div>
                         </li>
                     </ol>
+
+                    <hr>
+
                     <span class="annotations">
                         <ol start="4">
                             <li id="annotation4">
@@ -521,10 +493,12 @@
                         If you don't see any GPU there, that means your GPU is too old to use DXVK.
                     <div class="card-red">
                         <p>
-                        <h3>AMD USERS!</h3>
-                        This step is especially important for you as drivers 24.1.1 - 24.5.1 crash the game.
-                        <br>
-                        Make sure you have driver <b>24.6.1</b> or newer!
+                            <b>IMPORTANT WARNING TO AMD USERS:</b>
+                            <br>
+                            Drivers between 24.1.1 and 24.5.1 will crash the game, so make sure that you have the <a href="https://www.amd.com/en/support" target="_blank">latest drivers</a>! Atleast <b>24.6.1</b> or newer.
+                            <br>
+                            <br>
+                            Alternatively, later in the guide you'll be able to fix these crashes by using <a href="./falloutnv.html#DXVK">DXVK</a>.
                         </p>
                     </div>
                     <table class="center" style="width: 100%; height: 96px;">
@@ -1248,7 +1222,7 @@
                     </h3>
                     <div class="card-red">
                         <p>
-                            Even with New Vegas Tick Fix, game can still have issues with high framerates. It's recommended to cap your framerate below around 120 FPS.
+                            Even with New Vegas Tick Fix, game can still have issues with high framerates. It's recommended to cap your framerate to 120 FPS or below.
                         </p>
                     </div>
                     Here are two recommended limiters - Riva Tuner Statistic Server and Special K. Both have their own advantages and disadvantages, so choose the one that fits your needs the best.
@@ -1693,33 +1667,33 @@
                 <div class="card">
                     <p>
                     <h3>Credits</h3>
-                    This is the part where I'd like to thank people who have helped me in whatever way making this guide possible.
+                    This is the part where I'd like to thank people who have helped me in whatever way to make this guide possible.
                     <ul>
                         <li>
                             Whole xNVSE server for being a great community. Especially:
                             <ul>
                                 <li>
-                                    <a href="https://next.nexusmods.com/profile/Ungeziefi/about-me" target="_blank">Ungeziefi</a> - for testing and helping with benchmarks
+                                    <a href="https://next.nexusmods.com/profile/Ungeziefi/about-me" target="_blank">Ungeziefi</a> for testing and helping with benchmarks.
                                 </li>
                                 <li>
-                                    <a href="https://c6-dev.github.io/" target="_blank">c6</a> - for fixing the some engine functions so my testing could be easier
+                                    <a href="https://c6-dev.github.io/" target="_blank">c6</a> for fixing the some engine functions so my testing could be easier.
                                 </li>
                                 <li>
-                                    <a href="https://www.nexusmods.com/newvegas/users/53377026" target="_blank">LOC (aka ItsMeJesusHChrist)</a> - for making the awesome logo for the guide
+                                    <a href="https://www.nexusmods.com/newvegas/users/53377026" target="_blank">LOC (aka ItsMeJesusHChrist)</a> for making the awesome logo for the guide.
                                 </li>
                                 <li>
-                                    Nice try <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a>, but you are not getting credited
+                                    Nice try <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a>, but you are not getting credited.
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            Whole <a href="http://discord.gg/specialk">Special K server</a> for also being a superb community with a lot of knowledgeable people. This guide would literally not exist without them.
+                            The <a href="http://discord.gg/specialk">Special K server</a> for being a superb community with a lot of knowledgeable people. This guide would literally not exist without them.
                         </li>
                         <li>
-                            <a href="https://www.nexusmods.com/site/users/16367674" target="_blank">Glaceon575</a> - for helping with benchmarks and providing screenshots for AMD GPUs
+                            <a href="https://www.nexusmods.com/site/users/16367674" target="_blank">Glaceon575</a> for helping with benchmarks and providing screenshots for AMD GPUs.
                         </li>
                         <li>
-                            You <img src="img/ui/pepestare.webp" style="width: 1.5em;" alt="Image of Pepe the frog happily smiling and looking at the viewer">
+                            You. <img src="img/ui/pepestare.webp" style="width: 1.5em;" alt="Image of Pepe the frog happily smiling and looking at the viewer">
                         </li>
                     </ul>
                     </p>
@@ -1727,7 +1701,7 @@
                 <div class="card">
                     <p>
                     <h3>Changelog</h3>
-                    Changes are documented on the <a href="https://github.com/WallSoGB/FalloutNV-Performance-Guide/commits/main" target="_blank">commit history</a>
+                    Changes are documented in the <a href="https://github.com/WallSoGB/FalloutNV-Performance-Guide/commits/main" target="_blank">commit history</a>.
                     </p>
                 </div>
             </div>
