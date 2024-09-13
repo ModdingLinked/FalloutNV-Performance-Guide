@@ -330,7 +330,7 @@
                     <p>
                     <h3>Stutter Remover</h3>
                     New Vegas Tick Fix is a mod by <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a> that fixes and improves game's internal clocks and memory management, which dramatically reduces stutter. It also
-                    allows playing above 60fps without breaking physics, although the recommended limit should be set to 120 FPS or below.
+                    allows playing above 60 FPS without breaking physics, although the recommended limit should be set to 120 FPS or below.
                     <br>
                     Additionally, it has some DirectX changes, which help with performance and greatly reduce memory usage.
                     </p>
@@ -1261,8 +1261,8 @@
                             <p>
                                 Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
                             <div>
-                                <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" max="120" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
-                                <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Calculate</button><span class="disabled" id="applyConfirmation">Done!</span>
+                                <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
+                                <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Calculate</button><span class="disabled" id="applyConfirmation">Done!</span> <span class="disabled" id="applyError">Due to physics issues, it's not recommended to go above 120 FPS, sorry!</span>
                             </div>
                             </p>
                         </div>

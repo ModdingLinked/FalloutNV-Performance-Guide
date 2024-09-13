@@ -29,6 +29,11 @@ function toggleNav() {
 
 function fadeOut(element) {
     element.style.opacity = "0%";
+
+}
+
+function disable(element) {
+    element.style.display = "none";
 }
 
 function rotate(element, rotation = 180) {
@@ -114,32 +119,59 @@ function createImageHandlers() {
     });
 }
 
+// Function to find the largest factor <= 120
+function largestCommonFactor(rate) {
+    for (let i = 120; i > 0; i--) {
+        if (rate % i === 0) {
+            return i;
+        }
+    }
+    return 1; // Default return if no common factor found
+}
+
 function refreshRateCalculations() {
-    const rr = document.getElementById("refreshRateInput").value;
-    const confirmation = document.getElementById("applyConfirmation");
-    confirmation.style.opacity = "100%";
+    const inputField = document.getElementById("refreshRateInput");
+    rr = inputField.value;
+
+    if (rr > 120) {
+        const errorMsg = document.getElementById("applyError");
+
+        errorMsg.style.display = "inline-block";
+        errorMsg.style.opacity = "100%";
+        setTimeout(fadeOut, 5500, errorMsg);
+        setTimeout(disable, 5550, errorMsg);
+    }
+    else if (rr > 24) {
+        const confirmation = document.getElementById("applyConfirmation");
+        confirmation.style.display = "inline-block";
+        confirmation.style.opacity = "100%";
+        setTimeout(fadeOut, 2500, confirmation);
+        setTimeout(disable, 2550, confirmation);
+    }
     if (rr > 24) {
         var rrVRR = Math.round(rr * (1 - rr * 0.00028));
         const fpsFixed = document.getElementsByClassName("fpsFixed");
         const fpsVSync = document.getElementsByClassName("fpsVSync");
         const fpsVRR = document.getElementsByClassName("fpsVRR");
-        const iFpsFixed = document.getElementsByClassName("iFpsFixed");
-        const iFpsVSync = document.getElementsByClassName("iFpsVSync");
 
-        fpsFixed[0].innerHTML = rr;
-        fpsVSync[0].innerHTML = rr - 0.05;
+        let valueVRR = rrVRR;
+        let valueVSync = rr - 0.05;
+        let valueFixed = rr;
 
-        for (const fpsVRRItem of fpsVRR) {
-            fpsVRRItem.innerHTML = rrVRR;
+        if (rr > 120) {
+            valueVRR = 120;
+            valueVSync = largestCommonFactor(rr);
+            if (valueVSync < 60)
+                valueVSync = "Invalid refresh rate - can't be cleanly divided";
+
+            valueFixed = valueVSync;
         }
-        for (const iFpsFixedItem of iFpsFixed) {
-            iFpsFixedItem.innerHTML = rr;
-        }
-        for (const iFpsVSyncItem of iFpsVSync) {
-            iFpsVSyncItem.innerHTML = rr - 1;
-        }
+
+        fpsFixed[0].innerHTML = valueFixed;
+        fpsVSync[0].innerHTML = valueVSync;
+        fpsVRR[0].innerHTML = valueVRR;
+
     }
-    setTimeout(fadeOut, 2500, confirmation);
 }
 
 function markActiveSection() {

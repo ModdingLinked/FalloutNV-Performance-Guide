@@ -128,4 +128,9 @@ button:active,
     margin-left: -3em;
     list-style: none;
   }
+}
+.disabled {
+  display: none;
+  opacity: 0%;
+  pointer-events: none;
 }/*# sourceMappingURL=flip.css.map */
