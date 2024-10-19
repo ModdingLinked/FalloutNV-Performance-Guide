@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
     updateProgressBarAndFadeIn();
     createImageHandlers();
     markActiveSection();
+    refreshRateCalculations(document.getElementById("rrRTSS"));
+    refreshRateCalculations(document.getElementById("rrSK"));
 });
 window.onscroll = updateProgressBarAndFadeIn;
 
@@ -119,36 +121,44 @@ function createImageHandlers() {
     });
 }
 
-// Function to find the largest factor <= 120
 function largestCommonFactor(rate) {
     for (let i = 120; i > 0; i--) {
         if (rate % i === 0) {
             return i;
         }
     }
-    return 1; // Default return if no common factor found
+    return 1;
 }
 
-function refreshRateCalculations() {
-    const inputField = document.getElementById("refreshRateInput");
+function handleRRConfirmation(rr){
+    if (rr > 120) {
+        const errorMsg = document.getElementsByClassName("applyError");
+
+        for (let i = 0; i < errorMsg.length; i++) {
+            errorMsg[i].style.display = "inline-block";
+            errorMsg[i].style.opacity = "100%";
+            setTimeout(fadeOut, 5500, errorMsg[i]);
+            setTimeout(disable, 5550, errorMsg[i]);
+        }
+    }
+    else if (rr >= 60) {
+        const confirmation = document.getElementsByClassName("applyConfirmation");
+        for (let i = 0; i < confirmation.length; i++) {
+            confirmation[i].style.display = "inline-block";
+            confirmation[i].style.opacity = "100%";
+            setTimeout(fadeOut, 2500, confirmation[i]);
+            setTimeout(disable, 2550, confirmation[i]);
+        }
+    }
+}
+
+function refreshRateCalculations(thisObj) {
+    const inputField = thisObj;
     rr = inputField.value;
 
-    if (rr > 120) {
-        const errorMsg = document.getElementById("applyError");
+    handleRRConfirmation(rr);
 
-        errorMsg.style.display = "inline-block";
-        errorMsg.style.opacity = "100%";
-        setTimeout(fadeOut, 5500, errorMsg);
-        setTimeout(disable, 5550, errorMsg);
-    }
-    else if (rr > 24) {
-        const confirmation = document.getElementById("applyConfirmation");
-        confirmation.style.display = "inline-block";
-        confirmation.style.opacity = "100%";
-        setTimeout(fadeOut, 2500, confirmation);
-        setTimeout(disable, 2550, confirmation);
-    }
-    if (rr > 24) {
+    if (rr >= 60) {
         var rrVRR = Math.round(rr * (1 - rr * 0.00028));
         const fpsFixed = document.getElementsByClassName("fpsFixed");
         const fpsVSync = document.getElementsByClassName("fpsVSync");
@@ -158,19 +168,67 @@ function refreshRateCalculations() {
         let valueVSync = rr - 0.05;
         let valueFixed = rr;
 
+        let divider = 0;
+
         if (rr > 120) {
             valueVRR = 120;
             valueVSync = largestCommonFactor(rr);
-            if (valueVSync < 60)
-                valueVSync = "Invalid refresh rate - can't be cleanly divided";
+            if (valueVSync < 60) {
+                valueVSync = "Invalid refresh rate - can't be cleanly divided!";
+
+                let fixedSK = document.getElementsByClassName("fixedSK");
+                let fixedSKError = document.getElementsByClassName("fixedSKError");
+                for (let i = 0; i < fixedSK.length; i++) {
+                    fixedSK[i].style.display = "none";
+                }
+                for (let i = 0; i < fixedSKError.length; i++) {
+                    fixedSKError[i].style.display = "block";
+                }
+            }
+            else {
+                let fixedSK = document.getElementsByClassName("fixedSK");
+                let fixedSKError = document.getElementsByClassName("fixedSKError");
+                for (let i = 0; i < fixedSK.length; i++) {
+                    fixedSK[i].style.display = "block";
+                }
+                for (let i = 0; i < fixedSKError.length; i++) {
+                    fixedSKError[i].style.display = "none";
+                }
+            }
 
             valueFixed = valueVSync;
+            divider = rr / valueVSync;
+
+            if (divider > 1) {
+                let scanModeSetup = document.getElementsByClassName("scanModeSetup");
+                for (let i = 0; i < scanModeSetup.length; i++) {
+                    scanModeSetup[i].style.display = "block";
+                }
+
+                let scanModeDivider = document.getElementsByClassName("scanModeDivider");
+                for (let i = 0; i < scanModeDivider.length; i++) {
+                    scanModeDivider[i].innerHTML = "1/" + divider;
+                }
+            }
+        }
+        else {
+            let scanModeSetup = document.getElementsByClassName("scanModeSetup");
+            for (let i = 0; i < scanModeSetup.length; i++) {
+                scanModeSetup[i].style.display = "none";
+            }
         }
 
-        fpsFixed[0].innerHTML = valueFixed;
-        fpsVSync[0].innerHTML = valueVSync;
-        fpsVRR[0].innerHTML = valueVRR;
+        for (let i = 0; i < fpsFixed.length; i++) {
+            fpsFixed[i].innerHTML = valueFixed;
+        }
 
+        for (let i = 0; i < fpsVSync.length; i++) {
+            fpsVSync[i].innerHTML = valueVSync;
+        }
+
+        for (let i = 0; i < fpsVRR.length; i++) {
+            fpsVRR[i].innerHTML = valueVRR;
+        }
     }
 }
 

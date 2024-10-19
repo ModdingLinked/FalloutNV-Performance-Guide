@@ -1153,19 +1153,17 @@
                                 <li>
                                     Framerate must be capped slightly below refresh rate to reduce latency.
                                 </li>
-                                <div class="card-red">
-                                    <p>
-                                        V-Sync on its own is <i><u>NOT</u></i> a limiter. Using it as one introduces a <b>massive</b> latency penalty.
-                                    </p>
-                                </div>
                                 <div class="card-yellow">
                                     <p>
-                                        This workaround applies only to <span class="abbreviation" title="Riva Tuner Statistic Server" onclick="expandCard(rtss, rtssExpander, 1); location.href='#rtss'">RTSS</span> and D3D9 Special K.
-                                        <br>
-                                        (Not needed if you use <span title="Special K" onclick="expandCard(specialk, specialkExpander, 1); location.href='#specialk'">Special K + DXVK with DXGI</span>)
+                                        This workaround is not needed if you use <span title="Special K" onclick="expandCard(specialk, specialkExpander, 1); location.href='#specialk'">Special K + DXVK with DXGI</span>.
                                     </p>
                                 </div>
                             </ul>
+                            <div class="card-red">
+                                <p>
+                                    V-Sync on its own is <i><u>NOT</u></i> a limiter. Using it as one introduces a <b>massive</b> latency penalty.
+                                </p>
+                            </div>
                         </li>
                         <li>
                             <h4>G-Sync | FreeSync</h4>
@@ -1251,15 +1249,6 @@
                         <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
                     </div>
                     <div class="expander-bottom center width-limited" id="rtssExpander">
-                        <div class="card-yellow">
-                            <p>
-                                Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
-                            <div>
-                                <input type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="24" value="60" onchange="refreshRateCalculations()" style="width: 80px;">
-                                <button id="rrSubmit" onclick="refreshRateCalculations()" style="margin: 5px;">Calculate</button><span class="disabled" id="applyConfirmation">Done!</span> <span class="disabled" id="applyError">Due to physics issues, it's not recommended to go above 120 FPS.</span>
-                            </div>
-                            </p>
-                        </div>
                         <h4>Installation</h4>
                         <ol>
                             <li>
@@ -1270,6 +1259,13 @@
                             </li>
                             <li>
                                 Set <b>Application Detection Level</b> to <b>Low</b>
+                            </li>
+                            <li>
+                                Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
+                                <div>
+                                    <input id="rrRTSS" type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="60" value="60" onchange="refreshRateCalculations(this)" style="width: 80px;">
+                                    <button id="rrSubmit" onclick="refreshRateCalculations(rrRTSS)" style="margin: 5px;">Calculate</button><span class="disabled" id="applyConfirmation">Done!</span> <span class="disabled" id="applyError">Due to physics issues, it's not recommended to go above 120 FPS.</span>
+                                </div>
                             </li>
                             <li>
                                 Set <b>Framerate Limit</b> to:
@@ -1294,11 +1290,13 @@
                                         VRR + V-Sync
                                         <div class="card-basic">
                                             <p>
-                                                Any value between the start of your monitor's VRR range (usually 48) and <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>.
-                                                <br>
-                                                <br>
-                                                More precisely, you want to set your limiter close to your lowest FPS in heavier areas for the game so that you'll have a consistent experience. This also means lower lag and better power efficiency thanks to not being bound by hardware.
+                                                Any value between 48 and <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>. 
                                             </p>
+                                            <div class="card-yellow">
+                                                <p>
+                                                    You should select a value that will match your average obtainable framerate in the game.
+                                                </p>
+                                            </div>
                                         </div>
                                     </li>
                                 </ul>
@@ -1352,7 +1350,7 @@
                             <p>
                             <ul>
                                 <li>
-                                    Special K may conflict with Riva Tuner. If the game crashes or SK doesn't show up in game, in RTSS settings, enable <b>Use Microsoft Detours API hooking</b>, or set <b>injection delay</b> to <b>30000</b>
+                                    Special K may conflict with Riva Tuner. If the game crashes or SK doesn't show up in game, in RTSS settings, enable <b>Use Microsoft Detours API hooking</b>.
                                 </li>
                                 <li>
                                     Special K's interface in D3D9 breaks water reflections when visible. Simply not having Special K's interface visible fixes the issue.
@@ -1360,17 +1358,7 @@
                                 <li>
                                     Special K's Vulkan support is currently limited to <b>Nvidia</b> GPUs.
                                 </li>
-                                <li>
-                                    <b>Nvidia Overlay</b> can <b>cause a black screen</b> when using Special K. You can disable it in GeForce Experience settings.
-                                </li>
                             </ul>
-                            </p>
-                        </div>
-                        <div class="card-yellow">
-                            <p>
-                                Calculated values are not provided because Special K already does that automatically, and with higher precision.
-                                <br>
-                                With that in mind, it's still recommended to cap your framerate below 120 FPS.
                             </p>
                         </div>
                         <h4>Installation</h4>
@@ -1388,96 +1376,69 @@
                             </li>
                             <div class="card-yellow">
                                 <p>
-                                    If you use <b>DXVK</b>, on the first launch Special K will ask you to enable DXVK support/ Vulkan bridge. Click <b>Yes</b> and relaunch the game if needed.
+                                    If you use <b>DXVK</b>, on the first launch Special K will ask you to enable DXVK support and Vulkan bridge. Click <b>Yes</b> and relaunch the game if needed.
                                 </p>
                             </div>
                             <li>
                                 Launch Fallout: New Vegas and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel.
                             </li>
                             <li>
-                                Enable the <b>Framerate Limit</b> by ticking the checkbox, then right click on the bar (not graph) next to it:
+                                Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
+                                <div>
+                                    <input id="rrSK" type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="60" value="60" onchange="refreshRateCalculations(this)" style="width: 80px;">
+                                    <button id="rrSubmit" onclick="refreshRateCalculations(rrSK)" style="margin: 5px;">Calculate</button><span class="disabled applyConfirmation">Done!</span> <span class="disabled applyError">Due to physics issues, it's not recommended to go above 120 FPS.</span>
+                                </div>
+                            <li>
+                                Follow the instructions below based on your preference:
                                 <ul>
                                     <li>
-                                        No V-Sync
+                                        No V-Sync:
                                         <div class="card-basic">
-                                            <p>
-                                                In right click menu select your refresh rate
-                                                <br>
-                                                Click on <b>Advanced</b> and select the <b>Latent Sync (VSYNC -Off-)</b> mode
-                                            </p>
-                                        </div>
-
-                                        <!-- Latent Sync -->
-                                        <div class="expander-top clickable width-very-limited" onclick="expandCard(this, latentSync)">
-                                            <div>
-                                                <p>
-                                                    Optional - Configuring Latent Sync to get rid of tears
-                                                </p>
-                                            </div>
-                                            <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
-                                        </div>
-
-                                        <div class="expander-bottom width-very-limited" id="latentSync">
-                                            <h4>It's best to do this in-game!</h4>
-                                            If you use <b>Fullscreen Mode without V-Sync</b> or <b>DXVK with DXGI</b> and <b>have stable framerate</b>, in limiter's right click menu select <b>Latent Sync</b>
-                                            <p>
-                                                In <b>Latent Sync</b> menu, select <b>Visualize Tearlines</b> and use <b>Sync offset</b> slider so the tearing is not visible.
-                                                <br>
-                                                Disable <b>Visualize Tearlines</b> when you decide you are satisfied with result.
-                                                <br>
-                                                It is possible that you won't see tearing out of the box.
-                                            </p>
-                                            <div class="card-red">
-                                                <p>
-                                                    Laptops with dedicated GPUs that do not have MUX switches for a direct dGPU<->Display connection can have problems with hiding the tearline.
-                                                        <br>
-                                                        While it may be impossible to hide it completely, latency benefits are still applicable.
-                                                </p>
-                                                <p>
-                                                    Some monitors have too small vertical blanking, so it's possible to not fully hide the tearing without timing modifications -
-                                                    if you wish to pursue this topic, create a custom resolution with increased <b>Vertical Blanking</b> in your driver or with
-                                                    <b><a href="https://www.monitortests.com/forum/Thread-Custom-Resolution-Utility-CRU">Custom Resolution Utility</a></b>
-                                                <h4>It's best to first test the resolution in the driver settings, otherwise you may lock out your display</h4>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        V-Sync
-                                        <div class="card-basic">
-                                            <div class="card-red">
-                                                <p>
-                                                    The subtraction is needed only for D3D9!
+                                            <p class="fixedSK">
+                                                Right-click on the framerate limit bar, and select <b>Latent Sync</b>.
+                                                <span class="scanModeSetup" style="display: none;">
                                                     <br>
-                                                    The preset included with the guide already optimizes V-Sync for DXGI, so you only need to select the limit.
-                                                </p>
-                                            </div>
-                                            <p>
-                                                In right click menu select your refresh rate, then <b>Ctrl-Click</b> on the <b>Framerate Limit</b> bar and subtract 0.05
+                                                    In the <b>Scan Mode</b> field, select <span class="scanModeDivider">1:1</span>.
+                                                </span>
+                                            </p>
+                                            <p class="fixedSKError" style="display: none;">
+                                                <span class="fpsFixed">(RefreshRate)</span>
                                             </p>
                                         </div>
                                     </li>
                                     <li>
-                                        VRR + V-Sync
+                                        V-Sync:
+                                        <div class="card-basic">
+                                            <p class="fixedSK">
+                                                Tick the <b>Framerate Limit</b> checkbox.
+                                                <span class="scanModeSetup" style="display: none;">
+                                                    <br>
+                                                    Right-click on the framerate limit bar next to it, and in the <b>Refresh Rate Factors</b> field, select <span class="scanModeDivider">1:1</span>.
+                                                </span>
+                                            </p>
+                                            <p class="fixedSKError" style="display: none;">
+                                                <span class="fpsFixed">(RefreshRate)</span>
+                                            </p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        VRR + V-Sync:
+                                        <br>
                                         <div class="card-basic">
                                             <p>
-                                                Included INI preset enables automatic VRR detection which takes care of everything.
+                                                Click on the <b>Advanced</b> button and change <b>Mode</b> from <b>Normal</b> to <b>Low-Latency (VRR Optimized)</b>.
                                                 <br>
-                                                To make sure the detection was successful, check if the <b>Auto VRR Mode</b> checkbox in <b>Advanced</b> limiter settings is green.
                                                 <br>
-                                                In case it failed, enable the limiter, right click on the bar and tick the <b>VRR Bias</b> option. After that, select <b>Low Latency (VRR Optimized)</b> mode.
+                                                Ctrl-click on the framerate limit bar and enter any value between 48 and <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>.
+                                            </p>
                                             <div class="card-yellow">
                                                 <p>
-                                                    The limit is selected based on your maximum refresh rate!
-                                                    <br>
-                                                    In case you can't reach that limit consistently, lower it to your average FPS amount.
+                                                    You should select a value that will match your average obtainable framerate in the game.
                                                 </p>
                                             </div>
-                                            </p>
                                         </div>
                                     </li>
                                 </ul>
-                                ...if you want to enter a custom value, <b class="card-basic">Ctrl-Click</b> on the bar. You can also drag your mouse on it.
                             </li>
                             <p>
                                 Your configuration should look similar to this: (picture shows "No V-Sync" configuration on DXVK + DXGI)
