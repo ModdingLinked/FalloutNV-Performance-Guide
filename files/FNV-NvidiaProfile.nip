@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-16"?>
+<ArrayOfProfile>
+  <Profile>
+    <ProfileName>Fallout - New Vegas</ProfileName>
+    <Executeables>
+      <string>falloutnvbeta.exe</string>
+      <string>falloutnv.exe</string>
+      <string>falloutnvlauncher.exe</string>
+      <string>fallout3nv.exe</string>
+    </Executeables>
+    <Settings>
+      <ProfileSetting>
+        <SettingNameInfo />
+        <SettingID>540166535</SettingID>
+        <SettingValue>524965</SettingValue>
+        <ValueType>Dword</ValueType>
+      </ProfileSetting>
+      <ProfileSetting>
+        <SettingNameInfo>Vulkan/OpenGL present method</SettingNameInfo>
+        <SettingID>550932728</SettingID>
+        <SettingValue>1</SettingValue>
+        <ValueType>Dword</ValueType>
+      </ProfileSetting>
+    </Settings>
+  </Profile>
+</ArrayOfProfile>

@@ -1011,24 +1011,8 @@
                                     </p>
                                 </div>
                             </li>
-
-                            <li>In Nvidia Control Panel, in 3D Settings, set <b class="card-basic">Vulkan/OpenGL present method</b> to <b class="card-basic">Prefer layered on DXGI Swapchain</b>
-                                <br>
-                                You can use global profile if you want to use Flip Model in all OpenGL and Vulkan titles.
-                            </li>
-                            <div class="card-red">
-                                <p>
-                                    If you don't see those options, then your driver is not up to date!
-                                </p>
-                                <hr>
-                                <p>
-                                    Nvidia resets those settings on driver updates! Make sure to reapply them after updating.
-                                    <br>
-                                    <a href="https://youtu.be/_36yNWw_07g?t=6" target="_blank">Thanks Nvidia!</a>
-                                </p>
-                            </div>
                             <li>
-                                Press <b>Apply changes</b> and exit.
+                                Download the premade <a href="./files/FNV-NvidiaProfile.nip" target="_blank">Nvidia Driver Profile</a> for Fallout New Vegas.
                             </li>
                             <li>
                                 Download <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a>.
@@ -1037,33 +1021,15 @@
                                 Extract the archive and run the program.
                             </li>
                             <li>
-                                Enable "Show unknown settings from NVIDIA predefined profiles" in the top bar (penultimate button).
+                                Click on the <b>Import user defined profiles</b> button (green arrow pointing down), then <b>Import profiles</b> and select the <b>FNV-NvidiaProfile.nip</b> file.
                             </li>
-                            <li>
-                                Press <b class="card-basic">Ctrl+F</b> and paste <b class="card-basic">OGL_DX_PRESENT_DEBUG</b>.
-                            </li>
-                            <ol>
-                                <li>
-                                    Select the setting and click on <b>Show bit value editor</b> on the top bar (last button).
-                                </li>
-                                <li>
-                                    In the first column, check bits:
-                                    <b class="card-basic" style="letter-spacing: 0.1em;">#00</b>,
-                                    <b class="card-basic" style="letter-spacing: 0.1em;">#02</b>,
-                                    <b class="card-basic" style="letter-spacing: 0.1em;">#05</b>,
-                                    <b class="card-basic" style="letter-spacing: 0.1em;">#07</b>,
-                                    <b class="card-basic" style="letter-spacing: 0.1em;">#09</b>,
-                                    <b class="card-basic" style="letter-spacing: 0.1em;">#19</b>,
-                                    <div class="card-yellow">
-                                        <p>
-                                            These flags enable DXVK support, improve performance and fix forced promotion to <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> in some games.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    Click <b>Apply & Close</b>
-                                </li>
-                            </ol>
+                            <div class="card-red">
+                                <p>
+                                    Nvidia resets those settings on driver updates! Make sure to reapply them after updating.
+                                    <br>
+                                    <a href="https://youtu.be/_36yNWw_07g?t=6" target="_blank">Thanks Nvidia!</a>
+                                </p>
+                            </div>
                             <li>
                                 Click <b>Apply changes</b> in the top right and exit.
                             </li>
