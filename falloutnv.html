@@ -12,7 +12,7 @@
     <meta property="og:image" content="https://performance.moddinglinked.com/img/ui/logo.webp">
     <meta property="og:description" content="A guide to making Fallout: New Vegas run smoother. Hopefully. Covers DXVK, Alt-Tabbing, stutters and frametimes.">
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#292329">
-    <meta name="keywords" content="Fallout New Vegas, FNV, FalloutNV, FPS, Performance, Fallout, FPS Limit, SpecialK, Riva Tuner, RTSS, Stutter, Lag, Latency, Hitches, Flip Model, DXGI, Interop, Nvidia, HDR">
+    <meta name="keywords" content="Fallout New Vegas, FNV, FalloutNV, FPS, Performance, Fallout, FPS Limit, Riva Tuner, RTSS, Stutter, Lag, Latency, Hitches, Flip Model, DXGI, Interop, Nvidia, HDR">
     <link rel="icon" type="image/x-icon" href="img\favicon.webp">
     <script src="javascript.js"></script>
     <link rel="manifest" href="manifest.json">
@@ -80,8 +80,8 @@
                     DXVK
                 </a>
 
-                <a href="#RecommendedLimiters" title="FPS Limiters">
-                    FPS Limiters
+                <a href="#RecommendedLimiters" title="FPS Limits">
+                    FPS Limits
                 </a>
 
                 <a href="#FAQ" title="FAQ">
@@ -272,7 +272,7 @@
                                 <br>
                                 AMD drivers have a D3D12 interop for OpenGL that can be toggled by enabling triple buffering in Radeon Settings. Vulkan interop is enabled automatically in windowed mode.
                                 <br>
-                                However, due to how it's implemented, it can cause crashes with games or mods that spawn both D3D12 and OpenGL devices, and its compatibility is spotty at best.
+                                However, due to how it's implemented, it can cause crashes with games or mods that spawn both D3D12 and OpenGL devices.
                             </li>
                         </ol>
                     </span>
@@ -744,8 +744,6 @@
                                         </li>
                                         <li>
                                             Potential compatibility issues with overlays that can't properly discern between DXGI and Vulkan surfaces.
-                                            <br>
-                                            (Nvidia: Partially fixed by <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a>)
                                         </li>
                                     </ul>
                                 </td>
@@ -842,9 +840,9 @@
                     DXVK is an open source Direct3D 9-11 to Vulkan translator project lead by <a href="https://github.com/doitsujin">Philip Rebohle (doitsujin)</a> and <a href="https://github.com/Joshua-Ashton">Joshua Ashton</a>. While created mainly for Linux, works <u>unofficially</u> on Windows.
                     <br>
                     In short, it allows you to run Fallout using the Vulkan API which has much lower draw call overhead than D3D9, which is one of the main performance limiting factors in this game.
-                    <div class="card-yellow">
+                    <div class="card-green">
                         <p>
-                            If you play on Linux, you are already using DXVK. That said, it's still recommended to go through this section and use dxvk.conf from the Nexus release.
+                            If you play on Linux, you are already using DXVK! You can skip this section.
                         </p>
                     </div>
                     <div class="card-red">
@@ -937,13 +935,13 @@
                         </li>
                     </ul>
                     <br>
-                    DXVK <b>doesn't perform any HDR</b> tone mapping, so you need to use <a href="https://github.com/Filoppi/PumboAutoHDR" target="_blank">Pumbo's ReShade AutoHDR</a> or <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a> (Nvidia only) for that.
+                    DXVK <b>doesn't perform any HDR</b> tone mapping, so you need to use <a href="https://github.com/Filoppi/PumboAutoHDR" target="_blank">Pumbo's ReShade AutoHDR</a>.
                     <br>
                     Failing to do so will result in washed out colors and incorrect brightness.
                     <div class="card-yellow">
                         <p>
                         <h4>Screenshot Tonemapping</h4>
-                        Game's built-in screnshot function doesn't support HDR, so you need to use Special K, Game Bar, Steam or Nvidia Overlay to take screenshots.
+                        Game's built-in screnshot function doesn't support HDR, so you need to use Game Bar, Steam or Nvidia Overlay to take screenshots.
                         </p>
                     </div>
                     </p>
@@ -955,7 +953,7 @@
                             <p>
                                 Manually download the latest <a href="https://www.nexusmods.com/newvegas/mods/79299?tab=files" target="_blank">DXVK version</a> from Nexus.
                             </p>
-                            <div class="card-yellow">
+                            <div class="card-green">
                                 <p>
                                     If you have a <b>HDR display</b>, you can select the <b>HDR version</b> mentioned above.
                                 </p>
@@ -1005,25 +1003,15 @@
                         <ol>
                             <li>
                                 Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b>.
+                                <div class="card-basic">
+                                    <p>
+                                        [Display]
+                                        <br>
+                                        bFull Screen=0
+                                    </p>
+                                </div>
                             </li>
-                            <div class="card-basic">
-                                <p>
-                                    [Display]
-                                    <br>
-                                    bFull Screen=0
-                                </p>
-                            </div>
-                            <br>
-                            <div class="card-yellow">
-                                <p>
-                                    It's recommend to use <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a>, since it configures the interop automatically and applies other compatiblity fixes.
-                                    <br>
-                                    It also resolves the settings reset issue mentioned below.
-                                    <br>
-                                    <br>
-                                    In case you don't want to, or can't use Special K, you can follow the steps below.
-                                </p>
-                            </div>
+
                             <li>In Nvidia Control Panel, in 3D Settings, set <b class="card-basic">Vulkan/OpenGL present method</b> to <b class="card-basic">Prefer layered on DXGI Swapchain</b>
                                 <br>
                                 You can use global profile if you want to use Flip Model in all OpenGL and Vulkan titles.
@@ -1120,7 +1108,7 @@
             <!-- RecommendedLimiters -->
             <div class="section">
                 <span id="RecommendedLimiters" onclick="location.href='#RecommendedLimiters'">
-                    <h2>Recommended FPS Limiters and Their Configurations</h2>
+                    <h2>Recommended FPS Limits</h2>
                 </span>
                 <div class="card">
                     <p>
@@ -1153,11 +1141,6 @@
                                 <li>
                                     Framerate must be capped slightly below refresh rate to reduce latency.
                                 </li>
-                                <div class="card-yellow">
-                                    <p>
-                                        This workaround is not needed if you use <span title="Special K" onclick="expandCard(specialk, specialkExpander, 1); location.href='#specialk'">Special K + DXVK with DXGI</span>.
-                                    </p>
-                                </div>
                             </ul>
                             <div class="card-red">
                                 <p>
@@ -1179,10 +1162,7 @@
                         </li>
                         <li>
                             <h4>No V-Sync</h4>
-                            Choose this if you want to reduce latency as much as possible, and don't mind tearing (if you are an advanced user, you can get rid of tearing using
-                            <a title="Special K" onclick="expandCard(specialk, specialkExpander, 1)" href="#specialk">Special K</a>
-                            or
-                            <a title="RTSS" onclick="expandCard(rtss, rtssExpander, 1)" href="#rtss">RTSS</a>).
+                            Choose this if you want to reduce latency as much as possible, and don't mind tearing.
                             <ul>
                                 <li>
                                     No special prerequisites.
@@ -1199,286 +1179,107 @@
                                             iPresentInterval=0
                                         </p>
                                     </div>
-                                    Disabling V-Sync through other means (Driver, Special K, DXVK) also works.
+                                    Disabling V-Sync through other means (Driver, DXVK) also works.
                                     </p>
                                 </div>
                             </ul>
                         </li>
                     </ul>
+                    <br>
+                    If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.).
+                    <br>
+                    Having framerate capped to a value that's not a clean fraction of your refresh rate will cause microstuttering (For example 40 at 60hz).
                     </p>
                 </div>
                 <div class="card">
                     <p>
                     <h3>
-                        So many options...
+                        RivaTuner Statistics Server
                     </h3>
-                    <div class="card-red">
-                        <p>
-                            Even with New Vegas Tick Fix, game can still have issues with high framerates. It's recommended to cap your framerate to 120 FPS or below.
-                        </p>
-                    </div>
-                    Here are two recommended limiters - Riva Tuner Statistic Server and Special K. Both have their own advantages and disadvantages, so choose the one that fits your needs the best.
-                    <br>
-                    <br>
-                    Riva Tuner offers great compatibility, good performance and a super versatile On-Screen Display, while Special K packs an insane amount of features and offers amazingly smooth framepacing, but comes at a cost of potential compatibility issues.
-                    <br>
-                    <br>
-                    No matter which one you will end up choosing, you won't pick wrongly - both softwares offer smooth gameplay and low latency.
-                    </p>
-                    <p>
-                    <div class="card-yellow">
-                        <p>
-                            If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.)
-                        </p>
-                    </div>
-                    </p>
-                    <p>
-                        <br>
-                        Click on the cards below to show the instructions for each limiter.
-                    <p>
-                        <!-- RTSS -->
-                    <div class="expander-top clickable center width-limited" onclick="expandCard(this, rtssExpander)" id="rtss">
-                        <div>
-                            <p>
-                            <h3>
-                                RivaTuner Statistics Server
-                            </h3>
-                            Riva Tuner Statistic Server by <a href="https://forums.guru3d.com/members/unwinder.30019/" target="_blank">Unwinder</a> is probably the most famous FPS Limiter and OSD software, thanks to its <b>performance</b>, <b>compatibility</b> and <b>versatile On-Screen Display</b>.
-                            </p>
-                        </div>
-                        <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
-                    </div>
-                    <div class="expander-bottom center width-limited" id="rtssExpander">
-                        <h4>Installation</h4>
-                        <ol>
-                            <li>
-                                Install and launch <a href="https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html" target="_blank">RTSS</a>. Open your System Tray (the triangle pointing upwards on the taskbar) and click on the RTSS icon to open it
-                            </li>
-                            <li>
-                                Press green <b>Add</b> button and select FalloutNV.exe
-                            </li>
-                            <li>
-                                Set <b>Application Detection Level</b> to <b>Low</b>
-                            </li>
-                            <li>
-                                Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
-                                <div>
-                                    <input id="rrRTSS" type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="60" value="60" onchange="refreshRateCalculations(this)" style="width: 80px;">
-                                    <button id="rrSubmit" onclick="refreshRateCalculations(rrRTSS)" style="margin: 5px;">Calculate</button><span class="disabled" id="applyConfirmation">Done!</span> <span class="disabled" id="applyError">Due to physics issues, it's not recommended to go above 120 FPS.</span>
-                                </div>
-                            </li>
-                            <li>
-                                Set <b>Framerate Limit</b> to:
-                                <ul>
-                                    <li>
-                                        No V-Sync
-                                        <div class="card-basic">
-                                            <p>
-                                                <span class="fpsFixed">(RefreshRate)</span>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        V-Sync
-                                        <div class="card-basic">
-                                            <p>
-                                                <span class="fpsVSync">(RefreshRate - 0.05)</span>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        VRR + V-Sync
-                                        <div class="card-basic">
-                                            <p>
-                                                Any value between 48 and <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>. 
-                                            </p>
-                                            <div class="card-yellow">
-                                                <p>
-                                                    You should select a value that will match your average obtainable framerate in the game.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                Enter settings using Setup button and:
-                                <ul>
-                                    <li>
-                                        Enable <b>Passive Waiting</b>
-                                    </li>
-                                    <li>
-                                        Set framerate limiter to <b>Front Edge Sync</b>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li>
-                                Enable <b>Start with Windows</b> or launch RTSS everytime before you play
-                            </li>
-                            <p>
-                                Your configuration should look similar to this:
-                                <br>
-                            <div class="image-container width-60">
-                                <img class="content-img" src="img/limiters/RTSS.webp" alt="Screenshot showcasing RTSS' settings">
-                                <div class="resize-overlay expand"></div>
-                            </div>
-                            <br>
-                            </p>
-                        </ol>
-                    </div>
+                    Riva Tuner Statistic Server by <a href="https://forums.guru3d.com/members/unwinder.30019/" target="_blank">Unwinder</a> is probably the most famous FPS Limiter and OSD software, thanks to its <b>performance</b>, <b>compatibility</b> and <b>versatile On-Screen Display</b>.
                     </p>
 
-                    <!-- SK -->
-                    <p>
-                    <div class="expander-top clickable center width-limited" onclick="expandCard(this, specialkExpander)" id="specialk">
-                        <div>
-                            <p>
-                            <h3>
-                                Special K
-                            </h3>
-                            Special K is a mod by <a href="https://github.com/Kaldaien" target="_blank">Kaldaien</a> focused mainly on fixing performance in games and implementing HDR.
-                            <br>
-                            Its <a href="https://wiki.special-k.info/FAQ" target="_blank">list of features is too long</a> to write here, but the most important one used here is its <b>incredibly versatile limiter</b> and if using DXGI, <b>HDR</b> and (almost) lagless V-Sync.
-                            </p>
-                        </div>
-                        <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
-                    </div>
-                    <div class="expander-bottom center width-limited" id="specialkExpander">
-                        <p>
-                        <div class="card-red">
-                            <h3>Warning!</h3>
-                            <p>
+                    <h4>Installation and configuration</h4>
+                    <ol>
+                        <li>
+                            Install and launch <a href="https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html" target="_blank">RTSS</a>. Open your System Tray (the triangle pointing upwards on the taskbar) and click on the RTSS icon to open it
+                        </li>
+                        <li>
+                            Press green <b>Add</b> button and select FalloutNV.exe
+                        </li>
+                        <li>
+                            Set <b>Application Detection Level</b> to <b>Low</b>
+                        </li>
+                        <li>
+                            Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
+                            <div>
+                                <input id="rrRTSS" type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="60" value="60" onchange="refreshRateCalculations(this)" style="width: 80px;">
+                                <button id="rrSubmit" onclick="refreshRateCalculations(rrRTSS)" style="margin: 5px;">Calculate</button><span class="disabled" id="applyConfirmation">Done!</span> <span class="disabled" id="applyError">Due to physics issues, it's not recommended to go above 120 FPS.</span>
+                            </div>
+                            <div class="card-red">
+                                <p>
+                                    Even with New Vegas Tick Fix, game can still have issues with high framerates. It's recommended to cap your framerate to 120 FPS or below.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            Set <b>Framerate Limit</b> to:
                             <ul>
                                 <li>
-                                    Special K may conflict with Riva Tuner. If the game crashes or SK doesn't show up in game, in RTSS settings, enable <b>Use Microsoft Detours API hooking</b>.
+                                    V-Sync
+                                    <div class="card-basic">
+                                        <p>
+                                            <span class="fpsVSync">(RefreshRate - 0.05)</span>
+                                        </p>
+                                    </div>
                                 </li>
                                 <li>
-                                    Special K's interface in D3D9 breaks water reflections when visible. Simply not having Special K's interface visible fixes the issue.
+                                    VRR + V-Sync
+                                    <div class="card-basic">
+                                        <p>
+                                            Any value between 48 and <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>.
+                                        </p>
+                                        <div class="card-yellow">
+                                            <p>
+                                                You should select a value that will match your average obtainable framerate in the game.
+                                            </p>
+                                        </div>
+                                    </div>
                                 </li>
                                 <li>
-                                    Special K's Vulkan support is currently limited to <b>Nvidia</b> GPUs.
+                                    No V-Sync
+                                    <div class="card-basic">
+                                        <p>
+                                            <span class="fpsFixed">(RefreshRate)</span>
+                                        </p>
+                                    </div>
                                 </li>
                             </ul>
-                            </p>
-                        </div>
-                        <h4>Installation</h4>
-                        <ol>
-                            <li>
-                                Download Special K from <a href="https://performance.moddinglinked.com/files/SpecialK.7z" target="_blank"><b>here</b></a>.
-                            </li>
-                            <div class="card-green">
-                                <p>
-                                    The archive contains a preconfigured INI file, optimized for Fallout: New Vegas.
-                                </p>
-                            </div>
-                            <li>
-                                Drag <b>all files from the archive</b> into your Fallout: New Vegas <b>root folder</b></b>.
-                            </li>
-                            <div class="card-yellow">
-                                <p>
-                                    If you use <b>DXVK</b>, on the first launch Special K will ask you to enable DXVK support and Vulkan bridge. Click <b>Yes</b> and relaunch the game if needed.
-                                </p>
-                            </div>
-                            <li>
-                                Launch Fallout: New Vegas and press <b class="card-basic">Ctrl + Shift + Backspace</b> to enter Special K Control Panel.
-                            </li>
-                            <li>
-                                Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
-                                <div>
-                                    <input id="rrSK" type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="60" value="60" onchange="refreshRateCalculations(this)" style="width: 80px;">
-                                    <button id="rrSubmit" onclick="refreshRateCalculations(rrSK)" style="margin: 5px;">Calculate</button><span class="disabled applyConfirmation">Done!</span> <span class="disabled applyError">Due to physics issues, it's not recommended to go above 120 FPS.</span>
-                                </div>
-                            <li>
-                                Follow the instructions below based on your preference:
-                                <ul>
-                                    <li>
-                                        No V-Sync:
-                                        <div class="card-basic">
-                                            <p class="fixedSK">
-                                                Right-click on the framerate limit bar, and select <b>Latent Sync</b>.
-                                                <span class="scanModeSetup" style="display: none;">
-                                                    <br>
-                                                    In the <b>Scan Mode</b> field, select <span class="scanModeDivider">1:1</span>.
-                                                </span>
-                                            </p>
-                                            <p class="fixedSKError" style="display: none;">
-                                                <span class="fpsFixed">(RefreshRate)</span>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        V-Sync:
-                                        <div class="card-basic">
-                                            <p class="fixedSK">
-                                                Tick the <b>Framerate Limit</b> checkbox.
-                                                <span class="scanModeSetup" style="display: none;">
-                                                    <br>
-                                                    Right-click on the framerate limit bar next to it, and in the <b>Refresh Rate Factors</b> field, select <span class="scanModeDivider">1:1</span>.
-                                                </span>
-                                            </p>
-                                            <p class="fixedSKError" style="display: none;">
-                                                <span class="fpsFixed">(RefreshRate)</span>
-                                            </p>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        VRR + V-Sync:
-                                        <br>
-                                        <div class="card-basic">
-                                            <p>
-                                                Click on the <b>Advanced</b> button and change <b>Mode</b> from <b>Normal</b> to <b>Low-Latency (VRR Optimized)</b>.
-                                                <br>
-                                                <br>
-                                                Ctrl-click on the framerate limit bar and enter any value between 48 and <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>.
-                                            </p>
-                                            <div class="card-yellow">
-                                                <p>
-                                                    You should select a value that will match your average obtainable framerate in the game.
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <p>
-                                Your configuration should look similar to this: (picture shows "V-Sync" configuration on DXVK + DXGI)
-                                <br>
-                            <div class="image-container width-60">
-                                <img class="content-img" src="img/limiters/SK.webp" alt="Screenshot showcasing Special K's control panel">
-                                <div class="resize-overlay expand"></div>
-                            </div>
+                        </li>
+                        <li>
+                            Enter settings using Setup button and:
+                            <ul>
+                                <li>
+                                    Enable <b>Passive Waiting</b>
+                                </li>
+                                <li>
+                                    Set framerate limiter to <b>Front Edge Sync</b>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Enable <b>Start with Windows</b> or launch RTSS everytime before you play
+                        </li>
+                        <p>
+                            Your configuration should look similar to this:
                             <br>
-                            </p>
-                            <div class="card-yellow">
-                                <p>
-                                    <span id="nvhdr" onclick="location.href='#nvhdr'">
-                                        <h2>Nvidia Exclusive - HDR output</h2>
-                                    </span>
-                                    If you have a HDR compatible display and use HDR DXVK, you can use Special K to output in native HDR.
-                                    <br>
-                                    <b>Keep in mind that it can decrease your performance a bit due to higher render bit depth.</b>
-                                <ul>
-                                    <li>
-                                        Open the HDR menu at the top of Special K's control panel menu and press the HDR Setup button.
-                                    </li>
-                                    <li>
-                                        Select the scRGB HDR option from the HDR Calibration widget.
-                                    </li>
-                                    <li>
-                                        Restart the game.
-                                    </li>
-                                    <li>
-                                        For more information, see <a href="https://wiki.special-k.info/en/HDR/Retrofit" target="_blank">Special K Wiki</a>.
-                                    </li>
-                                </ul>
-                                </p>
-                            </div>
-                        </ol>
+                        <div class="image-container width-60">
+                            <img class="content-img" src="img/limiters/RTSS.webp" alt="Screenshot showcasing RTSS' settings">
+                            <div class="resize-overlay expand"></div>
+                        </div>
+                        <br>
                         </p>
-                    </div>
-                    </p>
-
-                    </p>
+                    </ol>
                 </div>
             </div>
 
@@ -1493,7 +1294,7 @@
                     <ul class="faq">
                         <li>
                             <h4>I can't use DXVK, and I need to Alt-Tab!</h4>
-                            All you can do is download <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> or <a href="#specialk" onclick="expandCard(specialk, specialkExpander, 1)">Special K</a> and use the legacy Windowed mode.
+                            All you can do is download <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> and use the legacy Windowed mode.
                             <br>
                             Remember to enable <b>Windowed mode</b> itself in <b>FalloutCustom.ini</b>!
                             <div class="card-basic">
@@ -1532,12 +1333,6 @@
                             These features are enabled by default and don't suffer from the issues of the original Game Mode.
                         </li>
                         <li>
-                            <h4>Why does Special K show D3D11 instead of Vulkan when using DXVK with DXGI?</h4>
-                            The DXGI interop uses D3D11 to display the game, and sometimes Special K can't detect the presence of DXVK due to 3rd party programs.
-                            <br>
-                            It's nothing to worry about, it's purely a visual difference - Special K is running in D3D11 mode regardless of the name you see.
-                        </li>
-                        <li>
                             <h4>Any way change brightness in Windowed Mode?</h4>
                             Use <a href="https://reshade.me/" target="_blank">ReShade</a> or <a href="https://www.nexusmods.com/newvegas/mods/51577/" target="_blank">Dynavision</a> to change the brightness.
                         </li>
@@ -1564,13 +1359,6 @@
                             No. While it is true that you'd gain Windowed mode with Flip Model and HDR from it, in contrast to DXVK you are guaranteed to get lower perfomance due to the translation overhead.
                             <br>
                             If you can handle the performance loss, sure go ahead.
-                        </li>
-                        <li>
-                            <h4>Is it possible to use D3D9Ex in Fallout: New Vegas?</h4>
-                            Technically yes - Fallout: New Vegas, oddly enough is the only Bethesda title with native D3D9Ex support. Does it work well? Not really.
-                            <br>
-                            While Special K's D3D9Ex enforcement works far better that NVTF's, it still suffers from CPU perfomance loss and increased GPU usage.
-                            <br>
                         </li>
                         <li>
                             <h4>During ReShade installation, which API should I choose if I use DXVK?</h4>

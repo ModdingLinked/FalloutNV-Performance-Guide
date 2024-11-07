@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     createImageHandlers();
     markActiveSection();
     refreshRateCalculations(document.getElementById("rrRTSS"));
-    refreshRateCalculations(document.getElementById("rrSK"));
 });
 window.onscroll = updateProgressBarAndFadeIn;
 
@@ -175,25 +174,6 @@ function refreshRateCalculations(thisObj) {
             valueVSync = largestCommonFactor(rr);
             if (valueVSync < 60) {
                 valueVSync = "Invalid refresh rate - can't be cleanly divided!";
-
-                let fixedSK = document.getElementsByClassName("fixedSK");
-                let fixedSKError = document.getElementsByClassName("fixedSKError");
-                for (let i = 0; i < fixedSK.length; i++) {
-                    fixedSK[i].style.display = "none";
-                }
-                for (let i = 0; i < fixedSKError.length; i++) {
-                    fixedSKError[i].style.display = "block";
-                }
-            }
-            else {
-                let fixedSK = document.getElementsByClassName("fixedSK");
-                let fixedSKError = document.getElementsByClassName("fixedSKError");
-                for (let i = 0; i < fixedSK.length; i++) {
-                    fixedSK[i].style.display = "block";
-                }
-                for (let i = 0; i < fixedSKError.length; i++) {
-                    fixedSKError[i].style.display = "none";
-                }
             }
 
             valueFixed = valueVSync;
