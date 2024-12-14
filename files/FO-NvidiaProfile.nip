@@ -23,4 +23,26 @@
       </ProfileSetting>
     </Settings>
   </Profile>
+  <Profile>
+    <ProfileName>Fallout 3</ProfileName>
+    <Executeables>
+      <string>falloutlauncher.exe</string>
+      <string>fallout3ng.exe</string>
+      <string>fallout3.exe</string>
+    </Executeables>
+    <Settings>
+      <ProfileSetting>
+        <SettingNameInfo />
+        <SettingID>540166535</SettingID>
+        <SettingValue>524965</SettingValue>
+        <ValueType>Dword</ValueType>
+      </ProfileSetting>
+      <ProfileSetting>
+        <SettingNameInfo>Vulkan/OpenGL present method</SettingNameInfo>
+        <SettingID>550932728</SettingID>
+        <SettingValue>1</SettingValue>
+        <ValueType>Dword</ValueType>
+      </ProfileSetting>
+    </Settings>
+  </Profile>
 </ArrayOfProfile>
