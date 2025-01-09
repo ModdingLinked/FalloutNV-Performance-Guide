@@ -1,11 +1,21 @@
 window.addEventListener('resize', sizeChanged);
 document.addEventListener('DOMContentLoaded', function () {
+    setD3D9Year();
     updateProgressBarAndFadeIn();
     createImageHandlers();
     markActiveSection();
     refreshRateCalculations(document.getElementById("rrRTSS"));
 });
 window.onscroll = updateProgressBarAndFadeIn;
+
+function setD3D9Year(){
+    var d3d9Year = document.getElementById("d3d9_year");
+    var d3d9Date = new Date(2001, 8, 24); // Windows XP RTM date - API is finalized by then
+    var today = new Date();
+    var diff = today - d3d9Date;
+    var years = Math.floor(diff / 31536000000);
+    d3d9Year.innerHTML = years;
+}
 
 function sizeChanged() {
     var sidebar = document.getElementsByClassName("left-sidebar");
