@@ -333,48 +333,22 @@
                     <p>
                     <h3>Installation</h3>
                     <ol>
-                        <li>
+                        <li>Once the mod has been installed, double-click it in the left pane of MO2.</li>
+                        <li>In the <strong>INI-Files</strong> tab, open <span class="card-basic">NVSE\Plugins\NVTF.ini</span></li>
+                        <li>Change the following option:</li>
+                        <ul>
+                            <li>Set <strong>bUseDefaultPoolForTextures</strong> to <b>1</b> (line 29).</li>
+                        </ul>
+                        <div class="card-red">
                             <p>
-                                Download <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank" title="New Vegas Tick Fix">NVTF</a> and install it with your mod manager. You should already have this after following VNV or TBoT.
+                                This setting Disables texture mirroring between VRAM and RAM, which decreases RAM usage and allows using high resolution textures.
+                                <br>
+                                <br>
+                                <b>This also breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation4">[4]</a></sup></b>
+                                <br>
+                                To mitigate that, either use <a href="#DXVK">DXVK</a>, <a href="#FAQ">Windowed Mode</a> or just avoid Alt-Tabbing. This is also covered later in the guide.
                             </p>
-                        </li>
-                        <li>
-                            <p>
-                                Install the <a href="https://www.nexusmods.com/newvegas/mods/81231" target="_blank" title="NVTF Texture Modding Preset">NVTF Texture Modding Preset</a>, then make sure that it's loaded after NVTF or any other presets.
-                            </p>
-                            <div class="card-red">
-                                <p>
-                                    This preset does multiple things:
-                                </p>
-                                <ul>
-                                    <li>
-                                        <div class="card-basic">
-                                            <p>
-                                                bToggleTripleBuffering = 1
-                                            </p>
-                                        </div>
-                                        <p>
-                                            This change has no effect if you don't use V-Sync and its potential latency increase is eliminated by properly capping FPS, which is covered later in the guide.
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <div class="card-basic">
-                                            <p>
-                                                bUseDefaultPoolForTextures = 1
-                                            </p>
-                                        </div>
-                                        <p>
-                                            Disables texture mirroring between VRAM and RAM, which decreases RAM usage and allows using high resolution textures.
-                                            <br>
-                                            <br>
-                                            <b>This change breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation4">[4]</a></sup></b>
-                                            <br>
-                                            To mitigate that, either use <a href="#DXVK">DXVK</a>, <a href="#FAQ">Windowed Mode</a> or just avoid Alt-Tabbing. This is also covered later in the guide.
-                                        </p>
-                                    </li>
-                                </ul>
-                                </p>
-                            </div>
+                        </div>
                         </li>
                     </ol>
 
