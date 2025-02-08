@@ -817,83 +817,94 @@
                     In short, it allows you to run Fallout using the Vulkan API which has much lower draw call overhead than D3D9, which is one of the main performance limiting factors in this game.
                     <div class="card-green">
                         <p>
-                            If you play on Linux, you are already using DXVK! You can skip this section.
-                        </p>
-                    </div>
-                    <div class="card-red">
-                        <p>
-                        <h3>Things about DXVK you must acknowledge:</h3>
-                        <ul>
-                            <li>
-                                <p>
-                                    DXVK improves performance in mainly draw call (CPU) bound scenarios (e.g. draw distance), and usually doesn't help much in GPU bound ones (e.g. resolution)
-                                <ul>
-                                    <li>
-                                        <p>
-                                            It is possible that DXVK won't change anything for you, or even make things worse
-                                        </p>
-                                    </li>
-                                </ul>
-                                </p>
-
-                            </li>
-                            <li>
-                                <p>
-                                    You may experience increased stutter at the beginning of your playthrough due to shader compilation.
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    DXVK's GPU compatibility varies between manufacturers
-                                <ul>
-                                    <li>
-                                        <p>
-                                            <b>Nvidia GPU</b> laptops <b>must</b> use the <a href="#dxvk-flip">DXGI interop</a> (see below).
-                                            <br>
-                                            Using it on <b>desktops</b> is not required, but <b>highly recommended</b> for the most optimal experience
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <b>AMD GPUs must</b> use the <a href="#dxvk-flip">DXGI interop</a> (see below), otherwise they will suffer from severe performance issues or fail to launch the game.
-                                            <br>
-                                            Shader issues are more common on Windows compared to other GPUs (situation is completely reversed on Linux).
-                                            <br>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>
-                                            <b>Intel GPUs</b> from 6th Gen and newer can work provided you have <a href="https://www.intel.com/content/www/us/en/search.html#sort=relevancy&f:downloadtype=[Drivers]&f:@tabfilter=[Downloads]&f:@stm_10385_en=[Graphics]" target="_blank">newest drivers</a>
-                                            installed.
-                                            <br>
-                                            On some iGPUs, DXVK is broken past the 1.10.1 version.
-                                            <br>
-                                        </p>
-                                    </li>
-                                </ul>
-                                </p>
-                            </li>
-                            <li>
-                                <p>
-                                    Fallout: New Vegas has some known shader issues or quirks. They are not guaranteed to happen (getting rarer with DXVK updates), but they can occur:
-                                <ul>
-                                    <li>Transparency multisampling uses dithering - (Vulkan handles alpha to coverage differently than drivers)</li>
-                                    <ul>
-                                        <li>
-                                            If you are an AMD, RADV Linux user, you can disable this behavior by setting <b class="card-basic">RADV_DEBUG=noatocdithering</b> environment variable.
-                                        </li>
-                                    </ul>
-                                    <li>Blood decals can suffer from color overflow and turn white - Fixed by <a href="https://www.nexusmods.com/newvegas/mods/87830" target="_blank">Blood Decal Flashing Fix</a></li>
-                                </ul>
-                                </p>
-                            </li>
-                        </ul>
+                            If you play on Linux, you are already using DXVK! You can skip this whole section.
                         </p>
                     </div>
                     </p>
                 </div>
+                <div class="card">
+                    <p>
+                    <h3>Things to know</h3>
+                    Due to the nature of DXVK and Vulkan itself, there are some things you should be aware of:
+                    <ul>
+                        <li>
+                            <p>
+                                DXVK improves performance in mainly draw call (CPU) bound scenarios (e.g. draw distance), and usually doesn't help much in GPU bound ones (e.g. resolution)
+                            <ul>
+                                <li>
+                                    <p>
+                                        It is possible that DXVK won't change anything for you, or even make things worse
+                                    </p>
+                                </li>
+                            </ul>
+                            </p>
+
+                        </li>
+                        <li>
+                            <p>
+                                You may experience increased stutter at the beginning of your playthrough due to shader compilation.
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                DXVK's GPU compatibility varies between manufacturers
+                            <ul>
+                                <li>
+                                    <p>
+                                        <b>Nvidia GPU</b> laptops <b>must</b> use the <a href="#dxvk-flip">DXGI interop</a> (see below).
+                                        <br>
+                                        Using it on <b>desktops</b> is not required, but <b>highly recommended</b> for the most optimal experience
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <b>AMD GPUs must</b> use the <a href="#dxvk-flip">DXGI interop</a> (see below), otherwise they will suffer from severe performance issues or fail to launch the game.
+                                        <br>
+                                        Shader issues are more common on Windows compared to other GPUs (situation is completely reversed on Linux).
+                                        <br>
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <b>Intel GPUs</b> from 6th Gen and newer can work provided you have <a href="https://www.intel.com/content/www/us/en/search.html#sort=relevancy&f:downloadtype=[Drivers]&f:@tabfilter=[Downloads]&f:@stm_10385_en=[Graphics]" target="_blank">newest drivers</a>
+                                        installed.
+                                        <br>
+                                        On some iGPUs, DXVK is broken past the 1.10.1 version.
+                                        <br>
+                                    </p>
+                                </li>
+                            </ul>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                DXVK can introduce or expose few visual issues or annoyances:
+                            <ul>
+                                <li>Transparency multisampling uses dithering - (Vulkan handles alpha to coverage differently than drivers)</li>
+                                <ul>
+                                    <li>
+                                        Due to the nature of this effect, its quality improves alongside the level of MSAA used. It's recommended to use at least 4x MSAA.
+                                    </li>
+                                    <li>
+                                        If you are an AMD, RADV Linux user, you can disable this behavior by setting <b class="card-basic">RADV_DEBUG=noatocdithering</b> environment variable.
+                                    </li>
+                                </ul>
+                                <li>Blood decals can suffer from color overflow and turn white - Fixed by <a href="https://www.nexusmods.com/newvegas/mods/87830" target="_blank">Blood Decal Flashing Fix</a></li>
+                            </ul>
+                            </p>
+                        </li>
+                    </ul>
+                    </p>
+                </div>
                 <div class="card" id="dxvk-HDR">
                     <p>
+                    <div class="card-green">
+                        <p>
+                            This section is only relevant if you have an HDR display, and even then it's completely optional.
+                            <br>
+                            Due to the potentially complicated setup, it's recommended only for enthusiasts.
+                        </p>
+                    </div>
                     <h3>HDR-Mod</h3>
                     HDR-Mod is a DXVK mod made by <a href="https://github.com/EndlesslyFlowering" target="_blank">Lilium (aka EndlesslyFlowering)</a> and <a href="https://github.com/WallSoGB" target="_blank">me</a> with the intention of adding HDR functionality to D3D9 games.
                     Effectively it does 2 major things:
@@ -909,13 +920,16 @@
                             </p>
                         </li>
                     </ul>
-                    <br>
-                    DXVK <b>doesn't perform any HDR</b> tone mapping, so you need to use <a href="https://github.com/Filoppi/PumboAutoHDR" target="_blank">Pumbo's ReShade AutoHDR</a>.
-                    <br>
-                    Failing to do so will result in washed out colors and incorrect brightness.
+
+                    You can download this version of DXVK in the next step, in <b>Optional Files</b>.
+
                     <div class="card-yellow">
                         <p>
-                        <h4>Screenshot Tonemapping</h4>
+                        <h4>Tone mapping</h4>
+                        DXVK <b>doesn't perform any HDR</b> tone mapping, so you need to use <a href="https://github.com/Filoppi/PumboAutoHDR" target="_blank">Pumbo's ReShade AutoHDR</a>.
+                        <br>
+                        Failing to do so will result in washed out colors and incorrect brightness.
+                        <hr>
                         Game's built-in screnshot function doesn't support HDR, so you need to use Game Bar, Steam or Nvidia Overlay to take screenshots.
                         </p>
                     </div>
@@ -928,14 +942,9 @@
                             <p>
                                 Manually download the latest <a href="https://www.nexusmods.com/newvegas/mods/79299?tab=files" target="_blank">DXVK version</a> from Nexus.
                             </p>
-                            <div class="card-green">
-                                <p>
-                                    If you have a <b>HDR display</b>, you can select the <b>HDR version</b> mentioned above.
-                                </p>
-                            </div>
-                            <div class="card-red">
+                            <div class="card-yellow">
                                 <p>GPUs lacking Vulkan 1.3 support or having issues with 2.0, must use the <b><a href="https://www.nexusmods.com/Core/Libs/Common/Widgets/DownloadPopUp?id=1000102854&game_id=130" target="_blank">1.10.3 version</a></b>.</p>
-                                <p>Some <b>Intel iGPUs</b> need to use the <b><a href="https://www.nexusmods.com/Core/Libs/Common/Widgets/DownloadPopUp?id=1000102855&game_id=130" target="_blank">1.10.1 version</a></b>.</p>
+                                <p>Some older <b>Intel iGPUs</b> may need to use the <b><a href="https://www.nexusmods.com/Core/Libs/Common/Widgets/DownloadPopUp?id=1000102855&game_id=130" target="_blank">1.10.1 version</a></b>.</p>
                             </div>
                         </li>
                         <li>
@@ -964,6 +973,11 @@
                             Nvidia desktops can, and are recommended to use it for the best experience, but ultimately it's optional.
                         </p>
                     </div>
+
+                    <hr>
+
+                    Click on expanders below to see how to enable Flip Model for your GPU.
+
                     <div class="expander-top clickable center width-limited" onclick="expandCard(this, nvidiaFlipExpander)" id="nvidiaFlip">
                         <div>
                             <p>
