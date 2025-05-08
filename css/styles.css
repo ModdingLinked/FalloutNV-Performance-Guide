@@ -59,6 +59,20 @@ h3 {
   line-height: 1.25em;
 }
 
+#logoBig {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#logoBig img {
+  width: 100%;
+  max-width: 220px;
+  margin: 0;
+  padding: 0;
+}
+
 .flex {
   display: flex;
 }
@@ -251,6 +265,9 @@ textarea {
   }
   .content {
     padding: 4px;
+    width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
   }
   .width-90 {
     max-width: 100% !important;
@@ -263,5 +280,45 @@ textarea {
   }
   .width-40 {
     max-width: 70% !important;
+  }
+  #logoBig {
+    display: none;
+  }
+  .container {
+    min-width: 100%;
+    overflow-x: hidden;
+  }
+}
+@media only screen and (max-width: 470px) {
+  .container {
+    min-width: 100%;
+    overflow-x: hidden;
+  }
+  .content {
+    padding: 4px;
+    width: 100%;
+    min-width: 0;
+    margin-left: 0;
+    margin-right: 0;
+    overflow-x: hidden;
+  }
+  .card,
+  .card-red,
+  .card-yellow,
+  .card-green,
+  .image-slider {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  .image-container,
+  .slider-container {
+    max-width: 100% !important;
+  }
+  .slider-img {
+    max-width: 100%;
+    height: auto;
+  }
+  textarea {
+    max-width: 95%;
   }
 }/*# sourceMappingURL=styles.css.map */

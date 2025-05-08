@@ -1,5 +1,5 @@
 .link-download a::after,
-.link-page a::after{
+.link-page a::after {
     content: "";
     margin-left: 10px;
     display: inline-block;
@@ -10,10 +10,10 @@
     background-repeat: no-repeat;
 }
 
-.link-page a::after{
+.link-page a::after {
     background-image: url("../img/UI/Open.svg");
 }
 
-.link-download a::after{
+.link-download a::after {
     background-image: url("../img/UI/Download.svg");
 }
