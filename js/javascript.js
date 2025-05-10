@@ -64,6 +64,10 @@ function setupExpanders() {
     const expanders = document.querySelectorAll('.expander-top');
 
     expanders.forEach((expander, index) => {
+        // Skip if already has an ID
+        if (expander.id)
+            return; 
+
         // Remove any existing ID
         const oldId = expander.id;
         const contentId = oldId ?
