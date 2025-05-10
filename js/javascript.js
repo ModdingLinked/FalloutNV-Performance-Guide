@@ -14,6 +14,12 @@ document.addEventListener('DOMContentLoaded', function () {
     markActivePage();
     resizeAllTextAreas();
     setupExpanders();
+
+    const hash = window.location.hash;
+    if (hash) {
+        const id = hash.substring(1);
+        openExpanderForID(id);
+    }
 });
 window.onscroll = updateProgressBarAndFadeIn;
 
@@ -66,7 +72,7 @@ function setupExpanders() {
     expanders.forEach((expander, index) => {
         // Skip if already has an ID
         if (expander.id)
-            return; 
+            return;
 
         // Remove any existing ID
         const oldId = expander.id;
@@ -111,6 +117,19 @@ function expandCard(thisObj, $open, $dontReset) {
             for (var i = 0; i < textareas.length; i++) {
                 autoResize(textareas[i]);
             }
+        }
+    }
+}
+
+// Opens an expander that CONTAINS (not is) the ID
+function openExpanderForID(id) {
+    const object = document.getElementById(id);
+    const expander = object.closest('.expander-bottom');
+    if (expander) {
+        const expanderTop = expander.previousElementSibling;
+        if (expanderTop) {
+            expandCard(expanderTop, expander, true);
+            expander.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     }
 }
