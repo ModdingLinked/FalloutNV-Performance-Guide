@@ -73,8 +73,8 @@
                     New Vegas Tick Fix
                 </a>
 
-                <a href="#FogCulling" title="Fog-based Object Culling">
-                    Fog Culling
+                <a href="#CellOffsets" title="Cell Offset Generator">
+                    Cell Offset Generator
                 </a>
 
                 <a href="#zlibUpdated" title="zlib Updated">
@@ -382,37 +382,6 @@
                 </div>
             </div>
 
-            <!-- Fog-based Culling -->
-            <div class="section">
-                <span id="FogCulling" onclick="location.href='#FogCulling'">
-                    <h2>Fog-based Object Culling</h2>
-                </span>
-                <div class="card">
-                    <p>
-                    <h3>Occluded</h3>
-                    Simple mod I made to help in areas like Dead Money or Point Lookout, which are very densely packed with objects, yet have a lot of fog hiding them.
-                    Dynamically adjusts draw distance in accordance with the fog to improve performance with little to no visual difference.
-                    </p>
-                    <div class="card-yellow">
-                        <p>
-                            Using this mod will prevent you from configuring draw distance settings in-game. Please use the launcher or INI to configure them.
-                        </p>
-                    </div>
-                </div>
-                <div class="card">
-                    <p>
-                    <h3>Installation</h3>
-                    <ol>
-                        <li>
-                            <p>
-                                Download <a href="https://www.nexusmods.com/newvegas/mods/79516" target="_blank" title="Fog-based Object Culling">Fog-based Object Culling</a> and install it with your mod manager.
-                            </p>
-                        </li>
-                    </ol>
-                    </p>
-                </div>
-            </div>
-
             <!-- zlib Updated -->
             <div class="section">
                 <span id="zlibUpdated" onclick="location.href='#zlibUpdated'">
@@ -452,6 +421,43 @@
                                 Download <a href="https://www.nexusmods.com/newvegas/mods/85267" target="_blank" title="zlib Updated - NVSE">zlib Updated - NVSE</a> and install it with your mod manager.
                             </p>
                         </li>
+                    </ol>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Cell Offsets -->
+            <div class="section">
+                <span id="CellOffsets" onclick="location.href='#CellOffsets'">
+                    <h2>Cell Offset Generator</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <h3>Offset</h3>
+                    Automated tool for generating cell offsets on game startup, which massively reduces stutter when loading new cells.
+                    <br>
+                    Without it, game has to scan all plugins to find cells, which can take a lot of time, especially if you have a lot of mods installed.
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Installation</h3>
+                    <ol>
+                        <li>
+                            <p>
+                                Download <a href="https://www.nexusmods.com/newvegas/mods/92182" target="_blank" title="Cell Offset Generator - NVSE">Cell Offset Generator - NVSE</a> and install it with your mod manager.
+                            </p>
+                        </li>
+                        <div class="card-green">
+                            <p>
+                                On your next game launch, you should see a progress bar during the initial loading screen.
+                                <br>
+                                Game will take a bit longer to load, but once it's done, most of the loading stutter should be gone.
+                            </p>
+                            <p>
+                                Subsequent loads will be much faster, as generated offsets are saved in the <span class="card-basic">Data\CellOffsets</span> folder.
+                            </p>
+                        </div>
                     </ol>
                     </p>
                 </div>
