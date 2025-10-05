@@ -66,28 +66,18 @@
                     Terminology
                 </a>
 
-                <a href="#EngineOptimizations" title="lStewieAl's Engine Optimizations">
-                    Engine Optimizations
+                <a href="#DisplayModeComparison" title="Display Modes Comparison">
+                    Display Modes Comparison
                 </a>
 
-                <a href="#NVTF" title="New Vegas Tick Fix">
-                    New Vegas Tick Fix
-                </a>
+                <hr>
 
-                <a href="#zlibUpdated" title="zlib Updated">
-                    zlib
-                </a>
-
-                <a href="#CellOffsets" title="Cell Offset Generator">
-                    Cell Offset Generator
+                <a href="#PerformanceMods" title="Performance Mods">
+                    Performance Mods
                 </a>
 
                 <a href="#DriversAndOS" title="Graphics Drivers and Windows">
                     Drivers and Windows
-                </a>
-
-                <a href="#DisplayModeComparison" title="Display modes">
-                    Display modes
                 </a>
 
                 <a href="#DXVK" title="DXVK">
@@ -180,7 +170,7 @@
                             (Latency lowers along with refresh rate)
                         </li>
                         <li id="VRR">
-                            <b>G-Sync | FreeSync</b> - <b>Variable Refresh Rate (VRR)</b> technologies developed by NVIDIA and AMD respectively.
+                            <b>G-Sync | FreeSync</b> - <b>Variable Refresh Rate (VRR)</b> technologies developed by Nvidia and AMD respectively.
                             They allow the display to adapt its refresh rate to the framerate, allowing to use V-Sync at arbitrary framerates and reduce its latency<sup><a title="Why?" href="#annotation1">[1]</a></sup> .
                         </li>
                         <li id="MPO">
@@ -294,26 +284,192 @@
                 </div>
             </div>
 
-            <br>
-            <br>
-
-            <!-- Tweaks -->
+            <!-- Display Mode Comparison -->
             <div class="section">
-                <span id="EngineOptimizations" onclick="location.href='#EngineOptimizations'">
-                    <h2>lStewieAl's Mods</h2>
+                <span id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
+                    <h2>Display Mode Comparison</h2>
                 </span>
                 <div class="card">
                     <p>
-                    <h3>Rewritten</h3>
+                    <h3>Presentation Problems</h3>
+                    Here's a comparison of three display modes you can use in this game. Situation is problematic mainly due to Vulkan and D3D9 using old <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">presentation models</a>.
+                    <br>
+                    <br>
+                    This section is purely informative, just to let you know what options you have and what to expect from them.
+                    <div class="comparison">
+                        <table class="comparison-table">
+                            <tr>
+                                <th>
+                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
+                                        Flip Model Windowed
+                                        <br>
+                                        (DXVK with DXGI)
+                                    </h2>
+                                </th>
+                                <th>
+                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
+                                        Legacy/Optimized Fullscreen
+                                    </h2>
+                                </th>
+                                <th>
+                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
+                                        BitBlt Model Windowed
+                                        <br>
+                                        (D3D9, Base DXVK)
+                                    </h2>
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>Best latency and performance</li>
+                                        <li>Variable Refresh Rate works without any problems</li>
+                                        <li>
+                                            HDR output (Requires DXVK)
+                                        </li>
+                                        <li>
+                                            Fast Alt-Tab
+                                        </li>
+                                        <li>
+                                            Native support for color profiles
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>Best latency and performance, especially with <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span></li>
+                                        <li>Variable Refresh Rate works without any problems</li>
+                                    </ul>
+                                </td>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>
+                                            Fast Alt-Tab
+                                        </li>
+                                        <li>
+                                            Better support for color profiles
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            In-Game brightness settings don't work
+                                        </li>
+                                        <li>
+                                            Nvidia's interop increases memory usage by about 150-170MB,
+                                            <br>
+                                            and requires some manual setup to work with DXVK.
+                                        </li>
+                                        <li>
+                                            Potential compatibility issues with overlays that can't properly discern between DXGI and Vulkan surfaces.
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            Slower and unstable Alt-Tab, especially without <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span>
+                                        </li>
+                                        <div class="card-yellow">
+                                            <p>
+                                                Alt-Tab <b>doesn't work at all</b> if <b><a href="#NVTF" title="New Vegas Tick Fix">NVTF</a>'s pool change</b>
+                                                is <b>enabled</b>, unless you use <b><a href="#DXVK" title="Vulkan - DXVK">DXVK</a></b>
+                                            </p>
+                                        </div>
+                                        <li>
+                                            Color profiles may disengage, especially without <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span>
+                                        </li>
+                                        <li>
+                                            When using DXVK, degrades performance on Nvidia laptops and AMD GPUs.
+                                            <br>
+                                            DXGI Interop with Flip Model must be used instead.
+                                        </li>
+                                        <li>
+                                            HDR can be unstable - colorspace may be incorrect, and can cause issues on Alt-Tab, especially on AMD GPUs.
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            High input lag and worse performance, especially when not using any FPS limiter and/or using a laptop
+                                        </li>
+                                        <li>
+                                            V-Sync is always on<sup><a title="Why?" href="#annotation5">[5]</a></sup>
+                                        </li>
+                                        <li>
+                                            Variable Refresh Rate doesn't work natively
+                                        </li>
+                                        <ul>
+                                            <li>
+                                                AMD supports FreeSync in BitBlt windows that are fullscreen, but latency and performance penalties remain
+                                            </li>
+                                            <li>
+                                                Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation6">[6]</a></sup>
+                                            </li>
+                                        </ul>
+                                        <li>
+                                            In-Game brightness settings don't work
+                                        </li>
+                                        <li>
+                                            Higher memory bandwidth and usage
+                                        </li>
+                                        <li>
+                                            No HDR support
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <span class="annotations">
+                        <ol start="5">
+                            <li id="annotation5">
+                                Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
+                            </li>
+                            <li id="annotation6">
+                                While AMD enables FreeSync for Fullscreen Windowed BitBlt surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
+                                <br>
+                                This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
+                                <br>
+                                Enabling it globally is a bad idea, because it disrupts normal desktop usage (e.g. screen can sync to sleeping windows).
+                                <br>
+                                It's recommended to use <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to
+                                "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile. This makes Windowed G-Sync run only when the game is running.
+                                <br>
+                                <b>Keep in mind that even with this method, this G-Sync implementation is still buggy - if you get any of the forementioned issues, disable it.</b>
+                                <br>
+                                <h4>Never enable Windowed G-Sync globally!</h4>
+                            </li>
+                        </ol>
+                    </span>
+                    </p>
+                </div>
+            </div>
+
+            <br>
+            <hr>
+
+            <div class="section">
+                <span id="PerformanceMods" onclick="location.href='#PerformanceMods'">
+                    <h2>Performance Mods</h2>
+                </span>
+                <div class="card">
+                    <p>
+                    <h3>Stewie Tweaks</h3>
                     <a href="https://www.nexusmods.com/newvegas/users/2232669" target="_blank">lStewieAl</a> has made a few of mods focused on improving the engine perfomance in multiple aspects (loading, rendering, AI processing).
                     </p>
-                </div>
-                <div class="card-green">
-                    <p>
-                        If you came here from <a href="https://vivanewvegas.moddinglinked.com/utilities.html" target="_blank">Viva New Vegas</a> or <a href="https://thebestoftimes.moddinglinked.com/essentials.html" target="_blank">The Best of Times</a>, you can skip this section and jump right to the <a href="#NVTF">NVTF configuration</a>.
-                    </p>
-                </div>
-                <div class="card">
+
+                    <div class="card-green center">
+                        <p>
+                            If you came here from <a href="https://vivanewvegas.moddinglinked.com/utilities.html" target="_blank">Viva New Vegas</a> or <a href="https://thebestoftimes.moddinglinked.com/essentials.html" target="_blank">The Best of Times</a>, you can skip this section and jump right to the <a href="#NVTF">NVTF configuration</a>.
+                        </p>
+                    </div>
+
                     <p>
                     <h3>Installation</h3>
                     Download and install the following mods with your mod manager:
@@ -324,29 +480,22 @@
                         <li><a href="https://www.nexusmods.com/newvegas/mods/67811" target="_blank" title="Faster Main Menu">Faster Main Menu</a></li>
                     </ol>
                     </p>
-                </div>
-            </div>
 
-            <!-- NVTF -->
-            <div class="section">
-                <span id="NVTF" onclick="location.href='#NVTF'">
-                    <h2>New Vegas Tick Fix</h2>
-                </span>
-                <div class="card">
+                    <hr>
+
                     <p>
-                    <h3>Stutter Remover</h3>
-                    New Vegas Tick Fix is a mod by <a href="https://www.nexusmods.com/newvegas/users/31254295" target="_blank">karut</a> that fixes and improves game's internal clocks and memory management, which dramatically reduces stutter.
+                    <h3>New Vegas Tick Fix</h3>
+                    NVTF fixes and improves game's internal clocks and memory management, dramatically <strong>reducing stutter</strong>.
                     <br>
-                    It also allows playing above 60 FPS without breaking physics, although the recommended limit should be set to 120 FPS or below.
+                    It also allows playing <strong>above 60 FPS</strong> without breaking physics, although the recommended limit should be set to 120 FPS or below.
                     <br>
-                    Additionally, it has some DirectX changes, which help with performance and greatly reduce memory usage.
+                    Additionally, it has some DirectX changes, which help with <strong>performance</strong> and greatly reduce memory usage.
                     </p>
-                </div>
-                <div class="card">
+
                     <p>
                     <h3>Installation</h3>
                     <ol>
-                        <li>Once the mod has been installed, double-click it in the left pane of MO2.</li>
+                        <li>Install the mod from <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank">here</a>. As mentioned before, VNV or TBoT users should already have it in their lists.</li>
                         <li>In the <strong>INI Files</strong> tab, open <span class="card-basic">NVSE\Plugins\NVTF.ini</span></li>
                         <li>Change the following option:</li>
                         <ul>
@@ -366,8 +515,6 @@
                         </li>
                     </ol>
 
-                    <hr>
-
                     <span class="annotations">
                         <ol start="4">
                             <li id="annotation4">
@@ -380,20 +527,12 @@
                         </ol>
                     </span>
                     </p>
-                </div>
-            </div>
 
-            <!-- zlib Updated -->
-            <div class="section">
-                <span id="zlibUpdated" onclick="location.href='#zlibUpdated'">
-                    <h2>zlib Updated</h2>
-                </span>
-                <div class="card">
+                    <hr>
+
                     <p>
-                    <h3>Compressed</h3>
-                    Fallout: New Vegas uses <a href="https://www.zlib.net/" target="_blank">zlib</a> compression for its BSA archives and plugins (NPC and Landscape records).
-                    <br>
-                    zlib on its own does not belong to the fastest compression algorithms, and the version used by Bethesda is older than the game itself, which only makes things worse.
+                    <h3>zlib Updated</h3>
+                    Fallout: New Vegas compresses its BSA archives and plugins (NPC and Landscape records) using <a href="https://www.zlib.net/" target="_blank">zlib</a>, which on its own does not belong to the <a href="https://github.com/lz4/lz4?tab=readme-ov-file#benchmarks" target="_blank">fastest compression algorithms</a>, especially considering that the version used in the game is very outdated.
                     <br>
                     By simply updating the library to the latest version, you can cut the time spent on decompression in <b>half</b>, which leads to faster loading times and less stuttering.
                     <div class="card-yellow">
@@ -411,9 +550,7 @@
                             Mods with BSA archives are already rare on Nexus, and usually recent, so most often they are not using compression, or deliberately compressed due to their large sizes. Using the plugin in such cases is more sensible.
                         </p>
                     </div>
-                    </p>
-                </div>
-                <div class="card">
+
                     <p>
                     <h3>Installation</h3>
                     <ol>
@@ -424,24 +561,16 @@
                         </li>
                     </ol>
                     </p>
-                </div>
-            </div>
 
-            <!-- Cell Offsets -->
-            <div class="section">
-                <span id="CellOffsets" onclick="location.href='#CellOffsets'">
-                    <h2>Cell Offset Generator</h2>
-                </span>
-                <div class="card">
+                    <hr>
+
                     <p>
-                    <h3>Offset</h3>
-                    Automated tool for generating cell offsets on game startup, which massively reduces stutter when loading new cells.
+                    <h3>Cell Offset Generator</h3>
+                    This automated tool generates cell offsets on game startup, <strong>massively reducing stutter</strong> when loading new cells.
                     <br>
-                    Without it, game has to scan all plugins to find cells, which can take a lot of time, especially if you have a lot of mods installed.
+                    Without these offsets, the game has to scan all plugins to find cells, which can take a lot of time, especially if you have a lot of mods installed.
                     </p>
-                </div>
-                <div class="card">
-                    <p>
+
                     <h3>Installation</h3>
                     <ol>
                         <li>
@@ -661,173 +790,6 @@
                     </p>
                     <p>
                         Game Mode is enabled by default. If you had it disabled for some reason, you can enable it <a href="ms-settings:gaming-gamemode">here</a>.
-                    </p>
-                </div>
-            </div>
-
-            <!-- DisplayModeComparison -->
-            <div class="section">
-                <span id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
-                    <h2>Display Mode Differences</h2>
-                </span>
-                <div class="card">
-                    <p>
-                    <h3>Presentation Problems</h3>
-                    Here's a comparison of three display modes you can use in this game. Situation is problematic mainly due to Vulkan and D3D9 using old <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">presentation models</a>.
-                    <br>
-                    <br>
-                    This section is purely informative, just to let you know what options you have and what to expect from them.
-                    <div class="comparison">
-                        <table class="comparison-table">
-                            <tr>
-                                <th>
-                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
-                                        Flip Model Windowed
-                                        <br>
-                                        (DXVK with DXGI)
-                                    </h2>
-                                </th>
-                                <th>
-                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
-                                        Legacy/Optimized Fullscreen
-                                    </h2>
-                                </th>
-                                <th>
-                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
-                                        BitBlt Model Windowed
-                                        <br>
-                                        (D3D9, Base DXVK)
-                                    </h2>
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <td class="card-green">
-                                    <ul>
-                                        <li>Best latency and performance</li>
-                                        <li>Variable Refresh Rate works without any problems</li>
-                                        <li>
-                                            HDR output (Requires DXVK)
-                                        </li>
-                                        <li>
-                                            Fast Alt-Tab
-                                        </li>
-                                        <li>
-                                            Native support for color profiles
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td class="card-green">
-                                    <ul>
-                                        <li>Best latency and performance, especially with <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span></li>
-                                        <li>Variable Refresh Rate works without any problems</li>
-                                    </ul>
-                                </td>
-                                <td class="card-green">
-                                    <ul>
-                                        <li>
-                                            Fast Alt-Tab
-                                        </li>
-                                        <li>
-                                            Better support for color profiles
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="card-red">
-                                    <ul>
-                                        <li>
-                                            In-Game brightness settings don't work
-                                        </li>
-                                        <li>
-                                            Nvidia's interop increases memory usage by about 150-170MB,
-                                            <br>
-                                            and requires some manual setup to work with DXVK.
-                                        </li>
-                                        <li>
-                                            Potential compatibility issues with overlays that can't properly discern between DXGI and Vulkan surfaces.
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td class="card-red">
-                                    <ul>
-                                        <li>
-                                            Slower and unstable Alt-Tab, especially without <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span>
-                                        </li>
-                                        <div class="card-yellow">
-                                            <p>
-                                                Alt-Tab <b>doesn't work at all</b> if <b><a href="#NVTF" title="New Vegas Tick Fix">NVTF</a>'s pool change</b>
-                                                is <b>enabled</b>, unless you use <b><a href="#DXVK" title="Vulkan - DXVK">DXVK</a></b>
-                                            </p>
-                                        </div>
-                                        <li>
-                                            Color profiles may disengage, especially without <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span>
-                                        </li>
-                                        <li>
-                                            When using DXVK, degrades performance on Nvidia laptops and AMD GPUs.
-                                            <br>
-                                            DXGI Interop with Flip Model must be used instead.
-                                        </li>
-                                        <li>
-                                            HDR can be unstable - colorspace may be incorrect, and can cause issues on Alt-Tab, especially on AMD GPUs.
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td class="card-red">
-                                    <ul>
-                                        <li>
-                                            High input lag and worse performance, especially when not using any FPS limiter and/or using a laptop
-                                        </li>
-                                        <li>
-                                            V-Sync is always on<sup><a title="Why?" href="#annotation5">[5]</a></sup>
-                                        </li>
-                                        <li>
-                                            Variable Refresh Rate doesn't work natively
-                                        </li>
-                                        <ul>
-                                            <li>
-                                                AMD supports FreeSync in BitBlt windows that are fullscreen, but latency and performance penalties remain
-                                            </li>
-                                            <li>
-                                                Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation6">[6]</a></sup>
-                                            </li>
-                                        </ul>
-                                        <li>
-                                            In-Game brightness settings don't work
-                                        </li>
-                                        <li>
-                                            Higher memory bandwidth and usage
-                                        </li>
-                                        <li>
-                                            No HDR support
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <span class="annotations">
-                        <ol start="5">
-                            <li id="annotation5">
-                                Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
-                            </li>
-                            <li id="annotation6">
-                                While AMD enables FreeSync for Fullscreen Windowed BitBlt surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
-                                <br>
-                                This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
-                                <br>
-                                Enabling it globally is a bad idea, because it disrupts normal desktop usage (e.g. screen can sync to sleeping windows).
-                                <br>
-                                It's recommended to use <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to
-                                "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile. This makes Windowed G-Sync run only when the game is running.
-                                <br>
-                                <b>Keep in mind that even with this method, this G-Sync implementation is still buggy - if you get any of the forementioned issues, disable it.</b>
-                                <br>
-                                <h4>Never enable Windowed G-Sync globally!</h4>
-                            </li>
-                        </ol>
-                    </span>
                     </p>
                 </div>
             </div>

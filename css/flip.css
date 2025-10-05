@@ -106,20 +106,25 @@ button:active,
   .headerTitle {
     font-size: 0.7em;
   }
+
   .comparison-table .card-red,
   .comparison-table .card-green {
     padding: 0em;
   }
+
   .comparison-table .card-yellow {
     margin: 0em 0.75em 0em 0em;
     padding: 0.1em 0.5em 0.1em 0.5em;
   }
+
   .comparison-table {
     border-spacing: 0.1em;
   }
+
   .comparison-table h2 {
     font-size: 1em;
   }
+
   .comparison-table ul {
     font-size: 0.8em;
     word-wrap: break-word;
@@ -129,8 +134,9 @@ button:active,
     list-style: none;
   }
 }
+
 .disabled {
   display: none;
   opacity: 0%;
   pointer-events: none;
-}/*# sourceMappingURL=flip.css.map */
+}

@@ -7,7 +7,8 @@ body {
 }
 
 .sidebar,
-.header {
+.header,
+.popup {
   background: #2b292b !important;
 }
 
@@ -17,4 +18,4 @@ body {
 
 textarea {
   border-color: #e3b2da !important;
-}/*# sourceMappingURL=guideColors.css.map */
+}
