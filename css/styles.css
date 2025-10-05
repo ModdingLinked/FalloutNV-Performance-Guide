@@ -155,8 +155,10 @@ hr {
   flex-direction: column;
   margin-top: 70px;
   margin-left: var(--sidebar-margin);
+  /* There is no right sidebar and limiting width breaks under 700px
   margin-right: calc(var(--sidebar-margin) + var(--scrollbar-width));
   width: 80%;
+  */
   padding: 2em;
 }
 
