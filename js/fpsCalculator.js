@@ -109,15 +109,15 @@ function calculateFPS() {
             <div class="card card-basic">
                 <p>Recommended FPS ${usableDivisors.length === 1 ? 'Limit' : 'Limits'}: ${recommendations} (choose one)</p>
             </div>
+            <div class="card card-red">
+                <p>
+                    Even with New Vegas Tick Fix, the game can still have issues at high framerates, the calculator already accounts for this and won't return any value higher than 120.
+                </p>
+            </div>
             ${warning}
             <div class="card card-green">
                 <p>
                     Choose the highest value your system can maintain consistently.
-                </p>
-            </div>
-            <div class="card card-red">
-                <p>
-                    Even with New Vegas Tick Fix, the game can still have issues at high framerates, the calculator already accounts for this and won't return any value higher than 120.
                 </p>
             </div>
         `;

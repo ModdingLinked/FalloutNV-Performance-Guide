@@ -1091,9 +1091,7 @@
                             <h4>V-Sync</h4>
                             The "default" option - choose this if you don't have Variable Refresh Rate display or don't mind slight latency.
                             <ul>
-                                <li>
-                                    Framerate must be capped slightly below refresh rate to reduce latency.
-                                </li>
+                                <li>The framerate must be capped slightly below refresh rate to reduce latency.</li>
                             </ul>
                             <div class="card-red">
                                 <p>
@@ -1103,14 +1101,10 @@
                         </li>
                         <li>
                             <h4>G-Sync | FreeSync</h4>
-                            Choose this if you have a Variable Refresh Rate display - it offers the best balance between latency and visual smoothness.
+                            Choose this if you have a Variable Refresh Rate display, as it offers the best balance between latency and visual smoothness.
                             <ul>
-                                <li>
-                                    V-Sync must be enabled, in order to fully get rid of tearing.
-                                </li>
-                                <li>
-                                    Framerate must be capped below refresh rate, in order for VRR to not disengage and fallback to V-Sync, as this causes a very big increase in latency.
-                                </li>
+                                <li>V-Sync must be enabled in order to fully get rid of tearing.</li>
+                                <li>The framerate must be capped below your refresh rate in order for VRR to not disengage and fallback to V-Sync, as this causes a very big increase in latency.</li>
                             </ul>
                         </li>
                         <li>
@@ -1142,30 +1136,24 @@
                     If you don't use, or not have VRR, it's best to limit your framerate to fractions of your refresh rate. (30 at 60hz, 72 at 144hz, etc.).
                     <br>
                     Having framerate capped to a value that's not a clean fraction of your refresh rate will cause microstuttering (For example 40 at 60hz).
+                    <br>
+                    <br>
+                    The calculator below will take care of figuring out an optional value or set of values to cap your framerate to.
                     </p>
                 </div>
                 <div class="card">
                     <p>
-                    <h3>
-                        RivaTuner Statistics Server
-                    </h3>
+                    <h3>RivaTuner Statistics Server</h3>
                     Riva Tuner Statistic Server by <a href="https://forums.guru3d.com/members/unwinder.30019/" target="_blank">Unwinder</a> is probably the most famous FPS Limiter and OSD software, thanks to its <b>performance</b>, <b>compatibility</b> and <b>versatile On-Screen Display</b>.
                     </p>
 
                     <h4>Installation and configuration</h4>
                     <ol>
-                        <li>
-                            Install and launch <a href="https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html" target="_blank">RTSS</a>. Open your System Tray (the triangle pointing upwards on the taskbar) and click on the RTSS icon to open it
-                        </li>
-                        <li>
-                            Press green <b>Add</b> button and select FalloutNV.exe
-                        </li>
-                        <li>
-                            Set <b>Application Detection Level</b> to <b>Low</b>
-                        </li>
-                        <li>
-                            Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
-                        </li>
+                        <li>Install and launch <a href="https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html" target="_blank">RTSS</a>. Open your System Tray (the triangle pointing upwards on the taskbar) and click on the RTSS icon to open it.</li>
+                        <li>Click <strong>Add</strong> and select <b>FalloutNV.exe</b>.</li>
+                        <li>Set its <b>Application Detection Level</b> to <strong>Low</strong>.</li>
+                        <li>Use the calculator below to determine your <strong>optimal FPS limit</strong><sup><a title="Warning" href="#annotation2">[2]</a></sup> setting. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.</li>
+
                         <div class="card-basic">
                             <div class="center" style="margin: 10px;">
                                 <button id="fixedButton" onclick="setMode('fixed')" class="active">Fixed Refresh</button>
@@ -1183,23 +1171,38 @@
                         </div>
 
                         <li>
-                            Enter settings using Setup button and:
+                            Click <strong>Setup</strong> button and:
                             <ul>
                                 <li>Enable <b>Passive Waiting</b></li>
                                 <li>Set framerate limiter to <b>Front Edge Sync</b></li>
                             </ul>
                         </li>
-                        <li>Enable <b>Start with Windows</b> or launch RTSS everytime before you play.</li>
-                        <p>
-                            Your configuration should look similar to this:
-                            <br>
-                        <div class="image-container width-60">
-                            <img class="content-img" src="img/limiters/RTSS.webp" alt="Screenshot showcasing RTSS' settings">
-                            <div class="resize-overlay expand"></div>
-                        </div>
-                        <br>
-                        </p>
+                        <li>Enable <b>Start with Windows</b> or launch RTSS every time before playing.</li>
                     </ol>
+                    <br>
+                    Your configuration should look like this:
+                    <br>
+                    <div class="image-container width-60">
+                        <img class="content-img" src="img/limiters/RTSS.webp" alt="Screenshot showcasing RTSS' settings">
+                        <div class="resize-overlay expand"></div>
+                    </div>
+                    <br>
+                    <hr>
+
+                    <span class="annotations">
+                        <ol>
+                            <li id="annotation1">
+                                You can <strong>check if you are using VRR</strong> by going to the <b>Nvidia Control Panel</b> if you're on Nvidia or <b>Adrenalin's Display Settings</b> if you're on AMD. If the G-Sync tab is missing from NVCP, your display doesn't support it or doesn't have the feature enabled in the OSD.
+                                <br>
+                                <br>
+                                Nvidia users need to make sure that G-Sync is set to <b>Fullscreen</b> and that <b>Display Specific settings</b> are enabled, the <b>Windowed</b> option is problematic due to it being a hacky method. Both of the settings are wrongly named so they do not actually directly refer to the display method.
+                            </li>
+                            <li id="annotation2">
+                                You always want your FPS capped by a <strong>limiter instead of being hardware bound</strong>, this will reduce lag and increase power efficiency. It is also less jarring for the player when visual smoothness is the same across all scenes.
+                            </li>
+                        </ol>
+                    </span>
+                    </p>
                 </div>
             </div>
 
