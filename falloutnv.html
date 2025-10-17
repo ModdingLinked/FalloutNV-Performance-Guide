@@ -28,6 +28,7 @@
     <link rel="icon" type="image/x-icon" href="img\favicon.webp">
     <script src="js/javascript.js"></script>
     <script src="js/perfguide.js"></script>
+    <script src="js/fpsCalculator.js"></script>
 
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/styles.css">
@@ -1164,64 +1165,31 @@
                         </li>
                         <li>
                             Enter your refresh rate here for automatic calculation of FPS limits. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.
-                            <div>
-                                <input id="rrRTSS" type="number" step="any" id="refreshRateInput" placeholder="Enter your refresh rate here" min="60" value="60" onchange="refreshRateCalculations(this)" style="width: 80px;">
-                                <button id="rrSubmit" onclick="refreshRateCalculations(rrRTSS)" style="margin: 5px;">Calculate</button><span class="disabled" id="applyConfirmation">Done!</span> <span class="disabled" id="applyError">Due to physics issues, it's not recommended to go above 120 FPS.</span>
-                            </div>
-                            <div class="card-red">
-                                <p>
-                                    Even with New Vegas Tick Fix, game can still have issues with high framerates. It's recommended to cap your framerate to 120 FPS or below.
-                                </p>
-                            </div>
                         </li>
-                        <li>
-                            Set <b>Framerate Limit</b> to:
-                            <ul>
-                                <li>
-                                    V-Sync
-                                    <div class="card-basic">
-                                        <p>
-                                            <span class="fpsVSync">(RefreshRate - 0.05)</span>
-                                        </p>
-                                    </div>
-                                </li>
-                                <li>
-                                    VRR + V-Sync
-                                    <div class="card-basic">
-                                        <p>
-                                            Any value between 48 and <span class="fpsVRR">(RefreshRate * (1 - RefreshRate * 0.00028))</span>.
-                                        </p>
-                                        <div class="card-yellow">
-                                            <p>
-                                                You should select a value that will match your average obtainable framerate in the game.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    No V-Sync
-                                    <div class="card-basic">
-                                        <p>
-                                            <span class="fpsFixed">(RefreshRate)</span>
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
+                        <div class="card-basic">
+                            <div class="center" style="margin: 10px;">
+                                <button id="fixedButton" onclick="setMode('fixed')" class="active">Fixed Refresh</button>
+                                <button id="vrrButton" onclick="setMode('vrr')">VRR</button>
+                                <input type="hidden" id="refreshMode" value="fixed">
+                            </div>
+
+                            <div class="center" style="margin: 10px;">
+                                <label for="refreshRate">Monitor refresh rate: </label>
+                                <input id="refreshRate" type="number" step="1" placeholder="e.g. 60, 144" min="60">
+                                <button onclick="calculateFPS()">Calculate</button>
+                            </div>
+
+                            <div id="fpsResults" style="display: none;"></div>
+                        </div>
+
                         <li>
                             Enter settings using Setup button and:
                             <ul>
-                                <li>
-                                    Enable <b>Passive Waiting</b>
-                                </li>
-                                <li>
-                                    Set framerate limiter to <b>Front Edge Sync</b>
-                                </li>
+                                <li>Enable <b>Passive Waiting</b></li>
+                                <li>Set framerate limiter to <b>Front Edge Sync</b></li>
                             </ul>
                         </li>
-                        <li>
-                            Enable <b>Start with Windows</b> or launch RTSS everytime before you play
-                        </li>
+                        <li>Enable <b>Start with Windows</b> or launch RTSS everytime before you play.</li>
                         <p>
                             Your configuration should look similar to this:
                             <br>
