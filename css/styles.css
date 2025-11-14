@@ -211,6 +211,11 @@ footer {
   max-width: 40% !important;
 }
 
+.width-auto {
+   width: fit-content !important;
+  -moz-width: fit-content !important;
+}
+
 textarea {
   padding: 1em !important;
   color: white;

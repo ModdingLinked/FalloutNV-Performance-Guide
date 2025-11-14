@@ -57,7 +57,7 @@ function calculateFPS() {
 
     if (!rr || rr < 60) {
         results.innerHTML = `
-            <div class="card card-red">
+            <div class="card-red">
                 <p>Enter a valid refresh rate of 60Hz or higher.</p>
             </div>
         `;
@@ -70,16 +70,16 @@ function calculateFPS() {
         // clamp VRR upper recommendation to MAX_RECOMMENDED_FPS
         const rrVRRClamped = Math.min(rrVRR, MAX_RECOMMENDED_FPS);
         results.innerHTML = `
-            <div class="card card-basic">
+            <div class="card-basic">
                 <p>Recommended FPS Limit Range: Any value from 48* to ${rrVRRClamped}</p>
             </div>
-            <div class="card card-yellow">
+            <div class="card-yellow">
                 <p>
                     *Your VRR range typically starts at 48 FPS, but some displays support 30 or even 1.<br>
                     Check <a href="https://www.nvidia.com/en-us/geforce/products/g-sync-monitors/specs/" target="_blank">this list</a> to know your model's VRR range. Check the product page if it's not listed there.
                 </p>
             </div>
-            <div class="card card-green">
+            <div class="card-green">
                 <p>
                     Choose the highest value your system can maintain consistently.
                 </p>
@@ -96,7 +96,7 @@ function calculateFPS() {
         if (!commonRates.includes(rr) && rr > 75) {
             const better = findNearestRateWithGoodDivisor(rr);
             warning = `
-                <div class="card card-red">
+                <div class="card-red">
                     <p>
                         Your refresh rate (${rr}Hz) has divisors that make it suited for VRR more than fixed refresh.<br>
                         Look into enabling VRR if your display supports it. If not, consider switching to <b>${better}Hz</b> instead if you can't hold performance close to the suggested value - you can do this in the <b>Nvidia Control Panel</b> or <b>Adrenalin</b> settings.
@@ -106,16 +106,18 @@ function calculateFPS() {
         }
 
         results.innerHTML = `
-            <div class="card card-basic">
-                <p>Recommended FPS ${usableDivisors.length === 1 ? 'Limit' : 'Limits'}: ${recommendations} ${usableDivisors.length === 1 ? '' : '(choose one)'}</p>
+            <div class="card-basic">
+                <p>
+                    Recommended FPS ${usableDivisors.length === 1 ? 'Limit' : 'Limits'}: ${recommendations} ${usableDivisors.length === 1 ? '' : '(choose one)'}
+                </p>
             </div>
-            <div class="card card-red">
+            <div class="card-red">
                 <p>
                     Even with New Vegas Tick Fix, the game can still have issues at high framerates, the calculator already accounts for this and won't return any value higher than 120.
                 </p>
             </div>
             ${warning}
-            <div class="card card-green">
+            <div class="card-green">
                 <p>
                     Choose the highest value your system can maintain consistently.
                 </p>
