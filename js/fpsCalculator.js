@@ -107,7 +107,7 @@ function calculateFPS() {
 
         results.innerHTML = `
             <div class="card card-basic">
-                <p>Recommended FPS ${usableDivisors.length === 1 ? 'Limit' : 'Limits'}: ${recommendations} (choose one)</p>
+                <p>Recommended FPS ${usableDivisors.length === 1 ? 'Limit' : 'Limits'}: ${recommendations} ${usableDivisors.length === 1 ? '' : '(choose one)'}</p>
             </div>
             <div class="card card-red">
                 <p>
