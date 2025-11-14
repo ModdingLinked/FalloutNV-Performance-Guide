@@ -67,10 +67,6 @@
                     Terminology
                 </a>
 
-                <a href="#DisplayModeComparison" title="Display Modes Comparison">
-                    Display Modes Comparison
-                </a>
-
                 <hr>
 
                 <a href="#PerformanceMods" title="Performance Mods">
@@ -83,6 +79,10 @@
 
                 <a href="#DXVK" title="DXVK">
                     DXVK
+                </a>
+
+                <a href="#FlipModel" title="Flip Model">
+                    Flip Model
                 </a>
 
                 <a href="#RecommendedLimiters" title="FPS Limits">
@@ -211,7 +211,7 @@
                             <li id="Flip">
                                 <b>Flip Model</b> - presentation model first added in Windows 7 with D3D9Ex and upgraded in DXGI in Windows 8-10.
                                 <br>
-                                Allows "fullscreen-level" of performance and latency. Has native VRR support in Windowed Mode. Additionally, DXGI version supports tearing (V-Sync off) in Windowed Mode, HDR and has Multiplane Overlay (MPO) support.
+                                Allows "fullscreen-level" of performance and latency. Has native VRR support in Windowed mode. Additionally, DXGI version supports tearing (V-Sync off) in Windowed mode, HDR and has Multiplane Overlay (MPO) support.
                                 <br>
                                 DXGI variant is supported only in D3D10 and upwards<sup><a title="Why?" href="#annotation2">[2]</a></sup>, enforced only in D3D12, and exists only on Windows 8 and upwards.
                                 <br>
@@ -221,11 +221,11 @@
                             </li>
                             <li id="BitBlt">
                                 <b>BitBlt Model</b> - older presentation model used by most applications.
-                                While performing similarly to Flip Model in Fullscreen, in Windowed Mode it has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations due to being software composed.
+                                While performing similarly to Flip Model in Fullscreen, in Windowed mode it has worse performance and always-on V-Sync on top of already additional latency caused by additional copy operations due to being software composed.
                                 <br>
                                 The only presentation model for Windowed D3D9 (and lower), but still very common in D3D10 and D3D11 games.
                                 <p>
-                                    Vulkan and OpenGL<sup><a title="Why?" href="#annotation3">[3]</a></sup> use BitBlt in Windowed Mode.
+                                    Vulkan and OpenGL<sup><a title="Why?" href="#annotation3">[3]</a></sup> use BitBlt in Windowed mode.
                                 </p>
                             </li>
                         </ul>
@@ -246,7 +246,7 @@
                                 Converts DirectX applications running in <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> mode into a pseudo borderless mode with Flip Model for faster Alt-Tab,
                                 lower latency, better color profile handling, and support for Windowed overlays (Xbox Game Bar, volume and brightness sliders etc.).
                                 <br>
-                                Because of being a Windowed Mode under the hood, it can break e.g. brightness control in old games that modify system gamma instead of window's.
+                                Because of being a Windowed mode under the hood, it can break e.g. brightness control in old games that modify system gamma instead of window's.
                                 <br>
                                 Enabled by default for every application.
                                 <br>
@@ -263,7 +263,7 @@
                             <li id="annotation2">
                                 D3D10 and D3D11 supporting Flip Model doesn't mean that game actually uses it (Unity and UE4 implemented Flip Model support around 2019 - 7 years after its release!).
                                 <br>
-                                Flip Model in Windowed Mode can be enabled in those games using Special K (D3D11 only) or Windows 11's (22H2) Optimizations for Windowed Games (both D3D10 and D3D11).
+                                Flip Model in Windowed mode can be enabled in those games using Special K (D3D11 only) or Windows 11's (22H2) Optimizations for Windowed Games (both D3D10 and D3D11).
                                 <br>
                                 Both implementations have good compatiblity, but there are some niche cases where a game can be unsupported by Special K, but supported by Windows - and vice versa.
                                 <br>
@@ -275,7 +275,7 @@
                                 Nvidia drivers can interop Vulkan and OpenGL to DXGI with Flip Model since driver version 526.
                                 OpenGL interop by default degrades performance, while DXVK compatibility requires toggling a flag in Nvidia Profile Inspector - see <a href="#dxvk-flip">here</a> how to resolve both of these issues.
                                 <br>
-                                AMD drivers have a D3D12 interop for OpenGL that can be toggled by enabling triple buffering in Radeon Settings. Vulkan interop is enabled automatically in windowed mode.
+                                AMD drivers have a D3D12 interop for OpenGL that can be toggled by enabling triple buffering in Radeon Settings. Vulkan interop is enabled automatically in Windowed mode.
                                 <br>
                                 However, due to how it's implemented, it can cause crashes with games or mods that spawn both D3D12 and OpenGL devices.
                             </li>
@@ -285,175 +285,10 @@
                 </div>
             </div>
 
-            <!-- Display Mode Comparison -->
-            <div class="section">
-                <span id="DisplayModeComparison" onclick="location.href='#DisplayModeComparison'">
-                    <h2>Display Mode Comparison</h2>
-                </span>
-                <div class="card">
-                    <p>
-                    <h3>Presentation Problems</h3>
-                    Here's a comparison of three display modes you can use in this game. Situation is problematic mainly due to Vulkan and D3D9 using old <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">presentation models</a>.
-                    <br>
-                    <br>
-                    This section is purely informative, just to let you know what options you have and what to expect from them.
-                    <div class="comparison">
-                        <table class="comparison-table">
-                            <tr>
-                                <th>
-                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
-                                        Flip Model Windowed
-                                        <br>
-                                        (DXVK with DXGI)
-                                    </h2>
-                                </th>
-                                <th>
-                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
-                                        Legacy/Optimized Fullscreen
-                                    </h2>
-                                </th>
-                                <th>
-                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
-                                        BitBlt Model Windowed
-                                        <br>
-                                        (D3D9, Base DXVK)
-                                    </h2>
-                                </th>
-                            </tr>
-
-                            <tr>
-                                <td class="card-green">
-                                    <ul>
-                                        <li>Best latency and performance</li>
-                                        <li>Variable Refresh Rate works without any problems</li>
-                                        <li>
-                                            HDR output (Requires DXVK)
-                                        </li>
-                                        <li>
-                                            Fast Alt-Tab
-                                        </li>
-                                        <li>
-                                            Native support for color profiles
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td class="card-green">
-                                    <ul>
-                                        <li>Best latency and performance, especially with <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span></li>
-                                        <li>Variable Refresh Rate works without any problems</li>
-                                    </ul>
-                                </td>
-                                <td class="card-green">
-                                    <ul>
-                                        <li>
-                                            Fast Alt-Tab
-                                        </li>
-                                        <li>
-                                            Better support for color profiles
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="card-red">
-                                    <ul>
-                                        <li>
-                                            In-Game brightness settings don't work
-                                        </li>
-                                        <li>
-                                            Nvidia's interop increases memory usage by about 150-170MB,
-                                            <br>
-                                            and requires some manual setup to work with DXVK.
-                                        </li>
-                                        <li>
-                                            Potential compatibility issues with overlays that can't properly discern between DXGI and Vulkan surfaces.
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td class="card-red">
-                                    <ul>
-                                        <li>
-                                            Slower and unstable Alt-Tab, especially without <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span>
-                                        </li>
-                                        <div class="card-yellow">
-                                            <p>
-                                                Alt-Tab <b>doesn't work at all</b> if <b><a href="#NVTF" title="New Vegas Tick Fix">NVTF</a>'s pool change</b>
-                                                is <b>enabled</b>, unless you use <b><a href="#DXVK" title="Vulkan - DXVK">DXVK</a></b>
-                                            </p>
-                                        </div>
-                                        <li>
-                                            Color profiles may disengage, especially without <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span>
-                                        </li>
-                                        <li>
-                                            When using DXVK, degrades performance on Nvidia laptops and AMD GPUs.
-                                            <br>
-                                            DXGI Interop with Flip Model must be used instead.
-                                        </li>
-                                        <li>
-                                            HDR can be unstable - colorspace may be incorrect, and can cause issues on Alt-Tab, especially on AMD GPUs.
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td class="card-red">
-                                    <ul>
-                                        <li>
-                                            High input lag and worse performance, especially when not using any FPS limiter and/or using a laptop
-                                        </li>
-                                        <li>
-                                            V-Sync is always on<sup><a title="Why?" href="#annotation4">[4]</a></sup>
-                                        </li>
-                                        <li>
-                                            Variable Refresh Rate doesn't work natively
-                                        </li>
-                                        <ul>
-                                            <li>
-                                                AMD supports FreeSync in BitBlt windows that are fullscreen, but latency and performance penalties remain
-                                            </li>
-                                            <li>
-                                                Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation5">[5]</a></sup>
-                                            </li>
-                                        </ul>
-                                        <li>
-                                            In-Game brightness settings don't work
-                                        </li>
-                                        <li>
-                                            Higher memory bandwidth and usage
-                                        </li>
-                                        <li>
-                                            No HDR support
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
-                    <span class="annotations">
-                        <ol start="4">
-                            <li id="annotation4">
-                                Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
-                            </li>
-                            <li id="annotation5">
-                                While AMD enables FreeSync for Fullscreen Windowed BitBlt surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
-                                <br>
-                                This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
-                                <br>
-                                Enabling it globally is a bad idea, because it disrupts normal desktop usage (e.g. screen can sync to sleeping windows).
-                                <br>
-                                It's recommended to use <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to
-                                "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile. This makes Windowed G-Sync run only when the game is running.
-                                <br>
-                                <b>Keep in mind that even with this method, this G-Sync implementation is still buggy - if you get any of the forementioned issues, disable it.</b>
-                                <br>
-                                <h4>Never enable Windowed G-Sync globally!</h4>
-                            </li>
-                        </ol>
-                    </span>
-                    </p>
-                </div>
-            </div>
-
+            <br>
             <br>
             <hr>
+            <br>
 
             <div class="section">
                 <span id="PerformanceMods" onclick="location.href='#PerformanceMods'">
@@ -496,29 +331,30 @@
                     <p>
                     <h3>Installation</h3>
                     <ol>
-                        <li>Install the mod from <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank">here</a>. As mentioned before, VNV or TBoT users should already have it in their lists.</li>
+                        <li>Install the mod and its INI from <a href="https://www.nexusmods.com/newvegas/mods/66537" target="_blank">here</a>. As mentioned before, VNV or TBoT users should already have it in their lists.</li>
                         <li>In the <strong>INI Files</strong> tab, open <span class="card-basic">NVSE\Plugins\NVTF.ini</span></li>
                         <li>Change the following option:</li>
                         <ul>
                             <li>Set <strong>bModifyDirectXBehavior</strong> to <b>1</b> if not enabled already.</li>
-                            <li>Set <strong>bUseDefaultPoolForTextures</strong> to <b>1</b>.</li>
+                            <li>
+                                Set <strong>bUseDefaultPoolForTextures</strong> to <b>1</b>.
+                                <div class="card-yellow">
+                                    <p>
+                                        This setting disables texture mirroring between VRAM and RAM, which decreases RAM usage and allows using high resolution textures.
+                                        <br>
+                                        <b>This breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation4">[4]</a></sup></b>.
+                                        <br>
+                                        <br>
+                                        This issue does not occur when using <a href="#FAQ">Windowed mode</a> or <a href="#DXVK">DXVK</a>.
+                                    </p>
+                                </div>
+                            </li>
                         </ul>
-                        <div class="card-red">
-                            <p>
-                                This setting Disables texture mirroring between VRAM and RAM, which decreases RAM usage and allows using high resolution textures.
-                                <br>
-                                <br>
-                                <b>This also breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation6">[6]</a></sup></b>
-                                <br>
-                                To mitigate that, either use <a href="#DXVK">DXVK</a>, <a href="#FAQ">Windowed Mode</a> or just avoid Alt-Tabbing. This is also covered later in the guide.
-                            </p>
-                        </div>
                         </li>
                     </ol>
-
                     <span class="annotations">
-                        <ol start="6">
-                            <li id="annotation6">
+                        <ol start="4">
+                            <li id="annotation4">
                                 D3D9 loses the graphics device if it loses the screen ownership (Alt-Tab, Sleep, etc.). To recover, it needs to either have a copy of textures in RAM, or be able to reconstruct the memory from ground up.
                                 <br>
                                 Fallout: New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
@@ -864,7 +700,7 @@
                     <ul>
                         <li>
                             <p>
-                                DXVK improves performance in mainly draw call (CPU) bound scenarios (e.g. draw distance), and usually doesn't help much in GPU bound ones (e.g. resolution)
+                                DXVK improves performance in mainly draw call (CPU) bound scenarios (e.g. draw distance, object count), and usually doesn't help much in GPU bound ones (e.g. resolution)
                             <ul>
                                 <li>
                                     <p>
@@ -886,14 +722,14 @@
                             <ul>
                                 <li>
                                     <p>
-                                        <b>Nvidia GPU</b> laptops <b>must</b> use the <a href="#dxvk-flip">DXGI interop</a> (see below).
+                                        <b>Nvidia GPU</b> laptops <b>must</b> use the <a href="#FlipModel">DXGI interop</a>.
                                         <br>
                                         Using it on <b>desktops</b> is not required, but <b>highly recommended</b> for the most optimal experience
                                     </p>
                                 </li>
                                 <li>
                                     <p>
-                                        <b>AMD GPUs must</b> use the <a href="#dxvk-flip">DXGI interop</a> (see below), otherwise they will suffer from severe performance issues or fail to launch the game.
+                                        <b>AMD GPUs must</b> use the <a href="#FlipModel">DXGI interop</a>, otherwise they will suffer from severe performance issues or fail to launch the game.
                                         <br>
                                         Shader issues are more common on Windows compared to other GPUs (situation is completely reversed on Linux).
                                         <br>
@@ -983,48 +819,287 @@
                     </ol>
                     </p>
                 </div>
+            </div>
+
+            <!-- Flip Model -->
+            <div class="section">
+                <span id="FlipModel" onclick="location.href='#FlipModel'">
+                    <h2>Flip Model</h2>
+                </span>
                 <div class="card">
                     <p>
-                    <h3 id="dxvk-flip">Enabling Flip Model (DXVK with DXGI)</h3>
-                    Nvidia and AMD drivers have ability to use DirectX to display Vulkan games allowing for <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">Flip Model</a> in Windowed mode, which has <b>HDR</b> and <b>VRR</b> support, and better <b>latency</b>.
-                    <div class="card-red">
-                        <p>
-                            This step is mandatory for <b>Nvidia laptops</b> and <b>AMD GPUs</b> to work with DXVK, otherwise you will suffer heavy performance issues.
-                        </p>
-                        <p>
-                            If you chose to install the HDR version of DXVK, you also <b>must</b> use this method.
-                        </p>
-                        <p>
-                            Nvidia desktops can, and are recommended to use it for the best experience, but ultimately it's optional.
-                        </p>
+                    <h3>Presentation Problems</h3>
+                    Here's a comparison of four display modes you can use in this game. Situation is problematic mainly due to Vulkan and D3D9 using old <a href="#Flip" onclick="expandCard(flipTalkTop, flipTalk, 1)">presentation models</a>.
+                    <br>
+                    <br>
+                    This section will enable Flip Model, as it offers the best performance and lowest latency. Unfortunately, due to neither D3D9 nor Vulkan supporting it natively, compromises have to be made.
+                    <br>
+                    <br>
+                    <div class="comparison">
+                        <table class="comparison-table">
+                            <tr>
+                                <th>
+                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
+                                        Flip Model Windowed
+                                        <br>
+                                        (DXVK with DXGI)
+                                    </h2>
+                                </th>
+                                <th>
+                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
+                                        Flip Model Windowed
+                                        <br>
+                                        (NVTF's D3D9 Patch)
+                                    </h2>
+                                </th>
+                                <th>
+                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
+                                        Legacy/Optimized Fullscreen
+                                    </h2>
+                                </th>
+                                <th>
+                                    <h2 onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'" title="Click to see detailed explanations">
+                                        BitBlt Model Windowed
+                                        <br>
+                                        (D3D9, DXVK)
+                                    </h2>
+                                </th>
+                            </tr>
+
+                            <tr>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>Best latency and performance</li>
+                                        <li>Native support for Variable Refresh Rate</li>
+                                        <li>Supports V-Sync off</li>
+                                        <li>
+                                            Fast Alt-Tab
+                                        </li>
+                                        <li>
+                                            Native support for color profiles
+                                        </li>
+                                        <li>
+                                            HDR output
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>Best latency and performance</li>
+                                        <li>Native support for Variable Refresh Rate</li>
+                                        <li>Supports V-Sync off</li>
+                                        <li>
+                                            Fast Alt-Tab
+                                        </li>
+                                        <li>
+                                            Native support for color profiles
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>Best latency and performance, especially with <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span></li>
+                                        <li>Native support for Variable Refresh Rate</li>
+                                        <li>Supports V-Sync off</li>
+                                    </ul>
+                                </td>
+                                <td class="card-green">
+                                    <ul>
+                                        <li>
+                                            Fast Alt-Tab
+                                        </li>
+                                        <li>
+                                            Okay support for color profiles
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            In-Game brightness settings don't work
+                                        </li>
+                                        <li>
+                                            Nvidia's interop increases memory usage by about 150-170MB,
+                                            <br>
+                                            and requires some manual setup to work with DXVK.
+                                        </li>
+                                        <li>
+                                            Potential compatibility issues with overlays that can't properly discern between DXGI and Vulkan surfaces.
+                                        </li>
+                                        <li>
+                                            Not supported on Intel or Qualcomm GPUs.
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            In-Game brightness settings don't work
+                                        </li>
+                                        <li>
+                                            Window resolution must be one of the supported display resolutions
+                                        </li>
+                                        <li>
+                                            No HDR support
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            Slower and unstable Alt-Tab, especially without <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span>
+                                        </li>
+                                        <div class="card-yellow">
+                                            <p>
+                                                Alt-Tab <b>doesn't work at all</b> if <b><a href="#NVTF" title="New Vegas Tick Fix">NVTF</a>'s pool change</b>
+                                                is <b>enabled</b>, unless you use <b><a href="#DXVK" title="Vulkan - DXVK">DXVK</a></b>
+                                            </p>
+                                        </div>
+                                        <li>
+                                            Color profiles may disengage, especially without <span onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">Fullscreen Optimizations</span>
+                                        </li>
+                                        <li>
+                                            When using DXVK, degrades performance on Nvidia laptops and AMD GPUs.
+                                            <br>
+                                            DXGI Interop with Flip Model must be used instead.
+                                        </li>
+                                        <li>
+                                            HDR can be unstable - colorspace may be incorrect, and can cause issues on Alt-Tab, especially on AMD GPUs.
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td class="card-red">
+                                    <ul>
+                                        <li>
+                                            High input lag and worse performance, especially when not using any FPS limiter and/or using a laptop
+                                        </li>
+                                        <li>
+                                            V-Sync is always on<sup><a title="Why?" href="#annotation5">[5]</a></sup>
+                                        </li>
+                                        <li>
+                                            Variable Refresh Rate doesn't work natively
+                                        </li>
+                                        <ul>
+                                            <li>
+                                                AMD supports FreeSync in BitBlt windows that are fullscreen, but latency and performance penalties remain
+                                            </li>
+                                            <li>
+                                                Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation6">[6]</a></sup>
+                                            </li>
+                                        </ul>
+                                        <li>
+                                            In-Game brightness settings don't work
+                                        </li>
+                                        <li>
+                                            Higher memory bandwidth and usage
+                                        </li>
+                                        <li>
+                                            No HDR support
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
-
-                    <hr>
-
-                    Click on expanders below to see how to enable Flip Model for your GPU.
-
+                    <span class="annotations">
+                        <ol start="5">
+                            <li id="annotation5">
+                                Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
+                            </li>
+                            <li id="annotation6">
+                                While AMD enables FreeSync for Fullscreen Windowed BitBlt surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
+                                <br>
+                                This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
+                                <br>
+                                Enabling it globally is a bad idea, because it disrupts normal desktop usage (e.g. screen can sync to sleeping windows).
+                                <br>
+                                It's recommended to use <a href="https://github.com/Orbmu2k/nvidiaProfileInspector/releases/latest" target="_blank">Nvidia Profile Inspector</a> to set <b>G-Sync Application Mode</b> to
+                                "<b>Fullscreen and Windowed</b>" in <b>Fallout - New Vegas</b> profile. This makes Windowed G-Sync run only when the game is running.
+                                <br>
+                                <b>Keep in mind that even with this method, this G-Sync implementation is still buggy - if you get any of the forementioned issues, disable it.</b>
+                                <br>
+                                <h4>Never enable Windowed G-Sync globally!</h4>
+                            </li>
+                        </ol>
+                    </span>
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3>Preparations</h3>
+                    In order to use Flip Model without issues, you need to enable Windowed mode.
+                    <ol>
+                        <li>
+                            Open <b>FalloutCustom.ini</b> in <strong>INI Editor</strong> and set the following value:
+                            <div class="card-basic">
+                                <p>
+                                    [Display]
+                                    <br>
+                                    bFull Screen=0
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            Install <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> to disable window borders and make it fullscreen.
+                        </li>
+                    </ol>
+                    </p>
+                </div>
+                <div class="card">
+                    <p>
+                    <h3 id="enable-flip">Enabling Flip Model</h3>
+                    As shown above, there are two ways to enable Flip Model in Fallout: New Vegas.
+                    <br>
+                    <br>
+                    Click on expanders below to see instructions for each method:
                     <div class="expander-top">
                         <div>
                             <p>
                             <h3>
-                                Nvidia
+                                NVTF (D3D9 Patch)
                             </h3>
+                            New Vegas Tick Fix can force Fullscreen Optimization's code to run while in Windowed mode, enabling Flip Model for D3D9. This method works on all GPUs and applies only to D3D9.
                             </p>
                         </div>
                         <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
                     </div>
-                    <div class="expander-bottom center width-limited" id="nvidiaFlipExpander">
+                    <div class="expander-bottom width-limited">
                         <ol>
                             <li>
-                                Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b>.
+                                Open <b>NVTF - INI</b> mod in your Mod Organizer
+                            </li>
+                            <li>
+                                In the <strong>INI Files</strong> tab, open <span class="card-basic">NVSE\Plugins\NVTF.ini</span>
+                            </li>
+                            <li>
+                                Change the following option:
                                 <div class="card-basic">
                                     <p>
-                                        [Display]
+                                        [DirectX]
                                         <br>
-                                        bFull Screen=0
+                                        bUseFlipModel=1
                                     </p>
                                 </div>
                             </li>
+                        </ol>
+                    </div>
+                    <div class="expander-top">
+                        <div>
+                            <p>
+                            <h3>
+                                DXVK (DXGI Interop)
+                            </h3>
+                            Nvidia and AMD drivers support Flip Model in Vulkan when running in Windowed mode through DXGI Interop. This method only works with DXVK.
+                            </p>
+                        </div>
+                        <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
+                    </div>
+                    <div class="expander-bottom width-limited">
+                        <p>
+                        <h3>Nvidia</h3>
+                        <ol>
                             <li>
                                 Download the premade <a href="./files/FO-NvidiaProfile.nip" target="_blank">Nvidia Driver Profile</a> for Fallout New Vegas and Fallout 3.
                             </li>
@@ -1047,38 +1122,12 @@
                             <li>
                                 Click <b>Apply changes</b> in the top right and exit.
                             </li>
-                            <li>
-                                Install <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> to disable window borders.
-                            </li>
                         </ol>
-                    </div>
-                    <div class="expander-top">
-                        <div>
-                            <p>
-                            <h3>
-                                AMD
-                            </h3>
-                            </p>
-                        </div>
-                        <img class="chevron" style="float: right;" src="img/ui/Chevron Down.svg" alt="UI element - Chevron">
-                    </div>
-                    <div class="expander-bottom center width-limited" id="amdFlipExpander">
-                        <ol>
-                            <li>
-                                Enable <b>Windowed mode</b> in <b>FalloutCustom.ini</b>.
-                            </li>
-                            <div class="card-basic">
-                                <p>
-                                    [Display]
-                                    <br>
-                                    bFull Screen=0
-                                </p>
-                            </div>
-                            <br>
-                            <li>
-                                Install <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> to disable window borders.
-                            </li>
-                        </ol>
+                        </p>
+                        <p>
+                        <h3>AMD</h3>
+                        AMD drivers enable Flip Model autimatically when Vulkan runs in Windowed mode, so no extra steps are required.
+                        </p>
                     </div>
 
                     </p>
@@ -1251,24 +1300,13 @@
                     <h3>Are these questions really frequent?</h3>
                     <ul class="faq">
                         <li>
-                            <h4>I can't use DXVK, and I need to Alt-Tab!</h4>
-                            All you can do is download <a href="https://www.nexusmods.com/newvegas/mods/79211" target="_blank">OneTweak</a> and use the legacy Windowed mode.
-                            <br>
-                            Remember to enable <b>Windowed mode</b> itself in <b>FalloutCustom.ini</b>!
-                            <div class="card-basic">
-                                <p>
-                                    [Display]
-                                    <br>
-                                    bFull Screen=0
-                                </p>
-                            </div>
-                        </li>
-                        <li>
                             <h4>Fake Fullscreen, Borderless Windowed, Fullscreen Windowed, Windowed Fullscreen - is there any difference?</h4>
                             No. All of these terms refer to the same thing - a borderless window that covers the whole screen. There's no official name for it, so people use different ways to describe it.
+                            <br>
+                            "Borderless Windowed" is the only outlier here, as it does not specifically imply fullscreen usage.
                         </li>
                         <li>
-                            <h4>Why is guide recommending using Windows' Game Mode? I heard that it's bad.</h4>
+                            <h4>Why is the guide recommending using Windows' Game Mode? I heard that it's bad.</h4>
                             Most, if not all Game Mode stigma comes around from its <a href="https://blogs.windows.com/windows-insider/2017/01/27/announcing-windows-10-insider-preview-build-15019-pc/">initial implementation in 2017</a>.
                             <p>
                                 That version of Game Mode had two (now removed due to issues) features:
@@ -1286,12 +1324,12 @@
                                 <br>
                                 Additionally, some vendors like AMD are using it to detect games and apply their own optimizations (CPU scheduling in AMD's case).
                             </p>
-                            Flip Model upgrade functionality has been moved into Windows itself, split between Fullscreen Optimizations (All Direct3D versions; Windows 10) and Windowed Optimizations (Direct3D 10 and 11; Windows 11).
+                            Flip Model upgrade functionality has been moved into Windows itself, split between Fullscreen Optimizations (All Direct3D versions; Windows 10+) and Windowed Optimizations (Direct3D 10 and 11; Windows 11+).
                             <br>
                             These features are enabled by default and don't suffer from the issues of the original Game Mode.
                         </li>
                         <li>
-                            <h4>Any way change brightness in Windowed Mode?</h4>
+                            <h4>Any way change brightness in Windowed mode?</h4>
                             Use <a href="https://reshade.me/" target="_blank">ReShade</a> or <a href="https://www.nexusmods.com/newvegas/mods/51577/" target="_blank">Dynavision</a> to change the brightness.
                         </li>
                         <li>
@@ -1299,10 +1337,13 @@
                             In most cases, no. As long as you don't go over your VRAM budget and use NVTF's memory pool patch you'll be fine. If you happen to run out of VRAM, you'll get a massive performance degradation, due to graphics memory being spilled over into RAM.
                             <br>
                             What <i>is</i> guaranteed from higher resolution textures is increase in their load time. This can translate into longer stutter periods on cell loads.
+                            <br>
+                            <br>
+                            If you are using a low-bandwidth or slow memory GPU (e.g. integrated graphics), you may see performance impact from higher resolution textures, as the memory bus gets saturated. Using high levels of anisotropic filtering can also negatively contribute to performance on such GPUs.
                         </li>
                         <li>
                             <h4>You talk about HDR. I thought FNV already had it?</h4>
-                            HDR mentioned in game setting refers to HDR rendering, where game renders lighting passes in 16 bits, instead of 8. This leads to properly glowing lights thanks to the precision of using 65536 colors per channel instead of 256. (Glowing elements won't be clamped anymore, and will glow instead.)
+                            HDR mentioned in game setting refers to HDR rendering, where game renders lighting passes in 16 bits per channel (instead of 8) and tonemaps the result. This leads to properly glowing lights thanks to the precision of using 65536 colors per channel instead of 256. (Glowing elements won't be clamped anymore, and will glow instead.)
                             <br>
                             Due to the old age of the game, this data is later converted to 8 bit SDR (HDR in Windows was added in 2017!). Additionally, D3D9 obviously doesn't support HDR output in the first place, hence the need for the DXGI interop.
                         </li>
@@ -1310,7 +1351,7 @@
                             <h4>DXVK is breaking HDR after exiting the game!</h4>
                             Yes, unfortunately due to how <span class="abbreviation" title="Fullscreen Exclusive" onclick="expandCard(flipTalkTop, flipTalk, 1); location.href='#Flip'">FSE</span> works, in addition to lack of native Windows support from DXVK, it doesn't properly handle the HDR API.
                             <br>
-                            If your GPU supports it, use <a href="#DXVK">DXVK with DXGI</a> to resolve this issue.
+                            If your GPU supports it, use <a href="#FlipModel">DXVK with DXGI</a> to resolve this issue.
                         </li>
                         <li>
                             <h4>Is dgVoodoo 2 a viable alternative to DXVK?</h4>

@@ -77,6 +77,22 @@ button:active,
   table-layout: fixed;
   width: 100%;
   border-spacing: 0.4em;
+  position: relative;
+  border-collapse: separate;
+}
+
+.comparison-table::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  border-radius: 8px;
+  outline: 1px solid rgba(255,255,255, 0.1);
+  background: radial-gradient(circle at center,rgba(255, 255, 255, 0.01) 0%,rgba(255, 255, 255, 0.05) 100%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .comparison-table h2 {
