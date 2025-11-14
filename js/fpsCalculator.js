@@ -75,8 +75,8 @@ function calculateFPS() {
             </div>
             <div class="card-yellow">
                 <p>
-                    *Your VRR range typically starts at 48 FPS, but some displays support 30 or even 1.<br>
-                    Check <a href="https://www.nvidia.com/en-us/geforce/products/g-sync-monitors/specs/" target="_blank">this list</a> to know your model's VRR range. Check the product page if it's not listed there.
+                    *VRR ranges typically start at 48 FPS, but some displays support 30 or even 1.<br>
+                    You can check <a href="https://www.nvidia.com/en-us/geforce/products/g-sync-monitors/specs/" target="_blank">this list</a> to know your model's VRR range. If your display is not on the list, you can check the product page.
                 </p>
             </div>
             <div class="card-green">
