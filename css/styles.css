@@ -220,7 +220,11 @@ textarea {
 
 button.active {
   background-color: #e3b2da;
-  color: white;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+button.active:hover {
+  background-color: #f1bae7;
 }
 
 @keyframes rotate {
