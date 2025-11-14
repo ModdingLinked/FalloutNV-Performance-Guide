@@ -400,7 +400,7 @@
                                             High input lag and worse performance, especially when not using any FPS limiter and/or using a laptop
                                         </li>
                                         <li>
-                                            V-Sync is always on<sup><a title="Why?" href="#annotation5">[5]</a></sup>
+                                            V-Sync is always on<sup><a title="Why?" href="#annotation4">[4]</a></sup>
                                         </li>
                                         <li>
                                             Variable Refresh Rate doesn't work natively
@@ -410,7 +410,7 @@
                                                 AMD supports FreeSync in BitBlt windows that are fullscreen, but latency and performance penalties remain
                                             </li>
                                             <li>
-                                                Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation6">[6]</a></sup>
+                                                Nvidia's G-Sync support for BitBlt windows is broken<sup><a title="Why?" href="#annotation5">[5]</a></sup>
                                             </li>
                                         </ul>
                                         <li>
@@ -428,11 +428,11 @@
                         </table>
                     </div>
                     <span class="annotations">
-                        <ol start="5">
-                            <li id="annotation5">
+                        <ol start="4">
+                            <li id="annotation4">
                                 Despite that disabled V-Sync unlocks the framerate, window itself is V-Synced, so you don't get any benefits.
                             </li>
-                            <li id="annotation6">
+                            <li id="annotation5">
                                 While AMD enables FreeSync for Fullscreen Windowed BitBlt surfaces, Nvidia allows G-Sync to run with <i>any</i> window.
                                 <br>
                                 This is problematic because refresh rate can get synchronized to wrong windows, framerate may break on other displays and display stutters may occur.
@@ -508,7 +508,7 @@
                                 This setting Disables texture mirroring between VRAM and RAM, which decreases RAM usage and allows using high resolution textures.
                                 <br>
                                 <br>
-                                <b>This also breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation4">[4]</a></sup></b>
+                                <b>This also breaks Alt-Tab functionality in Fullscreen Mode.<sup><a title="Why?" href="#annotation6">[6]</a></sup></b>
                                 <br>
                                 To mitigate that, either use <a href="#DXVK">DXVK</a>, <a href="#FAQ">Windowed Mode</a> or just avoid Alt-Tabbing. This is also covered later in the guide.
                             </p>
@@ -517,8 +517,8 @@
                     </ol>
 
                     <span class="annotations">
-                        <ol start="4">
-                            <li id="annotation4">
+                        <ol start="6">
+                            <li id="annotation6">
                                 D3D9 loses the graphics device if it loses the screen ownership (Alt-Tab, Sleep, etc.). To recover, it needs to either have a copy of textures in RAM, or be able to reconstruct the memory from ground up.
                                 <br>
                                 Fallout: New Vegas, like most D3D9 games, use the first method. Thus by disabling this behavior, after Alt-Tabbing, game is in a limbo where it doesn't know what to do.
@@ -1128,6 +1128,19 @@
                                 <li>V-Sync must be enabled in order to fully get rid of tearing.</li>
                                 <li>The framerate must be capped below your refresh rate in order for VRR to not disengage and fallback to V-Sync, as this causes a very big increase in latency.</li>
                             </ul>
+                            <div class="card-yellow">
+                                <p>
+                                    <!-- TODO: INTEL -->
+                                    You can <strong>check if you are using VRR</strong> by going to the <b>Nvidia Control Panel</b> if you're on Nvidia or <b>Adrenalin's Display Settings</b> if you're on AMD.
+                                    <br>
+                                    If the G-Sync tab is missing from NVCP, your display doesn't support it or doesn't have the feature enabled in the OSD.
+                                    <br>
+                                    <br>
+                                    Nvidia users need to make sure that G-Sync is set to <b>Fullscreen</b> and that <b>Display Specific settings</b> are enabled. The <b>Windowed</b> option is problematic due to it being a hacky method.
+                                    <br>
+                                    Both of the settings are wrongly named so they do not actually directly refer to the display method.
+                                </p>
+                            </div>
                         </li>
                         <li>
                             <h4>No V-Sync</h4>
@@ -1136,22 +1149,23 @@
                                 <li>
                                     No special prerequisites.
                                 </li>
-                                <div class="card-yellow">
+
+                            </ul>
+                            <div class="card-yellow">
+                                <p>
+                                    Due to Bethesda's oversight, the V-Sync toggle in the launcher doesn't work.
+                                    <br>
+                                    To disable V-Sync, in <b>FalloutCustom.ini</b> set the following:
+                                <div class="card-basic">
                                     <p>
-                                        Due to Bethesda's oversight, the V-Sync toggle in the launcher doesn't work.
+                                        [Display]
                                         <br>
-                                        To disable V-Sync, in <b>FalloutCustom.ini</b> set the following:
-                                    <div class="card-basic">
-                                        <p>
-                                            [Display]
-                                            <br>
-                                            iPresentInterval=0
-                                        </p>
-                                    </div>
-                                    Disabling V-Sync through other means (Driver, DXVK) also works.
+                                        iPresentInterval=0
                                     </p>
                                 </div>
-                            </ul>
+                                Disabling V-Sync through other means (Driver, DXVK) also works.
+                                </p>
+                            </div>
                         </li>
                     </ul>
                     <br>
@@ -1174,7 +1188,7 @@
                         <li>Install and launch <a href="https://www.guru3d.com/files-details/rtss-rivatuner-statistics-server-download.html" target="_blank">RTSS</a>. Open your System Tray (the triangle pointing upwards on the taskbar) and click on the RTSS icon to open it.</li>
                         <li>Click <strong>Add</strong> and select <b>FalloutNV.exe</b>.</li>
                         <li>Set its <b>Application Detection Level</b> to <strong>Low</strong>.</li>
-                        <li>Use the calculator below to determine your <strong>optimal FPS limit</strong><sup><a title="Warning" href="#annotation2">[2]</a></sup> setting. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.</li>
+                        <li>Use the calculator below to determine your <strong>optimal FPS limit</strong><sup><a title="Warning" href="#annotation7">[7]</a></sup> setting. You can find your exact refresh rate <b><a href="https://www.testufo.com/refreshrate" target="_blank">here</a></b>.</li>
 
                         <div class="card-basic">
                             <div class="center" style="margin: 10px;">
@@ -1212,14 +1226,8 @@
                     <hr>
 
                     <span class="annotations">
-                        <ol>
-                            <li id="annotation1">
-                                You can <strong>check if you are using VRR</strong> by going to the <b>Nvidia Control Panel</b> if you're on Nvidia or <b>Adrenalin's Display Settings</b> if you're on AMD. If the G-Sync tab is missing from NVCP, your display doesn't support it or doesn't have the feature enabled in the OSD.
-                                <br>
-                                <br>
-                                Nvidia users need to make sure that G-Sync is set to <b>Fullscreen</b> and that <b>Display Specific settings</b> are enabled, the <b>Windowed</b> option is problematic due to it being a hacky method. Both of the settings are wrongly named so they do not actually directly refer to the display method.
-                            </li>
-                            <li id="annotation2">
+                        <ol start="7">
+                            <li id="annotation7">
                                 You always want your FPS capped by a <strong>limiter instead of being hardware bound</strong>, this will reduce lag and increase power efficiency. It is also less jarring for the player when visual smoothness is the same across all scenes.
                             </li>
                         </ol>
